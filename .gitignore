@@ -1,0 +1,133 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+.ENV.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy
+.scrapy
+
+# Sphinx docs
+docs/_build/
+
+# PyBuilder
+target/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pyre type checker
+.pyre/
+
+# profiling
+.prof
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# dotenv
+.env
+.env.*
+
+# Secret key patterns
+*.pem
+*.key
+
+# Compiled Python files
+*.pyc
+*.pyo
+
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*~
+
+# JetBrains IDEs
+*.iml
+.idea/
+
+# Logs
+*.log
+
+# Build
+build/
+dist/
+
+# Python Egg
+*.egg
+*.egg-info/
+.eggs/
+
+.env
+*.mp3
+*.pdf
+*.docx
+*.jpg
+*.png
+*.jpeg
+!static/
+!static/*.jpg
+!static/*.png
+!static/*.jpeg
+faiss_store_*
+__pycache__/
+venv/
