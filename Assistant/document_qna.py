@@ -1,132 +1,168 @@
-import os
+from io import BytesIO
+
+import docx
+import fitz
 import streamlit as st
-import re
-from tempfile import NamedTemporaryFile
-from langchain_classic.chains import RetrievalQAWithSourcesChain
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import (
-    UnstructuredPDFLoader, 
-    UnstructuredWordDocumentLoader, 
-    CSVLoader
-)
-from langchain_openai import OpenAI, OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
+from openai import OpenAI
+
+
+MAX_FILES = 3
+CHUNK_SIZE = 1200
+CHUNK_OVERLAP = 180
+
+
+def split_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
+    chunks = []
+    start = 0
+    cleaned = " ".join(text.split())
+    while start < len(cleaned):
+        end = start + chunk_size
+        chunks.append(cleaned[start:end])
+        if end >= len(cleaned):
+            break
+        start = max(0, end - overlap)
+    return [chunk for chunk in chunks if chunk.strip()]
+
+
+def extract_pdf_text(uploaded_file):
+    uploaded_file.seek(0)
+    text_parts = []
+    with fitz.open(stream=uploaded_file.read(), filetype="pdf") as pdf:
+        for page in pdf:
+            text_parts.append(page.get_text())
+    return "\n".join(text_parts).strip()
+
+
+def extract_docx_text(uploaded_file):
+    uploaded_file.seek(0)
+    document = docx.Document(BytesIO(uploaded_file.read()))
+    return "\n".join(paragraph.text for paragraph in document.paragraphs if paragraph.text.strip())
+
+
+def uploaded_file_to_documents(uploaded_file):
+    from langchain_core.documents import Document
+
+    file_name = uploaded_file.name
+    lower_name = file_name.lower()
+
+    if lower_name.endswith(".pdf"):
+        text = extract_pdf_text(uploaded_file)
+    elif lower_name.endswith(".docx"):
+        text = extract_docx_text(uploaded_file)
+    else:
+        raise ValueError(f"Unsupported file type: {file_name}")
+
+    if not text:
+        raise ValueError(f"No readable text found in {file_name}")
+
+    return [
+        Document(
+            page_content=chunk,
+            metadata={"source": file_name, "chunk": index + 1},
+        )
+        for index, chunk in enumerate(split_text(text))
+    ]
+
+
+def build_document_vectorstore(uploaded_files, api_key):
+    from langchain_community.vectorstores import FAISS
+    from langchain_openai import OpenAIEmbeddings
+
+    documents = []
+    errors = []
+
+    for uploaded_file in uploaded_files[:MAX_FILES]:
+        try:
+            documents.extend(uploaded_file_to_documents(uploaded_file))
+        except Exception as exc:
+            errors.append(f"{uploaded_file.name}: {exc}")
+
+    if not documents:
+        raise ValueError("No documents could be processed. Please upload readable PDF or DOCX files.")
+
+    embeddings = OpenAIEmbeddings(api_key=api_key)
+    vectorstore = FAISS.from_documents(documents, embeddings)
+    return vectorstore, errors
+
+
+def answer_with_context(question, docs, api_key):
+    context_blocks = []
+    for index, doc in enumerate(docs, start=1):
+        source = doc.metadata.get("source", "Uploaded document")
+        chunk = doc.metadata.get("chunk", index)
+        context_blocks.append(f"[S{index}] Source: {source}, chunk {chunk}\n{doc.page_content}")
+
+    context = "\n\n".join(context_blocks)
+    client = OpenAI(api_key=api_key)
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        temperature=0.2,
+        messages=[
+            {
+                "role": "system",
+                "content": (
+                    "Answer using only the provided document context. "
+                    "If the answer is not present, say that the documents do not contain enough information. "
+                    "Cite sources inline using labels like [S1]."
+                ),
+            },
+            {
+                "role": "user",
+                "content": f"Question: {question}\n\nDocument context:\n{context}",
+            },
+        ],
+    )
+    return response.choices[0].message.content or "No answer generated."
+
 
 def show_document_qna(uploaded_files, api_key=None):
-    # Initialize and validate
+    st.title("Document QnA Tool")
+
     if not api_key:
-        st.error("🔑 OpenAI API key is required")
-        return
-        
-    if not uploaded_files:
-        st.info("ℹ️ Please upload at least one document to begin")
+        st.error("OpenAI API key is required")
         return
 
-    os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-    st.title("📄 Document QnA Tool")
-    
-    # Configuration
-    faiss_folder_path = "faiss_store_docs"
-    llm = OpenAI(api_key=api_key, temperature=0.7, max_tokens=1000)
-    
-    # File processing
-    if st.button("🔧 Process Files"):
+    if not uploaded_files:
+        st.info("Please upload at least one document to begin.")
+        return
+
+    if "document_qna_vectorstore" not in st.session_state:
+        st.session_state.document_qna_vectorstore = None
+    if "document_qna_errors" not in st.session_state:
+        st.session_state.document_qna_errors = []
+
+    if st.button("Process Files"):
         with st.spinner("Processing documents..."):
             try:
-                docs = []
-                temp_files = []
-                
-                for uploaded_file in uploaded_files[:3]:  # Limit to 3 files
-                    file_ext = os.path.splitext(uploaded_file.name)[1].lower()
-                    
-                    with NamedTemporaryFile(delete=False, suffix=file_ext) as tmp:
-                        # Write file content
-                        if hasattr(uploaded_file, 'chunks'):
-                            for chunk in uploaded_file.chunks():
-                                tmp.write(chunk)
-                        else:
-                            tmp.write(uploaded_file.read())
-                        temp_files.append(tmp.name)
-                    
-                    # Select appropriate loader
-                    if file_ext == '.pdf':
-                        loader = UnstructuredPDFLoader(tmp.name)
-                    elif file_ext == '.docx':
-                        loader = UnstructuredWordDocumentLoader(tmp.name)
-                    elif file_ext == '.csv':
-                        loader = CSVLoader(tmp.name)
-                    else:
-                        st.warning(f"⚠️ Unsupported file type: {uploaded_file.name}")
-                        continue
-                        
-                    data = loader.load()
-                    docs.extend(data)
-                
-                # Process documents
-                text_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=1500,
-                    chunk_overlap=200,
-                    separators=["\n\n", "\n", ". ", " ", ""]
-                )
-                split_docs = text_splitter.split_documents(docs)
-                
-                # Create and save vectorstore
-                embeddings = OpenAIEmbeddings(openai_api_key=api_key)
-                vectorstore = FAISS.from_documents(split_docs, embeddings)
-                vectorstore.save_local(faiss_folder_path)
-                
-                st.success("✅ Documents processed and ready for querying!")
-                
-            except Exception as e:
-                st.error(f"❌ Error processing files: {str(e)}")
-            finally:
-                # Clean up temp files
-                for temp_file in temp_files:
-                    try:
-                        os.unlink(temp_file)
-                    except:
-                        pass
+                vectorstore, errors = build_document_vectorstore(uploaded_files, api_key)
+                st.session_state.document_qna_vectorstore = vectorstore
+                st.session_state.document_qna_errors = errors
+                st.success("Documents processed and ready for querying.")
+            except Exception as exc:
+                st.session_state.document_qna_vectorstore = None
+                st.error(f"Error processing files: {exc}")
+                return
 
-    # Query handling
-    query = st.text_input("💬 Ask a question about your documents:")
+    for error in st.session_state.document_qna_errors:
+        st.warning(error)
+
+    query = st.text_input("Ask a question about your documents:")
     if query:
-        if not os.path.exists(faiss_folder_path):
-            st.warning("⚠️ Please process documents first")
+        vectorstore = st.session_state.document_qna_vectorstore
+        if vectorstore is None:
+            st.warning("Please process documents first.")
             return
-            
+
         with st.spinner("Searching for answers..."):
             try:
-                embeddings = OpenAIEmbeddings(openai_api_key=api_key)
-                vectorstore = FAISS.load_local(
-                    faiss_folder_path, 
-                    embeddings, 
-                    allow_dangerous_deserialization=True
-                )
-                
-                chain = RetrievalQAWithSourcesChain.from_llm(
-                    llm=llm,
-                    retriever=vectorstore.as_retriever(),
-                    return_source_documents=True
-                )
-                
-                result = chain({"question": query}, return_only_outputs=True)
-                
-                # Clean and format response
-                answer = re.sub(r"\(.*?AppData.*?\.pdf\)", "", result.get("answer", "No answer found."))
-                sources = result.get("sources", "No sources found.")
-                
-                # Display results
-                st.markdown(f"""
-                ### 📝 Answer
-                {answer}
-                
-                ---
-                
-                ### 📚 Sources
-                ```
-                {sources}
-                ```
-                """)
-                
-            except Exception as e:
-                st.error(f"❌ Error answering question: {str(e)}")
+                retrieved_docs = vectorstore.similarity_search(query, k=4)
+                answer = answer_with_context(query, retrieved_docs, api_key)
+                st.markdown("### Answer")
+                st.write(answer)
+                st.markdown("### Retrieved Sources")
+                for index, doc in enumerate(retrieved_docs, start=1):
+                    source = doc.metadata.get("source", "Uploaded document")
+                    chunk = doc.metadata.get("chunk", index)
+                    st.code(f"[S{index}] {source}, chunk {chunk}")
+            except Exception as exc:
+                st.error(f"Error answering question: {exc}")

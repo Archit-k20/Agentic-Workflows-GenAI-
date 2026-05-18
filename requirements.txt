@@ -5,7 +5,6 @@ streamlit
 accelerate
 pypdf
 peft
-unstructured
 tiktoken
 faiss-cpu
 python-magic
@@ -15,6 +14,7 @@ langchain-community
 langchain-openai
 openai
 requests
+beautifulsoup4
 youtube_transcript_api
 newspaper3k
 lxml_html_clean
