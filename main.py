@@ -323,7 +323,7 @@ with st.sidebar:
         )
 
     st.markdown("---")
-    st.markdown("🔗 [GitHub Repo](https://github.com/Lamstersickness/GenAI_App)")
+    st.markdown("🔗 [GitHub Repo](https://github.com/Archit-k20/Agentic-Workflows-GenAI-)")
     st.markdown("🛠 Maintained by Archit Kumar [LinkedIn](https://www.linkedin.com/in/archit-kumar-aa6375259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)")
     st.markdown("---")
     st.subheader("🔑 OpenAI API Key")
