@@ -24,7 +24,7 @@ export default function Home() {
         <Link href="/" aria-label="TRACE home">
           <Wordmark />
         </Link>
-        <span className="nav-note">AGENTIC AI WORKSPACE</span>
+        <span className="nav-note">AN AI WORKSHOP / BY ARCHIT KUMAR</span>
         <nav>
           <ExternalLink href={github}>Source code</ExternalLink>
           <button
@@ -43,16 +43,16 @@ export default function Home() {
         <section className="hero">
           <div className="hero-copy">
             <div className="eyebrow">
-              <span className="trace-dot" /> THINK IN WORKFLOWS
+              <span className="trace-dot" /> SOURCES. IDEAS. WORK IN PROGRESS.
             </div>
             <h1>
-              Every input
+              Fifteen tools.
               <br />
-              has a <em>next chapter.</em>
+              <em>One working desk.</em>
             </h1>
             <p>
-              Turn scattered information into a clearer perspective. A focused
-              workspace for research, documents, code, and the ideas in between.
+              Read a document. Investigate a question. Write, build, or give an
+              idea a voice. Keep the source material and the result in view.
             </p>
             <div className="hero-actions">
               <Link
@@ -68,7 +68,7 @@ export default function Home() {
             <div className="hero-byline">
               <span className="tiny-line" /> Built by{" "}
               <strong>Archit Kumar</strong>
-              <span className="mono">01 / 15 TOOLS</span>
+              <span className="mono">FREE ACCESS / NO VISITOR KEY</span>
             </div>
           </div>
           <div
@@ -87,12 +87,11 @@ export default function Home() {
                 <div className="document-outline">
                   <div className="mono">SOURCE / 01</div>
                   <FileText size={24} />
-                  <span>Scattered signals.</span>
-                  <div className="fake-lines">
-                    <i />
-                    <i />
-                    <i />
-                  </div>
+                  <span>Campus repair field notes.</span>
+                  <p className="illustration-excerpt">
+                    Appointments distribute demand. Electrical faults need
+                    specialist review.
+                  </p>
                 </div>
                 <div className="source-tag mono">[S1] FIELD NOTES</div>
               </div>
@@ -118,12 +117,12 @@ export default function Home() {
                   RESEARCH BRIEF <span>↗</span>
                 </div>
                 <h2>
-                  A clearer
+                  Small service.
                   <br />
-                  <em>point of view.</em>
+                  <em>Clear boundaries.</em>
                 </h2>
                 <p>
-                  Read the evidence. See the gaps.
+                  Read the evidence. Name the gaps.
                   <br />
                   Know what to ask next.
                 </p>
@@ -141,18 +140,18 @@ export default function Home() {
                 <ArrowRight size={13} />
                 <span>03</span> Review
               </div>
-              <span className="mono">ILLUSTRATED WORKFLOW</span>
+              <span className="mono">FICTIONAL EXAMPLE / NOT A LIVE RUN</span>
             </div>
           </div>
         </section>
         <section className="tool-atlas">
           <div className="atlas-intro">
             <div>
-              <div className="eyebrow">A TOOL FOR EACH TURN</div>
+              <div className="eyebrow">THE WORKSHOP / SELECT A SAMPLE</div>
               <h2>
-                One workspace.
+                Start with the work
                 <br />
-                <em>Fifteen ways forward.</em>
+                <em>you want to do.</em>
               </h2>
             </div>
             <p>
@@ -191,15 +190,16 @@ export default function Home() {
           </div>
         </section>
         <section className="project-note">
-          <div className="eyebrow">BUILT TO MAKE THE PROCESS LEGIBLE</div>
+          <div className="eyebrow">A NOTE FROM THE WORKSHOP</div>
           <h2>
-            Intelligence you can <em>inspect.</em>
+            The result is only <em>part of the story.</em>
           </h2>
           <p>
-            TRACE brings summarization, generation, and source-based assistance
-            into one working environment. Evidence stays close to answers.
-            Verification has clear boundaries. You bring the question and the
-            sources.
+            I built TRACE to bring fifteen AI workflows into one place, with
+            source inspection, visible processing stages, and clear limits on
+            what a review or code check can tell you. Try the bundled samples,
+            then use free access for live work. Optional OpenAI access is
+            available in settings.
           </p>
           <div>
             <ExternalLink href={github}>
@@ -212,7 +212,7 @@ export default function Home() {
       <footer className="landing-footer">
         <Wordmark />
         <span>Built by Archit Kumar</span>
-        <span className="mono">FROM SIGNAL TO SUBSTANCE.</span>
+        <span className="mono">READ / MAKE / INSPECT</span>
       </footer>
     </div>
   );

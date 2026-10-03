@@ -504,7 +504,10 @@ export function Workspace({ tool }: { tool: Tool }) {
     </>
   );
   return (
-    <div className={`workspace ${collapsed ? "collapsed" : ""}`}>
+    <div
+      className={`workspace ${collapsed ? "collapsed" : ""}`}
+      data-tool={tool.id}
+    >
       <VisitorVerification />
       <Suspense fallback={null}>
         <SampleLoader id={tool.id} />
@@ -813,7 +816,7 @@ export function Workspace({ tool }: { tool: Tool }) {
                         onChange={(e) => change(tool.field!, e.target.value)}
                         placeholder={tool.placeholder}
                         disabled={busy}
-                        rows={qa ? 3 : tool.id === "text-summary" ? 10 : 5}
+                        rows={qa ? 3 : tool.id === "text-summary" ? 7 : 5}
                       />
                     )}
                   </div>

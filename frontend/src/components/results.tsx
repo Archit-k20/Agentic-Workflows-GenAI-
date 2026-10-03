@@ -337,27 +337,31 @@ export function Results({
           </details>
           <section className="artifact-section">
             <h3>Image prompts</h3>
-            {list(result.package.image_prompts).map((prompt, i) => (
-              <div className="prompt-artifact" key={i}>
-                <span className="mono">FRAME / 0{i + 1}</span>
-                <p>{text(prompt)}</p>
-                <CopyButton text={text(prompt)} />
-              </div>
-            ))}
+            <div className="artifact-grid">
+              {list(result.package.image_prompts).map((prompt, i) => (
+                <div className="prompt-artifact" key={i}>
+                  <span className="mono">FRAME / 0{i + 1}</span>
+                  <p>{text(prompt)}</p>
+                  <CopyButton text={text(prompt)} />
+                </div>
+              ))}
+            </div>
           </section>
           <section className="artifact-section">
             <h3>Platform captions</h3>
-            {Object.entries(result.final_captions).map(
-              ([platform, caption]) => (
-                <div className="caption-artifact" key={platform}>
-                  <div className="artifact-heading">
-                    <span className="mono">{platform.toUpperCase()}</span>
-                    <CopyButton text={caption} />
+            <div className="artifact-grid">
+              {Object.entries(result.final_captions).map(
+                ([platform, caption]) => (
+                  <div className="caption-artifact" key={platform}>
+                    <div className="artifact-heading">
+                      <span className="mono">{platform.toUpperCase()}</span>
+                      <CopyButton text={caption} />
+                    </div>
+                    <p>{caption}</p>
                   </div>
-                  <p>{caption}</p>
-                </div>
-              ),
-            )}
+                ),
+              )}
+            </div>
           </section>
           <div className="hashtags">
             {list(result.package.hashtags).map((tag, i) => (
@@ -592,7 +596,7 @@ export function Results({
         );
   }
   return (
-    <div className="result-content">
+    <div className="result-content" data-artifact={result.tool}>
       {body}
       <details className="secondary-details raw-details">
         <summary>Details · complete structured result</summary>

@@ -65,7 +65,7 @@ const Context = createContext<State | null>(null);
 export function Provider({ children }: { children: ReactNode }) {
   const [mode, changeMode] = useState<Mode>("free");
   const [key, setKey] = useState(""),
-    [theme, setTheme] = useState("dark"),
+    [theme, setTheme] = useState("light"),
     [themeReady, setThemeReady] = useState(false),
     [drafts, setDrafts] = useState<State["drafts"]>({});
   useEffect(() => {

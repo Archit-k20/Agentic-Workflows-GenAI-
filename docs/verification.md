@@ -1,3 +1,25 @@
+# Editorial workshop UI — 4 October 2026
+
+The owner selected warm paper surfaces, ink typography and a vermilion accent. This pass replaces the cool dashboard treatment with a light-by-default editorial workshop, while retaining saved theme preferences and a warm charcoal dark theme. Newsreader now establishes the landing/workspace hierarchy; Manrope remains the interface face and IBM Plex Mono labels technical metadata. Fonts remain self-hosted.
+
+The workspace now separates the input desk from the output sheet, uses indexed navigation and document corner marks, and treats pinned evidence as marginal annotations. Code retains a charcoal reading surface with a lined verification console; content artifacts use a responsive workbench grid; document entities use ruled indexes; support decisions retain their actual answer/escalate state. No provider, prompt, retrieval, verification or quota behavior changed. All fifteen forms and structured Details remain available.
+
+Validation of this pass:
+
+- Production build, TypeScript check, eight frontend tests, formatting and diff checks passed.
+- Browser layout inspection across the landing page and all fifteen tools at 360, 768, 1024, 1440 and 1920 px in both themes: 160 checks, no page-level horizontal overflow. The five sample output views were included.
+- Rendered Research text contrast sampled on settled surfaces including navigation, controls, labels, reports, sample notices and the pinned inspector: 47 samples per theme, minimum 5.13:1 light and 6.04:1 dark. This is scoped verification, not complete accessibility certification.
+- Keyboard command search opened Code Copilot; desktop citation pinning and mobile evidence sheet worked. Escape dismissed the mobile evidence sheet and settings drawer. The free/local/advanced mode choices remained available in mobile settings.
+- Final production preview served at localhost:3000. The screenshots below show the actual application, not a concept mockup.
+
+Existing reduced-motion handling is preserved; the prior OS-level check below was not repeated in this pass. No live AI requests were made, and final-profile output-quality evaluation remains deferred until the shared allowance resets. No deployment or merge occurred.
+
+![Editorial workshop public entry](screenshots/editorial-landing-desktop.jpg)
+
+![Editorial Research workspace with pinned source](screenshots/editorial-research-desktop.jpg)
+
+![Editorial mobile evidence inspector](screenshots/editorial-research-mobile.jpg)
+
 # Free-access verification (quality acceptance pending)
 
 The free-access extension has **113 passing backend tests and eight passing frontend tests**. Production build/type checks passed. All fifteen adapters are exercised without visitor credentials using mocked hosted providers, real parsers/index persistence, and actual syntax/compiler checks. Tests cover quotas/reservations, HMAC network limits, UTC resets, explicit routing, format repair, requested caption platforms, complete word/Unicode section coverage, unavailable reviews, specific document failure diagnostics, pinned model checks, and Turnstile hostname/action validation.
