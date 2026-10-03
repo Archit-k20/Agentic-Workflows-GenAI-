@@ -20,6 +20,10 @@ class NamedFile:
     def seek(self, *args):
         return self.file.seek(*args)
 
+    def __getattr__(self, name):
+        # PIL, PDF readers and ZIP/DOCX parsers also need tell/readline/seekable.
+        return getattr(self.file, name)
+
     def close(self):
         self.file.close()
 
