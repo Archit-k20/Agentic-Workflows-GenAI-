@@ -27,7 +27,7 @@ export function buildInput(
     case "ocr":
       return { tool, file_ids };
     case "text-summary":
-      return { tool, text: input.text.trim() };
+      return { tool, text: input.text };
     case "youtube-summary":
     case "article-summary":
     case "captions":
@@ -35,7 +35,7 @@ export function buildInput(
     case "image":
       return { tool, prompt: input.prompt.trim() };
     case "speech":
-      return { tool, text: input.text.trim(), voice };
+      return { tool, text: input.text, voice };
     case "code":
       return {
         tool,

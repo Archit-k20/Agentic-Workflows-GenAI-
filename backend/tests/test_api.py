@@ -119,6 +119,38 @@ def test_validation_credentials_and_size(client):
     )
 
 
+def test_chunked_request_size_is_rejected(client):
+    response = client.post(
+        "/api/v1/runs",
+        headers={**headers(client), "Content-Type": "application/json"},
+        content=iter([b" " * (700 * 1024), b" " * (700 * 1024)]),
+    )
+    assert response.status_code == 413
+
+
+def test_authentication_warning_keeps_research_fallback():
+    from types import SimpleNamespace
+    from workflows import research_agent
+    from backend.events import observer
+
+    class InvalidCredentials(Exception):
+        status_code = 401
+
+    def fail(**kwargs):
+        raise InvalidCredentials("Do not expose this provider message")
+
+    client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=fail)))
+    received = []
+    token = observer.set(lambda name, data: received.append((name, data)))
+    fallback = {"goal": "Preserved original fallback"}
+    try:
+        assert research_agent._chat_json(client, "system", "user", fallback) is fallback
+    finally:
+        observer.reset(token)
+    assert any("Invalid OpenAI credentials" in data.get("message", "") for name, data in received)
+    assert all("provider message" not in str(data) for name, data in received)
+
+
 @pytest.mark.parametrize(
     "tool",
     [

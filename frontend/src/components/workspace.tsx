@@ -378,6 +378,10 @@ export function Workspace({ tool }: { tool: Tool }) {
     }
   }
   function summarize(text: string) {
+    if (!key) {
+      setSettings(true);
+      return;
+    }
     update("text-summary", {
       ...emptyDraft(),
       input: { ...emptyDraft().input, text },

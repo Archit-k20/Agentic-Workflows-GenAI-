@@ -2,12 +2,26 @@
 
 from contextvars import ContextVar
 from functools import wraps
+from types import SimpleNamespace
 
 observer = ContextVar("observer", default=lambda event, data: None)
 
 
 def emit(event, **data):
     observer.get()(event, data)
+
+
+def observed_client(client):
+    """Surface authentication failures even when the original workflow falls back."""
+    def create(*args, **kwargs):
+        try:
+            return client.chat.completions.create(*args, **kwargs)
+        except Exception as exc:
+            if getattr(exc, "status_code", None) == 401:
+                emit("warning", message="Invalid OpenAI credentials. Update your key in Settings. Existing fallback behavior was retained.")
+            raise
+
+    return SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=create)))
 
 
 def observe(fn, label):
@@ -88,8 +102,8 @@ def install():
     for module in [r, s, d, p]:
         original = module._chat_json
 
-        def with_fallback(*args, _fn=original, **kwargs):
-            result = _fn(*args, **kwargs)
+        def with_fallback(client, *args, _fn=original, **kwargs):
+            result = _fn(observed_client(client), *args, **kwargs)
             fallback = kwargs.get("fallback", args[-1] if args else None)
             if result is fallback:
                 emit(
@@ -101,8 +115,8 @@ def install():
         module._chat_json = with_fallback
     original_text = r._chat_text
 
-    def text_fallback(*args, **kwargs):
-        result = original_text(*args, **kwargs)
+    def text_fallback(client, *args, **kwargs):
+        result = original_text(observed_client(client), *args, **kwargs)
         if not result:
             emit(
                 "warning",

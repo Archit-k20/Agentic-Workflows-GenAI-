@@ -3138,3 +3138,7 @@ select {
 .citation-preview {
   animation: fade-in 0.18s ease-out;
 }
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+}
