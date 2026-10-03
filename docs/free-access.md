@@ -38,7 +38,7 @@ English is the evaluated language. Free voices are Heart, Bella, Nicole, Michael
 - Indexes store FAISS and JSON, with an explicit embedding profile. They survive backend restart. Changed/legacy profiles require reprocessing; uploaded files remain available until session expiry. No uploaded pickle is loaded.
 - YouTube URL extraction can be blocked by YouTube or lack transcripts. Both YouTube tools accept a pasted transcript as an explicit alternative. No autonomous web search is added.
 - Existing code verification and its single repair attempt remain. A passed syntax/compiler check does not establish correctness or security. Failed JSON reviews cannot become a passed review in free mode.
-- Workflow requests have a 900-second deadline; hosted calls have at most 120 seconds. Local model inference, embeddings and speech share a CPU gate within the single backend process. Keep one Uvicorn worker; two global workflow slots do not mean two simultaneous local model generations.
+- Workflow requests have a 900-second deadline; hosted calls have at most 120 seconds. Local model inference, embeddings and speech share a CPU gate within the single backend process. Keep one Uvicorn worker; two global workflow slots do not mean two simultaneous local model generations. Compose allows 8 GB for Ollama and 3 GB for the API, leaving 1 GB of the proposed 12 GB VM for its OS. A 6 GB Ollama limit caused cache-related out-of-memory failures during repeated local evaluation; do not reuse that setting. Measure actual combined peak memory on the target VM before deployment.
 
 ## Fair use and recovery
 

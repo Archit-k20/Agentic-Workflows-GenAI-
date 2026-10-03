@@ -194,18 +194,29 @@ export function Workspace({ tool }: { tool: Tool }) {
     return () => window.removeEventListener("keydown", listener);
   }, []);
   function change(field: string, value: string) {
-    update(tool.id, (d) => ({
-      input: { ...d.input, [field]: value },
-      error: undefined,
-      inputsChanged: !!d.result,
-      ...(field === "urls" ? { context: undefined } : {}),
-      status:
-        d.status === "processing"
-          ? d.status
-          : value || d.files.length
-            ? "ready"
-            : "empty",
-    }));
+    update(tool.id, (d) => {
+      const input = { ...d.input, [field]: value };
+      const hasContent = transcriptTool
+        ? Boolean(
+            (input.source_type === "transcript"
+              ? input.transcript_text
+              : input.url
+            )?.trim(),
+          )
+        : Boolean(
+            d.files.length ||
+              (tool.field && input[tool.field]?.trim()) ||
+              (tool.urls && input.urls?.trim()),
+          );
+      return {
+        input,
+        error: undefined,
+        inputsChanged: !!d.result,
+        ...(field === "urls" ? { context: undefined } : {}),
+        status:
+          d.status === "processing" ? d.status : hasContent ? "ready" : "empty",
+      };
+    });
   }
   function loadSample() {
     const sample = samples[tool.id];

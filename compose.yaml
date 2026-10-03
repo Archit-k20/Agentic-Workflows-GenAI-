@@ -13,7 +13,7 @@ services:
       MKL_NUM_THREADS: "2"
     depends_on: [ollama]
     cpus: 2
-    mem_limit: 6g
+    mem_limit: 3g
     volumes:
       - trace-data:/data
       - trace-model:/model-cache
@@ -27,7 +27,7 @@ services:
       OLLAMA_KV_CACHE_TYPE: q8_0
     volumes: ["trace-ollama:/root/.ollama"]
     cpus: 2
-    mem_limit: 6g
+    mem_limit: 8g
     restart: unless-stopped
 volumes:
   trace-ollama:
