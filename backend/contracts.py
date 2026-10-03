@@ -3,8 +3,8 @@
 from typing import Annotated, Literal, Union, Any
 from pydantic import BaseModel, Field
 
-Text = Annotated[str, Field(min_length=1, max_length=200000)]
-URL = Annotated[str, Field(min_length=1, max_length=4096)]
+Text = Annotated[str, Field(min_length=1)]
+URL = Annotated[str, Field(min_length=1)]
 Voice = Literal["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
 Language = Literal["python", "javascript", "java", "c", "c++"]
 

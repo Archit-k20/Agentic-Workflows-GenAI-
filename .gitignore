@@ -136,3 +136,6 @@ node_modules/
 .trace-data/
 !frontend/.env.example
 *.tsbuildinfo
+
+# Reviewable TRACE interface screenshots.
+!docs/screenshots/*.jpg

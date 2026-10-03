@@ -13,6 +13,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{const theme=localStorage.getItem('trace-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme;}catch{}",
+          }}
+        />
+        <link
+          rel="preload"
+          href="/fonts/manrope-latin-400-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/manrope-latin-600-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/newsreader-latin-400-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <a href="#main" className="skip-link">
           Skip to content

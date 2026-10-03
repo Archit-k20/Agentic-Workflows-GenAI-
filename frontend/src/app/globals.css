@@ -151,7 +151,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   color: var(--muted);
-  opacity: 0.75;
+  opacity: 1;
 }
 input:focus,
 textarea:focus,
@@ -173,7 +173,7 @@ h3 {
   font-weight: 600;
 }
 h4 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 em {
@@ -188,12 +188,12 @@ code {
   font-family: "IBM Plex Mono", monospace;
 }
 .mono {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.04em;
 }
 .eyebrow {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   color: var(--muted);
   display: flex;
@@ -251,7 +251,7 @@ code {
   align-items: center;
   justify-content: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   transition:
     background 0.12s,
@@ -280,7 +280,7 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
 }
 .text-link:hover {
@@ -326,7 +326,7 @@ code {
 }
 .nav-note {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: var(--muted);
   border-left: 1px solid var(--line);
@@ -337,7 +337,7 @@ code {
   align-items: center;
   gap: 24px;
   margin-left: auto;
-  font-size: 11px;
+  font-size: 13px;
 }
 .landing-nav a:not(:first-child),
 .landing-nav nav > a {
@@ -388,7 +388,7 @@ code {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 50px;
 }
@@ -430,7 +430,7 @@ code {
   gap: 8px;
   border-bottom: 1px solid var(--line);
   padding: 18px 20px;
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .instrument-top > span:first-child {
@@ -465,7 +465,7 @@ code {
   background: var(--bg);
 }
 .document-outline .mono {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
   margin-bottom: 20px;
 }
@@ -475,7 +475,7 @@ code {
 }
 .document-outline > span {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
 }
 .fake-lines {
   margin-top: 18px;
@@ -502,7 +502,7 @@ code {
   position: relative;
   margin: 12px 0 0;
   width: max-content;
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .hero-traces {
@@ -520,7 +520,7 @@ code {
 }
 .report-preview > .mono {
   color: var(--muted);
-  font-size: 8px;
+  font-size: 11px;
   display: flex;
   justify-content: space-between;
 }
@@ -534,7 +534,7 @@ code {
   color: var(--accent);
 }
 .report-preview p {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.8;
   color: var(--muted);
   margin: 16px 0;
@@ -545,7 +545,7 @@ code {
   margin: 18px 0 12px;
 }
 .mini-proof {
-  font-size: 7px !important;
+  font-size: 11px !important;
   gap: 8px;
   align-items: center;
 }
@@ -565,19 +565,19 @@ code {
   background: var(--bg);
 }
 .instrument-bottom > .mono {
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
 }
 .stage-mini {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 9px;
+  font-size: 11px;
 }
 .stage-mini > span {
   font-family: "IBM Plex Mono", monospace;
   color: var(--accent);
-  font-size: 8px;
+  font-size: 11px;
 }
 .stage-mini svg {
   color: var(--muted);
@@ -599,7 +599,7 @@ code {
 }
 .atlas-intro p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.8;
 }
 .feature-row {
@@ -635,16 +635,16 @@ code {
 }
 .feature-row p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 3px;
 }
 .feature-trail {
   color: var(--muted);
   margin-left: auto;
-  font-size: 9px;
+  font-size: 11px;
 }
 .sample-link {
-  font-size: 11px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 9px;
@@ -669,14 +669,14 @@ code {
 .project-note > p {
   color: var(--muted);
   max-width: 620px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.9;
 }
 .project-note > div:last-child {
   display: flex;
   gap: 28px;
   margin-top: 24px;
-  font-size: 11px;
+  font-size: 13px;
 }
 .project-note a {
   display: flex;
@@ -690,7 +690,7 @@ code {
   align-items: center;
   gap: 24px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 .landing-footer .wordmark {
   font-size: 17px;
@@ -700,7 +700,7 @@ code {
 }
 .landing-footer > .mono {
   margin-left: auto;
-  font-size: 8px;
+  font-size: 11px;
 }
 /* Workspace shell */
 .workspace {
@@ -729,7 +729,7 @@ code {
 .brand-subtitle {
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 0.13em;
 }
 .nav-tools {
@@ -743,7 +743,7 @@ code {
 .nav-group-label {
   padding: 0 11px;
   text-transform: uppercase;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.13em;
   color: var(--muted);
   display: block;
@@ -757,7 +757,7 @@ code {
   padding: 8px 10px;
   margin: 2px 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   min-height: 35px;
   background: transparent;
   border: 1px solid transparent;
@@ -797,12 +797,12 @@ code {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 9px;
+  font-size: 11px;
   padding: 12px 10px 0;
   color: var(--muted);
 }
 .rail-footer > .mono {
-  font-size: 8px;
+  font-size: 11px;
   padding: 8px 10px;
   display: block;
   color: var(--muted);
@@ -834,7 +834,7 @@ code {
   z-index: 20;
 }
 .breadcrumb {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
 }
 .breadcrumb.current {
@@ -858,10 +858,10 @@ code {
   gap: 10px;
   padding: 7px 10px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 .command-trigger kbd {
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.2;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -893,7 +893,7 @@ code {
   letter-spacing: -0.05em;
 }
 .workspace-heading p {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 .workflow-ribbon {
@@ -905,7 +905,7 @@ code {
   border-bottom: 1px solid var(--line);
   padding: 14px 0;
   margin: 26px 0 28px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
 }
 .workflow-ribbon > span:not(.workflow-model) {
@@ -914,12 +914,12 @@ code {
   align-items: center;
 }
 .workflow-ribbon > span .mono {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--accent);
 }
 .workflow-model {
   margin-left: auto;
-  font-size: 8px;
+  font-size: 11px;
   text-align: right;
 }
 .working-panels {
@@ -949,7 +949,7 @@ code {
   color: var(--muted);
 }
 .panel-label .mono {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.09em;
 }
 .input-panel form {
@@ -963,22 +963,22 @@ code {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   margin-bottom: 9px;
 }
 .field label .mono {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .field textarea,
 .field input,
 .field select {
-  font-size: 11px;
+  font-size: 13px;
 }
 .helper {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   margin-top: 8px;
   line-height: 1.7;
 }
@@ -988,10 +988,10 @@ code {
   margin-top: 24px;
 }
 .submit-area > .button {
-  font-size: 11px;
+  font-size: 13px;
 }
 .key-note {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   line-height: 1.7;
   margin: 12px 0 18px;
@@ -1004,13 +1004,13 @@ code {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 9px;
+  font-size: 11px;
 }
 .input-footnote {
   padding: 14px 20px;
   background: var(--bg);
   border-top: 1px solid var(--line);
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.07em;
 }
@@ -1023,7 +1023,7 @@ code {
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--accent);
 }
 .try-sample:hover {
@@ -1046,11 +1046,11 @@ code {
   color: var(--muted);
 }
 .file-drop strong {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
 }
 .file-drop span {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .file-drop:hover {
@@ -1089,12 +1089,12 @@ code {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 10px;
+  font-size: 11px;
 }
 .attachment-chip small {
   display: block;
   color: var(--muted);
-  font-size: 7px;
+  font-size: 11px;
 }
 .attachment-chip button {
   border: 0;
@@ -1121,18 +1121,18 @@ code {
   margin-bottom: 20px;
 }
 .context-control .button {
-  font-size: 10px;
+  font-size: 11px;
 }
 .context-ready {
   color: var(--good);
-  font-size: 8px;
+  font-size: 11px;
   display: flex;
   align-items: center;
   gap: 6px;
   margin-top: 10px;
 }
 .checkbox-label {
-  font-size: 11px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -1151,7 +1151,7 @@ code {
   margin: 0 0 20px;
 }
 .platform-field legend {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -1167,7 +1167,7 @@ code {
   align-items: center;
   gap: 6px;
   padding: 6px 8px;
-  font-size: 9px;
+  font-size: 11px;
 }
 .platform-field label:has(input:checked) {
   background: var(--raised);
@@ -1216,7 +1216,7 @@ code {
   border-radius: 0 0 18px 0;
 }
 .empty-output > .eyebrow {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.1em;
 }
 .empty-output h2 {
@@ -1228,14 +1228,14 @@ code {
   letter-spacing: -0.03em;
 }
 .empty-output > p {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   max-width: 320px;
   line-height: 1.9;
 }
 .empty-output > .button {
   margin-top: 28px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .empty-output > svg {
   color: var(--accent);
@@ -1247,11 +1247,11 @@ code {
   align-items: center;
   gap: 16px;
   color: var(--muted);
-  font-size: 8px;
+  font-size: 11px;
   padding: 28px 0;
 }
 .workspace-bottom .mono {
-  font-size: 7px;
+  font-size: 11px;
 }
 .workspace-bottom > span:last-child {
   display: flex;
@@ -1279,18 +1279,18 @@ code {
   gap: 2px;
 }
 .sample-banner strong {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
 }
 .sample-banner span {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 .sample-banner button {
   background: none;
   border: 0;
   margin-left: auto;
-  font-size: 9px;
+  font-size: 11px;
   display: flex;
   gap: 6px;
   align-items: center;
@@ -1326,7 +1326,7 @@ code {
   gap: 9px;
   width: 100%;
   padding: 11px 14px;
-  font-size: 10px;
+  font-size: 11px;
   min-width: 220px;
   white-space: nowrap;
 }
@@ -1358,7 +1358,7 @@ code {
 .status-capsule .elapsed {
   margin-left: auto;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 .status-capsule button > svg:last-child {
   margin-left: auto;
@@ -1376,18 +1376,18 @@ code {
 }
 .stages > p {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   margin: 12px 0;
 }
 .stage-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 9px;
+  font-size: 11px;
 }
 .stage-row > .mono {
   margin-left: auto;
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
 }
 .stage-row > svg {
@@ -1410,10 +1410,10 @@ code {
 }
 .processing-state p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 .processing-state > .mono {
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 22px;
 }
@@ -1434,14 +1434,14 @@ code {
   margin-top: 2px;
 }
 .error-banner strong {
-  font-size: 12px;
+  font-size: 14px;
 }
 .error-banner p {
-  font-size: 11px;
+  font-size: 13px;
   margin: 5px 0 10px;
 }
 .error-banner small {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
 }
 .warning-banner {
@@ -1450,7 +1450,7 @@ code {
   border: 1px solid var(--line);
   border-radius: 12px;
   color: var(--warning);
-  font-size: 10px;
+  font-size: 11px;
 }
 .warning-banner ul {
   padding-left: 16px;
@@ -1474,17 +1474,17 @@ code {
   flex-wrap: wrap;
 }
 .result-kicker .eyebrow {
-  font-size: 8px;
+  font-size: 11px;
 }
 .result-kicker > .mono {
-  font-size: 9px;
+  font-size: 11px;
 }
 .copy-button {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 6px 9px;
   background: var(--surface);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   display: inline-flex;
   align-items: center;
@@ -1496,7 +1496,7 @@ code {
   background: var(--raised);
 }
 .prose {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.95;
 }
 .prose h1 {
@@ -1549,7 +1549,7 @@ code {
 .prose pre {
   white-space: pre;
   overflow: auto;
-  font-size: 10px;
+  font-size: 11px;
   background: var(--bg);
   padding: 16px;
   border: 1px solid var(--line);
@@ -1559,7 +1559,7 @@ code {
   background: var(--raised);
   padding: 2px 5px;
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .prose hr {
   border: 0;
@@ -1580,7 +1580,7 @@ code {
   align-items: center;
   gap: 3px;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.7;
   color: var(--accent);
   vertical-align: baseline;
@@ -1602,15 +1602,15 @@ code {
 .citation-preview > .mono {
   display: block;
   color: var(--muted);
-  font-size: 8px;
+  font-size: 11px;
 }
 .citation-preview strong {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   margin: 10px 0;
 }
 .citation-preview p {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.8;
   display: -webkit-box;
@@ -1627,7 +1627,7 @@ code {
   border-radius: 10px;
   padding: 12px 14px;
   background: var(--bg);
-  font-size: 10px;
+  font-size: 11px;
   margin: 24px 0 10px;
 }
 .review-strip > span {
@@ -1637,7 +1637,7 @@ code {
 }
 .review-strip p {
   margin: 8px 0;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 .good {
@@ -1650,7 +1650,7 @@ code {
   color: var(--muted);
 }
 .citation-check {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -1661,7 +1661,7 @@ code {
 }
 .source-index > .mono {
   color: var(--muted);
-  font-size: 8px;
+  font-size: 11px;
   display: block;
   margin-bottom: 12px;
 }
@@ -1676,7 +1676,7 @@ code {
   background: var(--bg);
   text-align: left;
   margin-bottom: 8px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .source-row:hover {
   background: var(--raised);
@@ -1690,7 +1690,7 @@ code {
 }
 .citation-label {
   color: var(--accent);
-  font-size: 9px;
+  font-size: 11px;
   font-family: "IBM Plex Mono", monospace;
 }
 .secondary-details {
@@ -1698,11 +1698,11 @@ code {
   margin-top: 24px;
   padding-top: 14px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 .secondary-details summary {
   cursor: pointer;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   display: list-item;
 }
@@ -1714,7 +1714,7 @@ code {
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 14px;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.9;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -1726,7 +1726,7 @@ code {
   margin-top: 16px;
 }
 .secondary-details p {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: 14px;
 }
 .artifact-section {
@@ -1756,11 +1756,11 @@ code {
   margin-bottom: 12px;
 }
 .prompt-artifact > .mono {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .prompt-artifact > p {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.9;
   margin: 12px 0;
 }
@@ -1772,14 +1772,14 @@ code {
   background: var(--bg);
 }
 .caption-artifact p {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.9;
 }
 .caption-artifact .artifact-heading {
   margin-bottom: 8px;
 }
 .caption-artifact .mono {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--accent);
 }
 .hashtags {
@@ -1787,10 +1787,10 @@ code {
   gap: 8px;
   flex-wrap: wrap;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 11px;
 }
 .cta-note {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin: 18px 0;
 }
@@ -1809,11 +1809,11 @@ code {
   gap: 8px;
 }
 .console-heading .mono {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .console-heading > span:last-child {
-  font-size: 9px;
+  font-size: 11px;
 }
 .verification-check {
   display: flex;
@@ -1830,16 +1830,16 @@ code {
   min-width: 0;
 }
 .verification-check strong {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 400;
 }
 .check-state {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   margin-left: 12px;
 }
 .verification-check pre {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -1848,7 +1848,7 @@ code {
 }
 .verification-console > p {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.8;
   padding: 12px 16px;
 }
@@ -1857,14 +1857,14 @@ code {
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 12px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.9;
   overflow: auto;
   white-space: pre;
   max-width: 100%;
 }
 .repair-note {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   margin: 18px 0;
 }
@@ -1877,7 +1877,7 @@ code {
   min-width: 0;
 }
 .code-comparison h4 {
-  font-size: 10px;
+  font-size: 11px;
   margin: 0 0 8px;
 }
 .code-comparison pre {
@@ -1886,7 +1886,7 @@ code {
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 8px;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.8;
   padding: 12px;
 }
@@ -1916,11 +1916,11 @@ code {
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 3px 8px;
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .document-result h4 {
-  font-size: 12px;
+  font-size: 14px;
   margin: 20px 0 12px;
 }
 .entity-grid {
@@ -1937,14 +1937,14 @@ code {
   min-width: 0;
 }
 .entity-grid dt {
-  font-size: 8px;
+  font-size: 11px;
   text-transform: uppercase;
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   letter-spacing: 0.06em;
 }
 .entity-grid dd {
-  font-size: 10px;
+  font-size: 11px;
   margin: 6px 0 0;
   line-height: 1.8;
 }
@@ -1956,7 +1956,7 @@ code {
 }
 .table-scroll table {
   border-collapse: collapse;
-  font-size: 10px;
+  font-size: 11px;
   width: 100%;
   min-width: 400px;
   text-align: left;
@@ -1964,7 +1964,7 @@ code {
 .table-scroll th {
   font-weight: 500;
   background: var(--bg);
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   white-space: nowrap;
   padding: 12px 10px;
@@ -1982,7 +1982,7 @@ code {
   background: var(--raised);
 }
 .risk-list {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--warning);
   padding-left: 16px;
   list-style: disc;
@@ -2021,18 +2021,18 @@ code {
   gap: 12px;
   padding: 24px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 .media-output > p {
   padding: 24px;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--warning);
 }
 .decision {
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 4px 12px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
 }
 .decision.answer {
@@ -2056,15 +2056,15 @@ code {
   gap: 8px;
 }
 .triage-meta .mono {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .triage-meta strong {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
 }
 .triage-meta small {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .escalation-note {
@@ -2075,7 +2075,7 @@ code {
   gap: 12px;
   padding: 16px;
   color: var(--warning);
-  font-size: 11px;
+  font-size: 13px;
 }
 .escalation-note > svg {
   flex: none;
@@ -2085,7 +2085,7 @@ code {
 }
 .next-step p {
   margin: 12px 0;
-  font-size: 12px;
+  font-size: 14px;
 }
 .evidence-inspector {
   border: 1px solid var(--line);
@@ -2110,17 +2110,17 @@ code {
   align-items: center;
   gap: 8px;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
 }
 .evidence-content {
   padding: 22px 20px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.9;
   overflow-wrap: anywhere;
 }
 .evidence-content > .eyebrow {
-  font-size: 8px;
+  font-size: 11px;
 }
 .evidence-content h3 {
   font-family: Newsreader, Georgia, serif;
@@ -2134,7 +2134,7 @@ code {
   gap: 8px;
   align-items: flex-start;
   color: var(--accent);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.7;
   margin: 12px 0 22px;
 }
@@ -2143,12 +2143,12 @@ code {
 }
 .evidence-content h4 {
   margin: 22px 0 10px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--text);
 }
 .evidence-content p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.9;
 }
 .evidence-content ul {
@@ -2166,12 +2166,12 @@ code {
   margin-bottom: 12px;
 }
 .evidence-content dt {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
   text-transform: uppercase;
 }
 .evidence-content dd {
-  font-size: 10px;
+  font-size: 11px;
   margin: 0;
 }
 .chunk-text {
@@ -2187,7 +2187,7 @@ code {
   color: var(--muted);
 }
 .inspector-note p {
-  font-size: 9px;
+  font-size: 11px;
 }
 .inspector-note svg {
   flex: none;
@@ -2228,7 +2228,7 @@ code {
   font-weight: 500;
 }
 .sheet-heading p {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.8;
   color: var(--muted);
   margin-top: 8px;
@@ -2237,10 +2237,10 @@ code {
   padding: 28px;
 }
 .settings-body .field input {
-  font-size: 12px;
+  font-size: 14px;
 }
 .settings-body .helper {
-  font-size: 10px;
+  font-size: 11px;
 }
 .settings-theme {
   padding: 24px 0;
@@ -2252,16 +2252,16 @@ code {
   gap: 10px;
 }
 .settings-theme strong {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
 }
 .settings-theme p {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 4px;
 }
 .settings-theme .button {
-  font-size: 10px;
+  font-size: 11px;
   padding: 8px 12px;
 }
 .settings-session {
@@ -2272,21 +2272,21 @@ code {
   margin-bottom: 12px;
 }
 .settings-session p {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.9;
   margin-bottom: 16px;
 }
 .settings-session > p[role="status"] {
   margin-top: 12px;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--accent);
 }
 .settings-body > a {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 16px;
 }
@@ -2312,7 +2312,7 @@ code {
   font-size: 18px;
 }
 .command-dialog .sheet-heading p {
-  font-size: 10px;
+  font-size: 11px;
   margin-top: 4px;
 }
 .command-search {
@@ -2331,7 +2331,7 @@ code {
   padding: 4px 0;
   background: transparent;
   box-shadow: none;
-  font-size: 13px;
+  font-size: 14px;
 }
 .command-results {
   padding: 10px;
@@ -2347,7 +2347,7 @@ code {
   border-radius: 10px;
   background: none;
   border: 1px solid transparent;
-  font-size: 12px;
+  font-size: 14px;
   text-align: left;
 }
 .command-results > button:hover,
@@ -2363,7 +2363,7 @@ code {
   flex: 1;
 }
 .command-results small {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
 }
 .command-results > button > svg:last-child {
@@ -2372,10 +2372,10 @@ code {
 .command-results > p {
   padding: 16px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 .command-footer {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
   padding: 14px 24px;
   border-top: 1px solid var(--line);
@@ -2392,7 +2392,7 @@ code {
 }
 .mobile-navigation .nav-tool {
   min-height: 40px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .bottom-sheet {
   top: auto;
@@ -2542,7 +2542,7 @@ code {
     padding: 0;
   }
   .workspace:not(.collapsed) .nav-group-label::first-letter {
-    font-size: 8px;
+    font-size: 11px;
   }
   .working-panels,
   .working-panels.with-inspector {
@@ -2613,7 +2613,7 @@ code {
     font-size: 27px;
   }
   .empty-output > .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
   }
   .code-comparison {
     grid-template-columns: 1fr;
@@ -2688,7 +2688,7 @@ code {
     font-size: 21px;
   }
   .small-open {
-    font-size: 10px;
+    font-size: 11px;
     padding: 7px 10px;
   }
   .hero {
@@ -2702,7 +2702,7 @@ code {
     margin-top: 20px;
   }
   .hero-copy > p {
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 22px;
   }
   .hero-actions {
@@ -2710,11 +2710,11 @@ code {
     margin-top: 26px;
   }
   .hero-actions .button {
-    font-size: 11px;
+    font-size: 13px;
     padding: 12px 14px;
   }
   .hero-actions .text-link {
-    font-size: 11px;
+    font-size: 13px;
   }
   .hero-byline {
     margin-top: 30px;
@@ -2731,11 +2731,11 @@ code {
     padding: 12px 10px;
   }
   .document-outline .mono {
-    font-size: 6px;
+    font-size: 11px;
     margin-bottom: 15px;
   }
   .document-outline > span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .document-outline svg {
     width: 20px;
@@ -2745,7 +2745,7 @@ code {
     margin-top: 13px;
   }
   .source-tag {
-    font-size: 6px;
+    font-size: 11px;
     padding: 5px 7px;
   }
   .report-preview {
@@ -2756,14 +2756,14 @@ code {
     margin-top: 15px;
   }
   .report-preview p {
-    font-size: 8px;
+    font-size: 11px;
     margin: 12px 0;
   }
   .report-preview > .mono {
-    font-size: 6px;
+    font-size: 11px;
   }
   .mini-proof {
-    font-size: 5px !important;
+    font-size: 11px !important;
   }
   .report-rule {
     margin: 14px 0 10px;
@@ -2775,7 +2775,7 @@ code {
     display: none;
   }
   .stage-mini {
-    font-size: 8px;
+    font-size: 11px;
     gap: 8px;
   }
   .tool-atlas {
@@ -2790,7 +2790,7 @@ code {
     margin-top: 16px;
   }
   .atlas-intro p {
-    font-size: 10px;
+    font-size: 11px;
     margin-top: 18px;
   }
   .feature-row {
@@ -2799,7 +2799,7 @@ code {
     flex-wrap: wrap;
   }
   .feature-number {
-    font-size: 8px;
+    font-size: 11px;
   }
   .feature-icon {
     width: 38px;
@@ -2817,7 +2817,7 @@ code {
     font-size: 15px;
   }
   .feature-row p {
-    font-size: 9px;
+    font-size: 11px;
     max-width: 300px;
   }
   .sample-link {
@@ -2837,12 +2837,12 @@ code {
     line-height: 1.2;
   }
   .project-note p {
-    font-size: 11px;
+    font-size: 13px;
   }
   .project-note > div:last-child {
     gap: 16px;
     flex-direction: column;
-    font-size: 10px;
+    font-size: 11px;
     margin-top: 20px;
   }
   .landing-footer {
@@ -2852,7 +2852,7 @@ code {
   .landing-footer > .mono {
     width: 100%;
     margin-left: 0;
-    font-size: 7px;
+    font-size: 11px;
   }
   .navigation-rail {
     display: none;
@@ -2872,7 +2872,7 @@ code {
     display: inline-flex;
   }
   .breadcrumb {
-    font-size: 9px;
+    font-size: 11px;
   }
   .breadcrumb.current {
     display: none;
@@ -2908,7 +2908,7 @@ code {
     margin-top: 12px;
   }
   .workspace-heading > div:first-child > p {
-    font-size: 11px;
+    font-size: 13px;
     max-width: 100%;
   }
   .status-wrap {
@@ -2928,13 +2928,13 @@ code {
     margin-top: 18px;
     margin-bottom: 20px;
     gap: 10px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .workflow-ribbon > span:not(.workflow-model) {
     gap: 7px;
   }
   .workflow-model {
-    font-size: 7px;
+    font-size: 11px;
   }
   .working-panels,
   .working-panels.with-inspector {
@@ -2952,7 +2952,7 @@ code {
   .input-panel .field textarea,
   .input-panel .field input,
   .input-panel .field select {
-    font-size: 12px;
+    font-size: 14px;
   }
   .input-panel .field textarea {
     max-height: 320px;
@@ -2962,13 +2962,13 @@ code {
     padding: 52px 24px;
   }
   .empty-output > .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
   }
   .empty-output h2 {
     font-size: 28px;
   }
   .empty-output p {
-    font-size: 11px;
+    font-size: 13px;
   }
   .result-content {
     padding: 24px 20px;
@@ -2980,7 +2980,7 @@ code {
     font-size: 25px;
   }
   .prose {
-    font-size: 12px;
+    font-size: 14px;
   }
   .sample-banner {
     padding: 12px;
@@ -2992,20 +2992,20 @@ code {
     min-width: 200px;
   }
   .sample-banner strong {
-    font-size: 10px;
+    font-size: 11px;
   }
   .sample-banner span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .sample-banner button {
     margin: 4px 0 0 25px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .code-comparison {
     grid-template-columns: 1fr;
   }
   .code-output {
-    font-size: 10px;
+    font-size: 11px;
     padding: 16px;
   }
   .entity-grid {
@@ -3015,7 +3015,7 @@ code {
     gap: 12px;
   }
   .triage-meta strong {
-    font-size: 12px;
+    font-size: 14px;
   }
   .workspace-bottom {
     padding: 24px 0;
@@ -3023,7 +3023,7 @@ code {
     gap: 12px;
   }
   .workspace-bottom > span:last-child {
-    font-size: 8px;
+    font-size: 11px;
   }
   .sheet-heading {
     padding: 26px 24px 20px;
@@ -3074,13 +3074,13 @@ select {
 .field textarea,
 .field input,
 .field select {
-  font-size: 12px;
+  font-size: 14px;
 }
 .nav-tool {
-  font-size: 12px;
+  font-size: 14px;
 }
 .prose {
-  font-size: 13px;
+  font-size: 14px;
 }
 .prose .report-title {
   font-family: Newsreader, Georgia, serif;
@@ -3099,14 +3099,14 @@ select {
 }
 .citation {
   padding: 2px 6px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .status-capsule > button {
-  font-size: 11px;
+  font-size: 13px;
 }
 .field > label,
 .field-label {
-  font-size: 12px;
+  font-size: 14px;
 }
 .prose table th,
 .prose table td {
@@ -3115,7 +3115,7 @@ select {
 }
 @media (max-width: 767px) {
   .prose {
-    font-size: 13px;
+    font-size: 14px;
   }
   .prose .report-title {
     font-size: 32px;
@@ -3138,7 +3138,11 @@ select {
 .citation-preview {
   animation: fade-in 0.18s ease-out;
 }
-input::placeholder,
-textarea::placeholder {
-  opacity: 1;
+
+.result-note {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--raised);
+  color: var(--muted);
+  font-size: 13px;
 }

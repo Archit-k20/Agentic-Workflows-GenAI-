@@ -168,15 +168,15 @@ export function Workspace({ tool }: { tool: Tool }) {
   function change(field: string, value: string) {
     update(tool.id, (d) => ({
       input: { ...d.input, [field]: value },
+      error: undefined,
+      inputsChanged: !!d.result,
       ...(field === "urls" ? { context: undefined } : {}),
       status:
         d.status === "processing"
           ? d.status
-          : d.result
-            ? d.status
-            : value || d.files.length
-              ? "ready"
-              : "empty",
+          : value || d.files.length
+            ? "ready"
+            : "empty",
     }));
   }
   function loadSample() {
@@ -275,6 +275,7 @@ export function Workspace({ tool }: { tool: Tool }) {
     update(id, {
       status: "processing",
       sample: false,
+      inputsChanged: false,
       error: undefined,
       warnings: [],
       stages: [],
@@ -359,6 +360,7 @@ export function Workspace({ tool }: { tool: Tool }) {
       fileIds: [],
       context: undefined,
       status: "ready",
+      inputsChanged: !!draft.result,
       error: undefined,
     });
     if (fileInput.current) fileInput.current.value = "";
@@ -548,6 +550,7 @@ export function Workspace({ tool }: { tool: Tool }) {
                 onClick={() => {
                   update(tool.id, {
                     sample: false,
+                    inputsChanged: false,
                     result: undefined,
                     status: "ready",
                     stages: [],
@@ -626,6 +629,9 @@ export function Workspace({ tool }: { tool: Tool }) {
                                 files: draft.files.filter((_, j) => j !== i),
                                 fileIds: [],
                                 context: undefined,
+                                inputsChanged: !!draft.result,
+                                status:
+                                  draft.files.length > 1 ? "ready" : "empty",
                               })
                             }
                           >
@@ -885,6 +891,13 @@ export function Workspace({ tool }: { tool: Tool }) {
                     </small>
                   </div>
                 </div>
+              )}
+              {draft.inputsChanged && draft.result && (
+                <p className="result-note" role="status">
+                  {draft.sample
+                    ? "Inputs changed. The sample below remains illustrative; run explicitly to use your inputs."
+                    : "Inputs changed. The result below is from the previous run."}
+                </p>
               )}
               {draft.warnings.length > 0 && (
                 <details className="warning-banner" open>

@@ -128,6 +128,16 @@ def test_chunked_request_size_is_rejected(client):
     assert response.status_code == 413
 
 
+def test_text_request_preserves_original_input_without_extra_character_cap(client, monkeypatch):
+    original = "  Untruncated source text.\n" * 10000
+    def execute(storage, session, inputs, key):
+        assert inputs.text == original
+        return {"tool": "text-summary", "text": "Mocked summary"}
+    monkeypatch.setattr(engine, "execute", execute)
+    response = client.post("/api/v1/runs", headers=headers(client), json={"tool": "text-summary", "text": original})
+    assert "event: result" in response.text
+
+
 def test_authentication_warning_keeps_research_fallback():
     from types import SimpleNamespace
     from workflows import research_agent

@@ -493,7 +493,6 @@
           },
           "url": {
             "type": "string",
-            "maxLength": 4096,
             "minLength": 1,
             "title": "Url"
           }
@@ -555,7 +554,6 @@
           },
           "url": {
             "type": "string",
-            "maxLength": 4096,
             "minLength": 1,
             "title": "Url"
           }
@@ -628,7 +626,6 @@
           },
           "prompt": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Prompt"
           },
@@ -703,7 +700,6 @@
           },
           "idea": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Idea"
           },
@@ -888,7 +884,6 @@
           },
           "question": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Question"
           }
@@ -999,7 +994,6 @@
           },
           "prompt": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Prompt"
           }
@@ -1093,7 +1087,6 @@
         "properties": {
           "question": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Question"
           }
@@ -1113,7 +1106,6 @@
           },
           "topic": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Topic"
           },
@@ -1263,7 +1255,6 @@
           },
           "text": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Text"
           },
@@ -1297,7 +1288,6 @@
           },
           "question": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Question"
           },
@@ -1413,7 +1403,6 @@
           },
           "text": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Text"
           }
@@ -1438,7 +1427,6 @@
           },
           "question": {
             "type": "string",
-            "maxLength": 200000,
             "minLength": 1,
             "title": "Question"
           }
@@ -1618,7 +1606,6 @@
           },
           "url": {
             "type": "string",
-            "maxLength": 4096,
             "minLength": 1,
             "title": "Url"
           }

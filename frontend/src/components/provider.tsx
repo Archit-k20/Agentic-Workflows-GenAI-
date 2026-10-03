@@ -30,6 +30,7 @@ export type Draft = {
   started?: number;
   finished?: number;
   sample?: boolean;
+  inputsChanged?: boolean;
 };
 export const emptyDraft = (): Draft => ({
   input: {
@@ -61,15 +62,26 @@ const Context = createContext<State | null>(null);
 export function Provider({ children }: { children: ReactNode }) {
   const [key, setKey] = useState(""),
     [theme, setTheme] = useState("dark"),
+    [themeReady, setThemeReady] = useState(false),
     [drafts, setDrafts] = useState<State["drafts"]>({});
   useEffect(() => {
-    const saved = localStorage.getItem("trace-theme");
-    if (saved === "light" || saved === "dark") setTheme(saved);
+    try {
+      const saved = localStorage.getItem("trace-theme");
+      if (saved === "light" || saved === "dark") setTheme(saved);
+    } catch {
+      /* Preferences remain usable in memory when storage is blocked. */
+    }
+    setThemeReady(true);
   }, []);
   useEffect(() => {
+    if (!themeReady) return;
     document.documentElement.dataset.theme = theme;
-    localStorage.setItem("trace-theme", theme);
-  }, [theme]);
+    try {
+      localStorage.setItem("trace-theme", theme);
+    } catch {
+      /* Optional preference storage. */
+    }
+  }, [theme, themeReady]);
   const update: State["update"] = useCallback(
     (id, change) =>
       setDrafts((previous) => {
