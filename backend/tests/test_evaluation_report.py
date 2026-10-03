@@ -26,3 +26,35 @@ def test_missing_case_remains_visible():
         "expected": 1,
         "scope": "Syntax/compilation only, not behavior or security.",
     }
+
+
+def test_evaluation_cannot_bypass_the_live_compute_budget(tmp_path, monkeypatch):
+    import json
+    import sys
+    from backend.evaluation import run
+    from backend.storage import LocalStorage
+    from backend.policy import Policy
+    from backend import free_config as cfg
+
+    live = Policy(LocalStorage(tmp_path / "live"))
+    live.reserve("text", 7000)
+    fixtures = LocalStorage(tmp_path / "fixtures")
+    monkeypatch.setattr(run, "shared_policy", live)
+    monkeypatch.setattr(run, "LocalStorage", lambda _: fixtures)
+    monkeypatch.setattr(cfg, "configured", lambda: True)
+    monkeypatch.setattr(
+        run,
+        "evaluate",
+        lambda case, store, sid, runtime: runtime.hosted(
+            cfg.CHAT_MODEL, {"messages": []}, 600
+        ),
+    )
+    output = tmp_path / "report.json"
+    monkeypatch.setattr(sys, "argv", [
+        "evaluate", "--mode", "free", "--hosted-only", "--stop-on-error",
+        "--output", str(output), "--limit", "1",
+    ])
+    run.main()
+    report = json.loads(output.read_text())
+    assert "allowance is unavailable" in report["rows"][0]["error"]
+    assert report["profile"]["pipeline_sha256"]

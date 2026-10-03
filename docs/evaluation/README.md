@@ -20,6 +20,8 @@ Hosted Qwen creative-copy review similarly failed even when schemas and expected
 
 ## Next evaluation after the UTC reset
 
+Evaluation now shares the live API's compute ledger. Earlier development benchmark containers used a separate fixture ledger, so their recorded usage must not be described as one account-wide ledger. The recorded development reservations have now been copied into the shared live ledger without resetting usage. Workers Free remained the enforced no-paid boundary throughout.
+
 The application resets at **00:00 UTC (05:30 IST)**. The prior progress file predates the section fix; use a fresh output file for the final profile. Inside the configured backend container (owner credentials already injected):
 
 ```sh

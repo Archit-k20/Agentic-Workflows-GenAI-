@@ -13,12 +13,11 @@ from pathlib import Path
 from unittest.mock import patch
 from contextlib import ExitStack
 from pydantic import TypeAdapter
-from backend.app import install  # observations are installed on import
+from backend.app import policy as shared_policy  # observations installed on import
 from backend import engine, processing
 from backend.contracts import RunInput, DocumentsContext
 from backend.providers import Runtime
 from backend.storage import LocalStorage
-from backend.policy import Policy
 from backend.events import observer
 from workflows.runtime import current
 
@@ -197,7 +196,8 @@ def main():
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     store = LocalStorage("/data/evaluation")
-    policy = Policy(store)
+    # Evaluation and live requests must reserve the same owner compute allowance.
+    policy = shared_policy
     sid = store.session(store.create_session()["token"])
     cases = json.loads(Path(__file__).with_name("cases.json").read_text())[
         args.start : args.start + args.limit
