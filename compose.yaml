@@ -1,0 +1,15 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports: ["127.0.0.1:8000:8000"]
+    environment:
+      TRACE_ALLOWED_ORIGINS: http://localhost:3000
+    volumes:
+      - trace-data:/data
+      - trace-model:/model-cache
+    restart: unless-stopped
+volumes:
+  trace-data:
+  trace-model:

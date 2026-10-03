@@ -131,3 +131,8 @@ dist/
 faiss_store_*
 __pycache__/
 venv/
+node_modules/
+.next/
+.trace-data/
+!frontend/.env.example
+*.tsbuildinfo

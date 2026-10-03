@@ -1,3 +1,24 @@
+# TRACE — Agentic AI Workspace
+
+A React workspace for all fifteen existing summarizer, generator, and assistant tools. Built by **Archit Kumar**. The Streamlit application remains available as a comparison interface and uses the same shared workflow functions.
+
+## Start locally
+
+```sh
+docker compose up --build -d
+npm ci --prefix frontend
+npm --prefix frontend run dev
+```
+
+Visit **http://localhost:3000**. Explore any of the five labeled samples without a backend or API key. For live generator/assistant workflows, enter your own OpenAI key in the memory-only settings drawer. Deployment to Vercel and a backend VM is deferred.
+
+- [All fifteen contracts](docs/feature-parity.md)
+- [Architecture and session handling](docs/architecture.md)
+- [Local checks and later deployment](docs/deployment.md)
+- [Verification evidence and remaining live checks](docs/verification.md)
+
+## Original Streamlit documentation
+
 # Agentic Workflows GenAI App
 
 [![Streamlit](https://img.shields.io/badge/Built%20With-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
