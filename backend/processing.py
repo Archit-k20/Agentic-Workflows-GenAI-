@@ -34,6 +34,8 @@ def check_text(text, runtime, source):
 def chunks(text, size=3000, overlap=200):
     # Conservative generation chunks use at most 3,000 UTF-8 bytes, hence at most
     # 3,000 byte-level generation tokens. Original Unicode text is retained.
+    if not 0 <= overlap < size:
+        raise ValueError("Chunk overlap must be smaller than its size.")
     if size == 384:
         tokens = tokenizer().encode(text, add_special_tokens=False, verbose=False)
         return [
@@ -47,10 +49,23 @@ def chunks(text, size=3000, overlap=200):
         end = min(len(raw), start + size)
         while end < len(raw) and raw[end] & 0xC0 == 0x80:
             end -= 1
+        if end == start:
+            raise ValueError("The chunk size cannot fit this Unicode character.")
+        if end < len(raw):
+            # Avoid turning clipped words into invented entities in summaries.
+            boundary_start = max(start + overlap + 1, end - 200)
+            boundaries = list(re.finditer(rb"[ \t\r\n]", raw[boundary_start:end]))
+            if boundaries:
+                end = boundary_start + boundaries[-1].end()
         pieces.append(raw[start:end].decode("utf-8"))
         if end == len(raw):
             break
-        start = end - overlap
+        next_start = max(start + 1, end - overlap)
+        if next_start < end and raw[next_start - 1] not in b" \t\r\n":
+            boundary = re.search(rb"[ \t\r\n]", raw[next_start:end])
+            if boundary:
+                next_start += boundary.end()
+        start = next_start
         while raw[start] & 0xC0 == 0x80:
             start += 1
     return pieces

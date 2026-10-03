@@ -296,7 +296,7 @@ class Runtime:
         system = messages[0]["content"]
         if structured:
             messages = [dict(m) for m in messages]
-            messages[0]["content"] += "\n" + shape_hint(system)
+            messages[0]["content"] += "\n" + shape_hint(system, self.platforms)
         limit = 2400 if self.tool == "research" and not structured else 2048
         if structured and any(
             word in system.lower()
@@ -313,7 +313,7 @@ class Runtime:
             )
             if structured:
                 try:
-                    text = validate(text, system)
+                    text = validate(text, system, self.platforms)
                 except (ValueError, TypeError) as exc:
                     if attempt:
                         raise ValueError(

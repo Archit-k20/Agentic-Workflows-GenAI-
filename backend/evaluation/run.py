@@ -5,6 +5,7 @@ Local results and hosted results are separate, and hosted fallback cannot pass a
 """
 
 import argparse
+import hashlib
 import json
 import re
 import time
@@ -208,6 +209,18 @@ def main():
         "hosted_code": cfg.CODE_MODEL,
         "local_digest": cfg.LOCAL_DIGEST,
     }
+    # Resume only compatible inference code, not just matching model names.
+    root = Path(__file__).resolve().parents[2]
+    pipeline = hashlib.sha256()
+    for path in sorted(
+        [root / "backend" / name for name in (
+            "providers.py", "processing.py", "structured.py", "retrieval.py",
+            "engine.py", "events.py", "free_config.py",
+        )] + list((root / "workflows").glob("*.py"))
+    ):
+        pipeline.update(str(path.relative_to(root)).encode())
+        pipeline.update(path.read_bytes())
+    profile["pipeline_sha256"] = pipeline.hexdigest()
     rows = []
     if args.resume and output.exists():
         previous = json.loads(output.read_text())

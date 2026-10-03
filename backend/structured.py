@@ -71,7 +71,7 @@ PROFILES = [
 ]
 
 
-def shape_hint(system):
+def shape_hint(system, platforms=()):
     fields = next((f for marker, f in PROFILES if marker in system), {})
     example = {
         name: (
@@ -93,13 +93,22 @@ def shape_hint(system):
             {key: "" for key in ("task", "owner", "due_date", "priority")}
         ]
     if "captions" in fields:
-        example["captions"] = {"platform": "caption text"}
+        example["captions"] = (
+            {platform: "caption text" for platform in platforms}
+            if platforms
+            else {"platform": "caption text"}
+        )
     if "passes_review" in fields:
         if "revised_report" in system:
             example["revised_report"] = ""
         else:
             example.update(
-                revised_script="", revised_captions={"platform": "caption text"}
+                revised_script="",
+                revised_captions=(
+                    {platform: "caption text" for platform in platforms}
+                    if platforms
+                    else {"platform": "caption text"}
+                ),
             )
     return (
         "Return exactly one object with these field TYPES (example values are only a shape, not facts): "
@@ -108,7 +117,7 @@ def shape_hint(system):
     )
 
 
-def validate(content, system):
+def validate(content, system, platforms=()):
     cleaned = re.sub(r"^```(?:json)?\s*|\s*```$", "", content.strip())
     value = json.loads(cleaned)
     if not isinstance(value, dict):
@@ -148,6 +157,17 @@ def validate(content, system):
         isinstance(v, str) for v in value["captions"].values()
     ):
         raise ValueError("Invalid captions")
+    caption_field = (
+        "captions"
+        if "captions" in fields
+        else (
+            "revised_captions"
+            if "passes_review" in fields and "revised_report" not in system
+            else None
+        )
+    )
+    if caption_field and platforms and set(value[caption_field]) != set(platforms):
+        raise ValueError("Caption platforms must match every requested platform.")
     if "severity" in fields and value["severity"] not in {"low", "medium", "high"}:
         raise ValueError("Invalid severity")
     if "confidence" in fields and (

@@ -46,8 +46,14 @@ def observe(fn, label):
                 result = override(fn.__module__, fn.__name__, args, kwargs, fn, runtime)
             else:
                 result = fn(*args, **kwargs)
-        except Exception:
+        except Exception as exc:
             emit("stage", name=label, status="failed")
+            if (
+                runtime
+                and runtime.mode != "openai"
+                and fn.__module__.endswith("document_intelligence")
+            ):
+                runtime.warning(f"{label} failed: {exc}")
             raise
         emit("stage", name=label, status="completed")
         return result

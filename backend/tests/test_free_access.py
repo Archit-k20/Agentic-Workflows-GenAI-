@@ -109,7 +109,9 @@ def free(tmp_path, monkeypatch):
                 "passes_review": True,
                 "issues": [],
                 "revised_script": "Repair pilot",
-                "revised_captions": {"linkedin": "Repair pilot"},
+                "revised_captions": {
+                    platform: "Repair pilot" for platform in runtime.platforms
+                },
             }
         elif "content_angle" in system:
             result = {
@@ -124,7 +126,9 @@ def free(tmp_path, monkeypatch):
                 "title": "Repair",
                 "script": "Repair pilot",
                 "image_prompts": ["Workshop"],
-                "captions": {"linkedin": "Repair pilot"},
+                "captions": {
+                    platform: "Repair pilot" for platform in runtime.platforms
+                },
                 "hashtags": ["#Repair"],
                 "cta": "Read",
             }
@@ -599,3 +603,52 @@ def test_multibyte_local_prompt_cannot_silently_overrun_context(monkeypatch):
                 {"role": "user", "content": "🙂" * 4000},
             ]
         )
+
+
+def test_generation_sections_preserve_complete_words_and_all_records():
+    text = " ".join(
+        f"Inspection record{i:04d} confirms a limited pilot." for i in range(150)
+    )
+    pieces = processing.chunks(text)
+    expected = set(text.split())
+    observed = set(word for piece in pieces for word in piece.split())
+    assert observed == expected
+    assert all(len(piece.encode("utf-8")) <= 3000 for piece in pieces)
+
+
+def test_caption_validation_cannot_silently_drop_a_selected_platform():
+    from backend.structured import validate, shape_hint
+
+    system = "Return title, script, image_prompts, captions, hashtags, cta."
+    data = {
+        "title": "Title",
+        "script": "Script",
+        "image_prompts": ["Concept one", "Concept two"],
+        "captions": {"linkedin": "Copy"},
+        "hashtags": ["#pilot"],
+        "cta": "Learn more",
+    }
+    with pytest.raises(ValueError, match="every requested platform"):
+        validate(json.dumps(data), system, ["linkedin", "x"])
+    data["captions"]["x"] = "Short copy"
+    assert validate(json.dumps(data), system, ["linkedin", "x"])
+    assert '"linkedin": "caption text"' in shape_hint(system, ["linkedin", "x"])
+
+
+def test_all_document_failures_retain_the_specific_diagnostic(free, monkeypatch):
+    store, sid, runtime, *_ = free
+    monkeypatch.setattr(
+        runtime,
+        "hosted",
+        lambda *a, **kw: (_ for _ in ()).throw(ValueError("Hosted input was rejected")),
+    )
+    with pytest.raises(ValueError, match="could not process any"):
+        engine.execute(
+            store,
+            sid,
+            TypeAdapter(RunInput).validate_python(
+                {"tool": "documents", "file_ids": [free[5]]}
+            ),
+            "",
+        )
+    assert any("Hosted input was rejected" in warning for warning in runtime.warnings)
