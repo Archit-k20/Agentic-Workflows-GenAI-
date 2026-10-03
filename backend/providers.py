@@ -10,7 +10,7 @@ import httpx
 from . import free_config as cfg
 from .events import emit
 from .policy import Capacity
-from .structured import validate, shape_hint
+from .structured import validate, shape_hint, schema_for
 
 
 class Runtime:
@@ -21,6 +21,7 @@ class Runtime:
         self.engines, self.coverage, self.warnings = [], [], []
         self.expensive, self.audio_started = False, False
         self.local_verified = False
+        self.platforms = []
         self.client = NS(chat=NS(completions=NS(create=self.create)))
 
     def check(self):
@@ -159,7 +160,11 @@ class Runtime:
                         "messages": messages,
                         "stream": False,
                         "think": False,
-                        "format": "json" if structured else "",
+                        "format": (
+                            schema_for(messages[0]["content"], self.platforms)
+                            if structured
+                            else ""
+                        ),
                         "keep_alive": "5m",
                         "options": {
                             "num_ctx": 16384,

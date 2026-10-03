@@ -242,6 +242,8 @@ def execute(storage, session, inputs, key):
     runtime = current.get()
     free = runtime is not None and runtime.mode != "openai"
     tool = inputs.tool
+    if free and tool == "content":
+        runtime.platforms = inputs.platforms
     if free:
         from .processing import check_text
 

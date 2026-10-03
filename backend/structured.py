@@ -157,3 +157,66 @@ def validate(content, system):
     ):
         raise ValueError("Invalid support decision")
     return json.dumps(value, ensure_ascii=False)
+
+
+def schema_for(system, platforms=()):
+    """Decoder constraints use the same fields as validation, including nested types."""
+    fields = next((f for marker, f in PROFILES if marker in system), {})
+
+    def obj(properties):
+        return {
+            "type": "object",
+            "properties": properties,
+            "required": list(properties),
+            "additionalProperties": False,
+        }
+
+    string = {"type": "string"}
+    strings = {"type": "array", "items": string}
+    properties = {
+        name: (
+            string
+            if kind is str
+            else (
+                {"type": "boolean"}
+                if kind is bool
+                else (
+                    strings
+                    if kind is list
+                    else {"type": "object"} if kind is dict else {"type": "number"}
+                )
+            )
+        )
+        for name, kind in fields.items()
+    }
+    if "entities" in fields:
+        properties["entities"] = obj(
+            {key: strings for key in ("people", "organizations", "emails", "dates")}
+        )
+        properties["action_items"] = {
+            "type": "array",
+            "items": obj(
+                {key: string for key in ("task", "owner", "due_date", "priority")}
+            ),
+        }
+    captions = (
+        obj({platform: string for platform in platforms})
+        if platforms
+        else {"type": "object", "additionalProperties": string}
+    )
+    if "captions" in fields:
+        properties["captions"] = captions
+    if "passes_review" in fields:
+        if "revised_report" in system:
+            properties["revised_report"] = string
+        else:
+            properties.update(revised_script=string, revised_captions=captions)
+    if "severity" in fields:
+        properties["severity"] = {"type": "string", "enum": ["low", "medium", "high"]}
+    if "confidence" in fields:
+        properties["confidence"] = {"type": "number", "minimum": 0, "maximum": 1}
+        properties["resolution_type"] = {
+            "type": "string",
+            "enum": ["answer", "escalate"],
+        }
+    return obj(properties) if properties else {"type": "object"}

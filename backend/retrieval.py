@@ -53,9 +53,12 @@ class LocalEmbeddings(Embeddings):
         return result
 
     def embed_query(self, text):
-        return self.embed_documents(
-            ["Represent this sentence for searching relevant passages: " + text]
-        )[0]
+        instruction = "Represent this sentence for searching relevant passages: " + text
+        if len(tokenizer().encode(instruction, verbose=False)) > 512:
+            raise ValueError(
+                "Question exceeds the retrieval model's 512-token limit. Shorten the question; the existing context remains ready."
+            )
+        return self.embed_documents([instruction])[0]
 
 
 def build(kind, files, urls, runtime):

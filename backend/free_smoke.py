@@ -69,4 +69,26 @@ if args.ollama:
         0,
     )
     assert "32" in output and output.strip()
-    print("Pinned CPU Ollama inference passed.", flush=True)
+    structured = runtime.create(
+        messages=[
+            {
+                "role": "system",
+                "content": "Return JSON with goal, sub_questions, and report_sections.",
+            },
+            {
+                "role": "user",
+                "content": "Goal: summarize a brief. Use one sub-question and one section.",
+            },
+        ],
+        response_format={"type": "json_object"},
+    )
+    import json
+
+    parsed = json.loads(structured.choices[0].message.content)
+    assert isinstance(parsed["goal"], str) and all(
+        isinstance(item, str) for item in parsed["sub_questions"]
+    )
+    print(
+        "Pinned CPU Ollama inference and constrained JSON generation passed.",
+        flush=True,
+    )

@@ -503,3 +503,29 @@ def test_unknown_qa_citation_cannot_be_accepted(free, monkeypatch):
     )
     with pytest.raises(ValueError, match="unknown citation"):
         engine.query(store, sid, ctx["context_id"], "Who?", "")
+
+
+def test_local_decoder_schema_covers_nested_fields_and_platforms():
+    from backend.structured import schema_for
+
+    document = schema_for(
+        "Return JSON with document_type, summary, entities, action_items, risks."
+    )
+    assert document["properties"]["entities"]["required"] == [
+        "people",
+        "organizations",
+        "emails",
+        "dates",
+    ]
+    assert (
+        document["properties"]["action_items"]["items"]["properties"]["due_date"][
+            "type"
+        ]
+        == "string"
+    )
+    content = schema_for(
+        "Return title, script, image_prompts, captions, hashtags, cta.",
+        ["linkedin", "x"],
+    )
+    assert set(content["properties"]["captions"]["required"]) == {"linkedin", "x"}
+    assert content["properties"]["captions"]["additionalProperties"] is False
