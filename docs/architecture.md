@@ -1,3 +1,5 @@
+> The free-access extension adds explicit provider modes, local hybrid retrieval/speech, persisted fair-use limits and public Turnstile verification. See [the current free-access architecture](free-access.md). The original migration architecture below remains the OpenAI parity reference.
+
 # TRACE implementation
 
 ## Layout

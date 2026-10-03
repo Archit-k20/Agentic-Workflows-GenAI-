@@ -3146,3 +3146,40 @@ select {
   color: var(--muted);
   font-size: 13px;
 }
+
+.voice-list {
+  padding: 24px;
+}
+.voice-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.voice-choice {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 8px;
+}
+.voice-choice small {
+  display: block;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.voice-choice[aria-pressed="true"] {
+  color: var(--accent);
+}
+.execution-details {
+  max-height: 280px;
+  overflow: auto;
+  font-size: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.key-note span {
+  display: block;
+  margin-top: 8px;
+}

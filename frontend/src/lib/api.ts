@@ -1,4 +1,20 @@
 import type { Event } from "./types";
+export type Mode = "free" | "local" | "openai";
+let proofProvider: (() => Promise<string>) | null = null;
+export function setProofProvider(provider: (() => Promise<string>) | null) {
+  proofProvider = provider;
+}
+export async function usage() {
+  if (!token) return null;
+  const response = await request(`${base}/api/v1/sessions/current/usage`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!response.ok) throw await responseError(response);
+  return (await response.json()) as {
+    remaining: Record<string, number>;
+    reset_at: number;
+  };
+}
 const base = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 async function request(url: string, init?: RequestInit) {
   try {
@@ -17,11 +33,12 @@ async function session() {
     sessionPromise = (async () => {
       const response = await request(`${base}/api/v1/sessions`, {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          turnstile_token: proofProvider ? await proofProvider() : "",
+        }),
       });
-      if (!response.ok)
-        throw new Error(
-          "Could not create a session. Check the backend connection.",
-        );
+      if (!response.ok) throw await responseError(response);
       token = (await response.json()).token;
     })().finally(() => {
       sessionPromise = null;
@@ -50,6 +67,7 @@ export async function stream(
   body: unknown,
   key: string,
   onEvent: (event: Event) => void,
+  mode?: Mode,
 ) {
   await session();
   const response = await request(`${base}/api/v1${path}`, {
@@ -57,7 +75,10 @@ export async function stream(
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-      "X-OpenAI-Key": key,
+      ...(mode !== "free" && mode !== "local" && key
+        ? { "X-OpenAI-Key": key }
+        : {}),
+      ...(mode ? { "X-Trace-Mode": mode } : {}),
     },
     body: JSON.stringify(body),
   });

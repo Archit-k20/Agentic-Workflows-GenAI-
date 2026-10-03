@@ -4,973 +4,1084 @@
  */
 
 export interface paths {
-  "/api/v1/health": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/capabilities": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Capabilities */
+        get: operations["capabilities_api_v1_capabilities_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /** Health */
-    get: operations["health_api_v1_health_get"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/sessions": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/sessions/current/usage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Visitor Usage */
+        get: operations["visitor_usage_api_v1_sessions_current_usage_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Create Session */
-    post: operations["create_session_api_v1_sessions_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/sessions/current": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Health */
+        get: operations["health_api_v1_health_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    post?: never;
-    /** Clear Session */
-    delete: operations["clear_session_api_v1_sessions_current_delete"];
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/uploads": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/sessions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Create Session */
+        post: operations["create_session_api_v1_sessions_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Upload */
-    post: operations["upload_api_v1_uploads_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/runs": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/sessions/current": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Clear Session */
+        delete: operations["clear_session_api_v1_sessions_current_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Run */
-    post: operations["run_api_v1_runs_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/contexts/documents": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/uploads": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Upload */
+        post: operations["upload_api_v1_uploads_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Documents */
-    post: operations["documents_api_v1_contexts_documents_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/contexts/urls": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/runs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Run */
+        post: operations["run_api_v1_runs_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Urls */
-    post: operations["urls_api_v1_contexts_urls_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/contexts/{context_id}/query": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/contexts/documents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Documents */
+        post: operations["documents_api_v1_contexts_documents_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    get?: never;
-    put?: never;
-    /** Query */
-    post: operations["query_api_v1_contexts__context_id__query_post"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
-  "/api/v1/artifacts/{artifact_id}": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    "/api/v1/contexts/urls": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Urls */
+        post: operations["urls_api_v1_contexts_urls_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
     };
-    /** Artifact */
-    get: operations["artifact_api_v1_artifacts__artifact_id__get"];
-    put?: never;
-    post?: never;
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
+    "/api/v1/contexts/{context_id}/query": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Query */
+        post: operations["query_api_v1_contexts__context_id__query_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/artifacts/{artifact_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Artifact */
+        get: operations["artifact_api_v1_artifacts__artifact_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-  schemas: {
-    /** ArticleSummary */
-    ArticleSummary: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "article-summary";
-      /** Url */
-      url: string;
+    schemas: {
+        /** ArticleSummary */
+        ArticleSummary: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "article-summary";
+            /** Url */
+            url: string;
+        };
+        /** ArtifactResult */
+        ArtifactResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /** Width */
+            width?: number | null;
+            /** Height */
+            height?: number | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "image" | "speech";
+            /** Artifact Id */
+            artifact_id: string;
+            /** Media Type */
+            media_type: string;
+        };
+        /** Body_upload_api_v1_uploads_post */
+        Body_upload_api_v1_uploads_post: {
+            /**
+             * File
+             * Format: binary
+             */
+            file: string;
+        };
+        /** Captions */
+        Captions: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "captions";
+            /** Url */
+            url?: string | null;
+            /** Transcript Text */
+            transcript_text?: string | null;
+        };
+        /** Check */
+        Check: {
+            /** Name */
+            name: string;
+            /** Passed */
+            passed: boolean;
+            /** Details */
+            details: string;
+        };
+        /** CitationCheck */
+        CitationCheck: {
+            /** Has Any Citation */
+            has_any_citation: boolean;
+            /** Cited Labels */
+            cited_labels: string[];
+            /** Unknown Labels */
+            unknown_labels: string[];
+        };
+        /** Code */
+        Code: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "code";
+            /** Prompt */
+            prompt: string;
+            /**
+             * Language
+             * @default python
+             * @enum {string}
+             */
+            language: "python" | "javascript" | "java" | "c" | "c++";
+        };
+        /** CodeResult */
+        CodeResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "code";
+            /** Language */
+            language: string;
+            /** Initial Code */
+            initial_code: string;
+            /** Final Code */
+            final_code: string;
+            /** Repair Attempted */
+            repair_attempted: boolean;
+            initial_verification: components["schemas"]["Verification"];
+            final_verification: components["schemas"]["Verification"];
+        };
+        /** Content */
+        Content: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "content";
+            /** Idea */
+            idea: string;
+            /**
+             * Tone
+             * @default professional
+             * @enum {string}
+             */
+            tone: "professional" | "playful" | "educational" | "launch-ready" | "social-first";
+            /**
+             * Platforms
+             * @default [
+             *       "linkedin",
+             *       "x"
+             *     ]
+             */
+            platforms: ("linkedin" | "x" | "instagram" | "youtube" | "blog")[];
+            /**
+             * Include Audio
+             * @default false
+             */
+            include_audio: boolean;
+            /** Voice */
+            voice?: ("alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer" | "af_heart" | "af_bella" | "af_nicole" | "am_michael" | "am_fenrir" | "bf_emma") | null;
+        };
+        /** ContentResult */
+        ContentResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "content";
+            /** Plan */
+            plan: {
+                [key: string]: unknown;
+            };
+            /** Package */
+            package: {
+                [key: string]: unknown;
+            };
+            /** Critique */
+            critique: {
+                [key: string]: unknown;
+            };
+            /** Final Script */
+            final_script: string;
+            /** Final Captions */
+            final_captions: {
+                [key: string]: string;
+            };
+            /** Audio Path */
+            audio_path: string | null;
+            /** Audio Error */
+            audio_error: string | null;
+            /** Artifact Id */
+            artifact_id?: string | null;
+        };
+        /** ContextResult */
+        ContextResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /** Profile */
+            profile?: {
+                [key: string]: unknown;
+            } | null;
+            /** Context Id */
+            context_id: string;
+            /** Errors */
+            errors: string[];
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "document-qa" | "url-qa";
+        };
+        /** DocumentQA */
+        DocumentQA: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "document-qa";
+            /** Context Id */
+            context_id: string;
+            /** Question */
+            question: string;
+        };
+        /** DocumentResult */
+        DocumentResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "documents";
+            /** Documents */
+            documents: {
+                [key: string]: unknown;
+            }[];
+            /** Errors */
+            errors: {
+                [key: string]: string;
+            }[];
+        };
+        /** DocumentsContext */
+        DocumentsContext: {
+            /** File Ids */
+            file_ids: string[];
+        };
+        /** Execution */
+        Execution: {
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "free" | "local" | "openai";
+            /**
+             * Engines
+             * @default []
+             */
+            engines: {
+                [key: string]: string;
+            }[];
+            /**
+             * Fallback
+             * @default false
+             */
+            fallback: boolean;
+            /**
+             * Coverage
+             * @default []
+             */
+            coverage: {
+                [key: string]: unknown;
+            }[];
+            /**
+             * Warnings
+             * @default []
+             */
+            warnings: string[];
+        };
+        /** FileSummary */
+        FileSummary: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "file-summary";
+            /** File Ids */
+            file_ids: string[];
+        };
+        /** HTTPValidationError */
+        HTTPValidationError: {
+            /** Detail */
+            detail?: components["schemas"]["ValidationError"][];
+        };
+        /** ImageGeneration */
+        ImageGeneration: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "image";
+            /** Prompt */
+            prompt: string;
+        };
+        /** Intelligence */
+        Intelligence: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "documents";
+            /** File Ids */
+            file_ids: string[];
+        };
+        /** OCR */
+        OCR: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "ocr";
+            /** File Ids */
+            file_ids: string[];
+        };
+        /** QAResult */
+        QAResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "document-qa" | "url-qa";
+            /** Answer */
+            answer: string;
+            /** Sources */
+            sources: components["schemas"]["Source"][];
+        };
+        /** Query */
+        Query: {
+            /** Question */
+            question: string;
+        };
+        /** Research */
+        Research: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "research";
+            /** Topic */
+            topic: string;
+            /** Urls */
+            urls: string[];
+        };
+        /** ResearchResult */
+        ResearchResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "research";
+            /** Plan */
+            plan: {
+                [key: string]: unknown;
+            };
+            /** Sources */
+            sources: components["schemas"]["Source"][];
+            /** Source Errors */
+            source_errors: {
+                [key: string]: string;
+            }[];
+            /** Invalid Urls */
+            invalid_urls: string[];
+            /** Draft Report */
+            draft_report: string;
+            /** Final Report */
+            final_report: string;
+            /** Critique */
+            critique: {
+                [key: string]: unknown;
+            };
+            citation_check: components["schemas"]["CitationCheck"];
+        };
+        /** Source */
+        Source: {
+            /** Label */
+            label: string;
+            /**
+             * Title
+             * @default
+             */
+            title: string;
+            /**
+             * Url
+             * @default
+             */
+            url: string;
+            /**
+             * Summary
+             * @default
+             */
+            summary: string;
+            /**
+             * Key Points
+             * @default []
+             */
+            key_points: string[];
+            /**
+             * Relevance
+             * @default
+             */
+            relevance: string;
+            /**
+             * Text
+             * @default
+             */
+            text: string;
+            /**
+             * Metadata
+             * @default {}
+             */
+            metadata: {
+                [key: string]: unknown;
+            };
+        };
+        /** Speech */
+        Speech: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "speech";
+            /** Text */
+            text: string;
+            /** Voice */
+            voice?: ("alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer" | "af_heart" | "af_bella" | "af_nicole" | "am_michael" | "am_fenrir" | "bf_emma") | null;
+        };
+        /** Support */
+        Support: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "support";
+            /** Question */
+            question: string;
+            /** Urls */
+            urls: string[];
+        };
+        /** SupportResult */
+        SupportResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "support";
+            /** Intent */
+            intent: {
+                [key: string]: unknown;
+            };
+            /** Sources */
+            sources: components["schemas"]["Source"][];
+            /** Source Errors */
+            source_errors: {
+                [key: string]: string;
+            }[];
+            /** Invalid Urls */
+            invalid_urls: string[];
+            /** Draft */
+            draft: {
+                [key: string]: unknown;
+            };
+            /** Final */
+            final: {
+                [key: string]: unknown;
+            };
+        };
+        /** TextResult */
+        TextResult: {
+            execution?: components["schemas"]["Execution"] | null;
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "article-summary" | "captions" | "file-summary" | "ocr" | "text-summary" | "youtube-summary";
+            /** Text */
+            text: string;
+        };
+        /** TextSummary */
+        TextSummary: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "text-summary";
+            /** Text */
+            text: string;
+        };
+        /** URLQA */
+        URLQA: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "url-qa";
+            /** Context Id */
+            context_id: string;
+            /** Question */
+            question: string;
+        };
+        /** URLsContext */
+        URLsContext: {
+            /** Urls */
+            urls: string[];
+        };
+        /** ValidationError */
+        ValidationError: {
+            /** Location */
+            loc: (string | number)[];
+            /** Message */
+            msg: string;
+            /** Error Type */
+            type: string;
+        };
+        /** Verification */
+        Verification: {
+            /** Language */
+            language: string;
+            /** Passed */
+            passed: boolean;
+            /** Checks */
+            checks: components["schemas"]["Check"][];
+        };
+        /** WorkflowEvent */
+        WorkflowEvent: {
+            /**
+             * Event
+             * @enum {string}
+             */
+            event: "started" | "stage" | "warning" | "result" | "error";
+            /** Data */
+            data: (components["schemas"]["TextResult"] | components["schemas"]["ArtifactResult"] | components["schemas"]["CodeResult"] | components["schemas"]["ResearchResult"] | components["schemas"]["ContentResult"] | components["schemas"]["DocumentResult"] | components["schemas"]["QAResult"] | components["schemas"]["SupportResult"]) | components["schemas"]["ContextResult"] | {
+                [key: string]: unknown;
+            };
+        };
+        /** YoutubeSummary */
+        YoutubeSummary: {
+            /**
+             * @description discriminator enum property added by openapi-typescript
+             * @enum {string}
+             */
+            tool: "youtube-summary";
+            /** Url */
+            url?: string | null;
+            /** Transcript Text */
+            transcript_text?: string | null;
+        };
     };
-    /** ArtifactResult */
-    ArtifactResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "image" | "speech";
-      /** Artifact Id */
-      artifact_id: string;
-      /** Media Type */
-      media_type: string;
-    };
-    /** Body_upload_api_v1_uploads_post */
-    Body_upload_api_v1_uploads_post: {
-      /**
-       * File
-       * Format: binary
-       */
-      file: string;
-    };
-    /** Captions */
-    Captions: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "captions";
-      /** Url */
-      url: string;
-    };
-    /** Check */
-    Check: {
-      /** Name */
-      name: string;
-      /** Passed */
-      passed: boolean;
-      /** Details */
-      details: string;
-    };
-    /** CitationCheck */
-    CitationCheck: {
-      /** Has Any Citation */
-      has_any_citation: boolean;
-      /** Cited Labels */
-      cited_labels: string[];
-      /** Unknown Labels */
-      unknown_labels: string[];
-    };
-    /** Code */
-    Code: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "code";
-      /** Prompt */
-      prompt: string;
-      /**
-       * Language
-       * @default python
-       * @enum {string}
-       */
-      language: "python" | "javascript" | "java" | "c" | "c++";
-    };
-    /** CodeResult */
-    CodeResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "code";
-      /** Language */
-      language: string;
-      /** Initial Code */
-      initial_code: string;
-      /** Final Code */
-      final_code: string;
-      /** Repair Attempted */
-      repair_attempted: boolean;
-      initial_verification: components["schemas"]["Verification"];
-      final_verification: components["schemas"]["Verification"];
-    };
-    /** Content */
-    Content: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "content";
-      /** Idea */
-      idea: string;
-      /**
-       * Tone
-       * @default professional
-       * @enum {string}
-       */
-      tone:
-        | "professional"
-        | "playful"
-        | "educational"
-        | "launch-ready"
-        | "social-first";
-      /**
-       * Platforms
-       * @default [
-       *       "linkedin",
-       *       "x"
-       *     ]
-       */
-      platforms: ("linkedin" | "x" | "instagram" | "youtube" | "blog")[];
-      /**
-       * Include Audio
-       * @default false
-       */
-      include_audio: boolean;
-      /**
-       * Voice
-       * @default alloy
-       * @enum {string}
-       */
-      voice: "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer";
-    };
-    /** ContentResult */
-    ContentResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "content";
-      /** Plan */
-      plan: {
-        [key: string]: unknown;
-      };
-      /** Package */
-      package: {
-        [key: string]: unknown;
-      };
-      /** Critique */
-      critique: {
-        [key: string]: unknown;
-      };
-      /** Final Script */
-      final_script: string;
-      /** Final Captions */
-      final_captions: {
-        [key: string]: string;
-      };
-      /** Audio Path */
-      audio_path: string | null;
-      /** Audio Error */
-      audio_error: string | null;
-      /** Artifact Id */
-      artifact_id?: string | null;
-    };
-    /** ContextResult */
-    ContextResult: {
-      /** Context Id */
-      context_id: string;
-      /** Errors */
-      errors: string[];
-      /**
-       * Kind
-       * @enum {string}
-       */
-      kind: "document-qa" | "url-qa";
-    };
-    /** DocumentQA */
-    DocumentQA: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "document-qa";
-      /** Context Id */
-      context_id: string;
-      /** Question */
-      question: string;
-    };
-    /** DocumentResult */
-    DocumentResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "documents";
-      /** Documents */
-      documents: {
-        [key: string]: unknown;
-      }[];
-      /** Errors */
-      errors: {
-        [key: string]: string;
-      }[];
-    };
-    /** DocumentsContext */
-    DocumentsContext: {
-      /** File Ids */
-      file_ids: string[];
-    };
-    /** FileSummary */
-    FileSummary: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "file-summary";
-      /** File Ids */
-      file_ids: string[];
-    };
-    /** HTTPValidationError */
-    HTTPValidationError: {
-      /** Detail */
-      detail?: components["schemas"]["ValidationError"][];
-    };
-    /** ImageGeneration */
-    ImageGeneration: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "image";
-      /** Prompt */
-      prompt: string;
-    };
-    /** Intelligence */
-    Intelligence: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "documents";
-      /** File Ids */
-      file_ids: string[];
-    };
-    /** OCR */
-    OCR: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "ocr";
-      /** File Ids */
-      file_ids: string[];
-    };
-    /** QAResult */
-    QAResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "document-qa" | "url-qa";
-      /** Answer */
-      answer: string;
-      /** Sources */
-      sources: components["schemas"]["Source"][];
-    };
-    /** Query */
-    Query: {
-      /** Question */
-      question: string;
-    };
-    /** Research */
-    Research: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "research";
-      /** Topic */
-      topic: string;
-      /** Urls */
-      urls: string[];
-    };
-    /** ResearchResult */
-    ResearchResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "research";
-      /** Plan */
-      plan: {
-        [key: string]: unknown;
-      };
-      /** Sources */
-      sources: components["schemas"]["Source"][];
-      /** Source Errors */
-      source_errors: {
-        [key: string]: string;
-      }[];
-      /** Invalid Urls */
-      invalid_urls: string[];
-      /** Draft Report */
-      draft_report: string;
-      /** Final Report */
-      final_report: string;
-      /** Critique */
-      critique: {
-        [key: string]: unknown;
-      };
-      citation_check: components["schemas"]["CitationCheck"];
-    };
-    /** Source */
-    Source: {
-      /** Label */
-      label: string;
-      /**
-       * Title
-       * @default
-       */
-      title: string;
-      /**
-       * Url
-       * @default
-       */
-      url: string;
-      /**
-       * Summary
-       * @default
-       */
-      summary: string;
-      /**
-       * Key Points
-       * @default []
-       */
-      key_points: string[];
-      /**
-       * Relevance
-       * @default
-       */
-      relevance: string;
-      /**
-       * Text
-       * @default
-       */
-      text: string;
-      /**
-       * Metadata
-       * @default {}
-       */
-      metadata: {
-        [key: string]: unknown;
-      };
-    };
-    /** Speech */
-    Speech: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "speech";
-      /** Text */
-      text: string;
-      /**
-       * Voice
-       * @default alloy
-       * @enum {string}
-       */
-      voice: "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer";
-    };
-    /** Support */
-    Support: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "support";
-      /** Question */
-      question: string;
-      /** Urls */
-      urls: string[];
-    };
-    /** SupportResult */
-    SupportResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "support";
-      /** Intent */
-      intent: {
-        [key: string]: unknown;
-      };
-      /** Sources */
-      sources: components["schemas"]["Source"][];
-      /** Source Errors */
-      source_errors: {
-        [key: string]: string;
-      }[];
-      /** Invalid Urls */
-      invalid_urls: string[];
-      /** Draft */
-      draft: {
-        [key: string]: unknown;
-      };
-      /** Final */
-      final: {
-        [key: string]: unknown;
-      };
-    };
-    /** TextResult */
-    TextResult: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool:
-        | "article-summary"
-        | "captions"
-        | "file-summary"
-        | "ocr"
-        | "text-summary"
-        | "youtube-summary";
-      /** Text */
-      text: string;
-    };
-    /** TextSummary */
-    TextSummary: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "text-summary";
-      /** Text */
-      text: string;
-    };
-    /** URLQA */
-    URLQA: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "url-qa";
-      /** Context Id */
-      context_id: string;
-      /** Question */
-      question: string;
-    };
-    /** URLsContext */
-    URLsContext: {
-      /** Urls */
-      urls: string[];
-    };
-    /** ValidationError */
-    ValidationError: {
-      /** Location */
-      loc: (string | number)[];
-      /** Message */
-      msg: string;
-      /** Error Type */
-      type: string;
-    };
-    /** Verification */
-    Verification: {
-      /** Language */
-      language: string;
-      /** Passed */
-      passed: boolean;
-      /** Checks */
-      checks: components["schemas"]["Check"][];
-    };
-    /** WorkflowEvent */
-    WorkflowEvent: {
-      /**
-       * Event
-       * @enum {string}
-       */
-      event: "started" | "stage" | "warning" | "result" | "error";
-      /** Data */
-      data:
-        | (
-            | components["schemas"]["TextResult"]
-            | components["schemas"]["ArtifactResult"]
-            | components["schemas"]["CodeResult"]
-            | components["schemas"]["ResearchResult"]
-            | components["schemas"]["ContentResult"]
-            | components["schemas"]["DocumentResult"]
-            | components["schemas"]["QAResult"]
-            | components["schemas"]["SupportResult"]
-          )
-        | components["schemas"]["ContextResult"]
-        | {
-            [key: string]: unknown;
-          };
-    };
-    /** YoutubeSummary */
-    YoutubeSummary: {
-      /**
-       * @description discriminator enum property added by openapi-typescript
-       * @enum {string}
-       */
-      tool: "youtube-summary";
-      /** Url */
-      url: string;
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+    responses: never;
+    parameters: never;
+    requestBodies: never;
+    headers: never;
+    pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-  health_api_v1_health_get: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    capabilities_api_v1_capabilities_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
     };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
+    visitor_usage_api_v1_sessions_current_usage_get: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+            };
+            path?: never;
+            cookie?: never;
         };
-        content: {
-          "application/json": unknown;
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
-      };
     };
-  };
-  create_session_api_v1_sessions_post: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
+    health_api_v1_health_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
     };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
+    create_session_api_v1_sessions_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
         };
-        content: {
-          "application/json": unknown;
+        requestBody?: {
+            content: {
+                "application/json": {
+                    [key: string]: unknown;
+                } | null;
+            };
         };
-      };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
     };
-  };
-  clear_session_api_v1_sessions_current_delete: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-      };
-      path?: never;
-      cookie?: never;
+    clear_session_api_v1_sessions_current_delete: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
     };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      204: {
-        headers: {
-          [name: string]: unknown;
+    upload_api_v1_uploads_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+            };
+            path?: never;
+            cookie?: never;
         };
-        content?: never;
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["Body_upload_api_v1_uploads_post"];
+            };
         };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
-      };
     };
-  };
-  upload_api_v1_uploads_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-      };
-      path?: never;
-      cookie?: never;
+    run_api_v1_runs_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+                "x-openai-key"?: string;
+                "x-trace-mode"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TextSummary"] | components["schemas"]["YoutubeSummary"] | components["schemas"]["ArticleSummary"] | components["schemas"]["FileSummary"] | components["schemas"]["OCR"] | components["schemas"]["ImageGeneration"] | components["schemas"]["Speech"] | components["schemas"]["Captions"] | components["schemas"]["Code"] | components["schemas"]["Content"] | components["schemas"]["Research"] | components["schemas"]["Intelligence"] | components["schemas"]["DocumentQA"] | components["schemas"]["URLQA"] | components["schemas"]["Support"];
+            };
+        };
+        responses: {
+            /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/event-stream": components["schemas"]["WorkflowEvent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
     };
-    requestBody: {
-      content: {
-        "multipart/form-data": components["schemas"]["Body_upload_api_v1_uploads_post"];
-      };
+    documents_api_v1_contexts_documents_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+                "x-openai-key"?: string;
+                "x-trace-mode"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["DocumentsContext"];
+            };
+        };
+        responses: {
+            /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/event-stream": components["schemas"]["WorkflowEvent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
     };
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
+    urls_api_v1_contexts_urls_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+                "x-openai-key"?: string;
+                "x-trace-mode"?: string | null;
+            };
+            path?: never;
+            cookie?: never;
         };
-        content: {
-          "application/json": unknown;
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["URLsContext"];
+            };
         };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
+        responses: {
+            /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/event-stream": components["schemas"]["WorkflowEvent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
         };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
     };
-  };
-  run_api_v1_runs_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-        "x-openai-key"?: string;
-      };
-      path?: never;
-      cookie?: never;
+    query_api_v1_contexts__context_id__query_post: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+                "x-openai-key"?: string;
+                "x-trace-mode"?: string | null;
+            };
+            path: {
+                context_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["Query"];
+            };
+        };
+        responses: {
+            /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "text/event-stream": components["schemas"]["WorkflowEvent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
     };
-    requestBody: {
-      content: {
-        "application/json":
-          | components["schemas"]["TextSummary"]
-          | components["schemas"]["YoutubeSummary"]
-          | components["schemas"]["ArticleSummary"]
-          | components["schemas"]["FileSummary"]
-          | components["schemas"]["OCR"]
-          | components["schemas"]["ImageGeneration"]
-          | components["schemas"]["Speech"]
-          | components["schemas"]["Captions"]
-          | components["schemas"]["Code"]
-          | components["schemas"]["Content"]
-          | components["schemas"]["Research"]
-          | components["schemas"]["Intelligence"]
-          | components["schemas"]["DocumentQA"]
-          | components["schemas"]["URLQA"]
-          | components["schemas"]["Support"];
-      };
+    artifact_api_v1_artifacts__artifact_id__get: {
+        parameters: {
+            query?: never;
+            header?: {
+                authorization?: string;
+            };
+            path: {
+                artifact_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
     };
-    responses: {
-      /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "text/event-stream": components["schemas"]["WorkflowEvent"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  documents_api_v1_contexts_documents_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-        "x-openai-key"?: string;
-      };
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["DocumentsContext"];
-      };
-    };
-    responses: {
-      /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "text/event-stream": components["schemas"]["WorkflowEvent"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  urls_api_v1_contexts_urls_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-        "x-openai-key"?: string;
-      };
-      path?: never;
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["URLsContext"];
-      };
-    };
-    responses: {
-      /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "text/event-stream": components["schemas"]["WorkflowEvent"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  query_api_v1_contexts__context_id__query_post: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-        "x-openai-key"?: string;
-      };
-      path: {
-        context_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Query"];
-      };
-    };
-    responses: {
-      /** @description Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens. */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "text/event-stream": components["schemas"]["WorkflowEvent"];
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
-  artifact_api_v1_artifacts__artifact_id__get: {
-    parameters: {
-      query?: never;
-      header?: {
-        authorization?: string;
-      };
-      path: {
-        artifact_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      /** @description Successful Response */
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": unknown;
-        };
-      };
-      /** @description Validation Error */
-      422: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["HTTPValidationError"];
-        };
-      };
-    };
-  };
 }

@@ -539,7 +539,12 @@ export function Results({
       body = (
         <>
           <div className="result-kicker">
-            <span className="eyebrow">IMAGE / 1024 × 1024</span>
+            <span className="eyebrow">
+              IMAGE /{" "}
+              {result.width && result.height
+                ? `${result.width} × ${result.height}`
+                : "GENERATED"}
+            </span>
           </div>
           <Media id={result.artifact_id} kind="image" />
         </>
@@ -549,7 +554,12 @@ export function Results({
       body = (
         <>
           <div className="result-kicker">
-            <span className="eyebrow">NARRATION / TTS-1</span>
+            <span className="eyebrow">
+              NARRATION /{" "}
+              {result.execution && result.execution.mode !== "openai"
+                ? "KOKORO"
+                : "TTS-1"}
+            </span>
           </div>
           <Media id={result.artifact_id} kind="audio" />
         </>

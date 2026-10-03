@@ -16,7 +16,7 @@ import pytesseract
 
 from PIL import Image
 
-from openai import OpenAI
+from .runtime import client as OpenAI
 
 MODEL_NAME = "gpt-4o-mini"
 

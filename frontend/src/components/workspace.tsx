@@ -54,7 +54,9 @@ import { Sheet, Wordmark, ExternalLink as OutLink } from "./ui";
 import { Status } from "./status";
 import { Results } from "./results";
 import { EvidenceInspector, EvidenceContent } from "./evidence";
-import { stream, upload, clearSession } from "../lib/api";
+import { VoicePicker } from "./voice-picker";
+import { VisitorVerification } from "./visitor-verification";
+import { stream, upload, clearSession, usage } from "../lib/api";
 import type {
   Result,
   Source,
@@ -130,7 +132,17 @@ function SampleLoader({ id }: { id: ToolId }) {
 export function Workspace({ tool }: { tool: Tool }) {
   const router = useRouter();
   const state = useWorkspace();
-  const { key, setKey, theme, toggleTheme, drafts, update, reset } = state;
+  const {
+    mode,
+    setMode,
+    key,
+    setKey,
+    theme,
+    toggleTheme,
+    drafts,
+    update,
+    reset,
+  } = state;
   const draft = drafts[tool.id] || emptyDraft();
   const reduced = useReducedMotion();
   const [collapsed, setCollapsed] = useState(false),
@@ -141,6 +153,22 @@ export function Workspace({ tool }: { tool: Tool }) {
     [pinned, setPinned] = useState<Source | null>(null),
     [mobile, setMobile] = useState(false),
     [clearNote, setClearNote] = useState("");
+  const [remaining, setRemaining] = useState<Record<string, number> | null>(
+    null,
+  );
+  const transcriptTool =
+    tool.id === "youtube-summary" || tool.id === "captions";
+  const pasted = transcriptTool && draft.input.source_type === "transcript";
+  const selectedVoice =
+    mode === "openai"
+      ? voices.includes(draft.input.voice as (typeof voices)[number])
+        ? draft.input.voice
+        : "alloy"
+      : draft.input.voice?.startsWith("af_") ||
+          draft.input.voice?.startsWith("am_") ||
+          draft.input.voice === "bf_emma"
+        ? draft.input.voice
+        : "af_heart";
   const fileInput = useRef<HTMLInputElement>(null);
   const busy = draft.status === "processing";
   const qa = tool.id === "document-qa" || tool.id === "url-qa";
@@ -220,7 +248,9 @@ export function Workspace({ tool }: { tool: Tool }) {
         error: (event.data as { message: string }).message,
         ...((event.data as { code?: string }).code === "session_expired"
           ? { fileIds: [], context: undefined }
-          : {}),
+          : (event.data as { code?: string }).code === "context_reprocess"
+            ? { context: undefined }
+            : {}),
         finished: Date.now(),
         stages: d.stages.map((s) =>
           s.status === "running" ? { ...s, status: "failed" } : s,
@@ -245,7 +275,7 @@ export function Workspace({ tool }: { tool: Tool }) {
   }
   async function execute(process = false) {
     if (busy) return;
-    if ((tool.key || process) && !key) {
+    if (mode === "openai" && (tool.key || process) && !key) {
       setSettings(true);
       return;
     }
@@ -259,7 +289,14 @@ export function Workspace({ tool }: { tool: Tool }) {
       (!urls.length || urls.length > tool.urls)
     )
       problem = `Enter between 1 and ${tool.urls} source URLs, one per line.`;
-    else if (!process && tool.field && !draft.input[tool.field]?.trim())
+    else if (!process && pasted && !draft.input.transcript_text?.trim())
+      problem = "Paste a transcript to continue.";
+    else if (
+      !process &&
+      tool.field &&
+      !pasted &&
+      !draft.input[tool.field]?.trim()
+    )
       problem = `Enter ${tool.label?.toLowerCase()} to continue.`;
     else if (!process && qa && !draft.context)
       problem = "Process your files or URLs before asking a question.";
@@ -270,7 +307,10 @@ export function Workspace({ tool }: { tool: Tool }) {
       return;
     }
     const id = tool.id;
-    const input = { ...draft.input };
+    const input: Record<string, string> = {
+      ...draft.input,
+      voice: selectedVoice,
+    };
     setPinned(null);
     update(id, {
       status: "processing",
@@ -311,6 +351,7 @@ export function Workspace({ tool }: { tool: Tool }) {
           tool.id === "document-qa" ? { file_ids: ids } : { urls },
           key,
           callback,
+          mode,
         );
       else if (qa)
         await stream(
@@ -318,8 +359,12 @@ export function Workspace({ tool }: { tool: Tool }) {
           { question: input.question.trim() },
           key,
           callback,
+          mode,
         );
-      else await stream("/runs", buildInput(id, input, ids), key, callback);
+      else
+        await stream("/runs", buildInput(id, input, ids), key, callback, mode);
+      const allowance = await usage().catch(() => null);
+      if (allowance) setRemaining(allowance.remaining);
     } catch (error) {
       update(id, {
         status: "error",
@@ -371,6 +416,7 @@ export function Workspace({ tool }: { tool: Tool }) {
       await clearSession();
       reset();
       setKey("");
+      setRemaining(null);
       setPinned(null);
       setClearNote("Temporary data, drafts and key cleared.");
     } catch (error) {
@@ -380,7 +426,7 @@ export function Workspace({ tool }: { tool: Tool }) {
     }
   }
   function summarize(text: string) {
-    if (!key) {
+    if (mode === "openai" && !key) {
       setSettings(true);
       return;
     }
@@ -448,6 +494,7 @@ export function Workspace({ tool }: { tool: Tool }) {
   );
   return (
     <div className={`workspace ${collapsed ? "collapsed" : ""}`}>
+      <VisitorVerification />
       <Suspense fallback={null}>
         <SampleLoader id={tool.id} />
       </Suspense>
@@ -534,7 +581,23 @@ export function Workspace({ tool }: { tool: Tool }) {
                 {i < tool.steps.length - 1 && <ArrowRight size={13} />}
               </span>
             ))}
-            <span className="workflow-model mono">{tool.model}</span>
+            <span className="workflow-model mono">
+              {draft.sample
+                ? "SAMPLE"
+                : mode === "openai"
+                  ? tool.model
+                  : tool.id === "speech"
+                    ? "Kokoro"
+                    : tool.id === "ocr"
+                      ? "Tesseract"
+                      : tool.id === "captions"
+                        ? "Transcript"
+                        : tool.id === "image"
+                          ? "FLUX"
+                          : mode === "local"
+                            ? "Local AI"
+                            : "Hosted + local"}
+            </span>
           </div>
           {draft.sample && (
             <div className="sample-banner">
@@ -595,6 +658,8 @@ export function Workspace({ tool }: { tool: Tool }) {
                           .map((v) => v.slice(1).toUpperCase())
                           .join(" / ")}{" "}
                         · up to 200 MB each
+                        {mode !== "openai" &&
+                          " · PDFs: 50 pages · extracted text: 12,000 tokens per file"}
                       </span>
                     </label>
                     <input
@@ -686,7 +751,39 @@ export function Workspace({ tool }: { tool: Tool }) {
                     )}
                   </div>
                 )}
-                {tool.field && (
+                {transcriptTool && (
+                  <div className="field">
+                    <label htmlFor="transcript-source">Transcript source</label>
+                    <select
+                      id="transcript-source"
+                      value={draft.input.source_type || "url"}
+                      disabled={busy}
+                      onChange={(e) => change("source_type", e.target.value)}
+                    >
+                      <option value="url">YouTube URL</option>
+                      <option value="transcript">Paste transcript</option>
+                    </select>
+                    <p className="helper">
+                      If YouTube blocks extraction or captions are unavailable,
+                      paste the transcript here.
+                    </p>
+                  </div>
+                )}
+                {pasted && (
+                  <div className="field">
+                    <label htmlFor="transcript-text">Transcript text</label>
+                    <textarea
+                      id="transcript-text"
+                      rows={10}
+                      disabled={busy}
+                      value={draft.input.transcript_text || ""}
+                      onChange={(e) =>
+                        change("transcript_text", e.target.value)
+                      }
+                    />
+                  </div>
+                )}
+                {tool.field && !pasted && (
                   <div className="field">
                     <label htmlFor="primary-input">{tool.label}</label>
                     {tool.field === "url" ? (
@@ -795,16 +892,24 @@ export function Workspace({ tool }: { tool: Tool }) {
                     draft.input.include_audio === "true") && (
                     <div className="field">
                       <label htmlFor="voice">Voice</label>
-                      <select
-                        id="voice"
-                        value={draft.input.voice}
-                        disabled={busy}
-                        onChange={(e) => change("voice", e.target.value)}
-                      >
-                        {voices.map((voice) => (
-                          <option key={voice}>{voice}</option>
-                        ))}
-                      </select>
+                      {mode !== "openai" ? (
+                        <VoicePicker
+                          value={selectedVoice}
+                          disabled={busy}
+                          onChange={(voice) => change("voice", voice)}
+                        />
+                      ) : (
+                        <select
+                          id="voice"
+                          value={selectedVoice}
+                          disabled={busy}
+                          onChange={(e) => change("voice", e.target.value)}
+                        >
+                          {voices.map((voice) => (
+                            <option key={voice}>{voice}</option>
+                          ))}
+                        </select>
+                      )}
                     </div>
                   )}
                 <div className="submit-area">
@@ -825,19 +930,21 @@ export function Workspace({ tool }: { tool: Tool }) {
                     <ArrowRight size={17} />
                   </button>
                   <p className="key-note">
-                    {tool.key
-                      ? key
-                        ? "Your key is held in memory for this tab."
-                        : "Live execution requires your OpenAI key."
-                      : tool.id === "text-summary"
-                        ? key
-                          ? "OpenAI summary with your key."
-                          : "Runs locally without an API key."
-                        : "Runs locally without an API key."}
-                    {tool.key && !key && (
-                      <button type="button" onClick={() => setSettings(true)}>
-                        Open settings <ArrowUpRight size={12} />
-                      </button>
+                    {mode === "free"
+                      ? "Free access · text and images use hosted AI; retrieval, OCR and speech run on our server. Text may fall back locally."
+                      : mode === "local"
+                        ? "Local processing · inference stays on our server. Multi-stage CPU reports can take several minutes. Image generation needs hosted mode."
+                        : "Optional OpenAI mode · your key is held only in this tab’s memory."}
+                    <button type="button" onClick={() => setSettings(true)}>
+                      Change mode <ArrowUpRight size={12} />
+                    </button>
+                    {remaining && mode !== "openai" && (
+                      <span>
+                        Remaining today: {remaining.text} text ·{" "}
+                        {remaining.image} images · {remaining.audio} audio ·{" "}
+                        {remaining.context} contexts. Resets at 00:00 UTC;
+                        shared networks share limits.
+                      </span>
                     )}
                   </p>
                 </div>
@@ -910,6 +1017,18 @@ export function Workspace({ tool }: { tool: Tool }) {
                       <li key={i}>{warning}</li>
                     ))}
                   </ul>
+                </details>
+              )}
+              {(draft.result?.execution || draft.context?.execution) && (
+                <details className="result-note">
+                  <summary>Execution details</summary>
+                  <pre className="execution-details">
+                    {JSON.stringify(
+                      draft.result?.execution || draft.context?.execution,
+                      null,
+                      2,
+                    )}
+                  </pre>
                 </details>
               )}
               {draft.result ? (
@@ -1017,20 +1136,43 @@ export function Workspace({ tool }: { tool: Tool }) {
       >
         <div className="settings-body">
           <div className="field">
-            <label htmlFor="api-key">OpenAI API key</label>
-            <input
-              id="api-key"
-              type="password"
-              autoComplete="off"
-              value={key}
-              onChange={(e) => setKey(e.target.value)}
-              placeholder="sk-…"
-            />
+            <label htmlFor="execution-mode">Execution mode</label>
+            <select
+              id="execution-mode"
+              value={mode}
+              disabled={Object.values(drafts).some(
+                (d) => d?.status === "processing",
+              )}
+              onChange={(e) => setMode(e.target.value as typeof mode)}
+            >
+              <option value="free">Free access — recommended</option>
+              <option value="local">Local inference on our server</option>
+              <option value="openai">Advanced — my OpenAI key</option>
+            </select>
             <p className="helper">
-              Kept in browser memory and sent only with your live requests. It
-              is not saved across sessions.
+              Free hosted requests send relevant text and image prompts to
+              Cloudflare. Local mode keeps AI inference on our server; fetching
+              your source URLs still contacts their websites. Switching modes
+              requires Q&amp;A context reprocessing. English-first.
             </p>
           </div>
+          {mode === "openai" && (
+            <div className="field">
+              <label htmlFor="api-key">Optional OpenAI API key</label>
+              <input
+                id="api-key"
+                type="password"
+                autoComplete="off"
+                value={key}
+                onChange={(e) => setKey(e.target.value)}
+                placeholder="sk-…"
+              />
+              <p className="helper">
+                Kept in browser memory and sent only with your live requests. It
+                is not saved across sessions.
+              </p>
+            </div>
+          )}
           <div className="settings-theme">
             <div>
               <strong>Appearance</strong>

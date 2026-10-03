@@ -16,3 +16,9 @@ pytesseract==0.3.13
 Pillow==11.3.0
 pytest==8.4.2
 httpx==0.28.1
+
+kokoro==0.9.4
+misaki[en]==0.9.4
+soundfile==0.13.1
+
+en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl

@@ -10,6 +10,7 @@ export function Sheet({
   description,
   children,
   className = "",
+  onCloseAutoFocus,
 }: {
   open: boolean;
   onOpenChange: (v: boolean) => void;
@@ -17,12 +18,18 @@ export function Sheet({
   description: string;
   children: ReactNode;
   className?: string;
+  onCloseAutoFocus?: React.ComponentProps<
+    typeof Dialog.Content
+  >["onCloseAutoFocus"];
 }) {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="sheet-overlay" />
-        <Dialog.Content className={`sheet ${className}`}>
+        <Dialog.Content
+          className={`sheet ${className}`}
+          onCloseAutoFocus={onCloseAutoFocus}
+        >
           <div className="sheet-heading">
             <div>
               <Dialog.Title>{title}</Dialog.Title>

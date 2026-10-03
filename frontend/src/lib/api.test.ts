@@ -53,3 +53,57 @@ describe("offline samples", () => {
     }
   });
 });
+
+it("never sends an advanced key in an explicitly free/local request", async () => {
+  const { vi } = await import("vitest");
+  vi.resetModules();
+  const requests: RequestInit[] = [];
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(async (_url: string, init: RequestInit) => {
+      requests.push(init);
+      if (requests.length === 1)
+        return new Response(JSON.stringify({ token: "test-session" }), {
+          status: 200,
+        });
+      return new Response(
+        body([
+          'event: result\ndata: {"tool":"text-summary","text":"Result"}\n\n',
+        ]),
+        { status: 200 },
+      );
+    }),
+  );
+  try {
+    const api = await import("./api");
+    await api.stream(
+      "/runs",
+      { tool: "text-summary", text: "Source" },
+      "advanced-key",
+      () => {},
+      "free",
+    );
+    await api.stream(
+      "/runs",
+      { tool: "text-summary", text: "Source" },
+      "advanced-key",
+      () => {},
+      "local",
+    );
+    await api.stream(
+      "/runs",
+      { tool: "text-summary", text: "Source" },
+      "advanced-key",
+      () => {},
+      "openai",
+    );
+    expect(new Headers(requests[1].headers).get("X-OpenAI-Key")).toBeNull();
+    expect(new Headers(requests[2].headers).get("X-OpenAI-Key")).toBeNull();
+    expect(new Headers(requests[3].headers).get("X-OpenAI-Key")).toBe(
+      "advanced-key",
+    );
+    expect(new Headers(requests[1].headers).get("X-Trace-Mode")).toBe("free");
+  } finally {
+    vi.unstubAllGlobals();
+  }
+});

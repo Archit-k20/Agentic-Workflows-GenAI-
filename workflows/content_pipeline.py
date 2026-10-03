@@ -2,7 +2,7 @@
 
 import json
 
-from openai import OpenAI
+from .runtime import client as OpenAI
 
 from .text_to_speech import generate_speech
 

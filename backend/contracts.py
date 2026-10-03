@@ -1,11 +1,24 @@
 """Discriminated contracts for all fifteen tools. Provider fields remain inspectable."""
 
 from typing import Annotated, Literal, Union, Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 Text = Annotated[str, Field(min_length=1)]
 URL = Annotated[str, Field(min_length=1)]
-Voice = Literal["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
+Voice = Literal[
+    "alloy",
+    "echo",
+    "fable",
+    "onyx",
+    "nova",
+    "shimmer",
+    "af_heart",
+    "af_bella",
+    "af_nicole",
+    "am_michael",
+    "am_fenrir",
+    "bf_emma",
+]
 Language = Literal["python", "javascript", "java", "c", "c++"]
 
 
@@ -16,7 +29,14 @@ class TextSummary(BaseModel):
 
 class YoutubeSummary(BaseModel):
     tool: Literal["youtube-summary"]
-    url: URL
+    url: URL | None = None
+    transcript_text: Text | None = None
+
+    @model_validator(mode="after")
+    def one_source(self):
+        if bool(self.url) == bool(self.transcript_text):
+            raise ValueError("Supply exactly one YouTube URL or pasted transcript.")
+        return self
 
 
 class ArticleSummary(BaseModel):
@@ -42,12 +62,11 @@ class ImageGeneration(BaseModel):
 class Speech(BaseModel):
     tool: Literal["speech"]
     text: Text
-    voice: Voice = "alloy"
+    voice: Voice | None = None
 
 
-class Captions(BaseModel):
+class Captions(YoutubeSummary):
     tool: Literal["captions"]
-    url: URL
 
 
 class Code(BaseModel):
@@ -66,7 +85,7 @@ class Content(BaseModel):
         default=["linkedin", "x"], min_length=1, max_length=5
     )
     include_audio: bool = False
-    voice: Voice = "alloy"
+    voice: Voice | None = None
 
 
 class Research(BaseModel):
@@ -149,7 +168,19 @@ class Verification(BaseModel):
     checks: list[Check]
 
 
-class TextResult(BaseModel):
+class Execution(BaseModel):
+    mode: Literal["free", "local", "openai"]
+    engines: list[dict[str, str]] = []
+    fallback: bool = False
+    coverage: list[dict[str, Any]] = []
+    warnings: list[str] = []
+
+
+class ResultBase(BaseModel):
+    execution: Execution | None = None
+
+
+class TextResult(ResultBase):
     tool: Literal[
         "text-summary",
         "youtube-summary",
@@ -161,13 +192,15 @@ class TextResult(BaseModel):
     text: str
 
 
-class ArtifactResult(BaseModel):
+class ArtifactResult(ResultBase):
+    width: int | None = None
+    height: int | None = None
     tool: Literal["image", "speech"]
     artifact_id: str
     media_type: str
 
 
-class CodeResult(BaseModel):
+class CodeResult(ResultBase):
     tool: Literal["code"]
     language: str
     initial_code: str
@@ -177,7 +210,7 @@ class CodeResult(BaseModel):
     final_verification: Verification
 
 
-class ResearchResult(BaseModel):
+class ResearchResult(ResultBase):
     tool: Literal["research"]
     plan: dict[str, Any]
     sources: list[Source]
@@ -189,7 +222,7 @@ class ResearchResult(BaseModel):
     citation_check: CitationCheck
 
 
-class ContentResult(BaseModel):
+class ContentResult(ResultBase):
     tool: Literal["content"]
     plan: dict[str, Any]
     package: dict[str, Any]
@@ -201,19 +234,19 @@ class ContentResult(BaseModel):
     artifact_id: str | None = None
 
 
-class DocumentResult(BaseModel):
+class DocumentResult(ResultBase):
     tool: Literal["documents"]
     documents: list[dict[str, Any]]
     errors: list[dict[str, str]]
 
 
-class QAResult(BaseModel):
+class QAResult(ResultBase):
     tool: Literal["document-qa", "url-qa"]
     answer: str
     sources: list[Source]
 
 
-class SupportResult(BaseModel):
+class SupportResult(ResultBase):
     tool: Literal["support"]
     intent: dict[str, Any]
     sources: list[Source]
@@ -250,7 +283,8 @@ class Query(BaseModel):
     question: Text
 
 
-class ContextResult(BaseModel):
+class ContextResult(ResultBase):
+    profile: dict[str, Any] | None = None
     context_id: str
     errors: list[str]
     kind: Literal["document-qa", "url-qa"]

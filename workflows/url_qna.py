@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 
 from .network import SafeArticle as Article
 
-from openai import OpenAI
+from .runtime import client as OpenAI
 
 MAX_URLS = 3
 

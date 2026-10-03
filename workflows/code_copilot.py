@@ -14,7 +14,7 @@ import subprocess
 
 import tempfile
 
-from openai import OpenAI
+from .runtime import client as OpenAI
 
 MODEL_NAME = "gpt-4o-mini"
 

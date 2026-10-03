@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 
 from .network import SafeArticle as Article
 
-from openai import OpenAI
+from .runtime import client as OpenAI
 
 MODEL_NAME = "gpt-4o-mini"
 

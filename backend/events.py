@@ -13,23 +13,39 @@ def emit(event, **data):
 
 def observed_client(client):
     """Surface authentication failures even when the original workflow falls back."""
+
     def create(*args, **kwargs):
         try:
             return client.chat.completions.create(*args, **kwargs)
         except Exception as exc:
             if getattr(exc, "status_code", None) == 401:
-                emit("warning", message="Invalid OpenAI credentials. Update your key in Settings. Existing fallback behavior was retained.")
+                emit(
+                    "warning",
+                    message="Invalid OpenAI credentials. Update your key in Settings. Existing fallback behavior was retained.",
+                )
             raise
 
-    return SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=create)))
+    return SimpleNamespace(
+        chat=SimpleNamespace(completions=SimpleNamespace(create=create))
+    )
 
 
 def observe(fn, label):
     @wraps(fn)
     def run(*args, **kwargs):
+        from workflows.runtime import current
+
+        runtime = current.get()
+        if runtime:
+            runtime.check()
         emit("stage", name=label, status="running")
         try:
-            result = fn(*args, **kwargs)
+            if runtime and runtime.mode != "openai":
+                from .processing import override
+
+                result = override(fn.__module__, fn.__name__, args, kwargs, fn, runtime)
+            else:
+                result = fn(*args, **kwargs)
         except Exception:
             emit("stage", name=label, status="failed")
             raise
@@ -106,6 +122,20 @@ def install():
             result = _fn(observed_client(client), *args, **kwargs)
             fallback = kwargs.get("fallback", args[-1] if args else None)
             if result is fallback:
+                from workflows.runtime import current
+
+                runtime = current.get()
+                if runtime and runtime.mode != "openai" and isinstance(result, dict):
+                    result = dict(result)
+                    if "passes_review" in result:
+                        result.update(
+                            passes_review=False,
+                            issues=[
+                                "Review unavailable: structured generation failed; this is not a passed review."
+                            ],
+                        )
+                    if "requires_human" in result:
+                        result["requires_human"] = True
                 emit(
                     "warning",
                     message="A provider or JSON parsing fallback was used. Inspect details and review important conclusions manually.",

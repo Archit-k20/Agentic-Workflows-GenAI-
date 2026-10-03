@@ -43,3 +43,32 @@ it("retains all creative options and source URLs", () => {
     urls: ["https://example.com/one", "https://example.com/two"],
   });
 });
+it("uses pasted transcripts and preserves free voice choices", () => {
+  expect(
+    buildInput(
+      "youtube-summary",
+      {
+        ...input,
+        source_type: "transcript",
+        transcript_text: "Full transcript",
+      },
+      [],
+    ),
+  ).toEqual({ tool: "youtube-summary", transcript_text: "Full transcript" });
+  expect(
+    buildInput(
+      "captions",
+      {
+        ...input,
+        source_type: "transcript",
+        transcript_text: "Full transcript",
+      },
+      [],
+    ),
+  ).toEqual({ tool: "captions", transcript_text: "Full transcript" });
+  expect(buildInput("speech", { ...input, voice: "af_heart" }, [])).toEqual({
+    tool: "speech",
+    text: "Text",
+    voice: "af_heart",
+  });
+});

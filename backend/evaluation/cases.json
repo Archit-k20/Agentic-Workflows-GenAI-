@@ -1,0 +1,635 @@
+[
+  {
+    "id": "summary-01",
+    "kind": "summary",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Alder",
+      "32",
+      "Priya Shah"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-02",
+    "kind": "summary",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Birch",
+      "40",
+      "Mira Chen"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-03",
+    "kind": "summary",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Cedar",
+      "18",
+      "Omar Reed"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-04",
+    "kind": "summary",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Delta",
+      "64",
+      "Sara Bell"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-05",
+    "kind": "summary",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Elm",
+      "25",
+      "Noah Lane"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-06",
+    "kind": "summary",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Fir",
+      "12",
+      "Leah Moss"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-07",
+    "kind": "summary",
+    "source": "Project Grove ships 48 filters on April 8, 2027. The owner is Arun Das. The budget is USD 1440. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Grove",
+      "48",
+      "Arun Das"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-08",
+    "kind": "summary",
+    "source": "Project Hazel ships 30 batteries on May 16, 2027. The owner is Emma Hart. The budget is USD 990. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Hazel",
+      "30",
+      "Emma Hart"
+    ],
+    "long": false
+  },
+  {
+    "id": "summary-09",
+    "kind": "summary",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Alder",
+      "32",
+      "Priya Shah"
+    ],
+    "long": true
+  },
+  {
+    "id": "summary-10",
+    "kind": "summary",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Birch",
+      "40",
+      "Mira Chen"
+    ],
+    "long": true
+  },
+  {
+    "id": "summary-11",
+    "kind": "summary",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Cedar",
+      "18",
+      "Omar Reed"
+    ],
+    "long": true
+  },
+  {
+    "id": "summary-12",
+    "kind": "summary",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Summarize all significant facts.",
+    "facts": [
+      "Delta",
+      "64",
+      "Sara Bell"
+    ],
+    "long": true
+  },
+  {
+    "id": "qa-01",
+    "kind": "qa",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Who owns the pilot and how many units will it ship?",
+    "facts": [
+      "Priya Shah",
+      "32"
+    ]
+  },
+  {
+    "id": "qa-02",
+    "kind": "qa",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Who owns the pilot and how many units will it ship?",
+    "facts": [
+      "Mira Chen",
+      "40"
+    ]
+  },
+  {
+    "id": "qa-03",
+    "kind": "qa",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Who owns the pilot and how many units will it ship?",
+    "facts": [
+      "Omar Reed",
+      "18"
+    ]
+  },
+  {
+    "id": "qa-04",
+    "kind": "qa",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Who owns the pilot and how many units will it ship?",
+    "facts": [
+      "Sara Bell",
+      "64"
+    ]
+  },
+  {
+    "id": "qa-05",
+    "kind": "qa",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Who owns the pilot and how many units will it ship?",
+    "facts": [
+      "Noah Lane",
+      "25"
+    ]
+  },
+  {
+    "id": "qa-06",
+    "kind": "qa",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Who owns the pilot and how many units will it ship?",
+    "facts": [
+      "Leah Moss",
+      "12"
+    ]
+  },
+  {
+    "id": "qa-07",
+    "kind": "qa",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What is the CEO salary?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-08",
+    "kind": "qa",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What revenue is guaranteed?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-09",
+    "kind": "qa",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What is the medical safety certification?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-10",
+    "kind": "qa",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What is the warehouse address?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-11",
+    "kind": "qa",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What is the tracking number?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-12",
+    "kind": "qa",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "How many units sold last year?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-13",
+    "kind": "qa",
+    "source": "Project Grove ships 48 filters on April 8, 2027. The owner is Arun Das. The budget is USD 1440. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What is the secret API token?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-14",
+    "kind": "qa",
+    "source": "Project Hazel ships 30 batteries on May 16, 2027. The owner is Emma Hart. The budget is USD 990. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Which supplier manufactures the units?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-15",
+    "kind": "qa",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What is the owner phone number?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "qa-16",
+    "kind": "qa",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "What delivery day is guaranteed?",
+    "facts": [],
+    "absent": true
+  },
+  {
+    "id": "documents-01",
+    "kind": "documents",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Priya Shah",
+      "32"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-02",
+    "kind": "documents",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Mira Chen",
+      "40"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-03",
+    "kind": "documents",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Omar Reed",
+      "18"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-04",
+    "kind": "documents",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Sara Bell",
+      "64"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-05",
+    "kind": "documents",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Noah Lane",
+      "25"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-06",
+    "kind": "documents",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Leah Moss",
+      "12"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-07",
+    "kind": "documents",
+    "source": "Project Grove ships 48 filters on April 8, 2027. The owner is Arun Das. The budget is USD 1440. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Arun Das",
+      "48"
+    ],
+    "long": false
+  },
+  {
+    "id": "documents-08",
+    "kind": "documents",
+    "source": "Project Hazel ships 30 batteries on May 16, 2027. The owner is Emma Hart. The budget is USD 990. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Emma Hart",
+      "30"
+    ],
+    "long": true
+  },
+  {
+    "id": "research-01",
+    "kind": "research",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Evaluate the pilot scope and evidence gaps.",
+    "facts": [
+      "Alder",
+      "32"
+    ],
+    "partial": false,
+    "conflict": false
+  },
+  {
+    "id": "research-02",
+    "kind": "research",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Evaluate the pilot scope and evidence gaps.",
+    "facts": [
+      "Birch",
+      "40"
+    ],
+    "partial": false,
+    "conflict": false
+  },
+  {
+    "id": "research-03",
+    "kind": "research",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Evaluate the pilot scope and evidence gaps.",
+    "facts": [
+      "Cedar",
+      "18"
+    ],
+    "partial": false,
+    "conflict": false
+  },
+  {
+    "id": "research-04",
+    "kind": "research",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Evaluate the pilot scope and evidence gaps.",
+    "facts": [
+      "Delta",
+      "64"
+    ],
+    "partial": false,
+    "conflict": false
+  },
+  {
+    "id": "research-05",
+    "kind": "research",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Evaluate the pilot scope and evidence gaps.",
+    "facts": [
+      "Elm",
+      "25"
+    ],
+    "partial": false,
+    "conflict": true
+  },
+  {
+    "id": "research-06",
+    "kind": "research",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Evaluate the pilot scope and evidence gaps.",
+    "facts": [
+      "Fir",
+      "12"
+    ],
+    "partial": true,
+    "conflict": false
+  },
+  {
+    "id": "support-01",
+    "kind": "support",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Can I return an unopened item within 20 days?",
+    "facts": [],
+    "escalate": false
+  },
+  {
+    "id": "support-02",
+    "kind": "support",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "How many pilot units are planned?",
+    "facts": [],
+    "escalate": false
+  },
+  {
+    "id": "support-03",
+    "kind": "support",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "I was charged twice and want a refund now.",
+    "facts": [],
+    "escalate": true
+  },
+  {
+    "id": "support-04",
+    "kind": "support",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "My account was hacked; please reset credentials.",
+    "facts": [],
+    "escalate": true
+  },
+  {
+    "id": "support-05",
+    "kind": "support",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Give me legal advice to sue the company.",
+    "facts": [],
+    "escalate": true
+  },
+  {
+    "id": "support-06",
+    "kind": "support",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "The product caused a dangerous fire; what should I do?",
+    "facts": [],
+    "escalate": true
+  },
+  {
+    "id": "code-01",
+    "kind": "code",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Write unique_items(items), preserving original order.",
+    "facts": [],
+    "language": "python"
+  },
+  {
+    "id": "code-02",
+    "kind": "code",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Write uniqueItems(items), preserving original order.",
+    "facts": [],
+    "language": "javascript"
+  },
+  {
+    "id": "code-03",
+    "kind": "code",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Write a public Main class with a static method summing integer arrays.",
+    "facts": [],
+    "language": "java"
+  },
+  {
+    "id": "code-04",
+    "kind": "code",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Write an int sum(const int *values, int n) function.",
+    "facts": [],
+    "language": "c"
+  },
+  {
+    "id": "code-05",
+    "kind": "code",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Write an int sum(const std::vector<int>& values) function.",
+    "facts": [],
+    "language": "c++"
+  },
+  {
+    "id": "code-06",
+    "kind": "code",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Write normalize_email(email), stripping whitespace and lowercasing it; no network calls.",
+    "facts": [],
+    "language": "python"
+  },
+  {
+    "id": "content-01",
+    "kind": "content",
+    "source": "Project Alder ships 32 kits on November 9, 2026. The owner is Priya Shah. The budget is USD 740. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Alder",
+      "32"
+    ],
+    "tone": "professional",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  },
+  {
+    "id": "content-02",
+    "kind": "content",
+    "source": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Birch",
+      "40"
+    ],
+    "tone": "playful",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  },
+  {
+    "id": "content-03",
+    "kind": "content",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Cedar",
+      "18"
+    ],
+    "tone": "educational",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  },
+  {
+    "id": "content-04",
+    "kind": "content",
+    "source": "Project Delta ships 64 meters on January 12, 2027. The owner is Sara Bell. The budget is USD 2100. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Delta",
+      "64"
+    ],
+    "tone": "launch-ready",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  },
+  {
+    "id": "content-05",
+    "kind": "content",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Elm",
+      "25"
+    ],
+    "tone": "social-first",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  },
+  {
+    "id": "content-06",
+    "kind": "content",
+    "source": "Project Fir ships 12 routers on March 21, 2027. The owner is Leah Moss. The budget is USD 330. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Fir",
+      "12"
+    ],
+    "tone": "professional",
+    "platforms": [
+      "linkedin",
+      "x",
+      "instagram",
+      "youtube",
+      "blog"
+    ]
+  }
+]

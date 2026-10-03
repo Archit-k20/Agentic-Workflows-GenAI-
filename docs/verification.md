@@ -1,3 +1,13 @@
+# Free-access verification (implementation in progress)
+
+The free-access extension has 103 passing backend tests and eight passing frontend tests, with a production build and regenerated OpenAPI types. All fifteen adapters are exercised without visitor credentials using mocked hosted providers, real parsers/index persistence, and actual syntax/compiler checks. Additional tests cover atomic quotas/reservations, HMAC network limits, day resets, explicit provider routing, one structured-format repair, unavailable reviews, pinned model checks, and server-side Turnstile hostname/action validation.
+
+A 60-case real Cloudflare run completed with no workflow errors and no local fallback after fixing structured-object response handling and adding explicit JSON field types. All ten missing-answer questions were declined and all six code outputs passed the existing syntax/compiler checks. Grounding review and corrected output-only fact coverage are recorded separately; raw input previews must not count toward that metric. A real 1024 × 1024 FLUX image was inspected visually, six pinned Kokoro MP3 previews were generated/decoded, and browser preview playback/switching and a real keyless speech request were verified. This does not establish subjective speech quality or a universal accuracy guarantee.
+
+The full local quality run is being completed. Earlier local research cases took 447–514 seconds on two CPU threads; a local-only concision instruction is being evaluated while retaining model, context, output caps, source inspection and workflow stages. Deployment and target-VM capacity gates remain deferred. Updated native ARM/AMD CI also exercises real pinned embeddings/index recovery, speech and the local model.
+
+The rest of this file records the original React migration validation.
+
 # Verification record
 
 Implementation branch: `codex/trace-react-workspace`. Baseline: `17cc2b65b700ef2312d80fdaa62127e943dc61cb`.

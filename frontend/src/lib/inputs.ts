@@ -12,7 +12,13 @@ export function buildInput(
     | "fable"
     | "onyx"
     | "nova"
-    | "shimmer";
+    | "shimmer"
+    | "af_heart"
+    | "af_bella"
+    | "af_nicole"
+    | "am_michael"
+    | "am_fenrir"
+    | "bf_emma";
   const urls = (input.urls || "")
     .split("\n")
     .map((u) => u.trim())
@@ -29,8 +35,11 @@ export function buildInput(
     case "text-summary":
       return { tool, text: input.text };
     case "youtube-summary":
-    case "article-summary":
     case "captions":
+      return input.source_type === "transcript"
+        ? { tool, transcript_text: input.transcript_text }
+        : { tool, url: input.url.trim() };
+    case "article-summary":
       return { tool, url: input.url.trim() };
     case "image":
       return { tool, prompt: input.prompt.trim() };

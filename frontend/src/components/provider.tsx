@@ -9,6 +9,7 @@ import {
 } from "react";
 import { MotionConfig } from "motion/react";
 import * as Tooltip from "@radix-ui/react-tooltip";
+import type { Mode } from "../lib/api";
 import type { ToolId } from "../lib/tools";
 import type { Result, Stage, ContextResult } from "../lib/types";
 export type Draft = {
@@ -47,6 +48,8 @@ export const emptyDraft = (): Draft => ({
   warnings: [],
 });
 type State = {
+  mode: Mode;
+  setMode: (mode: Mode) => void;
   key: string;
   setKey: (s: string) => void;
   theme: string;
@@ -60,6 +63,7 @@ type State = {
 };
 const Context = createContext<State | null>(null);
 export function Provider({ children }: { children: ReactNode }) {
+  const [mode, changeMode] = useState<Mode>("free");
   const [key, setKey] = useState(""),
     [theme, setTheme] = useState("dark"),
     [themeReady, setThemeReady] = useState(false),
@@ -99,6 +103,22 @@ export function Provider({ children }: { children: ReactNode }) {
   return (
     <Context.Provider
       value={{
+        mode,
+        setMode: (next) => {
+          changeMode(next);
+          setDrafts((previous) =>
+            Object.fromEntries(
+              Object.entries(previous).map(([id, draft]) => [
+                id,
+                {
+                  ...draft,
+                  context: undefined,
+                  inputsChanged: !!draft?.result,
+                },
+              ]),
+            ),
+          );
+        },
         key,
         setKey,
         theme,

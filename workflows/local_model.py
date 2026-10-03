@@ -1,8 +1,8 @@
 """One CPU model, serialized inference, original per-tool parameters."""
 
-from threading import RLock
+from backend.free_config import CPU_GATE
 
-_lock = RLock()
+_lock = CPU_GATE
 _model = None
 
 

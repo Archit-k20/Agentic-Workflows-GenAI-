@@ -1,3 +1,5 @@
+> Before public hosting, follow the [free-access setup](free-access.md#before-public-deployment-later-phase): owner credentials, warmed local models, exact origins/proxy configuration and server-validated Turnstile are required. Vercel/Oracle provisioning and production publishing are still deferred.
+
 # Deployment preparation — no services have been provisioned
 
 ## Local verification

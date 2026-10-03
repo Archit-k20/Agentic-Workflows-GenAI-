@@ -5,6 +5,60 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/api/v1/capabilities": {
+      "get": {
+        "summary": "Capabilities",
+        "operationId": "capabilities_api_v1_capabilities_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/current/usage": {
+      "get": {
+        "summary": "Visitor Usage",
+        "operationId": "visitor_usage_api_v1_sessions_current_usage_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/health": {
       "get": {
         "summary": "Health",
@@ -25,12 +79,40 @@
       "post": {
         "summary": "Create Session",
         "operationId": "create_session_api_v1_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Proof"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
               }
             }
           }
@@ -141,6 +223,22 @@
               "type": "string",
               "default": "",
               "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
             }
           }
         ],
@@ -269,6 +367,22 @@
               "default": "",
               "title": "X-Openai-Key"
             }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
+            }
           }
         ],
         "requestBody": {
@@ -328,6 +442,22 @@
               "type": "string",
               "default": "",
               "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
             }
           }
         ],
@@ -397,6 +527,22 @@
               "type": "string",
               "default": "",
               "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
             }
           }
         ],
@@ -506,6 +652,38 @@
       },
       "ArtifactResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Width"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Height"
+          },
           "tool": {
             "type": "string",
             "enum": [
@@ -553,15 +731,33 @@
             "title": "Tool"
           },
           "url": {
-            "type": "string",
-            "minLength": 1,
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Url"
+          },
+          "transcript_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transcript Text"
           }
         },
         "type": "object",
         "required": [
-          "tool",
-          "url"
+          "tool"
         ],
         "title": "Captions"
       },
@@ -651,6 +847,16 @@
       },
       "CodeResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "const": "code",
@@ -741,17 +947,29 @@
             "default": false
           },
           "voice": {
-            "type": "string",
-            "enum": [
-              "alloy",
-              "echo",
-              "fable",
-              "onyx",
-              "nova",
-              "shimmer"
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "alloy",
+                  "echo",
+                  "fable",
+                  "onyx",
+                  "nova",
+                  "shimmer",
+                  "af_heart",
+                  "af_bella",
+                  "af_nicole",
+                  "am_michael",
+                  "am_fenrir",
+                  "bf_emma"
+                ]
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Voice",
-            "default": "alloy"
+            "title": "Voice"
           }
         },
         "type": "object",
@@ -763,6 +981,16 @@
       },
       "ContentResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "const": "content",
@@ -843,6 +1071,28 @@
       },
       "ContextResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile"
+          },
           "context_id": {
             "type": "string",
             "title": "Context Id"
@@ -898,6 +1148,16 @@
       },
       "DocumentResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "const": "documents",
@@ -947,6 +1207,57 @@
           "file_ids"
         ],
         "title": "DocumentsContext"
+      },
+      "Execution": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "free",
+              "local",
+              "openai"
+            ],
+            "title": "Mode"
+          },
+          "engines": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Engines",
+            "default": []
+          },
+          "fallback": {
+            "type": "boolean",
+            "title": "Fallback",
+            "default": false
+          },
+          "coverage": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Coverage",
+            "default": []
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "mode"
+        ],
+        "title": "Execution"
       },
       "FileSummary": {
         "properties": {
@@ -1055,6 +1366,16 @@
       },
       "QAResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "enum": [
@@ -1129,6 +1450,16 @@
       },
       "ResearchResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "const": "research",
@@ -1259,17 +1590,29 @@
             "title": "Text"
           },
           "voice": {
-            "type": "string",
-            "enum": [
-              "alloy",
-              "echo",
-              "fable",
-              "onyx",
-              "nova",
-              "shimmer"
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "alloy",
+                  "echo",
+                  "fable",
+                  "onyx",
+                  "nova",
+                  "shimmer",
+                  "af_heart",
+                  "af_bella",
+                  "af_nicole",
+                  "am_michael",
+                  "am_fenrir",
+                  "bf_emma"
+                ]
+              },
+              {
+                "type": "null"
+              }
             ],
-            "title": "Voice",
-            "default": "alloy"
+            "title": "Voice"
           }
         },
         "type": "object",
@@ -1311,6 +1654,16 @@
       },
       "SupportResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "const": "support",
@@ -1370,6 +1723,16 @@
       },
       "TextResult": {
         "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "tool": {
             "type": "string",
             "enum": [
@@ -1605,15 +1968,33 @@
             "title": "Tool"
           },
           "url": {
-            "type": "string",
-            "minLength": 1,
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Url"
+          },
+          "transcript_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transcript Text"
           }
         },
         "type": "object",
         "required": [
-          "tool",
-          "url"
+          "tool"
         ],
         "title": "YoutubeSummary"
       }

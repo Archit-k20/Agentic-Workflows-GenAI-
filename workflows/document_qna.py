@@ -6,7 +6,7 @@ import docx
 
 import fitz
 
-from openai import OpenAI
+from .runtime import client as OpenAI
 
 MAX_FILES = 3
 
