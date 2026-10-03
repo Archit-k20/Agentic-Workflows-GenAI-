@@ -88,7 +88,24 @@ if args.ollama:
     assert isinstance(parsed["goal"], str) and all(
         isinstance(item, str) for item in parsed["sub_questions"]
     )
+    import os
+    import time
+    import httpx
+
+    for attempt in range(30):
+        loaded = (
+            httpx.get(
+                os.environ.get("TRACE_OLLAMA_URL", "http://ollama:11434") + "/api/ps",
+                timeout=5,
+            )
+            .json()
+            .get("models", [])
+        )
+        if not loaded:
+            break
+        time.sleep(0.1)
+    assert not loaded, "The local model/cache must unload after generation."
     print(
-        "Pinned CPU Ollama inference and constrained JSON generation passed.",
+        "Pinned CPU Ollama inference, constrained JSON generation and cache unloading passed.",
         flush=True,
     )

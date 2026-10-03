@@ -3,9 +3,10 @@
 import os
 from threading import RLock
 
-CHAT_MODEL = "@cf/qwen/qwen3-30b-a3b-fp8"
+CHAT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
 CODE_MODEL = "@cf/qwen/qwen2.5-coder-32b-instruct"
 IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell"
+HOSTED_RATES = {CHAT_MODEL: (26668, 204805), CODE_MODEL: (60000, 90909)}
 LOCAL_DIGEST = "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd"
 LOCAL_MODEL = "qwen3.5:4b"
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"

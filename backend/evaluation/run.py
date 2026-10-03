@@ -188,6 +188,9 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--limit", type=int, default=60)
     parser.add_argument("--start", type=int, default=0)
+    parser.add_argument("--hosted-only", action="store_true")
+    parser.add_argument("--stop-on-error", action="store_true")
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     load_owner(args.owner_env)
     output = Path(args.output)
@@ -198,13 +201,31 @@ def main():
     cases = json.loads(Path(__file__).with_name("cases.json").read_text())[
         args.start : args.start + args.limit
     ]
+    from backend import free_config as cfg
+
+    profile = {
+        "hosted_text": cfg.CHAT_MODEL,
+        "hosted_code": cfg.CODE_MODEL,
+        "local_digest": cfg.LOCAL_DIGEST,
+    }
     rows = []
+    if args.resume and output.exists():
+        previous = json.loads(output.read_text())
+        if previous.get("profile") != profile or previous["mode"] != args.mode:
+            raise ValueError(
+                "Evaluation profile changed; use a new output file rather than mixing model results."
+            )
+        rows = [r for r in previous["rows"] if not r["error"]]
+    completed = {r["id"] for r in rows}
     for case in cases:
+        if case["id"] in completed:
+            continue
         runtime = Runtime(
             args.mode,
             {"summary": "text-summary", "qa": "qa"}.get(case["kind"], case["kind"]),
             policy,
         )
+        runtime.allow_fallback = not args.hosted_only
         token = current.set(runtime)
         events = []
         observation = observer.set(lambda e, d: events.append({"event": e, "data": d}))
@@ -239,6 +260,7 @@ def main():
             json.dumps(
                 {
                     "mode": args.mode,
+                    "profile": profile,
                     "fixture_count": len(cases),
                     "rows": rows,
                     "quality_gate": "pending rubric review",
@@ -253,6 +275,8 @@ def main():
             row["seconds"],
             flush=True,
         )
+        if row["error"] and args.stop_on_error:
+            break
     failures = [
         r
         for r in rows

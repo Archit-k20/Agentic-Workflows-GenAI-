@@ -529,3 +529,73 @@ def test_local_decoder_schema_covers_nested_fields_and_platforms():
     )
     assert set(content["properties"]["captions"]["required"]) == {"linkedin", "x"}
     assert content["properties"]["captions"]["additionalProperties"] is False
+
+
+def test_larger_hosted_model_reserves_and_reconciles_its_actual_rate(
+    tmp_path, monkeypatch
+):
+    from backend import free_config as cfg
+    import httpx
+
+    monkeypatch.setenv("TRACE_CLOUDFLARE_ACCOUNT_ID", "test-account")
+    monkeypatch.setenv("TRACE_CLOUDFLARE_API_TOKEN", "test-token")
+    policy = Policy(LocalStorage(tmp_path))
+    runtime = Runtime("free", "text-summary", policy)
+
+    def post(url, **kwargs):
+        return httpx.Response(
+            200,
+            request=httpx.Request("POST", url),
+            json={
+                "success": True,
+                "result": {
+                    "response": "A summary",
+                    "usage": {"prompt_tokens": 100, "completion_tokens": 100},
+                },
+            },
+        )
+
+    monkeypatch.setattr("backend.providers.httpx.post", post)
+    runtime.hosted(
+        cfg.CHAT_MODEL, {"messages": [{"role": "user", "content": "A source"}]}, 600
+    )
+    with policy.storage.connect() as db:
+        amount = db.execute("select amount from reservations").fetchone()[0]
+    assert amount == pytest.approx((100 * 26668 + 100 * 204805) / 1e6)
+
+
+def test_hosted_only_evaluation_does_not_substitute_local_output(monkeypatch):
+    runtime = Runtime("free", "research")
+    runtime.allow_fallback = False
+    monkeypatch.setattr(processing, "tokenizer", lambda: Tokenizer())
+    monkeypatch.setattr(
+        runtime,
+        "hosted",
+        lambda *a, **kw: (_ for _ in ()).throw(Capacity("Daily budget exhausted")),
+    )
+    with pytest.raises(Capacity, match="Daily budget exhausted"):
+        runtime.text(
+            [
+                {"role": "system", "content": "Summarize"},
+                {"role": "user", "content": "Source"},
+            ]
+        )
+    assert runtime.local is False
+
+
+def test_multibyte_local_prompt_cannot_silently_overrun_context(monkeypatch):
+    monkeypatch.setattr(processing, "tokenizer", lambda: Tokenizer())
+    monkeypatch.setattr(
+        "backend.providers.httpx.get",
+        lambda *a, **k: (_ for _ in ()).throw(
+            AssertionError("No model request should occur")
+        ),
+    )
+    runtime = Runtime("local", "code")
+    with pytest.raises(ValueError, match="safe CPU context budget"):
+        runtime.text(
+            [
+                {"role": "system", "content": "Generate code"},
+                {"role": "user", "content": "🙂" * 4000},
+            ]
+        )

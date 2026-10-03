@@ -23,6 +23,7 @@ class Runtime:
         self.expensive, self.audio_started = False, False
         self.local_verified = False
         self.platforms = []
+        self.allow_fallback = True
         self.client = NS(chat=NS(completions=NS(create=self.create)))
 
     def check(self):
@@ -58,7 +59,7 @@ class Runtime:
         category = "image" if model == cfg.IMAGE_MODEL else "text"
         # UTF-8 bytes conservatively bound token count, including template overhead.
         upper = len(json.dumps(payload, ensure_ascii=False).encode()) + 1024
-        rates = (60000, 90909) if model == cfg.CODE_MODEL else (4625, 30475)
+        rates = cfg.HOSTED_RATES.get(model, (0, 0))
         amount = (
             200
             if category == "image"
@@ -125,6 +126,15 @@ class Runtime:
             messages[0][
                 "content"
             ] += "\nKeep the report concise: aim for 350 words, avoiding repeated caveats. Retain the required sections, relevant quantities, source labels and evidence conflicts. For JSON reviews, revised_report is the complete concise report, not an expanded essay."
+        if (
+            sum(len(m["content"].encode("utf-8")) for m in messages)
+            + output_limit
+            + 1024
+            > 16384
+        ):
+            raise ValueError(
+                "This stage exceeds the safe CPU context budget. Shorten the prompt or use fewer sources; no input was silently truncated."
+            )
         self.expensive = True
         emit("stage", name="Generate with local text model", status="running")
         with cfg.CPU_GATE:
@@ -166,7 +176,7 @@ class Runtime:
                             if structured
                             else ""
                         ),
-                        "keep_alive": "5m",
+                        "keep_alive": 0,
                         "options": {
                             "num_ctx": 16384,
                             "num_predict": output_limit,
@@ -231,6 +241,25 @@ class Runtime:
             )
         if not self.local:
             model = cfg.CODE_MODEL if self.tool == "code" else cfg.CHAT_MODEL
+            if self.tool == "research" and any(
+                marker in messages[0]["content"]
+                for marker in (
+                    "grounded research reports",
+                    "revise research reports",
+                    "revised_report",
+                )
+            ):
+                messages[0]["content"] += (
+                    "\nKeep the complete report around 350 words. Preserve the requested sections, "
+                    "dates, product quantities, project names, owners and source conflicts; avoid repeating evidence gaps."
+                )
+            if (
+                sum(len(m["content"].encode("utf-8")) for m in messages) + limit + 1024
+                > 24000
+            ):
+                raise ValueError(
+                    "This stage exceeds the safe hosted context budget. Shorten the prompt or use fewer sources; no input was silently truncated."
+                )
             payload = {
                 "messages": messages,
                 "temperature": temperature,
@@ -252,6 +281,8 @@ class Runtime:
                     )
                 return text
             except Capacity as exc:
+                if not self.allow_fallback:
+                    raise
                 self.local = True
                 self.warning(
                     str(exc)
