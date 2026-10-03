@@ -203,6 +203,17 @@ class Runtime:
             "Do not invent dates, amounts, deadlines, citations, product contents/features, endorsements, relative urgency or launch status. "
             "Marketing tone changes wording only, never facts; proposed recommendations must be labeled as suggestions. /no_think"
         )
+        if self.tool == "content":
+            messages[0]["content"] += (
+                "\nProduce complete usable copy with no fill-in placeholders. If purpose, features or benefits are unknown, omit those claims. "
+                "Do not describe a scheduled launch as 'here', 'live' or 'underway'. "
+                "In reviews, missing product features are not a defect to fill with invented features; "
+                "revise only against facts in the supplied idea. Preserve material dates, quantities, owners and conditions. "
+                "An owner is not necessarily the inventor or author of a testimonial. "
+                "Image prompts describe proposed visual concepts, not evidence of actual product appearance. "
+                "Keep scripts around 150 words, captions at most 40 words each, and plan/review lists concise "
+                "so the complete JSON fits the output budget. Omit unsupported claims instead of substituting promotional promises."
+            )
         # Reject prompts that could exceed the constrained local context; never silently truncate.
         from .processing import tokenizer
 
