@@ -102,7 +102,7 @@ def evaluate(case, store, sid, runtime):
         content = (
             source
             if not url.endswith("conflict")
-            else "A conflicting draft lists only 20 units; its date and authority are not established."
+            else case.get("conflict_source", "A conflicting draft lists only 20 units; its date and authority are not established.")
         )
         return {
             "url": url,
@@ -125,8 +125,18 @@ def score(case, result, runtime):
         or result.get("final_script")
         or json.dumps(result.get("documents") or result.get("final") or result)
     )
+    if kind == "support":
+        text = result.get("final", {}).get("answer", "")
     if kind == "documents":
-        text = json.dumps([d["analysis"] for d in result["documents"]])
+        # Rejected suggestions and source quotes are diagnostic/source data,
+        # not accepted analysis claims. They must not inflate fact presence.
+        text = json.dumps([{
+            "summary": d["analysis"].get("summary", ""),
+            "entities": d["analysis"].get("entities", {}),
+            "risks": d["analysis"].get("risks", []),
+            "action_items": [{k: a.get(k, "") for k in ("task", "owner", "due_date", "priority")}
+                             for a in d["analysis"].get("action_items", [])],
+        } for d in result["documents"]])
     coverage = (
         sum(
             (
@@ -162,7 +172,7 @@ def score(case, result, runtime):
         if case.get("escalate")
         else None
     )
-    nonempty = bool(text.strip())
+    nonempty = bool(result.get("documents")) if kind == "documents" else bool(text.strip())
     # Coverage is a fact-presence screen. Rubric grounding review is a separate mandatory gate.
     return {
         "fact_coverage": coverage,
@@ -185,6 +195,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=["free", "local"], required=True)
     parser.add_argument("--owner-env")
+    parser.add_argument("--cases", type=Path, default=Path(__file__).with_name("cases.json"),
+                        help="Fixed fixture JSON; its hash is checked when resuming.")
     parser.add_argument("--output", required=True)
     parser.add_argument("--limit", type=int, default=60)
     parser.add_argument("--start", type=int, default=0)
@@ -203,7 +215,8 @@ def main():
     # Evaluation and live requests must reserve the same owner compute allowance.
     policy = shared_policy
     sid = store.session(store.create_session()["token"])
-    cases = json.loads(Path(__file__).with_name("cases.json").read_text())[
+    fixture_bytes = args.cases.read_bytes()
+    cases = json.loads(fixture_bytes)[
         args.start : args.start + args.limit
     ]
     by_id = {case["id"]: case for case in cases}
@@ -220,6 +233,7 @@ def main():
         "hosted_text": cfg.CHAT_MODEL,
         "hosted_code": cfg.CODE_MODEL,
         "local_digest": cfg.LOCAL_DIGEST,
+        "fixtures_sha256": hashlib.sha256(fixture_bytes).hexdigest(),
     }
     # Resume only compatible inference code, not just matching model names.
     root = Path(__file__).resolve().parents[2]
@@ -227,7 +241,7 @@ def main():
     for path in sorted(
         [root / "backend" / name for name in (
             "providers.py", "processing.py", "structured.py", "retrieval.py",
-            "engine.py", "events.py", "free_config.py",
+            "engine.py", "events.py", "free_config.py", "grounding.py",
         )] + list((root / "workflows").glob("*.py"))
     ):
         pipeline.update(str(path.relative_to(root)).encode())
@@ -257,12 +271,16 @@ def main():
         start = time.monotonic()
         try:
             result = evaluate(case, store, sid, runtime)
+            incomplete = args.hosted_only and any(
+                event["event"] == "warning" and "provider or JSON parsing fallback" in event["data"].get("message", "")
+                for event in events
+            )
             row = {
                 "id": case["id"],
                 "kind": case["kind"],
-                "score": score(case, result, runtime),
+                "score": None if incomplete else score(case, result, runtime),
                 "result": result,
-                "error": None,
+                "error": "Hosted evaluation used a provider/JSON fallback; incomplete stages cannot pass the hosted gate." if incomplete else None,
             }
         except Exception as exc:
             row = {

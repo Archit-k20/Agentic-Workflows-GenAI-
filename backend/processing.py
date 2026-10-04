@@ -199,6 +199,7 @@ def summarize(text, runtime, source="Input"):
 
 def override(module, name, args, kwargs, fn, runtime):
     """Free hooks reuse legacy reasoning functions with bounded, complete sources."""
+    from . import grounding as g
     if name in {"fetch_source", "fetch_support_source"}:
         return article(args[0], runtime)
     if name == "extract_document_text":
@@ -213,9 +214,11 @@ def override(module, name, args, kwargs, fn, runtime):
             return "Error: " + str(exc)
     if name == "analyze_document":
         document, client = args
-        analyses = [
-            fn({**document, "text": part}, client) for part in chunks(document["text"])
-        ]
+        analyses = []
+        for part in chunks(document["text"]):
+            with g.scope(runtime, "document", part):
+                analysis = fn({**document, "text": part}, client)
+            analyses.append(g.document_analysis(analysis, part, runtime))
         if len(analyses) == 1:
             return analyses[0]
         result = {
@@ -240,7 +243,7 @@ def override(module, name, args, kwargs, fn, runtime):
         result["summary"] = summarize(
             result["summary"], runtime, "Document section summaries"
         )
-        return result
+        return g.document_analysis(result, document["text"], runtime)
     if name in {"summarize_source", "summarize_support_source"}:
         index = 0 if name == "summarize_source" else 1
         source = args[index]
@@ -248,19 +251,25 @@ def override(module, name, args, kwargs, fn, runtime):
         for part in chunks(source["text"]):
             bounded = list(args)
             bounded[index] = {**source, "text": part}
-            results.append(fn(*bounded, **kwargs))
+            with g.scope(runtime, "support-source" if name == "summarize_support_source" else "research-source", part):
+                results.append(fn(*bounded, **kwargs))
         result = results[0]
         result["label"] = args[4] if name == "summarize_source" else args[2]
         if len(results) > 1:
-            result["summary"] = summarize(
-                "\n".join(r["summary"] for r in results),
-                runtime,
-                "Source section summaries",
+            # Support reasoning receives only actual source excerpts, never a
+            # second paraphrase that could import a customer's allegation.
+            combined = "\n".join(r["summary"] for r in results)
+            result["summary"] = combined if name == "summarize_support_source" else summarize(
+                combined, runtime, "Source section summaries",
             )
             if name == "summarize_source":
                 result["key_points"] = list(
                     dict.fromkeys(x for r in results for x in r.get("key_points", []))
                 )
+        if name == "summarize_support_source":
+            result["metadata"] = {"model_relevance": result.get("relevance", ""),
+                                  "source_provenance": "Verbatim documentation excerpt"}
+            result["relevance"] = "Quoted documentation; assess eligibility at the resolution stage."
         # Keep draft and review prompts within the local context envelope.
         if len(json.dumps(result).encode()) > 5000:
             runtime.warning(
@@ -269,5 +278,46 @@ def override(module, name, args, kwargs, fn, runtime):
             raise ValueError(
                 "Source digest exceeds the bounded synthesis budget. Split the source; no key points were silently discarded."
             )
+        return result
+    if name in {"synthesize_report", "critique_report", "revise_report"}:
+        sources = args[2] if name != "critique_report" else args[1]
+        with g.scope(runtime, "research-report", labels=[s["label"] for s in sources]):
+            result = fn(*args, **kwargs)
+        if name == "critique_report":
+            return g.research_review(result, args[2], sources, runtime)
+        issues = g.report_issues(result, sources)
+        if issues:
+            if name == "revise_report" and not g.report_issues(args[3], sources):
+                runtime.warning("Revision failed report structure/citation checks; the last valid report was retained.")
+                history = getattr(runtime, "research_rejections", [])
+                history.append({"stage": "revision", "revision": result, "issues": issues})
+                runtime.research_rejections = history
+                return args[3]
+            raise ValueError("Research report failed source/structure checks: " + "; ".join(issues))
+        return result
+    if name == "draft_support_resolution":
+        question, intent, sources, _ = args
+        source = "\n".join(s["summary"] for s in sources)
+        with g.scope(runtime, "support-draft", source, [s["label"] for s in sources]):
+            bounded = list(args)
+            bounded[2] = [{k: v for k, v in item.items() if k != "metadata"} for item in sources]
+            result = fn(*bounded, **kwargs)
+        return g.support_draft(result, question, intent, sources, runtime)
+    if name == "finalize_triage":
+        result = fn(*args, **kwargs)
+        return g.support_final(result, args[2], args[3], runtime)
+    if name in {"build_content_plan", "build_content_package", "critique_content_package"}:
+        with g.scope(runtime, "content", args[0]):
+            result = fn(*args, **kwargs)
+        if name == "build_content_plan":
+            result["proposal_scope"] = "Creative proposals only; the original idea is the factual source."
+        elif name == "build_content_package":
+            output = "\n".join([result["title"], result["script"], result["cta"], *result["captions"].values(), *result["hashtags"]])
+            issues = g.claim_issues(output, args[0])
+            if issues:
+                raise ValueError("Content package failed source checks: " + "; ".join(issues))
+            result["script"], _ = g.restore_details(result["script"], args[0], runtime, "Content script")
+        else:
+            return g.content_review(result, args[0], args[4], runtime)
         return result
     return fn(*args, **kwargs)

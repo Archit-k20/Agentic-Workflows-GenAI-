@@ -1,3 +1,21 @@
+# Current source-check correction status — 4 October 2026 IST
+
+See [verification record](../verification.md) for the implemented guards, tests and remaining gates. **The final-profile full hosted suite is pending**, after Cloudflare explicitly exhausted its account-wide free allowance. The prior sixty-case run below establishes the failures before these corrections; its fingerprint no longer describes the current adapter.
+
+New evidence:
+
+- `hosted-boundaries-first-pass.json`: seven completed Llama cases on the earlier correction profile. Day 20/30/31, conflicting-policy escalation and explicit document assignment worked; receipt routing exposed a guard false positive, subsequently corrected. `...-metrics.json` uses the latest accepted-output screen; raw original scores remain intact. This is not final-code quality acceptance.
+- `hosted-boundaries-capacity-stop.json`: Hosted attempt stopped by provider capacity on its first case, with no successful complete cases. The final denial-wording check changed the fingerprint afterward; use the new retest filename after reset.
+- `cloudflare-capacity-check.json`: HTTP 429 / error 4006 explicitly reports the daily 10,000-Neuron allocation exhausted. Estimated application text reservations 6,095.81; not actual provider usage. No paid upgrade or quota reset.
+- `local-assignment-sourcechecked.json` and metrics: one real current-profile CPU document case, correct explicit assignee/evidence, material details retained, unknown priority, 123.85 s; cache unloaded. Not a full local benchmark.
+- `source-checks-review.json`: source-based findings, fingerprints, evidence hashes, guard limitations and remaining tests.
+
+161 backend tests, eight frontend tests/typecheck and real CPU embedding/index/speech smoke checks pass. Source guards do not certify arbitrary factual correctness. The final-commit native checks and future target-VM/live quality acceptance remain separate.
+
+---
+
+## Hosted baseline before source-check corrections
+
 # Model evaluation evidence — updated 4 October 2026 IST
 
 All cases use committed synthetic English source text. Provider/model inference is real; synthetic URL text is supplied by the evaluation harness, so these runs do not test extraction from live websites. No paid OpenAI calls were made. Screening metrics count facts in outputs only, weight by expected fact count, and give missing/error cases zero. **96.59% fact presence is not 96.59% accuracy.** Grounding/usefulness review is a separate gate.

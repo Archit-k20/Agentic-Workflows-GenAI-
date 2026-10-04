@@ -121,8 +121,9 @@ def summarize(cases, rows, mode):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("report")
+    parser.add_argument("--cases", type=Path, default=Path(__file__).with_name("cases.json"))
     args = parser.parse_args()
-    cases = json.loads(Path(__file__).with_name("cases.json").read_text())
+    cases = json.loads(args.cases.read_text())
     report = json.loads(Path(args.report).read_text())
     print(json.dumps(summarize(cases, report["rows"], report["mode"]), indent=2))
 

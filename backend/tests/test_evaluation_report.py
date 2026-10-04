@@ -138,3 +138,72 @@ def test_unknown_priority_stops_before_inference(tmp_path, monkeypatch):
         run.main()
     assert stopped.value.code == 2
     assert not (tmp_path / "bad.json").exists()
+
+
+def test_fixture_changes_cannot_be_mixed_by_resume(tmp_path, monkeypatch):
+    import json
+    import sys
+    import pytest
+    from backend.evaluation import run
+    from backend.storage import LocalStorage
+    fixtures = LocalStorage(tmp_path / "storage")
+    monkeypatch.setattr(run, "LocalStorage", lambda _: fixtures)
+    monkeypatch.setattr(run, "evaluate", lambda case, *_: {"text": case["source"]})
+    output = tmp_path / "result.json"
+    cases = tmp_path / "cases.json"
+    cases.write_text(json.dumps([{"id": "a", "kind": "summary", "source": "First", "facts": []}]))
+    argv = ["evaluate", "--mode", "free", "--cases", str(cases), "--output", str(output)]
+    monkeypatch.setattr(sys, "argv", argv)
+    run.main()
+    cases.write_text(json.dumps([{"id": "a", "kind": "summary", "source": "Different", "facts": []}]))
+    monkeypatch.setattr(sys, "argv", argv + ["--resume"])
+    with pytest.raises(ValueError, match="profile changed"):
+        run.main()
+
+
+def test_hosted_gate_cannot_count_swallowed_provider_failure_as_complete(tmp_path, monkeypatch):
+    import json
+    import sys
+    from backend.evaluation import run
+    from backend.events import emit
+    from backend.storage import LocalStorage
+    fixtures = LocalStorage(tmp_path / "storage")
+    monkeypatch.setattr(run, "LocalStorage", lambda _: fixtures)
+    def evaluate(case, *_):
+        emit("warning", message="A provider or JSON parsing fallback was used. Inspect details.")
+        return {"text": "Preserved usable draft"}
+    monkeypatch.setattr(run, "evaluate", evaluate)
+    output = tmp_path / "result.json"
+    monkeypatch.setattr(sys, "argv", ["evaluate", "--mode", "free", "--hosted-only", "--stop-on-error", "--output", str(output), "--limit", "2"])
+    run.main()
+    rows = json.loads(output.read_text())["rows"]
+    assert len(rows) == 1 and rows[0]["score"] is None
+    assert "incomplete stages" in rows[0]["error"]
+    assert rows[0]["result"]["text"] == "Preserved usable draft"
+
+
+def test_support_fact_screen_cannot_count_a_rejected_answer():
+    from backend.evaluation.run import score
+    from backend.providers import Runtime
+    value = score({"kind": "support", "facts": ["receipt"]},
+                  {"final": {"answer": "Human review required.", "rejected_answer": "No receipt required."}},
+                  Runtime("free", "support"))
+    assert value["fact_coverage"] == 0
+
+
+def test_document_fact_screen_cannot_count_source_quotes_or_rejected_assignees():
+    from backend.evaluation.run import score
+    from backend.providers import Runtime
+    value = score({"kind": "documents", "facts": ["32", "Emma Hart"]},
+        {"documents": [{"analysis": {"summary": "A shipment is planned.", "action_items": [
+            {"task": "Ship kits", "owner": "Not specified", "evidence": "Emma Hart owns the project; 32 kits ship.", "proposed_owner": "Emma Hart"}]}}]},
+        Runtime("free", "documents"))
+    assert value["fact_coverage"] == 0
+
+
+def test_document_failure_does_not_count_an_empty_analysis_list_as_usable_output():
+    from backend.evaluation.run import score
+    from backend.providers import Runtime
+    value = score({"kind": "documents", "facts": []},
+                  {"documents": [], "errors": [{"error": "Provider failed"}]}, Runtime("free", "documents"))
+    assert value["nonempty"] is False

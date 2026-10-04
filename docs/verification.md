@@ -1,3 +1,34 @@
+# Source-check corrections — 4 October 2026 IST
+
+The free/local adapter now checks the specific handoffs that failed the complete hosted baseline. The approved frontend and original OpenAI workflow function bodies/prompts remain unchanged. This is a scoped guard layer, not a general fact checker or a claim that all Llama outputs are accurate.
+
+| Area | Change and example |
+| --- | --- |
+| Research | Check the five report headings and citation labels at draft, revision and review. If a rewrite loses evidence structure, retain the last valid report, mark the review failed and keep rejected text/history in Details. If neither report is valid, return a readable error. Existing one-revision sequence remains. |
+| Support | Digests quote complete documentation sentences; customer allegations and generated relevance opinions are not used as documentation. A narrow rule handles explicit, unambiguous unopened-item calendar-day windows: day 20/30 is inside a 30-day policy; day 31 is outside. Conditional policies stay with model triage; conflicting explicit windows escalate. Unsupported/escalated drafts are withheld from accepted guidance but remain in Details. |
+| Content | The idea is factual evidence; the plan is labeled as a creative proposal. Check source numbers, specific unsupported promotional/contact claims and budget-to-unit-price errors. Retain a source-checked package if the review introduces these claims. Restore omitted numerical source sentences verbatim before optional narration; a repaired review is not labeled a pass. |
+| Documents | Keep numerical material facts; each generated action requires a verbatim evidence excerpt. Leave inferred action owners, dates and priorities unspecified, preserving rejected suggestions in Details. A project owner is not automatically assigned shipping. Explicit assignment grammar is deliberately conservative and may leave valid paraphrases unassigned. |
+| Evaluation | Resume verifies fixture and inference hashes. Source quotes/rejected drafts cannot inflate accepted-output fact screening. Provider/JSON fallbacks cannot count as a complete hosted-only case. Empty document results do not count as usable analyses. |
+
+**Local verification:** 161 backend tests pass, covering all fifteen free adapters, preserved OpenAI function parity, source/format repair, request-local guard state, escalation, isolation, compiler checks and narration after source checks. Eight frontend tests and TypeScript checks pass. The ARM container builds; real pinned BGE vectors, FAISS/JSON recovery, hybrid retrieval and decoded Kokoro MP3 checks pass. A current-profile local document run used the constrained evidence schema, assigned shipping to explicitly tasked Omar rather than project owner Priya, and kept 16 kits, USD 640, date and unknown priority. It took 123.85 seconds on the local setup; the model/cache unloaded afterward. This is not a VM capacity measurement.
+
+**Live evidence is partial:** an earlier correction profile completed seven Llama cases without local fallback. The 20/30/31-day decisions, conflicting-policy escalation, explicit assignment and varied content were usable. The receipt case exposed a guard false positive: repeating the request's day 20 was mistaken for an invented policy number. This was corrected and regression-tested. Generated relevance commentary is now retained only in source metadata/Details and excluded from resolution evidence. The seven results are historical evidence for that earlier profile, not seven passes for the final code. Their sidecar metrics were recalculated with the stricter accepted-output screen; original raw scores are preserved.
+
+The fresh hosted attempt before the final denial-wording check was stopped on its first case by Cloudflare HTTP 429. A single small diagnostic request returned error **4006**, explicitly saying the daily **10,000-Neuron free allocation is exhausted**. TRACE's estimated text ledger was 6,095.81 under its 7,000 ceiling; the estimate is not account-wide provider usage. Published Llama rates still match configuration. Account dashboard usage must be checked to explain the difference. No quota reset/bypass, paid overflow or hosted retries followed the diagnostic.
+
+**Acceptance remains pending:** retest the seven boundaries, the affected original cases, then the complete sixty-case suite with source-based rubric review. No new credential or paid upgrade is required. The next documented daily reset is **5 October 2026, 00:00 UTC / 05:30 IST**. Within the unchanged configured backend, intentionally resume/start:
+
+```sh
+python -m backend.evaluation.run --mode free --hosted-only --stop-on-error --cases /app/backend/evaluation/boundaries.json --output /data/evaluation/hosted-boundaries-retest.json
+python -m backend.evaluation.report --cases /app/backend/evaluation/boundaries.json /data/evaluation/hosted-boundaries-retest.json
+python -m backend.evaluation.run --mode free --hosted-only --stop-on-error --priority support-01 support-02 research-05 content-05 documents-08 summary-11 --output /data/evaluation/hosted-corrected.json
+python -m backend.evaluation.report /data/evaluation/hosted-corrected.json
+```
+
+Do not automatically replay interrupted runs. If inference code or fixtures change, use a new output file. The full suite may require multiple daily allowances. Continue the subsequent source review before a quality pass; passing presence/schema checks is insufficient. The guards check limited patterns and provenance, not arbitrary semantic entailment, date relationships, truth of external sources or software behavior/security. Varied real documents, live URL/transcript extraction, final native CI, target-VM memory/latency and public anti-abuse configuration remain later gates. No deployment or merge occurred.
+
+Raw evidence and scoped source review: [evaluation evidence](evaluation/README.md), [correction review](evaluation/source-checks-review.json). Cloudflare documents the account-wide allowance and UTC reset in its [pricing documentation](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+
 # Llama quality assessment — 4 October 2026 IST
 
 **The complete hosted suite ran successfully, but output-quality acceptance failed.** All 60 cases completed without execution errors or local text fallback: 54 used Llama 3.3 70B and six code tasks used the pinned Qwen Coder model. All 60 transport schemas validated. Screened fact presence was 87/88 (98.86%), missing-answer refusals 10/10, syntax/compiler checks 6/6 across five languages, and required escalations 4/4. Fact presence is not accuracy; syntax/compilation is not a behavior or security proof.

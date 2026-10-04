@@ -18,6 +18,13 @@ from backend.storage import LocalStorage
 from backend.contracts import RunInput
 from backend.events import observer
 from workflows.runtime import current
+REPORT = "\n\n".join([
+    "## Executive Summary\nMira Chen starts October 14 with 40 repair kits [S1].",
+    "## Findings\nThe pilot has 40 repair kits [S1].",
+    "## Risks and Gaps\nNo outcome measurements supplied [S1].",
+    "## Recommended Next Questions\nSuggested: ask for measured outcomes.",
+    "## Source List\n[S1] Repair brief",
+])
 
 
 class Tokenizer:
@@ -95,14 +102,14 @@ def free(tmp_path, monkeypatch):
             result = {
                 "label": "S1",
                 "title": "Repair",
-                "summary": "40 kits on October 14",
+                "summary": runtime.grounding_context["source"],
                 "relevance": "Direct",
             }
-        elif "revised_report" in system:
+        elif "revised_report" in system and payload.get("response_format"):
             result = {
                 "passes_review": True,
                 "issues": [],
-                "revised_report": "Mira Chen starts October 14 with 40 kits. [S1]",
+                "revised_report": REPORT,
             }
         elif "revised_script" in system:
             result = {
@@ -145,6 +152,7 @@ def free(tmp_path, monkeypatch):
                 "action_items": [
                     {
                         "task": "Start pilot",
+                        "evidence": runtime.grounding_context["source"],
                         "owner": "Mira Chen",
                         "due_date": "October 14",
                         "priority": "medium",
@@ -167,6 +175,8 @@ def free(tmp_path, monkeypatch):
                 "escalation_reason": "",
                 "recommended_next_step": "Review pilot",
             }
+        elif "grounded research reports" in lower or "revise the research report" in lower:
+            result = REPORT
         elif "code" in lower:
             result = "def unique(items):\n    return list(dict.fromkeys(items))\n"
         else:
@@ -324,7 +334,7 @@ def test_review_failure_cannot_pass(free, monkeypatch):
     from workflows import research_agent
 
     monkeypatch.setattr(free[2], "text", lambda *a, **k: "invalid JSON")
-    review = research_agent.critique_report("Pilot", [], "Draft", free[2].client)
+    review = research_agent.critique_report("Pilot", [{"label": "S1", "summary": "Pilot brief"}], REPORT, free[2].client)
     assert (
         review["passes_review"] is False
         and "unavailable" in review["issues"][0].lower()
@@ -652,3 +662,55 @@ def test_all_document_failures_retain_the_specific_diagnostic(free, monkeypatch)
             "",
         )
     assert any("Hosted input was rejected" in warning for warning in runtime.warnings)
+
+
+def test_support_source_repair_and_policy_check_run_through_live_stage_wrapper(free, monkeypatch):
+    from workflows import support_triage
+    from backend.tests.test_grounding import POLICY
+    runtime = free[2]
+    calls = []
+    draft = {"resolution_type": "answer", "answer": "No, twenty is not thirty.",
+             "confidence": 0.9, "escalation_reason": "", "recommended_next_step": "Review policy"}
+    def text(*args, **kwargs):
+        calls.append(args[0])
+        return json.dumps({**draft, "answer": draft["answer"] + (" [S1]" if len(calls) == 2 else "")})
+    monkeypatch.setattr(runtime, "text", text)
+    sources = [{"label": "S1", "summary": POLICY}]
+    checked = support_triage.draft_support_resolution(
+        "Can I return an unopened item within 20 days?",
+        {"requires_human": False, "severity": "low"}, sources, runtime.client)
+    assert len(calls) == 2 and checked["answer"].startswith("Yes.")
+    assert checked["model_draft"]["answer"].startswith("No,")
+    assert runtime.grounding_context is None
+    assert any("format/source repair" in warning for warning in runtime.warnings)
+
+
+def test_source_checked_content_is_the_text_sent_to_narration(free, monkeypatch):
+    from backend.tests.test_grounding import SOURCE, POLICY
+    store, sid, runtime, *_ = free
+    runtime.tool = "content"
+    spoken = []
+    def synthesize(text, voice, path, check):
+        spoken.append(text)
+        path.write_bytes(b"test-audio")
+    monkeypatch.setattr("backend.speech.synthesize", synthesize)
+    result = engine.execute(store, sid, TypeAdapter(RunInput).validate_python(
+        {"tool": "content", "idea": SOURCE, "platforms": ["linkedin"], "include_audio": True}), "")
+    assert spoken == [result["final_script"]]
+    assert "USD 740" in spoken[0] and POLICY in spoken[0]
+    assert result["critique"]["passes_review"] is False
+
+
+def test_support_resolution_does_not_read_model_relevance_as_evidence(free, monkeypatch):
+    from workflows import support_triage
+    runtime = free[2]
+    received = []
+    def text(messages, *args, **kwargs):
+        received.append(messages)
+        return json.dumps({"resolution_type": "answer", "answer": "40 kits [S1].", "confidence": 0.9,
+                           "escalation_reason": "", "recommended_next_step": "Review brief"})
+    monkeypatch.setattr(runtime, "text", text)
+    support_triage.draft_support_resolution("How many kits?", {"severity": "low"},
+        [{"label": "S1", "summary": "40 kits.", "relevance": "Quoted documentation.",
+          "metadata": {"model_relevance": "invented policy interpretation"}}], runtime.client)
+    assert "invented policy interpretation" not in json.dumps(received)

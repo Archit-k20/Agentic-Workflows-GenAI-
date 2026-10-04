@@ -216,7 +216,10 @@ def schema_for(system, platforms=()):
         properties["action_items"] = {
             "type": "array",
             "items": obj(
-                {key: string for key in ("task", "owner", "due_date", "priority")}
+                {key: string for key in (
+                    "task", "owner", "due_date", "priority",
+                    *(("evidence",) if "GROUNDING_ACTION_EVIDENCE" in system else ()),
+                )}
             ),
         }
     captions = (
