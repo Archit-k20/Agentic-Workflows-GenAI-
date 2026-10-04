@@ -28,6 +28,48 @@ def test_missing_case_remains_visible():
     }
 
 
+def test_review_cannot_pass_when_revision_removes_evidence_structure():
+    cases = [{"id": "research", "kind": "research", "facts": []}]
+    rows = [{
+        "id": "research", "error": None,
+        "score": {"citation_labels_valid": True, "fact_coverage": 1.0},
+        "result": {"final_report": "The pilot is scheduled; further research is suggested."},
+    }]
+    report = summarize(cases, rows, "free")
+    assert report["invalid_citation_cases"] == []
+    assert report["missing_required_citation_cases"] == ["research"]
+    assert report["missing_research_section_cases"][0]["sections"] == [
+        "Executive Summary", "Findings", "Risks and Gaps",
+        "Recommended Next Questions", "Source List",
+    ]
+
+
+def test_abstention_and_escalation_do_not_require_answer_citations():
+    cases = [
+        {"id": "missing", "kind": "qa", "facts": [], "absent": True},
+        {"id": "escalate", "kind": "support", "facts": [], "escalate": True},
+    ]
+    rows = [
+        {"id": "missing", "error": None, "score": {},
+         "result": {"answer": "Not provided."}},
+        {"id": "escalate", "error": None, "score": {},
+         "result": {"final": {"resolution_type": "escalate", "answer": "Human review required."}}},
+    ]
+    assert summarize(cases, rows, "free")["missing_required_citation_cases"] == []
+
+
+def test_supported_questions_cannot_pass_by_escalating_every_request():
+    cases = [{"id": "supported", "kind": "support", "facts": [], "escalate": False}]
+    rows = [{"id": "supported", "error": None, "score": {}, "result": {
+        "draft": {"resolution_type": "answer", "answer": "40"},
+        "final": {"resolution_type": "escalate", "answer": "40"},
+    }}]
+    report = summarize(cases, rows, "free")
+    assert report["supported_support_answers"]["passed"] == 0
+    assert report["supported_support_answers"]["expected"] == 1
+    assert report["missing_support_draft_citation_cases"] == ["supported"]
+
+
 def test_evaluation_cannot_bypass_the_live_compute_budget(tmp_path, monkeypatch):
     import json
     import sys
@@ -58,3 +100,41 @@ def test_evaluation_cannot_bypass_the_live_compute_budget(tmp_path, monkeypatch)
     report = json.loads(output.read_text())
     assert "allowance is unavailable" in report["rows"][0]["error"]
     assert report["profile"]["pipeline_sha256"]
+
+
+def test_priority_evaluation_preserves_remaining_cases(tmp_path, monkeypatch):
+    import json
+    import sys
+    from backend.evaluation import run
+    from backend.storage import LocalStorage
+
+    fixtures = LocalStorage(tmp_path / "fixtures")
+    monkeypatch.setattr(run, "LocalStorage", lambda _: fixtures)
+    monkeypatch.setattr(run, "evaluate", lambda case, *_: {"text": case["source"]})
+    output = tmp_path / "priority.json"
+    monkeypatch.setattr(sys, "argv", [
+        "evaluate", "--mode", "free", "--hosted-only", "--output", str(output),
+        "--limit", "2", "--priority", "summary-02",
+    ])
+    run.main()
+    report = json.loads(output.read_text())
+    assert [row["id"] for row in report["rows"]] == ["summary-02", "summary-01"]
+    assert report["fixture_count"] == 2
+
+
+def test_unknown_priority_stops_before_inference(tmp_path, monkeypatch):
+    import sys
+    import pytest
+    from backend.evaluation import run
+    from backend.storage import LocalStorage
+
+    fixtures = LocalStorage(tmp_path / "fixtures")
+    monkeypatch.setattr(run, "LocalStorage", lambda _: fixtures)
+    monkeypatch.setattr(sys, "argv", [
+        "evaluate", "--mode", "free", "--output", str(tmp_path / "bad.json"),
+        "--limit", "1", "--priority", "content-01",
+    ])
+    with pytest.raises(SystemExit) as stopped:
+        run.main()
+    assert stopped.value.code == 2
+    assert not (tmp_path / "bad.json").exists()

@@ -191,6 +191,10 @@ def main():
     parser.add_argument("--hosted-only", action="store_true")
     parser.add_argument("--stop-on-error", action="store_true")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--priority", nargs="+", default=[], metavar="CASE_ID",
+        help="Run these selected fixture IDs first, then the remaining cases; does not bypass budgets.",
+    )
     args = parser.parse_args()
     load_owner(args.owner_env)
     output = Path(args.output)
@@ -201,6 +205,14 @@ def main():
     sid = store.session(store.create_session()["token"])
     cases = json.loads(Path(__file__).with_name("cases.json").read_text())[
         args.start : args.start + args.limit
+    ]
+    by_id = {case["id"]: case for case in cases}
+    if len(set(args.priority)) != len(args.priority) or any(
+        case_id not in by_id for case_id in args.priority
+    ):
+        parser.error("Priority IDs must be unique and belong to the selected fixture range.")
+    cases = [by_id[case_id] for case_id in args.priority] + [
+        case for case in cases if case["id"] not in args.priority
     ]
     from backend import free_config as cfg
 
