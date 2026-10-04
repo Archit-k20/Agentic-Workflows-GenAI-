@@ -1,3 +1,13 @@
+# Dashboard/API quota discrepancy — owner evidence, 4 October 2026 IST
+
+The owner supplied a dashboard showing **5.56k / 10k Neurons used today**. The selected **Last 24 hours** chart separately totals 11.13k text Neurons (6.22k Llama) and 172.8 image Neurons. The chart spans two dates and must not be treated as today's allowance consumption. This conflicts with the provider's daily-allocation-exhausted message below; account-wide daily exhaustion is therefore **not independently confirmed**.
+
+One bounded eight-token diagnostic at 05:42:40 UTC still returned HTTP 429 / code 4006. Recorded diagnostic IDs: CF Ray `a451dd58afccaa33-DEL`; AI request `1389f7db-e419-47a0-b895-f5bdb3c628ad`. The owner confirmed the dashboard account matches the ignored backend account configuration. A provider quota/reporting or entitlement discrepancy is a hypothesis, not an established cause. Cloudflare documents daily reset at 00:00 UTC; no confirmed rolling-window explanation was found in its official documentation. A reset does not guarantee recovery of this mismatch. Check availability deliberately before resuming tests; no repeated polling/model requests or paid upgrade is needed to diagnose it.
+
+The correction commit **5073a65** passed all PR CI jobs: frontend production build and native ARM64/AMD64 backend suites, actual embedding/index/speech checks, pinned CPU inference and cache unloading. [CI run](https://github.com/Archit-k20/Agentic-Workflows-GenAI-/actions/runs/37180297343). Existing v4 GitHub actions emit non-blocking Node-runtime deprecation notices; workflow-version cleanup is later maintenance. Frontend remains unchanged. Hosted quality acceptance remains pending.
+
+Provider diagnostics plus owner-reported dashboard metrics: [quota recheck](evaluation/dashboard-quota-recheck.json). Official [pricing/reset policy](https://developers.cloudflare.com/workers-ai/platform/pricing/) and [error descriptions](https://developers.cloudflare.com/workers-ai/platform/errors/). The following sections preserve the earlier observations and test evidence.
+
 # Source-check corrections — 4 October 2026 IST
 
 The free/local adapter now checks the specific handoffs that failed the complete hosted baseline. The approved frontend and original OpenAI workflow function bodies/prompts remain unchanged. This is a scoped guard layer, not a general fact checker or a claim that all Llama outputs are accurate.

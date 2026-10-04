@@ -72,14 +72,21 @@
     "frontend_tests_passed": 8,
     "frontend_typecheck": "passed",
     "native_arm_build": "Final inference code and harness build passed; native final-commit CI remains required.",
-    "cpu_smoke": "real BGE vectors, FAISS/JSON recovery, hybrid retrieval and decoded Kokoro MP3 passed"
+    "cpu_smoke": "real BGE vectors, FAISS/JSON recovery, hybrid retrieval and decoded Kokoro MP3 passed",
+    "native_ci": {
+      "commit": "5073a65",
+      "frontend": "success",
+      "arm64": "success",
+      "amd64": "success",
+      "run_url": "https://github.com/Archit-k20/Agentic-Workflows-GenAI-/actions/runs/37180297343"
+    }
   },
   "remaining": [
     "Fresh seven boundary fixtures with final inference profile",
     "Affected Research/Support/Content/Documents cases and complete 60-case suite",
     "Source-based rubric review of every current-profile result",
     "Account usage discrepancy investigation; application estimates are not provider billing",
-    "Native ARM64/AMD64 final-commit CI and later target-VM capacity/public configuration checks"
+    "Later target-VM capacity and public configuration checks"
   ],
   "hosted_capacity_attempt_profile": {
     "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
@@ -87,5 +94,6 @@
     "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
     "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
     "pipeline_sha256": "a49eb17a152d7596fcf2ce1adde0261884957fadf698d9f81e1b9568abb8683b"
-  }
+  },
+  "quota_followup": "Owner dashboard shows 5.56k/10k today; a new eight-token probe still returns 429/4006. Daily exhaustion is not independently confirmed. Owner confirmed dashboard/API account match; enforcement/reporting mismatch remains unresolved."
 }

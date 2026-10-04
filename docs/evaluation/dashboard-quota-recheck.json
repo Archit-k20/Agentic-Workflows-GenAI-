@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-10-04T05:42:40.622463+00:00",
+  "purpose": "One bounded diagnostic after owner dashboard shows 5.56k/10k today; no benchmark replay.",
+  "http_status": 429,
+  "cf_ray": "a451dd58afccaa33-DEL",
+  "provider_request_id": "1389f7db-e419-47a0-b895-f5bdb3c628ad",
+  "provider_error_codes": [
+    4006
+  ],
+  "succeeded": false,
+  "application_error": "Hosted inference is temporarily unavailable or its free allowance is exhausted.",
+  "owner_dashboard": {
+    "neurons_used_today": "5.56k / 10k",
+    "selected_chart_period": "Last 24 hours",
+    "text_generation_total": "11.13k",
+    "llama_model_total": "6.22k",
+    "image_total": 172.8
+  },
+  "interpretation": "Unresolved dashboard/API quota-enforcement mismatch. Daily usage exhaustion is not independently confirmed. Owner confirmed dashboard/API Account IDs match. The selected 24-hour chart total must not be equated with the documented calendar-day allowance.",
+  "documented_reset": "00:00 UTC; this does not guarantee recovery of a possible enforcement/reporting mismatch.",
+  "owner_confirmed_account_match": true
+}

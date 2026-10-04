@@ -1,3 +1,7 @@
+## Dashboard evidence follow-up
+
+The owner's screenshot shows 5.56k/10k today, contradicting the quota-exhausted API message. A single fresh bounded probe still returned HTTP 429/code 4006. Treat this as an unresolved enforcement/reporting mismatch, not a confirmed 10k daily consumption. `dashboard-quota-recheck.json` records the two distinct dashboard periods and diagnostic IDs. The owner confirmed the dashboard/API account match. Documented UTC reset is not a guarantee that this inconsistency resolves; deliberately check availability before a new benchmark. Core correction commit 5073a65 passed frontend and both native architecture CI jobs; the frontend is unchanged.
+
 # Current source-check correction status — 4 October 2026 IST
 
 See [verification record](../verification.md) for the implemented guards, tests and remaining gates. **The final-profile full hosted suite is pending**, after Cloudflare explicitly exhausted its account-wide free allowance. The prior sixty-case run below establishes the failures before these corrections; its fingerprint no longer describes the current adapter.
