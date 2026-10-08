@@ -1,3 +1,34 @@
+# Current launch evidence — 8 October 2026 IST
+
+**Launch acceptance remains incomplete.** Read [verification](../verification.md) and [launch-review-2026-10-08.json](launch-review-2026-10-08.json) for current changes, provenance, source-based findings and remaining gates. Older sections below record earlier profiles and their failures.
+
+| Evidence | What it establishes | Limit |
+| --- | --- | --- |
+| `availability-2026-10-08.json` | One bounded Llama request returned HTTP 200/READY | Does not diagnose the earlier mismatch or guarantee continuing allowance |
+| `hosted-boundaries-2026-10-08.json` and metrics | Seven boundary cases; expected routing/assignee/material details retained | Earlier d323 profile; diagnostic model fields can still be wrong |
+| `hosted-final-2026-10-08.json` and metrics | 60/60 completed, no fallback/errors; 88/88 fact presence, 10 refusals, six syntax checks, four required escalations, two supported answers | Historical d323 profile despite filename; source-quality acceptance failed |
+| `hosted-launch-corrected-2026-10-08.json` | Six completed intermediate cases, seventh stopped by the application reservation ceiling | 5eb0 profile; quality still failed; not final-profile acceptance |
+| `local-launch-targets-final-2026-10-08.json`, metrics and two-case fixture file | Real final-profile Qwen 4B content execution, 353.15/234.19 seconds, 4/4 facts | Source-quality failed; narrow cohort and slow CPU fallback |
+| `real-url-extraction-check-2026-10-08.json` | Actual official Python URL extracted readable nonempty text after compression fix | Extraction only, no AI; raw copyrighted text excluded |
+| `launch-review-2026-10-08.json` | Separate source-based findings, hashes, profile differences and pending checks | Finite guards and synthetic fixtures do not certify general accuracy |
+
+192 tests pass in the rebuilt native ARM64 image. Eight frontend tests, typecheck and production build pass. Latest native CI is a separate check after push. UI unchanged; no public website/server exists yet.
+
+After the next deliberate allowance check, use a **new filename** for the current hosted profile, prioritize the affected cases, then include all remaining fixtures:
+
+```sh
+python -m backend.evaluation.run --mode free --hosted-only --stop-on-error \
+  --priority content-05 content-03 research-05 support-01 support-02 documents-08 \
+  --output /data/evaluation/hosted-launch-final-new.json
+python -m backend.evaluation.report /data/evaluation/hosted-launch-final-new.json
+```
+
+Only resume deliberately with an unchanged fingerprint. The application allowance resets at 00:00 UTC (05:30 IST); availability is not guaranteed by the reset. Preserve prior results, failures and the ledger. No paid overflow or quota bypass.
+
+---
+
+Historical records:
+
 ## Dashboard evidence follow-up
 
 The owner's screenshot shows 5.56k/10k today, contradicting the quota-exhausted API message. A single fresh bounded probe still returned HTTP 429/code 4006. Treat this as an unresolved enforcement/reporting mismatch, not a confirmed 10k daily consumption. `dashboard-quota-recheck.json` records the two distinct dashboard periods and diagnostic IDs. The owner confirmed the dashboard/API account match. Documented UTC reset is not a guarantee that this inconsistency resolves; deliberately check availability before a new benchmark. Core correction commit 5073a65 passed frontend and both native architecture CI jobs; the frontend is unchanged.

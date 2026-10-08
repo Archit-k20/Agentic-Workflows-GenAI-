@@ -6,6 +6,39 @@ from workflows import network
 from backend.engine import save_index, load_index
 
 
+@pytest.mark.parametrize("encoding", ["gzip", "deflate"])
+def test_http_compression_decodes_with_same_output_limit(encoding):
+    import gzip
+    import zlib
+    source = "<html><body>Complete source evidence.</body></html>".encode()
+    encoded = gzip.compress(source) if encoding == "gzip" else zlib.compress(source)
+    assert network.decode_body(encoded, encoding) == source
+
+
+def test_gzip_concatenated_members_keep_one_cumulative_limit(monkeypatch):
+    import gzip
+    monkeypatch.setattr(network, "MAX_BYTES", 64)
+    data = gzip.compress(b"a" * 32) + gzip.compress(b"b" * 32)
+    assert network.decode_body(data, "GZIP") == b"a" * 32 + b"b" * 32
+    with pytest.raises(ValueError, match="Decompressed source exceeds"):
+        network.decode_body(gzip.compress(b"a" * 33) + gzip.compress(b"b" * 32), "gzip")
+
+
+def test_compressed_bomb_and_wire_size_are_bounded(monkeypatch):
+    import gzip
+    monkeypatch.setattr(network, "MAX_BYTES", 128)
+    with pytest.raises(ValueError, match="Decompressed source exceeds"):
+        network.decode_body(gzip.compress(b"a" * 10000), "gzip")
+    with pytest.raises(ValueError, match="Source exceeds"):
+        network.decode_body(b"a" * 129, "identity")
+
+
+@pytest.mark.parametrize("data,encoding", [(b"invalid", "gzip"), (b"", "gzip"), (b"x", "br"), (b"x", "gzip, deflate")])
+def test_invalid_or_unsupported_compression_is_readable(data, encoding):
+    with pytest.raises(ValueError, match="compressed content"):
+        network.decode_body(data, encoding)
+
+
 def test_internal_network_and_mixed_dns_blocked(monkeypatch):
     for ip in ["127.0.0.1", "10.0.0.1", "169.254.169.254", "::1", "fd00::1"]:
         monkeypatch.setattr(

@@ -1,3 +1,21 @@
+# Interview launch verification — 8 October 2026 IST
+
+**The website is not published and launch acceptance is not yet passed.** Cloudflare answered a bounded Llama probe today (HTTP 200, 39 input / 2 output tokens). This confirms availability at that time, not the cause of the 4 October dashboard/API mismatch or unlimited capacity.
+
+- The earlier correction profile completed **60/60 hosted cases**, with 54 Llama / 6 Qwen Coder results, no errors/fallback, 88/88 expected facts present, 10/10 missing-answer refusals, 6/6 syntax checks, 4/4 required escalations and 2/2 supported Support answers. All output transport schemas validate. **Quality acceptance failed:** content invented presenter/innovation/purpose claims, and grouped citations did not produce individual evidence links. Fact presence is not accuracy.
+- Seven separate hosted boundary cases passed their expected refund routing, receipt requirement, conflict escalation, explicit assignee and material-detail screens on that earlier profile. Diagnostic model fields are not universally accurate.
+- Free-mode source checks now cover the observed role/promotional/purpose/audience phrases; valid grouped citations become individual evidence links. A fresh intermediate run completed six cases and then stopped at TRACE's conservative daily text reservation ceiling. It still exposed audience/purpose inventions, leading to the final guard changes. **A complete hosted run of the final profile remains pending; do not mix or resume different fingerprints.** No limit bypass/reset or paid overflow.
+- The current native ARM64 Docker image rebuilt and **192 backend tests passed**, including parity, five actual language checks, ownership/persistence, compression limits and public wiring checks. Eight frontend tests, TypeScript and production build passed; UI unchanged. Current-commit native AMD64/ARM CI outcomes must be checked on the PR.
+- A real official Python article extracted nonempty text in 2.42 s after bounded gzip/deflate support was added. Both wire and decoded data are capped at 8 MB, including concatenated gzip. This extraction check makes no AI request.
+- Two real final-profile CPU content cases completed in **353.15 s and 234.19 s**, with 4/4 expected facts and valid transport. **Local quality remains failed:** unspecified guarantees became asserted absence, and an owner was described as overseeing shipment without an explicit assignment. Failed review details remain visible; repeated verbatim restoration is also a polish issue. These two cases are not a full local acceptance run. Model cache unloaded after generation; restarted local API reports ready.
+- Added `python -m backend.deployment_check` to check HTTPS/CORS/capabilities/default free mode/visitor-proof rejection **without inference**. It has not run against a public deployment; none exists. Successful browser Turnstile, live media, real inputs, two-user isolation, restart recovery, server capacity/latency and deployed performance remain launch gates.
+
+Raw results, fingerprints, source-based review and limitations: [current evaluation evidence](evaluation/README.md). Hosting options and owner steps: [deployment guide](deployment.md). The owner is comparing alternatives to Oracle; no hosting purchase/provisioning, production publication or merge has occurred. Owner Cloudflare credentials remain private on the backend; visitors need no provider key.
+
+---
+
+The sections below are historical records; newer counts/status above take precedence.
+
 # Dashboard/API quota discrepancy — owner evidence, 4 October 2026 IST
 
 The owner supplied a dashboard showing **5.56k / 10k Neurons used today**. The selected **Last 24 hours** chart separately totals 11.13k text Neurons (6.22k Llama) and 172.8 image Neurons. The chart spans two dates and must not be treated as today's allowance consumption. This conflicts with the provider's daily-allocation-exhausted message below; account-wide daily exhaustion is therefore **not independently confirmed**.

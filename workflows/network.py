@@ -5,10 +5,41 @@ import ipaddress
 import socket
 import ssl
 import threading
+import zlib
 from urllib.parse import urlparse, urljoin
 from newspaper import Article as NewspaperArticle
 
 MAX_BYTES = 8 * 1024 * 1024
+
+
+def decode_body(data, content_encoding):
+    """Bound both wire bytes and decompressed bytes; never unpack without a cap."""
+    if len(data) > MAX_BYTES:
+        raise ValueError("Source exceeds the 8 MB extraction limit.")
+    encoding = content_encoding.strip().lower()
+    if encoding in {"", "identity"}:
+        return data
+    if encoding not in {"gzip", "x-gzip", "deflate"}:
+        raise ValueError("Source sent unsupported compressed content; supported encodings are gzip and deflate.")
+    decoded = bytearray()
+    remaining = data
+    while remaining:
+        inflater = zlib.decompressobj(16 + zlib.MAX_WBITS if encoding in {"gzip", "x-gzip"} else zlib.MAX_WBITS)
+        try:
+            decoded.extend(inflater.decompress(remaining, MAX_BYTES - len(decoded) + 1))
+        except zlib.error:
+            raise ValueError("Source sent invalid compressed content.") from None
+        if len(decoded) > MAX_BYTES:
+            raise ValueError("Decompressed source exceeds the 8 MB extraction limit.")
+        if not inflater.eof:
+            raise ValueError("Source sent truncated or invalid compressed content.")
+        remaining = inflater.unused_data
+        # Gzip permits concatenated members, with one cumulative output limit.
+        if remaining and encoding == "deflate":
+            raise ValueError("Source sent invalid trailing compressed content.")
+    if not data:
+        raise ValueError("Source sent empty compressed content.")
+    return bytes(decoded)
 
 
 def resolve_public(url):
@@ -58,7 +89,7 @@ def fetch_html(url):
                 headers={
                     "Host": parsed.netloc,
                     "User-Agent": "Mozilla/5.0 TRACE",
-                    "Accept-Encoding": "identity",
+                    "Accept-Encoding": "gzip, deflate",
                 },
             )
             active_socket = connection.sock
@@ -83,13 +114,10 @@ def fetch_html(url):
                 continue
             if response.status >= 400:
                 raise ValueError(f"Source returned HTTP {response.status}.")
-            if response.getheader("Content-Encoding", "identity") != "identity":
-                raise ValueError("Source sent unsupported compressed content.")
             data = response.read(MAX_BYTES + 1)
+            data = decode_body(data, response.getheader("Content-Encoding", "identity"))
             if timed_out.is_set():
                 raise ValueError("Source fetch exceeded its 20-second deadline.")
-            if len(data) > MAX_BYTES:
-                raise ValueError("Source exceeds the 8 MB extraction limit.")
             content_type = response.getheader("Content-Type", "")
             encoding = (
                 content_type.split("charset=")[-1].split(";")[0].strip()

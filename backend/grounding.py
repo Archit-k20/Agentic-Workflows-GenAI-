@@ -57,6 +57,8 @@ def claim_issues(output, source):
     for pattern in (
         r"\blatest\b", r"\bexclusive\b", r"\bearly adopters\b",
         r"\blimited edition\b", r"\bfirst[- ]ever\b", r"\brevolutionary\b",
+        r"\b(?:innovation|innovative|breakthrough|groundbreaking)\b",
+        r"\btest and refine\b",
         r"\bguaranteed\b",
     ):
         if re.search(pattern, output, re.I) and not re.search(pattern, source, re.I):
@@ -66,6 +68,19 @@ def claim_issues(output, source):
                       for m in re.finditer(pattern, output, re.I)):
                 continue
             issues.append("Unsupported promotional claim: " + re.search(pattern, output, re.I).group())
+    # Naming a project owner/coordinator does not authorize a presenter or
+    # launch role. This finite check does not claim general role entailment.
+    for match in re.finditer(
+        r"\b(?:owner|coordinator)\s+(?:is\s+|:\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})",
+        source,
+    ):
+        person = match.group(1)
+        for action in re.finditer(
+            re.escape(person) + r"\s+(introduces?|presents?|launches?|unveils?|announces?)\b",
+            output, re.I,
+        ):
+            if not re.search(re.escape(person) + r"\s+" + re.escape(action.group(1)) + r"\b", source, re.I):
+                issues.append("A presentation or launch role was not supplied for " + person)
     for contact in re.finditer(r"\b[Cc]ontact\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)", output):
         person = contact.group(1)
         if not any(person in s and re.search(r"\b(?:contact|enquiries|inquiries)\b", s, re.I) for s in sentences(source)):
@@ -74,6 +89,21 @@ def claim_issues(output, source):
         r"(?:USD|[$€£₹])\s*\d[\d,.]*\s*(?:per|each|/)|\b(?:per[- ]unit price|unit price)\b", output, re.I
     ) and not re.search(r"\b(?:unit price|per[- ]unit|each costs)\b", source, re.I):
         issues.append("A project budget cannot be presented as a unit price.")
+    return issues
+
+
+def content_claim_issues(output, source):
+    issues = claim_issues(output, source)
+    # Additional finite content checks target observed purpose/audience
+    # inventions. They are conservative phrase checks, not an entailment model.
+    for pattern in (
+        r"\b(?:designed|intended|created) to\b",
+        r"\bpotential customers\b", r"\bstakeholders\b",
+        r"\bjust the beginning\b",
+        r"\b(?:new|unique) (?:\w+ ){0,2}experience\b",
+    ):
+        if re.search(pattern, output, re.I) and not re.search(pattern, source, re.I):
+            issues.append("Purpose, audience or experience claim was not supplied: " + re.search(pattern, output, re.I).group())
     return issues
 
 
@@ -103,6 +133,8 @@ def instructions(context):
             "five Markdown headings: " + "; ".join("## " + s for s in SECTIONS) + ". "
             "Keep valid inline [S#] labels in Executive Summary and Findings, not only Source List. "
             "A source's missing experiment data is an evidence gap to describe, not a reason to invent methods or "
+            "to presume that a study, experiment or measured outcome exists. Proposed research questions are "
+            "suggestions, not claims that such activities happened. "
             "to declare a faithful report defective. Do not label sources untrusted, unreliable or lacking credibility "
             "unless source evidence actually establishes that assessment. Preserve a good report unchanged when no report defect exists."
         )
@@ -124,9 +156,15 @@ def instructions(context):
     if stage.startswith("content"):
         return (
             "\nCLAIM BOUNDARY: the supplied idea is the ONLY factual evidence. Plans are creative proposals, "
-            "never facts about product audience, purpose, availability or features. Do not add latest, exclusive, "
+            "never facts about product audience, purpose, availability or features. An owner/coordinator is not "
+            "automatically a presenter or launcher: do not say a named person introduces, presents, launches or "
+            "announces the project unless the input explicitly states that action. Do not claim innovation or "
+            "breakthroughs from a routine pilot. Do not add latest, exclusive, "
             "early-adopter positioning, guarantees, contact roles or prices unless explicitly supplied. "
             "Keep all material quantities, dates, budget amounts and refund conditions in the complete script. "
+            "Publish only supplied facts with stylistic transitions. Do not invent why the pilot exists, "
+            "who it targets, future expansion, or a new customer experience. A creative plan's proposed "
+            "audience and purpose must not become claims in the script or captions. "
             "A caption may be shorter but cannot change facts. Creative image prompts are proposed illustrations, "
             "not actual photos of named people or evidence of product contents. Use a suggested, generic CTA. "
             "A review must compare its rewrite against the original idea, not merely the generated plan."
@@ -157,9 +195,24 @@ def validate_response(value, context):
                 raise ValueError("An action needs a verbatim source evidence excerpt; omit unsupported tasks.")
     if stage == "content" and "script" in value:
         output = "\n".join([value["title"], value["script"], value["cta"], *value["captions"].values(), *value["hashtags"]])
-        issues = claim_issues(output, source)
+        issues = content_claim_issues(output, source)
         if issues:
             raise ValueError("Content source checks: " + "; ".join(issues))
+
+
+def normalize_report_citations(report, sources, runtime):
+    valid = {s["label"] for s in sources}
+
+    def expand(match):
+        labels = re.findall(r"S\d+", match.group(1))
+        if not set(labels) <= valid:
+            return match.group()
+        return " ".join("[" + label + "]" for label in labels)
+
+    result = re.sub(r"\[(S\d+(?:\s*[,;]\s*S\d+)+)\]", expand, report)
+    if result != report:
+        runtime.warning("Grouped source citations were expanded into individual evidence links.")
+    return result
 
 
 def report_issues(report, sources):
@@ -170,6 +223,9 @@ def report_issues(report, sources):
     issues = ["Missing report heading: " + s for s in SECTIONS if s.casefold() not in section_map]
     valid = {s["label"] for s in sources}
     cited = set(re.findall(r"\[(S\d+)\]", report))
+    citation_blocks = re.findall(r"\[(S\d+[^\]\n]*)\]", report)
+    if any(not re.fullmatch(r"S\d+", block) for block in citation_blocks):
+        issues.append("Unsupported source citation format; use individual [S#] labels.")
     if not cited or cited - valid:
         issues.append("Missing or unknown source citation labels.")
     for heading in ("Executive Summary", "Findings"):
@@ -187,7 +243,8 @@ def report_issues(report, sources):
 
 def research_review(value, previous, sources, runtime):
     value = dict(value)
-    candidate = value.get("revised_report", "")
+    candidate = normalize_report_citations(value.get("revised_report", ""), sources, runtime)
+    value["revised_report"] = candidate
     issues = report_issues(candidate, sources)
     if issues:
         previous_issues = report_issues(previous, sources)
@@ -308,12 +365,12 @@ def content_review(value, source, package, runtime):
     value = dict(value)
     candidate = value.get("revised_script") or package.get("script", "")
     captions = value.get("revised_captions") or package.get("captions", {})
-    issues = claim_issues(candidate + "\n" + "\n".join(captions.values()), source)
+    issues = content_claim_issues(candidate + "\n" + "\n".join(captions.values()), source)
     if issues:
         value["rejected_revision"] = {"script": candidate, "captions": captions}
         candidate = package.get("script", "")
         captions = package.get("captions", {})
-        remaining = claim_issues(candidate + "\n" + "\n".join(captions.values()), source)
+        remaining = content_claim_issues(candidate + "\n" + "\n".join(captions.values()), source)
         if remaining:
             raise ValueError("Content contains unsupported claims after review: " + "; ".join(remaining))
         runtime.warning("Content review introduced unsupported claims; the source-checked package was retained.")
@@ -323,7 +380,7 @@ def content_review(value, source, package, runtime):
     value.update(revised_script=candidate, revised_captions=captions)
     if issues:
         value.update(passes_review=False, issues=list(dict.fromkeys(value.get("issues", []) + issues)))
-    value["source_checks"] = {"scope": "Source numbers, numerical material details, listed promotional claims and contact roles; not general factual certification.", "issues": issues}
+    value["source_checks"] = {"scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.", "issues": issues}
     return value
 
 

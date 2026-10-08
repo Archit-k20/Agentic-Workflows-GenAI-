@@ -1,0 +1,1435 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+    "pipeline_sha256": "d323939077d3669fcc9fba8cd5c7358d92efb2daa5cca813f4a62c30c5fd444d"
+  },
+  "fixture_count": 7,
+  "rows": [
+    {
+      "id": "boundary-20",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 12,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 15,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          ]
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "return policy inquiry",
+          "reason": "customer questioning return window",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Customer refunds are available within 30 days only for unopened items.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation directly answers the question, as day 20 is within the 30-day window for returns of unopened items.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "Yes. 20 days is within the 30-day return/refund window for unopened items [S1].",
+          "confidence": 0.9,
+          "escalation_reason": "",
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "resolution_type": "answer",
+          "model_draft": {
+            "answer": "Yes, you can return an unopened item on day 20, as it is within the 30-day limit [S1]",
+            "confidence": 1,
+            "escalation_reason": "",
+            "recommended_next_step": "Review the return policy for any additional requirements or procedures",
+            "resolution_type": "answer"
+          },
+          "policy_check": {
+            "answer": "Yes. 20 days is within the 30-day return/refund window for unopened items [S1].",
+            "evidence": "Customer refunds are available within 30 days only for unopened items.",
+            "requested_days": 20,
+            "limit_days": 30,
+            "scope": "Explicit inclusive calendar-day limit and unopened-item condition only; not a general policy interpreter."
+          }
+        },
+        "final": {
+          "question": "Can I return an unopened item on day 20?",
+          "intent": {
+            "intent": "return policy inquiry",
+            "reason": "customer questioning return window",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "answer",
+          "answer": "Yes. 20 days is within the 30-day return/refund window for unopened items [S1].",
+          "confidence": 0.9,
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "escalation_reason": "",
+          "citation_check": {
+            "cited_labels": [
+              "S1"
+            ],
+            "unknown_labels": []
+          },
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 16.39,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 15,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boundary-30",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 12,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 15,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          ]
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "return policy inquiry",
+          "reason": "customer questioning return window",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Customer refunds are available within 30 days only for unopened items.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation directly answers the question.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "Yes. 30 days is within the 30-day return/refund window for unopened items [S1].",
+          "confidence": 0.9,
+          "escalation_reason": "",
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "resolution_type": "answer",
+          "model_draft": {
+            "answer": "Yes, you can return an unopened item on day 30, as stated in the refund policy [S1]",
+            "confidence": 1,
+            "escalation_reason": "",
+            "recommended_next_step": "Initiate return process according to the refund policy [S1]",
+            "resolution_type": "answer"
+          },
+          "policy_check": {
+            "answer": "Yes. 30 days is within the 30-day return/refund window for unopened items [S1].",
+            "evidence": "Customer refunds are available within 30 days only for unopened items.",
+            "requested_days": 30,
+            "limit_days": 30,
+            "scope": "Explicit inclusive calendar-day limit and unopened-item condition only; not a general policy interpreter."
+          }
+        },
+        "final": {
+          "question": "Can I return an unopened item on day 30?",
+          "intent": {
+            "intent": "return policy inquiry",
+            "reason": "customer questioning return window",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "answer",
+          "answer": "Yes. 30 days is within the 30-day return/refund window for unopened items [S1].",
+          "confidence": 0.9,
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "escalation_reason": "",
+          "citation_check": {
+            "cited_labels": [
+              "S1"
+            ],
+            "unknown_labels": []
+          },
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 7.58,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 15,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boundary-31",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 12,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 15,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          ]
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "return policy inquiry",
+          "reason": "customer is asking about return window",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Customer refunds are available within 30 days only for unopened items.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation indicates that returns are not available on day 31, as the refund window is limited to 30 days.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "No. A return on day 31 exceeds the 30-day window for unopened items [S1].",
+          "confidence": 0.9,
+          "escalation_reason": "",
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "resolution_type": "answer",
+          "model_draft": {
+            "answer": "No, returns are only available within 30 days [S1]",
+            "confidence": 1,
+            "escalation_reason": "",
+            "recommended_next_step": "Inform the customer that the return window has expired",
+            "resolution_type": "answer"
+          },
+          "policy_check": {
+            "answer": "No. A return on day 31 exceeds the 30-day window for unopened items [S1].",
+            "evidence": "Customer refunds are available within 30 days only for unopened items.",
+            "requested_days": 31,
+            "limit_days": 30,
+            "scope": "Explicit inclusive calendar-day limit and unopened-item condition only; not a general policy interpreter."
+          }
+        },
+        "final": {
+          "question": "Can I return an unopened item on day 31?",
+          "intent": {
+            "intent": "return policy inquiry",
+            "reason": "customer is asking about return window",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "answer",
+          "answer": "No. A return on day 31 exceeds the 30-day window for unopened items [S1].",
+          "confidence": 0.9,
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "escalation_reason": "",
+          "citation_check": {
+            "cited_labels": [
+              "S1"
+            ],
+            "unknown_labels": []
+          },
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 7.85,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 15,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boundary-receipt",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 15,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 20,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "return policy inquiry",
+          "reason": "customer seeking information on return policy",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Customer refunds are available within 30 days only for unopened items. Returns require a receipt.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation indicates that returns are only available within 30 days, not 20, and a receipt is required, which answers the question.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "No, you cannot return an unopened item within 20 days without a receipt because a receipt is required for returns [S1].",
+          "confidence": 0.8,
+          "escalation_reason": "",
+          "recommended_next_step": "Check the receipt for the purchase date to determine eligibility for return within the 30-day limit.",
+          "resolution_type": "answer"
+        },
+        "final": {
+          "question": "Can I return an unopened item within 20 days without a receipt?",
+          "intent": {
+            "intent": "return policy inquiry",
+            "reason": "customer seeking information on return policy",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "answer",
+          "answer": "No, you cannot return an unopened item within 20 days without a receipt because a receipt is required for returns [S1].",
+          "confidence": 0.8,
+          "recommended_next_step": "Check the receipt for the purchase date to determine eligibility for return within the 30-day limit.",
+          "escalation_reason": "",
+          "citation_check": {
+            "cited_labels": [
+              "S1"
+            ],
+            "unknown_labels": []
+          },
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 6.66,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 15,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 20,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "boundary-conflict",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": true,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 12,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 15,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/conflict",
+              "tokens": 15,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Conflicting documented return windows were escalated; no policy was selected by guessing."
+          ]
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "return policy inquiry",
+          "reason": "customer seeking information on return window",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Customer refunds are available within 30 days only for unopened items.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation indicates that returns are possible within 30 days, which answers the question but with a longer timeframe than requested.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          },
+          {
+            "label": "S2",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/conflict",
+            "summary": "Customer refunds are available within 14 days only for unopened items.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation answers the question, but the return window is 14 days, not 20 days.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "The supplied documentation gives conflicting return/refund windows [S1] [S2].",
+          "confidence": 0.0,
+          "escalation_reason": "Conflicting documented return/refund windows require human review.",
+          "recommended_next_step": "Ask support to confirm which documented policy applies.",
+          "resolution_type": "escalate",
+          "model_draft": {
+            "answer": "",
+            "confidence": 0.5,
+            "escalation_reason": "conflicting sources [S1] and [S2] regarding return window",
+            "recommended_next_step": "review sources and clarify return policy",
+            "resolution_type": "escalate"
+          }
+        },
+        "final": {
+          "question": "Can I return an unopened item within 20 days?",
+          "intent": {
+            "intent": "return policy inquiry",
+            "reason": "customer seeking information on return window",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "escalate",
+          "answer": "This request should be escalated for human review; no answer was accepted as guidance.",
+          "confidence": 0.0,
+          "recommended_next_step": "Ask support to confirm which documented policy applies.",
+          "escalation_reason": "Conflicting documented return/refund windows require human review.",
+          "citation_check": {
+            "cited_labels": [
+              "S1",
+              "S2"
+            ],
+            "unknown_labels": []
+          },
+          "rejected_answer": "The supplied documentation gives conflicting return/refund windows [S1] [S2].",
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 8.14,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 15,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/conflict",
+            "tokens": 15,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Conflicting documented return windows were escalated; no policy was selected by guessing."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Conflicting documented return windows were escalated; no policy was selected by guessing."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "document-assignment",
+      "kind": "documents",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "brief.pdf",
+              "tokens": 33,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "documents",
+        "documents": [
+          {
+            "name": "brief.pdf",
+            "source_type": "pdf",
+            "text_preview": "The project owner is Priya Shah. Omar Reed must ship 16 kits by November 9, 2026. The total budget is USD 640. No priority is specified.",
+            "analysis": {
+              "action_items": [
+                {
+                  "due_date": "November 9, 2026",
+                  "evidence": "Omar Reed must ship 16 kits by November 9, 2026.",
+                  "owner": "Omar Reed",
+                  "priority": "Not specified",
+                  "task": "ship 16 kits"
+                }
+              ],
+              "document_type": "brief",
+              "entities": {
+                "dates": [
+                  "November 9, 2026"
+                ],
+                "emails": [],
+                "organizations": [],
+                "people": [
+                  "Priya Shah",
+                  "Omar Reed"
+                ]
+              },
+              "risks": [],
+              "summary": "Omar Reed must ship 16 kits by November 9, 2026, with a total budget of USD 640.",
+              "source_checks": {
+                "scope": "Source numbers, verbatim task evidence and explicit assignment grammar; not general semantic verification.",
+                "repairs": []
+              }
+            }
+          }
+        ],
+        "errors": []
+      },
+      "error": null,
+      "seconds": 4.56,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "brief.pdf",
+            "tokens": 33,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-varied",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 51,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "followers",
+          "content_angle": "educational update",
+          "cta": "Learn more about upcoming initiatives",
+          "hooks": [
+            "Introducing the Willow reading pilot",
+            "Supporting literacy with donated books"
+          ],
+          "sections": [
+            "Introduction to the Willow reading pilot",
+            "Details about the pilot"
+          ],
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Learn about the Willow reading pilot",
+            "x": "Willow reading pilot update"
+          },
+          "cta": "Learn more about upcoming initiatives",
+          "hashtags": [
+            "education",
+            "literacy",
+            "readingpilot"
+          ],
+          "image_prompts": [
+            "A person holding a book with a calendar in the background showing November 16, 2026",
+            "A stack of 45 books with a banner that reads 'Willow Reading Pilot'",
+            "A coordinator's desk with books and a budget plan"
+          ],
+          "script": "The Willow reading pilot, coordinated by Nia Stone, is set to open on November 16, 2026. This initiative has been made possible with 45 donated books. The total budget for the pilot is USD 900. We are excited to share this educational update with our followers.",
+          "title": "Introducing the Willow Reading Pilot"
+        },
+        "critique": {
+          "issues": [],
+          "passes_review": true,
+          "revised_captions": {
+            "linkedin": "Learn about the Willow reading pilot",
+            "x": "Willow reading pilot update"
+          },
+          "revised_script": "The Willow reading pilot, coordinated by Nia Stone, opens on November 16, 2026. This initiative has been made possible with 45 donated books. The total budget for the pilot is USD 900. We are excited to share this educational update with our followers.",
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional claims and contact roles; not general factual certification.",
+            "issues": []
+          }
+        },
+        "final_script": "The Willow reading pilot, coordinated by Nia Stone, opens on November 16, 2026. This initiative has been made possible with 45 donated books. The total budget for the pilot is USD 900. We are excited to share this educational update with our followers.",
+        "final_captions": {
+          "linkedin": "Learn about the Willow reading pilot",
+          "x": "Willow reading pilot update"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 10.78,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 51,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

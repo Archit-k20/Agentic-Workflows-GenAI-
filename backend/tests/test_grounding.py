@@ -33,6 +33,57 @@ def test_valid_report_review_is_not_forced_to_fail():
     assert value["passes_review"] is True and not value["source_checks"]["issues"]
 
 
+def test_grouped_citations_become_individual_clickable_labels():
+    sources = SOURCES + [{"label": "S2", "summary": "A conflicting source."}]
+    report = REPORT.replace("32 kits [S1]", "32 kits [S1, S2]") + "\n[S2] Other source"
+    runtime = Runtime("free", "research")
+    accepted = g.research_review({"passes_review": True, "revised_report": report}, REPORT, sources, runtime)
+    assert "[S1] [S2]" in accepted["revised_report"]
+    assert "[S1, S2]" not in accepted["revised_report"]
+    assert not g.report_issues(accepted["revised_report"], sources)
+    assert runtime.warnings
+
+
+def test_unknown_grouped_citation_is_not_silently_discarded():
+    bad = REPORT + "\nClaim [S1, S99]"
+    runtime = Runtime("free", "research")
+    accepted = g.research_review({"passes_review": True, "revised_report": bad}, REPORT, SOURCES, runtime)
+    assert accepted["passes_review"] is False
+    assert accepted["revised_report"] == REPORT
+    assert "[S1, S99]" in accepted["rejected_revision"]
+
+
+@pytest.mark.parametrize("verb", ["introduces", "presents", "launches", "announces"])
+def test_project_owner_is_not_invented_as_presenter(verb):
+    issues = g.claim_issues(f"Priya Shah {verb} Project Alder.", SOURCE)
+    assert any("presentation or launch role" in issue for issue in issues)
+    assert not g.claim_issues(f"Priya Shah {verb} Project Alder.", SOURCE + f" Priya Shah {verb} Project Alder.")
+
+
+def test_routine_pilot_is_not_claimed_as_innovation():
+    assert g.claim_issues("A lighting innovation.", SOURCE)
+    assert not g.claim_issues("A lighting innovation.", SOURCE + " A lighting innovation.")
+
+
+@pytest.mark.parametrize("claim", [
+    "This pilot is designed to introduce the project to potential customers and stakeholders.",
+    "A new lighting experience is coming soon.",
+    "This pilot is just the beginning.",
+])
+def test_proposed_content_purpose_or_audience_cannot_become_a_source_fact(claim):
+    assert g.content_claim_issues(claim, SOURCE)
+    assert not g.content_claim_issues(claim, SOURCE + " " + claim)
+
+
+def test_content_review_rejects_unprovided_purpose_and_retains_factual_package():
+    original = {"script": SOURCE, "captions": {"x": "Alder plans 32 kits."}}
+    review = {"passes_review": True, "revised_script": "This pilot introduces Project Alder to potential customers and stakeholders.", "revised_captions": {"x": "A new kit experience."}}
+    result = g.content_review(review, SOURCE, original, Runtime("free", "content"))
+    assert result["passes_review"] is False
+    assert result["revised_script"] == SOURCE
+    assert result["revised_captions"] == original["captions"]
+
+
 def test_report_rejects_citations_only_in_source_list():
     weak = REPORT.replace("32 kits [S1]", "32 kits").replace("USD 740 [S1]", "USD 740")
     assert any("Executive Summary" in issue for issue in g.report_issues(weak, SOURCES))

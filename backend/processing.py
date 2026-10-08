@@ -285,6 +285,7 @@ def override(module, name, args, kwargs, fn, runtime):
             result = fn(*args, **kwargs)
         if name == "critique_report":
             return g.research_review(result, args[2], sources, runtime)
+        result = g.normalize_report_citations(result, sources, runtime)
         issues = g.report_issues(result, sources)
         if issues:
             if name == "revise_report" and not g.report_issues(args[3], sources):
@@ -313,7 +314,7 @@ def override(module, name, args, kwargs, fn, runtime):
             result["proposal_scope"] = "Creative proposals only; the original idea is the factual source."
         elif name == "build_content_package":
             output = "\n".join([result["title"], result["script"], result["cta"], *result["captions"].values(), *result["hashtags"]])
-            issues = g.claim_issues(output, args[0])
+            issues = g.content_claim_issues(output, args[0])
             if issues:
                 raise ValueError("Content package failed source checks: " + "; ".join(issues))
             result["script"], _ = g.restore_details(result["script"], args[0], runtime, "Content script")
