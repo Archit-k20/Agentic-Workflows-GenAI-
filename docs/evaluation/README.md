@@ -20,7 +20,7 @@ The first hosted follow-up was refused as unavailable/free allowance exhausted; 
 | `real-url-extraction-check-2026-10-08.json` | Actual official Python URL extracted readable nonempty text after compression fix | Extraction only, no AI; raw copyrighted text excluded |
 | `launch-review-2026-10-08.json` | Separate source-based findings, hashes, profile differences and pending checks | Finite guards and synthetic fixtures do not certify general accuracy |
 
-Historical 8 October check: 192 backend tests and eight frontend tests/types/build passed before public hosting. Current deployed source passes 217 backend tests and green native ARM64/AMD64/frontend CI; see the newer launch record above.
+Historical 8 October check: 192 backend tests and eight frontend tests/types/build passed before public hosting. Current deployed `3529b10` source passes 245 backend tests locally/on the AMD64 VM and green native ARM64/AMD64/frontend CI; see the newer launch record above.
 
 After the next deliberate allowance check, use a **new filename** for the current hosted profile, prioritize the affected cases, then include all remaining fixtures:
 
@@ -102,3 +102,9 @@ python -m backend.evaluation.report /data/evaluation/hosted-corrected.json
 ```
 
 Use `--resume` only after explicitly deciding to retry missing/error cases, and only with an unchanged inference profile. The application resets at 00:00 UTC (05:30 IST). Do not bypass shared limits or enable paid overflow. The current sixty fixtures are synthetic English briefs, not general-purpose quality certification; add varied real-document and adversarial cases before public acceptance. Image/speech implementations were unchanged and their earlier live checks/native smoke evidence remain applicable; subjective media acceptance and target-VM memory/latency still require later validation. No production publishing or paid OpenAI testing occurred.
+
+## Private Hugging Face image capacity extension
+
+- [Gradio transport](hf-transport-2026-10-09.json): actual REST/queue protocol with a synthetic PNG, no GPU.
+- [Live model generation](hf-live-2026-10-09.json): one authenticated pinned FLUX generation in 11.913 seconds. Visual review found a malformed handle.
+- [Deployed-source operator integration](hf-production-2026-10-09.json): separate VM process, actual SSE and artifact handlers, live HF generation in 9.656 seconds, session isolation and clearing. The synthetic Cloudflare budget forces known pre-submission rejection without changing the production ledger. Public browser verification succeeded but its image allowance was exhausted; that successful-generation check remains pending. This does not certify the remaining text-quality gates.
