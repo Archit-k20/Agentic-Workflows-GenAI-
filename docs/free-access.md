@@ -21,7 +21,7 @@ The six bundled MP3 voice previews work without a backend and make no AI request
 | --- | --- |
 | Hosted text | Cloudflare `@cf/meta/llama-3.3-70b-instruct-fp8-fast` |
 | Hosted code | Cloudflare `@cf/qwen/qwen2.5-coder-32b-instruct` |
-| Hosted images | Cloudflare `@cf/black-forest-labs/flux-1-schnell`, four steps, 1024 × 1024 requested; actual dimensions returned |
+| Hosted images | Cloudflare `@cf/black-forest-labs/flux-1-schnell`, four steps with documented prompt/steps fields; actual dimensions returned |
 | CPU text | Ollama `qwen3.5:4b`, Q4_K_M, digest `2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd` |
 | Retrieval | `BAAI/bge-small-en-v1.5`, revision `5c38ec7c405ec4b44b94cc5a9bb96e735b38267a`; normalized 384-dimensional CLS vectors |
 | Speech | `hexgrad/Kokoro-82M`, revision `f3ff3571791e39611d31c381e3a41a3af07b4987`; six English voices |
@@ -38,13 +38,13 @@ English is the evaluated language. Free voices are Heart, Bella, Nicole, Michael
 - Indexes store FAISS and JSON, with an explicit embedding profile. They survive backend restart. Changed/legacy profiles require reprocessing; uploaded files remain available until session expiry. No uploaded pickle is loaded.
 - YouTube URL extraction can be blocked by YouTube or lack transcripts. Both YouTube tools accept a pasted transcript as an explicit alternative. No autonomous web search is added.
 - Existing code verification and its single repair attempt remain. A passed syntax/compiler check does not establish correctness or security. Failed JSON reviews cannot become a passed review in free mode.
-- Workflow requests have a 900-second deadline; hosted calls have at most 120 seconds. Local model inference, embeddings and speech share a CPU gate within the single backend process. Keep one Uvicorn worker; two global workflow slots do not mean two simultaneous local model generations. Compose allows 8 GB for Ollama and 3 GB for the API, leaving 1 GB of the proposed 12 GB VM for its OS. Keeping Ollama resident caused cache-related out-of-memory failures during repeated local evaluation, including at an 8 GB limit. Local calls now use `keep_alive=0`, unloading the model/cache after each generation; files remain cached on disk. This adds reload latency but prevents cross-stage prompt caches from accumulating. Do not treat an increased memory limit alone as the fix. Measure actual combined peak memory on the target VM before deployment.
+- Workflow requests have a 900-second deadline; hosted calls have at most 120 seconds. Local model inference, embeddings and speech share a CPU gate within the single backend process. Keep one Uvicorn worker; two global workflow slots do not mean two simultaneous local model generations. Compose allows 8 GB for Ollama and 3 GB for the API, leaving roughly 5 GB of the deployed 16 GB Google trial VM for its OS and proxy. Keeping Ollama resident caused cache-related out-of-memory failures during repeated local evaluation, including at an 8 GB limit. Local calls now use `keep_alive=0`, unloading the model/cache after each generation; files remain cached on disk. This adds reload latency but prevents cross-stage prompt caches from accumulating. Do not treat an increased memory limit alone as the fix. Measure actual combined peak memory on the target VM before deployment.
 
 ## Scoped source checks
 
 Free/local modes now validate the handoffs that failed the initial hosted quality benchmark. Research retains citation/heading structure through reviews and saves rejected rewrites. Support reads verbatim documentation, excludes generated relevance opinions from evidence, checks explicit return-window boundaries and escalates conflicting windows. Content separates proposals from input facts, checks specific unsupported claims and restores omitted numerical source details before narration. Document actions require source excerpts; inferred owners/priority/dates remain unspecified. Rejected suggestions and guard scope stay available in Details.
 
-One existing structured repair may correct source/schema failures; no extra unbounded review loops are added. These checks are conservative and limited: quotes prove provenance, not truth or complete semantic entailment. The original OpenAI prompts/function bodies are unchanged. Current correction evidence is in [verification](verification.md); full final-profile hosted quality acceptance is pending. The 4 October dashboard/API quota discrepancy was recorded without assuming confirmed account-wide exhaustion; a small 8 October availability check succeeded and a fresh hosted retest is in progress. See [deployment instructions](deployment.md) for the Vercel frontend and separate VM backend.
+One existing structured repair may correct source/schema failures; no extra unbounded review loops are added. These checks are conservative and limited: quotes prove provenance, not truth or complete semantic entailment. The original OpenAI prompts/function bodies are unchanged. Current correction evidence is in [verification](verification.md); full final-profile hosted quality acceptance is pending. The 4 October dashboard/API quota discrepancy was recorded without assuming confirmed account-wide exhaustion; the 9 October sixty-case hosted run completed on the earlier profile, but its source-based review failed. The subsequent hosted follow-up was refused by the provider; current-profile hosted quality acceptance remains pending. See [deployment instructions](deployment.md) for the Vercel frontend and separate VM backend.
 
 ## Fair use and recovery
 
@@ -56,13 +56,13 @@ The application reserves conservative compute before hosted calls: 8,000 Neurons
 
 No generation automatically replays after disconnect, capacity failure or error. Inputs and completed stages remain visible. Explicit retry starts a new request and may consume allowance. Samples are never substituted for a failed live result.
 
-## Before public deployment (later phase)
+## Public configuration and remaining acceptance
 
 1. Create a free Turnstile widget in Cloudflare, using the exact frontend hostname, and copy its **site key** to `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in Vercel. This value is public and bundled at frontend build time.
 2. Put its **secret key** only in the backend environment. Set `TRACE_PUBLIC_DEPLOYMENT=true` and list the exact allowed widget hostnames in `TRACE_TURNSTILE_HOSTNAMES` (hostnames, without scheme/path). Server verification requires success, an allowed hostname and action `trace-session`; tokens are single-use. Local test mode is not suitable for public operation.
 3. Set exact HTTPS origins in `TRACE_ALLOWED_ORIGINS`, the HTTPS backend URL in `NEXT_PUBLIC_API_URL`, and a stable random `TRACE_IP_HASH_SECRET`. Terminate HTTPS with the planned reverse proxy. Set `TRACE_TRUSTED_PROXY_IPS` only to its actual peer addresses, and have the proxy overwrite untrusted forwarding headers. Direct clients cannot select their quota IP via headers.
-4. Warm and evaluate the models on the target 2-CPU/12-GB VM. Verify the concurrent memory/latency gates there; Mac/Docker results are not an Oracle capacity guarantee.
-5. Confirm quality gates and native ARM64/AMD64 checks before deployment. Vercel publishing, Oracle account/VM provisioning, domains, and production promotion remain deferred.
+4. Models are warmed on the deployed 4-vCPU/16-GB Google trial VM, with API/Ollama limited to two CPUs each. Verify concurrent memory/latency separately; sampled usage is not stress certification.
+5. Production is live on [Vercel](https://trace-agentic-workspace.vercel.app), with a separate HTTPS backend and real Turnstile protection. Native ARM64/AMD64 CI and 217 backend tests pass. Output quality, all-tool live acceptance and external-device checks remain separate gates. See [launch status](launch-2026-10-09.md).
 
 ## Quality evaluation
 

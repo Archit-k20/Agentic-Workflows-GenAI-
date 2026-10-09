@@ -2,7 +2,7 @@
 
 [Full raw hosted run](hosted-launch-final-2026-10-09.json): 60 cases, no execution errors or local fallback. [Source-based review](launch-review-2026-10-09.json) records the remaining quality issues; this is **not** a passing release-quality gate. All sixteen Q&A outputs retained supported answers or refused absent evidence. Support omitted a documented shipment from its excerpt and unnecessarily escalated; missing guarantee evidence was sometimes phrased as actual absence. Follow-up code retains missing numerical support sentences and makes unknown-evidence instructions explicit, without changing original OpenAI workflow functions.
 
-The first hosted follow-up was refused as unavailable/free allowance exhausted; no repeated retry or quota reset. Changed inference profiles need fresh evidence, not renamed earlier passes. Local retest, target-server and public-browser acceptance are separate. The pinned installer passed a real fresh-volume download and inference smoke test. Vercel/Google trial deployment is underway; no public readiness claim yet.
+The first hosted follow-up was refused as unavailable/free allowance exhausted; no repeated retry or quota reset. Changed inference profiles need fresh evidence, not renamed earlier passes. The earlier Mac local retest still exposed unsupported arrival wording; new source guards are deployed and VM targets completed in 621.92/552.92 seconds. The targeted date/evidence errors improved, but source review still found omitted owners, duplicate refund wording and overconfident review comments; full local quality remains unaccepted. See [VM review](vm-local-launch-review-2026-10-09.json). Target-server/public-browser acceptance are separate. The pinned installer passed a real fresh-volume download and inference smoke test. Vercel and the Google trial VM are now live. Public wiring, browser speech/fallback, samples and selected native/state checks passed; full quality/interview acceptance remains incomplete. See [the dated launch record](../launch-2026-10-09.md).
 
 ---
 
@@ -20,7 +20,7 @@ The first hosted follow-up was refused as unavailable/free allowance exhausted; 
 | `real-url-extraction-check-2026-10-08.json` | Actual official Python URL extracted readable nonempty text after compression fix | Extraction only, no AI; raw copyrighted text excluded |
 | `launch-review-2026-10-08.json` | Separate source-based findings, hashes, profile differences and pending checks | Finite guards and synthetic fixtures do not certify general accuracy |
 
-192 tests pass in the rebuilt native ARM64 image. Eight frontend tests, typecheck and production build pass. Latest native CI is a separate check after push. UI unchanged; no public website/server exists yet.
+Historical 8 October check: 192 backend tests and eight frontend tests/types/build passed before public hosting. Current deployed source passes 217 backend tests and green native ARM64/AMD64/frontend CI; see the newer launch record above.
 
 After the next deliberate allowance check, use a **new filename** for the current hosted profile, prioritize the affected cases, then include all remaining fixtures:
 

@@ -2,7 +2,11 @@
 
 The deployment architecture for the current implementation is **Vercel Hobby for the Next.js frontend + a Linux VM for the Python backend and private Ollama sidecar**. The interview deployment uses a Google Cloud trial-funded Compute Engine VM; Oracle remains an alternative for later permanent free hosting. Cloudflare Workers AI supplies hosted text/code/images; OCR, extraction, retrieval and speech run on the VM. Visitors enter no provider key. The owner configures Cloudflare once, privately on the backend. Optional visitor OpenAI mode remains separate.
 
-As of 9 October 2026, the owner authenticated the official CLI into the active Google project. Compute Engine is enabled and a dedicated TRACE network is being provisioned. The existing account is on Free Trial, with an observed expiry of 8 January 2027; do not upgrade it. Vercel Hobby project `trace-agentic-workspace` has been created. These are setup milestones, not public-release acceptance. Mumbai E2 quota is zero; the selected available host is N2 standard, 4 vCPU/16 GB, Ubuntu, 50 GB disk. Compute/storage/network consume trial credits; this is temporary zero-cash hosting, not an indefinitely free 16 GB VM.
+As of 9 October 2026, the production website is **https://trace-agentic-workspace.vercel.app**, backed by **https://trace-api.34.93.169.35.sslip.io**. It is accessible without a Vercel login or visitor API key. Real browser Turnstile entry, speech playback, local summary fallback and five labeled samples were verified. The site is live; full output-quality/interview acceptance is still incomplete. See [the launch record](launch-2026-10-09.md) for the distinction.
+
+The dedicated Google Compute Engine host is `trace-api`, zone `asia-south1-a`, `n2-standard-4` (4 vCPU/16 GB), Ubuntu 24.04 AMD64, 50 GB disk. Mumbai E2 quota was zero. Its reserved address is `trace-api-ip`; the host has no attached service account. Only HTTP/HTTPS are public; SSH is restricted to the owner's setup IP. Caddy terminates HTTPS; API/Ollama ports remain private. Backend source is detached at **0d373203fd197ecae73cf0367d753396370e46ee**. Vercel frontend source was unchanged by the subsequent backend fixes.
+
+The account remains **Free Trial**, with an observed expiry of **8 January 2027**, or earlier credit exhaustion. Do not upgrade it. Compute, disk and network consume trial credits; this is temporary zero-cash hosting, not an indefinitely free 16 GB VM. Check the actual remaining credit in Billing. The trial expiry is not an uptime promise. [Google trial rules](https://cloud.google.com/signup-faqs).
 
 ## What Vercel alone would do
 
@@ -16,7 +20,7 @@ Vercel currently supports Python and OCI container functions. This is not a clai
 
 Sources: [Vercel function limits](https://vercel.com/docs/functions/limitations), [Python runtime](https://vercel.com/docs/functions/runtimes/python), [container deployments and statelessness](https://vercel.com/kb/guide/does-vercel-support-docker-deployments). Vercel Hobby is intended for personal noncommercial use; this personal portfolio is the proposed use. [Hobby plan](https://vercel.com/docs/plans/hobby).
 
-## Owner actions: Oracle account and VM
+## Alternative only: Oracle account and VM
 
 1. Open [Oracle Cloud Free Tier](https://www.oracle.com/cloud/free/) and complete account/email/phone/card verification yourself. Keep the account free; do not select paid shapes or upgrade to bypass capacity problems.
 2. Choose a home region carefully. Always Free compute is restricted to that region. Capacity is not guaranteed. If unavailable, try another availability domain in that home region where offered, or report the capacity message so we can reassess the interview timeline.
@@ -49,8 +53,10 @@ Bring up the existing composition, warm every required pinned asset, then verify
 docker compose up -d --build
 docker compose --profile setup run --rm --build model-setup
 docker compose exec backend python -m backend.warmup
-docker compose exec backend python -m pytest backend/tests -q -p no:cacheprovider
+docker compose exec -e TRACE_PUBLIC_DEPLOYMENT=false -e TRACE_REQUIRE_COMPILER_ISOLATION=1 backend python -m pytest backend/tests -q -p no:cacheprovider
 ```
+
+The test-only environment override above applies to the separate test process: TestClient fixtures create sessions without a real browser proof. Never turn off public protection in the running API or production environment. Real missing-proof rejection and successful browser entry must be verified separately.
 
 `compose.yaml` keeps API port 8000 bound to host loopback; Ollama has no public port. Named volumes persist SQLite/session data, indexes, artifacts and models. Keep one API process. Do not delete volumes during updates; `docker compose down -v` deletes that data. Retention remains at most 24 hours for session data. Warm model files remain cached separately.
 
@@ -67,7 +73,7 @@ trace-api.your-domain.example {
 
 This direct-to-Caddy setup overwrites visitor forwarding headers. The API container may see Docker's bridge gateway as the peer, rather than host loopback. Determine the actual peer before setting `TRACE_TRUSTED_PROXY_IPS`; do not trust arbitrary addresses or all private ranges. Validate and reload Caddy, then confirm HTTPS and streaming. [Caddy proxy headers/streaming](https://caddyserver.com/docs/caddyfile/directives/reverse_proxy), [automatic HTTPS](https://caddyserver.com/docs/automatic-https).
 
-The proposed VM leaves only about 1 GB outside the configured container ceilings. Measure **combined actual peak memory**, CPU contention and latency on this VM; local Mac results do not establish capacity. Do not increase allocations beyond the free allowance to hide failures.
+The current 16 GB VM leaves roughly 5 GB outside the 3 GB API/8 GB Ollama ceilings. Active-model samples are recorded in the launch evidence; they are not a two-workflow peak stress certification. Measure **combined actual peak memory**, CPU contention and latency before claiming concurrent capacity. Local Mac timings do not establish target-server performance.
 
 ## Vercel frontend and Turnstile
 
@@ -92,6 +98,34 @@ docker compose exec backend python -m backend.deployment_check \
 
 It checks HTTPS API wiring, installed capabilities, exact CORS, free default mode, public protection and rejection of missing visitor proof. It sends no AI request or credentials. A pass does not establish successful browser Turnstile, generation quality, persistent storage, memory or latency.
 
+## Operating the deployed host
+
+Use the authenticated `trace-interview` gcloud configuration and the owner account. The CLI installed for this launch is `/tmp/trace-tooling/google-cloud-sdk/bin/gcloud`; this temporary installation may need reinstalling after OS cleanup. Credentials are in Google's normal user configuration, not in Git. Example:
+
+```sh
+/tmp/trace-tooling/google-cloud-sdk/bin/gcloud --configuration=trace-interview \
+  compute ssh trace-api --zone=asia-south1-a \
+  --project=project-bcfdd038-efca-4fec-bb9
+```
+
+On the host, source is `/opt/trace/app`; private owner configuration is `/opt/trace/app/backend/.env`, root-owned mode 600. Caddy uses `/etc/caddy/Caddyfile`. The upstream Caddy package repository returned HTTP 402 during setup; Ubuntu's Caddy package was used successfully. `TRACE_TRUSTED_PROXY_IPS=172.18.0.1` matches the measured Docker peer for this network; remeasure after network reconstruction.
+
+```sh
+cd /opt/trace/app
+sudo docker compose ps
+sudo docker stats --no-stream
+sudo systemctl status caddy --no-pager
+sudo docker compose logs --tail 100 backend
+```
+
+Do not publish logs containing visitor inputs. To update deliberately: record the old commit, fetch and check out the reviewed release commit, then `sudo docker compose up -d --build backend`. Re-run health/public wiring and one controlled browser check. To roll back, check out the recorded old commit and rebuild the backend, retaining named volumes. Do not use `down -v`. Storage-format migrations would need a separate backup/rollback review; none is proposed here.
+
+An ignored local `backend/.env.production` recovery copy (mode 600) retains the stable private production configuration. Back up it and named data volumes securely if reconstruction is needed; never commit credentials or visitor data. Only temporary synthetic launch-test sessions were cleared, not live visitor sessions. Anonymous data expires within 24 hours. The immutable model installer rebuilds the model cache without relying on a changed registry tag.
+
+The reserved IP keeps the current API hostname stable. If the VM is rebuilt with another address, update API hostname, HTTPS and the frontend build-time API URL. If the owner's IP changes, update only the dedicated SSH rule to the new owner IP/32; do not open SSH globally. Monitor Billing credit/expiry and disk space before the interview. At trial end, move to a verified free alternative or stop/delete the dedicated VM, disk and reserved IP rather than upgrading to paid billing. Stopping a VM alone is not a permanent cleanup of its disk/IP resources.
+
+Vercel production was deployed through its official CLI from `frontend`; GitHub auto-deployment was not enabled, and this draft branch was not merged. The public project has Vercel authentication protection disabled so recruiters can open it. Rebuild production deliberately after changing frontend source or `NEXT_PUBLIC_` values. Preview URLs need explicit backend/Turnstile allowlisting before live execution.
+
 ## Interview release acceptance
 
 - Finish the seven hosted boundaries, affected cases and complete sixty-case source-based review on one recorded inference profile. Pause honestly at allowance limits and resume only deliberately; do not reset/bypass the ledger.
@@ -115,7 +149,7 @@ The owner requires **zero hosting spend**. Among the services checked, there is 
 
 [Google trial rules and no automatic upgrade](https://cloud.google.com/signup-faqs), [Google free-program details](https://docs.cloud.google.com/free/docs/free-cloud-features), [AWS Free plan](https://aws.amazon.com/free/), [eligible EC2 types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html), [Azure for Students](https://learn.microsoft.com/en-us/azure/education-hub/about-azure-for-students), [Tailscale Funnel](https://tailscale.com/docs/features/tailscale-funnel).
 
-If the owner selects Google and confirms eligibility: open Google Cloud Free Trial, personally complete verification, confirm the Billing overview says **Free trial**, create a dedicated project, enable Compute Engine, and check the displayed estimate/credit balance and VM quota before creating a roughly 16 GB Ubuntu VM. Restrict SSH to the owner IP and expose only HTTPS/HTTP publicly. Record the trial end/remaining credit and do not upgrade to paid billing. Then use the VM/backend/Turnstile/Vercel checks in this guide. No account or VM has been created by this task.
+Historical signup guidance (completed for this launch): open Google Cloud Free Trial, personally complete verification, confirm the Billing overview says **Free trial**, create a dedicated project, enable Compute Engine, and check the displayed estimate/credit balance and VM quota before creating a roughly 16 GB Ubuntu VM. Restrict SSH to the owner IP and expose only HTTPS/HTTP publicly. Record the trial end/remaining credit and do not upgrade to paid billing. Then use the VM/backend/Turnstile/Vercel checks in this guide. The owner completed signup and authentication; the dedicated VM above has now been provisioned and tested.
 
 Google's ongoing e2-micro allowance is about 1 GB RAM, so it cannot keep this full runtime after trial expiry. Render Free has no persistent disk and insufficient resources. New personal Hugging Face Docker Spaces require PRO; its free-account ZeroGPU Gradio exception is not a drop-in Docker backend. Cloudflare Quick Tunnels explicitly do not support SSE, so they are unsuitable for TRACE's workflow event transport. [Google machine types](https://docs.cloud.google.com/compute/docs/general-purpose-machines), [Render free restrictions](https://render.com/docs/free), [Spaces requirements](https://huggingface.co/docs/hub/spaces-overview), [Quick Tunnel limits](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
 
@@ -134,6 +168,6 @@ For the one-week interview timeline, a **16 GB Ubuntu VPS + Vercel frontend** is
 
 Sources: [Hetzner specifications/capacity](https://www.hetzner.com/cloud/cost-optimized/), [current Hetzner prices](https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/), [DigitalOcean pricing](https://www.digitalocean.com/pricing/droplets), [Railway plans and metering](https://docs.railway.com/pricing/plans), [Render free limitations](https://render.com/docs/free), [Cloud Run pricing](https://cloud.google.com/run/pricing), [Cloud Run container storage](https://docs.cloud.google.com/run/docs/container-contract), [Spaces overview](https://huggingface.co/docs/hub/spaces-overview).
 
-No provider, paid plan or server has been selected or purchased. The owner has since confirmed that hosting must remain completely free; the paid comparisons above are not selected recommendations. Paying for a server does **not** raise Cloudflare's inference allowance; samples and explicitly identified local fallback remain separate experiences, and the CPU fallback still needs quality/capacity acceptance. Do not rush a Vercel-only/backend rewrite while implying unchanged feature parity.
+Google Free Trial Compute Engine is selected for the interview deployment. No paid plan, account upgrade or hosting purchase was made; the paid comparisons above remain excluded by the owner's zero-spend preference. Paying for a server does **not** raise Cloudflare's inference allowance; samples and explicitly identified local fallback remain separate experiences, and the CPU fallback still needs quality/capacity acceptance. Do not rush a Vercel-only/backend rewrite while implying unchanged feature parity.
 
 Original Streamlit remains available locally using `requirements.txt` and `streamlit run main.py`. Original OpenAI advanced mode is optional and has no paid live acceptance evidence without an explicitly supplied test key. No paid provider is required for default visitor access.

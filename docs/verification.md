@@ -1,11 +1,19 @@
-# Launch preparation — 9 October 2026
+# Public launch verification — 9 October 2026
 
-- Fresh native ARM64 image: **207 backend tests pass**. The reproducible model installer downloaded and verified all four original immutable blobs into an empty volume, then actual CPU inference, constrained JSON and cache unloading passed. Real BGE vectors, FAISS/JSON restart recovery, hybrid retrieval and decoded Kokoro MP3 checks passed on that fresh installation.
-- Final-profile hosted benchmark completed **60/60** with no execution failures or local fallback. Automated fact/citation/schema screens are separate from source-based quality review; do not interpret this as 100% factual accuracy. The source-based review found an unnecessary support escalation and missing-evidence wording issues requiring follow-up.
-- GCP CLI/project access verified; Compute Engine and dedicated network setup are underway. Vercel project created, but no public release is accepted yet. Actual Turnstile keys, HTTPS, target-server checks and recruiter-access acceptance remain outstanding.
-- Approved frontend design unchanged. No paid OpenAI requests, quota reset, paid-account upgrade or merge.
+**TRACE is live at [trace-agentic-workspace.vercel.app](https://trace-agentic-workspace.vercel.app)**, with the full Python/Ollama backend on a Google Free Trial Compute Engine VM. Visitors need no provider key or Vercel login. Real browser Turnstile entry, speech playback and an explicitly identified CPU summary fallback work. This is live integration evidence, not full release-quality acceptance.
+
+- Deployed source `0d37320` passes **217 backend tests** on the AMD64 VM; [native ARM64/AMD64 and frontend CI](https://github.com/Archit-k20/Agentic-Workflows-GenAI-/actions/runs/37913118897) passes, including actual pinned CPU model smoke. TestClient-only public-mode overrides do not disable protection in the running API.
+- **18/18 public HTTP wiring checks pass**. Real public PDF/index/OCR/caption/audio transport, session isolation, clearing and restart persistence were exercised. Initial local Q&A answer assertion failed; a separate recorded follow-up returned a supported answer with actual sources in 33.97 seconds. Both reports are retained.
+- Five visibly labeled samples render offline results. Research with pinned evidence has no horizontal overflow at five required widths in both themes. Approved frontend source is unchanged. Browser filechooser automation was unsuccessful, although API uploads passed; phone/browser file selection remains a manual check.
+- Earlier-profile **60/60 hosted cases** completed without execution failure/fallback, but source-based quality review failed. Latest corrections distinguish missing evidence from absence, retain omitted numerical support sentences and reject arrival dates inferred from shipping. The hosted follow-up was refused by Cloudflare; no quota reset/bypass or paid overflow. The earlier run is not renamed as acceptance for changed code.
+- Real browser speech took about 15 seconds and CPU fallback summary about 64 seconds. Two VM local content targets completed in 621.92/552.92 seconds without execution errors. Date/evidence wording improved, but review quality, omitted owners and duplicate refund wording keep full local quality open. This benchmark used the preceding `38a1c8d` text profile; the later patch only changes image transport/stages. Sampled memory is not a concurrent-load stress pass; no field LCP/CLS/INP claim.
+- Google hosting consumes trial credits, with observed expiry **8 January 2027 or earlier credit depletion**. No paid upgrade, OpenAI request or merge. Full public live-tool/output-quality acceptance and independent phone check remain outstanding.
+
+[Seven-task launch status, evidence and remaining checks](launch-2026-10-09.md) · [deployment/recovery](deployment.md) · [current evaluation evidence](evaluation/README.md)
 
 ---
+
+Historical verification records follow; their dates, profiles and earlier counts apply only to those runs.
 
 # Interview launch verification — 8 October 2026 IST
 
