@@ -8,7 +8,7 @@ Visitors start in **Free access** and enter no API key. All fifteen tool surface
 
 1. Copy `backend/.env.example` to `backend/.env`. The latter is ignored by Git and Docker builds. Enter the Cloudflare Account ID and a token scoped to this account's Workers AI. Keep the account on Workers **Free**; do not enable paid overflow. Never put owner credentials in a `NEXT_PUBLIC_` variable.
 2. Run `docker compose up -d --build`. The pinned Ollama sidecar is private; only the backend's localhost port is exposed. The SQLite/data and model-cache volumes persist across restarts.
-3. Run `docker compose exec ollama ollama pull qwen3.5:4b`.
+3. Run `docker compose --profile setup run --rm --build model-setup`. The installer verifies the bundled manifest and every immutable model blob before publishing the pinned model. A mutable registry tag is not used: upstream changed that tag after the tested model was pinned.
 4. Run `docker compose exec backend python -m backend.warmup`. This downloads the pinned BGE/Kokoro assets, checks real embeddings/English speech dependencies, verifies the local model's exact digest and quantization, and performs a short CPU inference. Treat a failure as a setup blocker rather than substituting a different model.
 5. In `frontend`, run `npm ci`, then `npm run dev`. The default API URL is `http://localhost:8000`; the UI opens at `http://localhost:3000`.
 6. Check `/api/v1/health`: `hosted_configured`, `local_text_ready`, `speech_installed`, and compiler/OCR capabilities. `ready` means the API is serving; configuration flags do not certify Cloudflare credentials, model quality, or warmed model latency.

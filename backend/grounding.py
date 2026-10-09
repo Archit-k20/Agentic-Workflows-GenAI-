@@ -76,11 +76,11 @@ def claim_issues(output, source):
     ):
         person = match.group(1)
         for action in re.finditer(
-            re.escape(person) + r"\s+(introduces?|presents?|launches?|unveils?|announces?)\b",
+            re.escape(person) + r"\s+(introduces?|presents?|launches?|unveils?|announces?|oversees?|manages?)\b",
             output, re.I,
         ):
             if not re.search(re.escape(person) + r"\s+" + re.escape(action.group(1)) + r"\b", source, re.I):
-                issues.append("A presentation or launch role was not supplied for " + person)
+                issues.append("A presentation or launch role, or operational assignment, was not supplied for " + person)
     for contact in re.finditer(r"\b[Cc]ontact\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)", output):
         person = contact.group(1)
         if not any(person in s and re.search(r"\b(?:contact|enquiries|inquiries)\b", s, re.I) for s in sentences(source)):
@@ -104,6 +104,14 @@ def content_claim_issues(output, source):
     ):
         if re.search(pattern, output, re.I) and not re.search(pattern, source, re.I):
             issues.append("Purpose, audience or experience claim was not supplied: " + re.search(pattern, output, re.I).group())
+    for sentence in sentences(source):
+        if re.search(r"\b(?:not|no)\b[^.!?]{0,100}\b(?:supplied|specified|documented)\b", sentence, re.I):
+            for noun in ("guarantee", "forecast"):
+                if re.search(r"\b" + noun + r"s?\b", sentence, re.I) and re.search(
+                    r"\bno\b[^.!?\n]{0,100}\b" + noun + r"s?\b[^.!?\n]{0,60}\b(?:apply|exist|offered|available)\b",
+                    output, re.I,
+                ):
+                    issues.append("Unspecified " + noun + " evidence cannot establish its absence or non-applicability.")
     return issues
 
 
@@ -134,8 +142,8 @@ def instructions(context):
             "Keep valid inline [S#] labels in Executive Summary and Findings, not only Source List. "
             "A source's missing experiment data is an evidence gap to describe, not a reason to invent methods or "
             "to presume that a study, experiment or measured outcome exists. Proposed research questions are "
-            "suggestions, not claims that such activities happened. "
-            "to declare a faithful report defective. Do not label sources untrusted, unreliable or lacking credibility "
+            "suggestions, not claims that such activities happened. Missing study evidence alone does not "
+            "make a faithful report defective. Do not label sources untrusted, unreliable or lacking credibility "
             "unless source evidence actually establishes that assessment. Preserve a good report unchanged when no report defect exists."
         )
     if stage == "support-draft":
@@ -158,7 +166,10 @@ def instructions(context):
             "\nCLAIM BOUNDARY: the supplied idea is the ONLY factual evidence. Plans are creative proposals, "
             "never facts about product audience, purpose, availability or features. An owner/coordinator is not "
             "automatically a presenter or launcher: do not say a named person introduces, presents, launches or "
-            "announces the project unless the input explicitly states that action. Do not claim innovation or "
+            "announces the project, oversees shipments or manages operations unless the input explicitly states "
+            "that action. Missing information is unknown: 'no forecast is supplied' cannot become 'no forecasts "
+            "apply' or 'no forecasts exist'. Say what evidence was supplied, not what exists in the world. "
+            "Do not claim innovation or "
             "breakthroughs from a routine pilot. Do not add latest, exclusive, "
             "early-adopter positioning, guarantees, contact roles or prices unless explicitly supplied. "
             "Keep all material quantities, dates, budget amounts and refund conditions in the complete script. "

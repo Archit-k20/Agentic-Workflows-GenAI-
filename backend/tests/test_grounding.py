@@ -84,6 +84,38 @@ def test_content_review_rejects_unprovided_purpose_and_retains_factual_package()
     assert result["revised_captions"] == original["captions"]
 
 
+@pytest.mark.parametrize("verb", ["oversees", "manages"])
+def test_owner_does_not_become_an_operational_assignee_in_content(verb):
+    assert g.content_claim_issues(f"Priya Shah {verb} a shipment of 32 kits.", SOURCE)
+    explicit = SOURCE + f" Priya Shah {verb} a shipment of 32 kits."
+    assert not g.content_claim_issues(f"Priya Shah {verb} a shipment of 32 kits.", explicit)
+
+
+@pytest.mark.parametrize("claim", [
+    "No delivery guarantees or revenue forecasts apply to this run.",
+    "No revenue forecasts exist for this project.",
+    "No delivery guarantees are available.",
+])
+def test_unspecified_guarantee_or_forecast_does_not_establish_absence(claim):
+    source = SOURCE + " No delivery guarantee or revenue forecast is supplied."
+    assert g.content_claim_issues(claim, source)
+    assert not g.content_claim_issues("No delivery guarantee or revenue forecast is supplied.", source)
+
+
+def test_explicit_absence_is_allowed_without_converting_missing_information():
+    source = SOURCE + " No delivery guarantees apply to this pilot."
+    assert not g.content_claim_issues("No delivery guarantees apply to this pilot.", source)
+
+
+def test_content_review_keeps_facts_when_revision_converts_unknown_to_absence():
+    source = SOURCE + " No delivery guarantee or revenue forecast is supplied."
+    original = {"script": source, "captions": {"x": POLICY}}
+    result = g.content_review({"passes_review": True, "revised_script": "No delivery guarantees or revenue forecasts apply.", "revised_captions": {"x": POLICY}}, source, original, Runtime("local", "content"))
+    assert result["passes_review"] is False
+    assert result["revised_script"] == source
+    assert result["rejected_revision"]["script"]
+
+
 def test_report_rejects_citations_only_in_source_list():
     weak = REPORT.replace("32 kits [S1]", "32 kits").replace("USD 740 [S1]", "USD 740")
     assert any("Executive Summary" in issue for issue in g.report_issues(weak, SOURCES))

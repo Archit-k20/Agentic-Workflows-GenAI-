@@ -1,8 +1,8 @@
 # TRACE hosting and interview launch
 
-The deployment architecture for the current implementation is **Vercel Hobby for the Next.js frontend + a Linux VM for the Python backend and private Ollama sidecar**. Oracle Always Free is provisional; a suitably sized paid VPS can run the same composition. Cloudflare Workers AI supplies hosted text/code/images; OCR, extraction, retrieval and speech run on the VM. Visitors enter no provider key. The owner configures Cloudflare once, privately on the backend. Optional visitor OpenAI mode remains separate.
+The deployment architecture for the current implementation is **Vercel Hobby for the Next.js frontend + a Linux VM for the Python backend and private Ollama sidecar**. The interview deployment uses a Google Cloud trial-funded Compute Engine VM; Oracle remains an alternative for later permanent free hosting. Cloudflare Workers AI supplies hosted text/code/images; OCR, extraction, retrieval and speech run on the VM. Visitors enter no provider key. The owner configures Cloudflare once, privately on the backend. Optional visitor OpenAI mode remains separate.
 
-As of 8 October 2026, no cloud server or public website has been provisioned by this task. The owner has no Oracle account and is comparing alternatives before provisioning. The local backend is healthy and the Cloudflare availability probe succeeded; this does not certify public readiness or completion of output-quality acceptance.
+As of 9 October 2026, the owner authenticated the official CLI into the active Google project. Compute Engine is enabled and a dedicated TRACE network is being provisioned. The existing account is on Free Trial, with an observed expiry of 8 January 2027; do not upgrade it. Vercel Hobby project `trace-agentic-workspace` has been created. These are setup milestones, not public-release acceptance. Mumbai E2 quota is zero; the selected available host is N2 standard, 4 vCPU/16 GB, Ubuntu, 50 GB disk. Compute/storage/network consume trial credits; this is temporary zero-cash hosting, not an indefinitely free 16 GB VM.
 
 ## What Vercel alone would do
 
@@ -47,7 +47,7 @@ Bring up the existing composition, warm every required pinned asset, then verify
 
 ```sh
 docker compose up -d --build
-docker compose exec ollama ollama pull qwen3.5:4b
+docker compose --profile setup run --rm --build model-setup
 docker compose exec backend python -m backend.warmup
 docker compose exec backend python -m pytest backend/tests -q -p no:cacheprovider
 ```
@@ -102,7 +102,24 @@ It checks HTTPS API wiring, installed capabilities, exact CORS, free default mod
 - Review the PR/checks, record the release commit, promote the tested production URL, and check it from another device/network with no account/key. Only then share it with recruiters.
 - Avoid spending the shared inference allowance on a full benchmark immediately before the interview. Confirm available capacity with one short deliberate smoke check; do not fabricate a reserved quota or promise unlimited use. Have a reconstruction/rollback procedure and a clearly labeled sample walkthrough if a provider becomes unavailable.
 
-## Alternatives to Oracle: checked 8 October 2026
+## Strictly free alternatives: checked 8 October 2026
+
+The owner requires **zero hosting spend**. Among the services checked, there is no established equivalent indefinitely free VM that we have verified for this unchanged 11 GB container composition. Vercel remains the frontend in every option. Trial credits can cover an interview deployment, but they are not permanent free hosting.
+
+| Zero-cost route | Eligibility and duration | Full-backend fit / remaining work |
+| --- | --- | --- |
+| Google Cloud Free Trial + Compute Engine VM | Eligible new customers: USD 300 credit for up to 90 days or credit exhaustion. No usage charges while the account stays in the trial; do not manually upgrade. Identity/payment verification can be required. | A trial-covered Ubuntu VM with about 16 GB RAM can run the existing composition, subject to account quota/capacity and actual credit cost. Service stops when the trial ends. This uses Compute Engine, not the separate Cloud Run storage migration. Best interview candidate **if temporary hosting is acceptable and the owner is eligible**. |
+| AWS Free account plan + EC2 | Eligible new customers: USD 100 immediately, up to USD 200 earned total, at most six months or credit exhaustion. Stay on the Free account plan; do not activate paid-only services. | Credits are temporary. Available free-plan instance types are restricted; eligible large instances listed are not a confirmed single 16 GB host. Full API/private model deployment needs supported capacity/architecture checks rather than promising a one-click unchanged deployment. |
+| Azure for Students | Verified eligible higher-education student: USD 100 credit, no credit card required. | A suitably sized VM consumes credits quickly; quota/region availability and eligibility need verification. This is a credit-funded option, not unlimited 16 GB free compute. |
+| Existing computer + Tailscale Funnel | Funnel is available on all plans; personal free account eligibility applies. Public HTTPS URL is reachable without visitor Tailscale accounts. | No rented-server fee, but the machine, Docker/backend and internet must remain on. Funnel has bandwidth limits; long workflow events/uploads, public protection and trusted proxy identity need actual verification. Backup for a scheduled demonstration, not an independent always-on cloud deployment. |
+
+[Google trial rules and no automatic upgrade](https://cloud.google.com/signup-faqs), [Google free-program details](https://docs.cloud.google.com/free/docs/free-cloud-features), [AWS Free plan](https://aws.amazon.com/free/), [eligible EC2 types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/LaunchingAndUsingInstances.html), [Azure for Students](https://learn.microsoft.com/en-us/azure/education-hub/about-azure-for-students), [Tailscale Funnel](https://tailscale.com/docs/features/tailscale-funnel).
+
+If the owner selects Google and confirms eligibility: open Google Cloud Free Trial, personally complete verification, confirm the Billing overview says **Free trial**, create a dedicated project, enable Compute Engine, and check the displayed estimate/credit balance and VM quota before creating a roughly 16 GB Ubuntu VM. Restrict SSH to the owner IP and expose only HTTPS/HTTP publicly. Record the trial end/remaining credit and do not upgrade to paid billing. Then use the VM/backend/Turnstile/Vercel checks in this guide. No account or VM has been created by this task.
+
+Google's ongoing e2-micro allowance is about 1 GB RAM, so it cannot keep this full runtime after trial expiry. Render Free has no persistent disk and insufficient resources. New personal Hugging Face Docker Spaces require PRO; its free-account ZeroGPU Gradio exception is not a drop-in Docker backend. Cloudflare Quick Tunnels explicitly do not support SSE, so they are unsuitable for TRACE's workflow event transport. [Google machine types](https://docs.cloud.google.com/compute/docs/general-purpose-machines), [Render free restrictions](https://render.com/docs/free), [Spaces requirements](https://huggingface.co/docs/hub/spaces-overview), [Quick Tunnel limits](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
+
+## Paid comparison retained for reference; excluded by owner preference
 
 For the one-week interview timeline, a **16 GB Ubuntu VPS + Vercel frontend** is the smallest architectural change. The current container ceilings total 11 GB; leave room for the OS and proxy and measure combined real peak usage before accepting capacity. Prices below are provider examples, not a purchased configuration or measured monthly bill. Taxes, IPv4, storage and other extras can apply. Server availability and account approval must be checked at signup.
 
@@ -117,6 +134,6 @@ For the one-week interview timeline, a **16 GB Ubuntu VPS + Vercel frontend** is
 
 Sources: [Hetzner specifications/capacity](https://www.hetzner.com/cloud/cost-optimized/), [current Hetzner prices](https://docs.hetzner.com/general/infrastructure-and-availability/price-adjustment/), [DigitalOcean pricing](https://www.digitalocean.com/pricing/droplets), [Railway plans and metering](https://docs.railway.com/pricing/plans), [Render free limitations](https://render.com/docs/free), [Cloud Run pricing](https://cloud.google.com/run/pricing), [Cloud Run container storage](https://docs.cloud.google.com/run/docs/container-contract), [Spaces overview](https://huggingface.co/docs/hub/spaces-overview).
 
-No provider, paid plan or server has been selected or purchased. The owner's acceptable hosting budget is still pending. Paying for a server does **not** raise Cloudflare's inference allowance; samples and explicitly identified local fallback remain separate experiences, and the CPU fallback still needs quality/capacity acceptance. Do not rush a Vercel-only/backend rewrite while implying unchanged feature parity.
+No provider, paid plan or server has been selected or purchased. The owner has since confirmed that hosting must remain completely free; the paid comparisons above are not selected recommendations. Paying for a server does **not** raise Cloudflare's inference allowance; samples and explicitly identified local fallback remain separate experiences, and the CPU fallback still needs quality/capacity acceptance. Do not rush a Vercel-only/backend rewrite while implying unchanged feature parity.
 
 Original Streamlit remains available locally using `requirements.txt` and `streamlit run main.py`. Original OpenAI advanced mode is optional and has no paid live acceptance evidence without an explicitly supplied test key. No paid provider is required for default visitor access.

@@ -1,3 +1,12 @@
+# Launch preparation — 9 October 2026
+
+- Fresh native ARM64 image: **207 backend tests pass**. The reproducible model installer downloaded and verified all four original immutable blobs into an empty volume, then actual CPU inference, constrained JSON and cache unloading passed. Real BGE vectors, FAISS/JSON restart recovery, hybrid retrieval and decoded Kokoro MP3 checks passed on that fresh installation.
+- Final-profile hosted benchmark completed **60/60** with no execution failures or local fallback. Automated fact/citation/schema screens are separate from source-based quality review; do not interpret this as 100% factual accuracy. The source-based review found an unnecessary support escalation and missing-evidence wording issues requiring follow-up.
+- GCP CLI/project access verified; Compute Engine and dedicated network setup are underway. Vercel project created, but no public release is accepted yet. Actual Turnstile keys, HTTPS, target-server checks and recruiter-access acceptance remain outstanding.
+- Approved frontend design unchanged. No paid OpenAI requests, quota reset, paid-account upgrade or merge.
+
+---
+
 # Interview launch verification — 8 October 2026 IST
 
 **The website is not published and launch acceptance is not yet passed.** Cloudflare answered a bounded Llama probe today (HTTP 200, 39 input / 2 output tokens). This confirms availability at that time, not the cause of the 4 October dashboard/API mismatch or unlimited capacity.
@@ -10,7 +19,7 @@
 - Two real final-profile CPU content cases completed in **353.15 s and 234.19 s**, with 4/4 expected facts and valid transport. **Local quality remains failed:** unspecified guarantees became asserted absence, and an owner was described as overseeing shipment without an explicit assignment. Failed review details remain visible; repeated verbatim restoration is also a polish issue. These two cases are not a full local acceptance run. Model cache unloaded after generation; restarted local API reports ready.
 - Added `python -m backend.deployment_check` to check HTTPS/CORS/capabilities/default free mode/visitor-proof rejection **without inference**. It has not run against a public deployment; none exists. Successful browser Turnstile, live media, real inputs, two-user isolation, restart recovery, server capacity/latency and deployed performance remain launch gates.
 
-Raw results, fingerprints, source-based review and limitations: [current evaluation evidence](evaluation/README.md). Hosting options and owner steps: [deployment guide](deployment.md). The owner is comparing alternatives to Oracle; no hosting purchase/provisioning, production publication or merge has occurred. Owner Cloudflare credentials remain private on the backend; visitors need no provider key.
+Raw results, fingerprints, source-based review and limitations: [current evaluation evidence](evaluation/README.md). Hosting options and owner steps: [deployment guide](deployment.md). The owner requires free hosting and is comparing trial-backed alternatives to Oracle; no hosting purchase/provisioning, production publication or merge has occurred. Owner Cloudflare credentials remain private on the backend; visitors need no provider key.
 
 ---
 

@@ -1,4 +1,12 @@
 services:
+  model-setup:
+    profiles: [setup]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    user: "0:0"
+    volumes: ["trace-ollama:/ollama"]
+    command: ["python", "-m", "backend.install_local_model"]
   backend:
     build:
       context: .
