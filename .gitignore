@@ -131,3 +131,14 @@ dist/
 faiss_store_*
 __pycache__/
 venv/
+node_modules/
+.next/
+.trace-data/
+!frontend/.env.example
+*.tsbuildinfo
+
+# Reviewable TRACE interface screenshots.
+!docs/screenshots/*.jpg
+
+!backend/.env.example
+!frontend/public/audio/voices/*.mp3

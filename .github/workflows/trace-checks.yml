@@ -1,0 +1,47 @@
+name: TRACE checks
+on:
+  pull_request:
+  push:
+    branches: [codex/trace-react-workspace]
+permissions:
+  contents: read
+jobs:
+  frontend:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+  backend:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f backend/Dockerfile -t trace-backend:test .
+      - name: Native OCR, FAISS, workflow, ownership and compiler checks
+        run: docker run --rm -e TRACE_REQUIRE_COMPILER_ISOLATION=1 trace-backend:test python -m pytest backend/tests -q -p no:cacheprovider
+      - name: CPU-only tensor capability
+        run: docker run --rm trace-backend:test python -c "import torch; assert torch.version.cuda is None; assert torch.ones(4).sum().item() == 4"
+
+      - name: Pinned CPU embeddings, persisted hybrid index and real Kokoro audio
+        run: docker run --rm -e OMP_NUM_THREADS=2 -e MKL_NUM_THREADS=2 trace-backend:test python -m backend.free_smoke
+      - name: Pinned local inference on the native architecture
+        run: |
+          docker network create trace-test-network
+          docker volume create trace-test-model
+          docker run --rm --user 0 -v trace-test-model:/ollama trace-backend:test python -m backend.install_local_model
+          docker run -d --name trace-test-ollama --network trace-test-network --network-alias ollama -v trace-test-model:/root/.ollama --cpus 2 --memory 8g -e OLLAMA_NUM_PARALLEL=1 -e OLLAMA_MAX_LOADED_MODELS=1 -e OLLAMA_KV_CACHE_TYPE=q8_0 -e OLLAMA_FLASH_ATTENTION=1 ollama/ollama:0.35.1@sha256:292ee7945dfc3d5840a181f3ab86fedb1e66703e02c8af98b50f4da56b7e278c
+          docker run --rm --network trace-test-network -e TRACE_OLLAMA_URL=http://ollama:11434 -e OMP_NUM_THREADS=2 -e MKL_NUM_THREADS=2 trace-backend:test python -m backend.free_smoke --ollama

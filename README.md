@@ -1,3 +1,28 @@
+> **TRACE now includes free visitor access.** Start with [free-access setup and operating limits](docs/free-access.md). Visitors need no OpenAI key; advanced OpenAI mode is optional. Deployment is deferred and quality/capacity evidence is tracked separately.
+
+# TRACE — Agentic AI Workspace
+
+A React workspace for all fifteen existing summarizer, generator, and assistant tools. Built by **Archit Kumar**. The Streamlit application remains available as a comparison interface and uses the same shared workflow functions.
+
+## Start locally
+
+```sh
+docker compose up --build -d
+docker compose exec ollama ollama pull qwen3.5:4b
+docker compose exec backend python -m backend.warmup
+npm ci --prefix frontend
+npm --prefix frontend run dev
+```
+
+Visit **http://localhost:3000**. Explore any of the five labeled samples without a backend or API key. All fifteen workflows start in free mode. Configure the owner’s hosted credentials and local model once using the free-access setup guide; visitors enter no key. The settings drawer retains an optional OpenAI mode. Deployment to Vercel and a backend VM is deferred.
+
+- [All fifteen contracts](docs/feature-parity.md)
+- [Architecture and session handling](docs/architecture.md)
+- [Local checks and later deployment](docs/deployment.md)
+- [Verification evidence and remaining live checks](docs/verification.md)
+
+## Original Streamlit documentation
+
 # Agentic Workflows GenAI App
 
 [![Streamlit](https://img.shields.io/badge/Built%20With-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
@@ -363,7 +388,7 @@ This repository now includes:
 
 ## Current Limitations
 
-- live AI workflows require a valid OpenAI API key
+- the preserved Streamlit reference requires an OpenAI API key for its provider workflows; TRACE provides the free visitor mode described above
 - OCR quality depends on Tesseract installation and image quality
 - article extraction depends on the structure of the target page
 - some local fallback behaviors depend on available hardware and downloaded models

@@ -1,0 +1,31 @@
+{
+  "scope": "Public HTTPS with owner-issued temporary test sessions; successful real browser Turnstile entry separately verified. Includes real restart, local Q&A, PDF index, OCR, caption recovery, speech artifacts, isolation and clearing. No hosted AI calls.",
+  "checks": [
+    {
+      "check": "Real PDF upload and BGE/FAISS context over HTTPS",
+      "passed": true
+    },
+    {
+      "check": "Second session cannot query first context",
+      "passed": true,
+      "transport": "HTTP 200 workflow error; no result/source returned"
+    },
+    {
+      "check": "Persisted FAISS/JSON context answers after API restart",
+      "passed": true,
+      "seconds": 33.97
+    },
+    {
+      "check": "Q&A event result includes actual sources",
+      "passed": true
+    },
+    {
+      "check": "Immediate session clear",
+      "passed": true
+    },
+    {
+      "check": "Cleared token rejected",
+      "passed": true
+    }
+  ]
+}

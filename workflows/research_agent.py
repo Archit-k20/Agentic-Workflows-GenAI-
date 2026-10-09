@@ -1,0 +1,338 @@
+"""Shared workflow logic; prompts and inference settings preserved from the Streamlit application."""
+
+import json
+
+import re
+
+from urllib.parse import urlparse
+
+from .network import SafeArticle as Article
+
+from .runtime import client as OpenAI
+
+MODEL_NAME = "gpt-4o-mini"
+
+MAX_URLS = 5
+
+MAX_SOURCE_CHARS = 12000
+
+CITATION_PATTERN = re.compile(r"\[(S\d+)\]")
+
+
+def _strip_code_fences(value):
+    """Removes markdown code fences from LLM responses."""
+    if not isinstance(value, str):
+        value = str(value)
+    cleaned = value.strip()
+    if cleaned.startswith("```"):
+        lines = cleaned.splitlines()
+        if lines:
+            lines = lines[1:]
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]
+        cleaned = "\n".join(lines).strip()
+    return cleaned
+
+
+def _load_json(value, fallback):
+    """Safely loads JSON from LLM response."""
+    try:
+        return json.loads(_strip_code_fences(value))
+    except (json.JSONDecodeError, TypeError):
+        return fallback
+
+
+def _chat_json(client, system_prompt, user_prompt, fallback):
+    """Calls LLM for JSON output with fallback."""
+    try:
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            response_format={"type": "json_object"},
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=0.2,
+        )
+        content = response.choices[0].message.content or ""
+        return _load_json(content, fallback)
+    except Exception:
+        return fallback
+
+
+def _chat_text(client, system_prompt, user_prompt):
+    """Calls LLM for text output."""
+    try:
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=0.3,
+        )
+        return (response.choices[0].message.content or "").strip()
+    except Exception:
+        return ""
+
+
+def validate_urls(urls):
+    valid_urls = []
+    invalid_urls = []
+
+    for url in urls[:MAX_URLS]:
+        normalized = _normalize_url(url)
+        if normalized and normalized not in valid_urls:
+            valid_urls.append(normalized)
+        elif url.strip():
+            invalid_urls.append(url.strip())
+
+    return valid_urls, invalid_urls
+
+
+def validate_citations(report, source_summaries):
+    """
+    FIX: Ensures report is a string before regex processing.
+    """
+    if isinstance(report, dict):
+        report = report.get("revised_report", str(report))
+    elif not isinstance(report, str):
+        report = str(report)
+
+    valid_labels = {source["label"] for source in source_summaries}
+    cited_labels = set(CITATION_PATTERN.findall(report or ""))
+    unknown_labels = sorted(
+        label for label in cited_labels if label not in valid_labels
+    )
+    has_any_citation = bool(cited_labels)
+
+    return {
+        "has_any_citation": has_any_citation,
+        "cited_labels": sorted(cited_labels),
+        "unknown_labels": unknown_labels,
+    }
+
+
+def plan_research(topic, client):
+    fallback = {
+        "goal": topic,
+        "sub_questions": [
+            f"What is the main claim about {topic}?",
+            f"What evidence supports or challenges {topic}?",
+            f"What should the reader watch out for when evaluating {topic}?",
+        ],
+        "report_sections": ["Overview", "Key Findings", "Risks", "Conclusion"],
+    }
+    return _chat_json(
+        client,
+        "You create concise research plans. Return JSON with goal, sub_questions, and report_sections.",
+        f"Topic: {topic}\nReturn a focused research plan with at most 5 sub-questions.",
+        fallback,
+    )
+
+
+def _normalize_url(url):
+    parsed = urlparse(url.strip())
+    if parsed.scheme in {"http", "https"} and parsed.netloc:
+        return url.strip()
+    return None
+
+
+def fetch_source(url):
+    article = Article(url)
+    article.download()
+    article.parse()
+    text = (article.text or "").strip()
+    title = (article.title or url).strip()
+    if not text:
+        raise ValueError("Could not extract article text from the URL.")
+    return {
+        "url": url,
+        "title": title,
+        "text": text[:MAX_SOURCE_CHARS],
+    }
+
+
+def summarize_source(source, topic, plan, client, label):
+    fallback = {
+        "label": label,
+        "title": source["title"],
+        "summary": source["text"][:800],
+        "key_points": [],
+        "relevance": "Relevant to the topic.",
+    }
+    summary = _chat_json(
+        client,
+        "You summarize research sources. Return JSON with label, title, summary, key_points, and relevance.",
+        (
+            f"Research topic: {topic}\n"
+            f"Plan sub-questions: {json.dumps(plan.get('sub_questions', []))}\n"
+            f"Source label: {label}\n"
+            f"Source title: {source['title']}\n"
+            f"Source URL: {source['url']}\n"
+            f"Source text:\n{source['text']}"
+        ),
+        fallback,
+    )
+    summary["url"] = source["url"]
+    summary["title"] = source["title"]
+    return summary
+
+
+def synthesize_report(topic, plan, source_summaries, client):
+    source_payload = [
+        {
+            "label": source["label"],
+            "title": source["title"],
+            "url": source["url"],
+            "summary": source["summary"],
+            "key_points": source.get("key_points", []),
+            "relevance": source.get("relevance", ""),
+        }
+        for source in source_summaries
+    ]
+    return _chat_text(
+        client,
+        (
+            "You write grounded research reports in Markdown. "
+            "Use only the provided sources. Every substantive claim must cite one or more source labels like [S1]. "
+            "If evidence is limited or conflicting, say so clearly."
+        ),
+        (
+            f"Research topic: {topic}\n"
+            f"Plan: {json.dumps(plan)}\n"
+            f"Sources: {json.dumps(source_payload)}\n\n"
+            "Write a concise report with these sections:\n"
+            "1. Executive Summary\n"
+            "2. Findings\n"
+            "3. Risks and Gaps\n"
+            "4. Recommended Next Questions\n"
+            "5. Source List\n"
+        ),
+    )
+
+
+def critique_report(topic, source_summaries, report, client):
+    """
+    FIX: Ensures revised_report extracted from JSON is a string.
+    """
+    fallback = {
+        "passes_review": True,
+        "issues": [],
+        "revised_report": report,  # Fallback to original report string
+    }
+    critique = _chat_json(
+        client,
+        (
+            "You are a research quality reviewer. Return JSON with passes_review, issues, and revised_report. "
+            "Mark passes_review false if the report contains unsupported claims, weak sourcing, or misses major caveats. "
+            "IMPORTANT: 'revised_report' must be a plain STRING, not a nested JSON object."
+        ),
+        (
+            f"Topic: {topic}\n"
+            f"Sources: {json.dumps(source_summaries)}\n"
+            f"Draft report:\n{report}"
+        ),
+        fallback,
+    )
+
+    revised = critique.get("revised_report", report)
+    if isinstance(revised, dict):
+        revised = revised.get("content", report)
+    if not isinstance(revised, str):
+        revised = report
+
+    critique["revised_report"] = revised
+    return critique
+
+
+def revise_report(topic, plan, source_summaries, report, critique, client):
+    return _chat_text(
+        client,
+        (
+            "You revise research reports. Use only the provided sources. "
+            "Every substantive claim must include valid source labels like [S1]. "
+            "Do not invent citations. Fix grounding or completeness issues from the critique."
+        ),
+        (
+            f"Topic: {topic}\n"
+            f"Plan: {json.dumps(plan)}\n"
+            f"Sources: {json.dumps(source_summaries)}\n"
+            f"Critique: {json.dumps(critique)}\n"
+            f"Draft report:\n{report}"
+        ),
+    )
+
+
+def run_research_agent(topic, urls, api_key):
+    client = OpenAI(api_key=api_key)
+    plan = plan_research(topic, client)
+    valid_urls, invalid_urls = validate_urls(urls)
+    if not valid_urls:
+        raise ValueError("Please provide at least one valid research URL.")
+
+    source_summaries = []
+    source_errors = []
+
+    for index, url in enumerate(valid_urls, start=1):
+        label = f"S{index}"
+        try:
+            source = fetch_source(url)
+            source_summary = summarize_source(source, topic, plan, client, label)
+            source_summaries.append(source_summary)
+        except Exception as exc:
+            source_errors.append({"label": label, "url": url, "error": str(exc)})
+
+    if not source_summaries:
+        raise ValueError(
+            "The Research Agent could not process any of the provided URLs."
+        )
+
+    # 1. Draft Report (String)
+    draft_report = synthesize_report(topic, plan, source_summaries, client)
+
+    # 2. Critique (Dict)
+    critique = critique_report(topic, source_summaries, draft_report, client)
+
+    # 3. Extract Final Report (Ensure String)
+    final_report = critique.get("revised_report", draft_report)
+    if not isinstance(final_report, str):
+        final_report = draft_report  # Fallback to draft if extraction fails
+
+    # 4. Validate Citations
+    citation_check = validate_citations(final_report, source_summaries)
+
+    # 5. Check if Revision Needed
+    needs_revision = (
+        not critique.get("passes_review", False)
+        or not citation_check["has_any_citation"]
+        or bool(citation_check["unknown_labels"])
+    )
+
+    if needs_revision:
+        # Revise (Returns String)
+        final_report = revise_report(
+            topic, plan, source_summaries, final_report, critique, client
+        )
+
+        # Critique Again (Returns Dict)
+        critique = critique_report(topic, source_summaries, final_report, client)
+
+        # Extract Again (Ensure String)
+        revised_version = critique.get("revised_report", final_report)
+        if isinstance(revised_version, str):
+            final_report = revised_version
+
+        # Validate Again
+        citation_check = validate_citations(final_report, source_summaries)
+
+    return {
+        "plan": plan,
+        "sources": source_summaries,
+        "source_errors": source_errors,
+        "invalid_urls": invalid_urls,
+        "draft_report": draft_report,
+        "final_report": final_report,
+        "critique": critique,
+        "citation_check": citation_check,
+    }

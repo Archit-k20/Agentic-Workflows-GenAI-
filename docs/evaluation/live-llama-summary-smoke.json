@@ -1,0 +1,51 @@
+{
+  "seconds": 2.57,
+  "events": [
+    {
+      "message": "Workflow started"
+    },
+    {
+      "name": "Summarize section 1/1",
+      "status": "running"
+    },
+    {
+      "name": "Summarize section 1/1",
+      "status": "completed"
+    },
+    {
+      "name": "Combine complete summary",
+      "status": "running"
+    },
+    {
+      "name": "Combine complete summary",
+      "status": "completed"
+    },
+    {
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 40,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 40,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "tool": "text-summary",
+      "text": "Project Juniper, owned by Isha Rao, is planning to have 15 kits by December 10, 2026, with a total budget for the pilot of USD 600; however, no sales forecast has been provided for the project."
+    }
+  ]
+}

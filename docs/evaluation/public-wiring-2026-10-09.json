@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "API readiness",
+      "passed": true
+    },
+    {
+      "check": "Exact frontend CORS origin",
+      "passed": true
+    },
+    {
+      "check": "Public visitor protection enabled",
+      "passed": true
+    },
+    {
+      "check": "Hosted provider configured (availability not tested)",
+      "passed": true
+    },
+    {
+      "check": "Pinned local model available (inference not tested)",
+      "passed": true
+    },
+    {
+      "check": "Speech dependencies installed (generation not tested)",
+      "passed": true
+    },
+    {
+      "check": "ocr installed",
+      "passed": true
+    },
+    {
+      "check": "javascript installed",
+      "passed": true
+    },
+    {
+      "check": "java installed",
+      "passed": true
+    },
+    {
+      "check": "c installed",
+      "passed": true
+    },
+    {
+      "check": "c++ installed",
+      "passed": true
+    },
+    {
+      "check": "Two workflow slots",
+      "passed": true
+    },
+    {
+      "check": "Temporary retention at most 24 hours",
+      "passed": true
+    },
+    {
+      "check": "Free visitor mode is the default",
+      "passed": true
+    },
+    {
+      "check": "Browser must supply Turnstile proof",
+      "passed": true
+    },
+    {
+      "check": "Workflow CORS preflight",
+      "passed": true
+    },
+    {
+      "check": "Unrelated browser origin not allowed",
+      "passed": true
+    },
+    {
+      "check": "Missing visitor proof rejected",
+      "passed": true
+    }
+  ],
+  "scope": "Public HTTP wiring only. No inference, paid requests or credentials. Successful Turnstile, media, persistence, source quality, latency and memory still require launch verification."
+}

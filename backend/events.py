@@ -1,0 +1,191 @@
+"""Request-local observations; never token streaming or simulated stages."""
+
+from contextvars import ContextVar
+from functools import wraps
+from types import SimpleNamespace
+
+observer = ContextVar("observer", default=lambda event, data: None)
+
+
+def emit(event, **data):
+    observer.get()(event, data)
+
+
+def observed_client(client):
+    """Surface authentication failures even when the original workflow falls back."""
+
+    def create(*args, **kwargs):
+        try:
+            return client.chat.completions.create(*args, **kwargs)
+        except Exception as exc:
+            if getattr(exc, "status_code", None) == 401:
+                emit(
+                    "warning",
+                    message="Invalid OpenAI credentials. Update your key in Settings. Existing fallback behavior was retained.",
+                )
+            raise
+
+    return SimpleNamespace(
+        chat=SimpleNamespace(completions=SimpleNamespace(create=create))
+    )
+
+
+def observe(fn, label):
+    @wraps(fn)
+    def run(*args, **kwargs):
+        from workflows.runtime import current
+
+        runtime = current.get()
+        if runtime:
+            runtime.check()
+        emit("stage", name=label, status="running")
+        try:
+            if runtime and runtime.mode != "openai":
+                from .processing import override
+
+                result = override(fn.__module__, fn.__name__, args, kwargs, fn, runtime)
+            else:
+                result = fn(*args, **kwargs)
+        except Exception as exc:
+            emit("stage", name=label, status="failed")
+            if (
+                runtime
+                and runtime.mode != "openai"
+                and fn.__module__.endswith("document_intelligence")
+            ):
+                runtime.warning(f"{label} failed: {exc}")
+            raise
+        emit("stage", name=label, status="completed")
+        return result
+
+    return run
+
+
+def install():
+    from workflows import (
+        research_agent as r,
+        support_triage as s,
+        document_intelligence as d,
+        code_copilot as c,
+        content_pipeline as p,
+    )
+
+    stages = [
+        (
+            r,
+            {
+                "plan_research": "Plan research",
+                "fetch_source": "Read source",
+                "summarize_source": "Digest source",
+                "synthesize_report": "Draft report",
+                "critique_report": "Review report",
+                "validate_citations": "Check citation labels",
+                "revise_report": "Revise report",
+            },
+        ),
+        (
+            s,
+            {
+                "classify_intent": "Classify intent",
+                "fetch_support_source": "Read support source",
+                "summarize_support_source": "Digest source",
+                "draft_support_resolution": "Draft resolution",
+                "finalize_triage": "Apply escalation rules",
+            },
+        ),
+        (
+            d,
+            {
+                "extract_document_text": "Extract document",
+                "analyze_document": "Analyze document",
+            },
+        ),
+        (
+            c,
+            {
+                "generate_initial_code": "Generate code",
+                "verify_code": "Verify syntax / compilation",
+                "repair_code": "Repair code once",
+            },
+        ),
+        (
+            p,
+            {
+                "build_content_plan": "Plan content",
+                "build_content_package": "Create artifacts",
+                "critique_content_package": "Review content",
+                "generate_speech": "Generate narration",
+            },
+        ),
+    ]
+    for module, mapping in stages:
+        for name, label in mapping.items():
+            setattr(module, name, observe(getattr(module, name), label))
+    for module in [r, s, d, p]:
+        original = module._chat_json
+
+        def with_fallback(client, *args, _fn=original, **kwargs):
+            result = _fn(observed_client(client), *args, **kwargs)
+            fallback = kwargs.get("fallback", args[-1] if args else None)
+            if result is fallback:
+                from workflows.runtime import current
+
+                runtime = current.get()
+                if runtime and runtime.mode != "openai" and isinstance(result, dict):
+                    result = dict(result)
+                    if "passes_review" in result:
+                        result.update(
+                            passes_review=False,
+                            issues=[
+                                "Review unavailable: structured generation failed; this is not a passed review."
+                            ],
+                        )
+                    if "requires_human" in result:
+                        result["requires_human"] = True
+                emit(
+                    "warning",
+                    message="A provider or JSON parsing fallback was used. Inspect details and review important conclusions manually.",
+                )
+            return result
+
+        module._chat_json = with_fallback
+    original_text = r._chat_text
+
+    def text_fallback(client, *args, **kwargs):
+        result = original_text(observed_client(client), *args, **kwargs)
+        if not result:
+            emit(
+                "warning",
+                message="The research provider returned no report text. Existing fallback behavior was retained; inspect the result before using it.",
+            )
+        return result
+
+    r._chat_text = text_fallback
+
+    # Keep workflow verification logic intact while restricting child-process I/O.
+    import subprocess
+    import sys
+    import tempfile
+    import shutil
+    from pathlib import Path
+
+    class IsolatedCompiler:
+        @staticmethod
+        def run(command, **kwargs):
+            source = next(
+                Path(arg)
+                for arg in command
+                if Path(arg).suffix in {".js", ".java", ".c", ".cpp"}
+            )
+            with tempfile.TemporaryDirectory(prefix="trace-check-") as folder:
+                private = Path(folder) / source.name
+                shutil.copyfile(source, private)
+                isolated = [
+                    str(private) if arg == str(source) else arg for arg in command
+                ]
+                return subprocess.run(
+                    [sys.executable, "-m", "backend.compiler_guard", *isolated],
+                    **kwargs,
+                )
+
+    c.subprocess = IsolatedCompiler

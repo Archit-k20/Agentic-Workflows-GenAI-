@@ -1,0 +1,99 @@
+{
+  "date_ist": "2026-10-04",
+  "quality_gate": "pending final-profile hosted rerun; not a full acceptance pass",
+  "current_inference_profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+    "pipeline_sha256": "d323939077d3669fcc9fba8cd5c7358d92efb2daa5cca813f4a62c30c5fd444d"
+  },
+  "early_hosted_profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+    "pipeline_sha256": "72c3fbbe7710ba27d2fd2492a029168349cdefcd7fc4aad66141a85e8888cd27"
+  },
+  "local_profile_matches_current": true,
+  "evidence_sha256": {
+    "hosted-boundaries-first-pass.json": "0e20188ad6305fe833c52353e42fbeb1bcabfe387d48327efba4f10e221e7ada",
+    "hosted-boundaries-capacity-stop.json": "037cfb88024f9a88b8aa26beb57194e52729ee2956f28fb971ce2ef0048859b3",
+    "local-assignment-sourcechecked.json": "0ac55fd51afb20f04d29048b5a3b7e9ba211dd8c9ed421cbd659ec9f67cf4597"
+  },
+  "first_pass": {
+    "completed": 7,
+    "provider": "Llama 3.3 70B",
+    "fallback": false,
+    "findings": [
+      {
+        "id": "boundary-20",
+        "finding": "Cited Yes; day 20 within inclusive day-30 window."
+      },
+      {
+        "id": "boundary-30",
+        "finding": "Cited Yes at inclusive limit."
+      },
+      {
+        "id": "boundary-31",
+        "finding": "Cited No for return on day 31."
+      },
+      {
+        "id": "boundary-receipt",
+        "finding": "Failed routing: guard mistook request number 20 for an invented source number, withholding a receipt-based No. Model relevance also incorrectly contrasted 20 and 30. Corrected in final code and regression tests; hosted recheck pending."
+      },
+      {
+        "id": "boundary-conflict",
+        "finding": "Escalated contradictory 14/30-day sources instead of selecting one."
+      },
+      {
+        "id": "document-assignment",
+        "finding": "Assigned shipping to explicitly tasked Omar, not project owner Priya; kept 16 kits, budget USD 640 and unknown priority."
+      },
+      {
+        "id": "content-varied",
+        "finding": "Kept 45 donated books, date, coordinator and USD 900 total budget. No specific invented features, enrollment claim or measured learning benefit. CTA is a creative suggestion; one informational fixture is not general marketing certification."
+      }
+    ]
+  },
+  "final_hosted_attempt": {
+    "successful_cases": 0,
+    "attempted_cases": 1,
+    "reason": "Cloudflare returned HTTP 429; diagnostic error 4006 explicitly states daily 10,000-Neuron free allocation exhausted. No further hosted evaluation calls.",
+    "profile_note": "Capacity attempt preceded a final denial-wording false-positive fix; no successful hosted final-profile cases. Start a new output file."
+  },
+  "final_local_check": {
+    "id": "document-assignment",
+    "seconds": 123.85,
+    "finding": "Decoder schema emitted a verbatim action evidence quote; correct Omar assignment, unknown priority, date/quantity/budget retained; Ollama unloaded afterward. One current-profile local case only."
+  },
+  "verification": {
+    "backend_tests_passed": 161,
+    "frontend_tests_passed": 8,
+    "frontend_typecheck": "passed",
+    "native_arm_build": "Final inference code and harness build passed; native final-commit CI remains required.",
+    "cpu_smoke": "real BGE vectors, FAISS/JSON recovery, hybrid retrieval and decoded Kokoro MP3 passed",
+    "native_ci": {
+      "commit": "5073a65",
+      "frontend": "success",
+      "arm64": "success",
+      "amd64": "success",
+      "run_url": "https://github.com/Archit-k20/Agentic-Workflows-GenAI-/actions/runs/37180297343"
+    }
+  },
+  "remaining": [
+    "Fresh seven boundary fixtures with final inference profile",
+    "Affected Research/Support/Content/Documents cases and complete 60-case suite",
+    "Source-based rubric review of every current-profile result",
+    "Account usage discrepancy investigation; application estimates are not provider billing",
+    "Later target-VM capacity and public configuration checks"
+  ],
+  "hosted_capacity_attempt_profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+    "pipeline_sha256": "a49eb17a152d7596fcf2ce1adde0261884957fadf698d9f81e1b9568abb8683b"
+  },
+  "quota_followup": "Owner dashboard shows 5.56k/10k today; a new eight-token probe still returns 429/4006. Daily exhaustion is not independently confirmed. Owner confirmed dashboard/API account match; enforcement/reporting mismatch remains unresolved."
+}

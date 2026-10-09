@@ -1,0 +1,29 @@
+# Preserved workflow contracts
+
+Baseline: `17cc2b65b700ef2312d80fdaa62127e943dc61cb`. The Streamlit screens import the same `workflows` functions used by FastAPI. Prompts and review rules were extracted intact; the UI remains `streamlit run main.py`.
+
+| Tool / route    | Inputs and options                                   | Processing / output                                                                      | Preserved limits and model                                                                                       |
+| --------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| text-summary    | Text; optional key                                   | Summary text                                                                             | No text truncation; gpt-3.5-turbo max_tokens 300 with key; distilbart min100/max300 otherwise                    |
+| youtube-summary | YouTube URL                                          | Transcript → summary                                                                     | First4000 characters; distilbart min100/max300/do_sample=False                                                   |
+| article-summary | Public URL                                           | newspaper extraction → summary                                                           | First4000 characters; same local settings                                                                        |
+| file-summary    | One PDF/DOCX                                         | Extract → summary                                                                        | First4000 characters; same local settings                                                                        |
+| ocr             | One PNG/JPG/JPEG                                     | Tesseract → text; explicit subsequent summary action                                     | Original OCR engine; summary reuses text-summary                                                                 |
+| image           | Prompt; key                                          | Image                                                                                    | gpt-image-1,1024×1024,n1                                                                                         |
+| speech          | Text; key; six voices                                | Audio                                                                                    | tts-1; alloy/echo/fable/onyx/nova/shimmer                                                                        |
+| captions        | YouTube URL; key required by workspace               | Transcript text                                                                          | No fabricated timestamps                                                                                         |
+| code            | Task; python/javascript/java/c/c++; key              | Initial code → checks → at most one repair → final checks                                | gpt-4o-mini,temp.2; AST/py_compile,node --check,javac,gcc/g++ -fsyntax-only;30s checks                           |
+| content         | Idea;tone;platforms;optional narration;voice;key     | Plan/package/critique/final script/captions/audio/errors                                 | gpt-4o-mini,temp.4; five tones and five platforms unchanged                                                      |
+| research        | Topic;up to5 supplied URLs;key                       | Plan/read/digest/draft/critique/citation labels;conditional revision and second critique | gpt-4o-mini JSONtemp.2/texttemp.3;12000 source chars                                                             |
+| documents       | Up to3 PDF/DOCX/TXT/images;key                       | Classification/summary/entities/actions/risks;partial file errors                        | gpt-4o-mini,temp.2;14000 chars; original JSON heuristics                                                         |
+| document-qa     | Up to3 PDF/DOCX;process explicitly;question;key      | Embeddings/FAISS → retrieve4 → answer/citation metadata                                  | chunk1200,overlap180; default OpenAI embeddings;gpt-4o-mini,temp.2                                               |
+| url-qa          | Up to3 supplied URLs;process explicitly;question;key | newspaper/BeautifulSoup fallback/index/retrieve4/answer                                  | chunk1000,overlap160;same embeddings/chat settings                                                               |
+| support         | Question;up to5 support URLs;key                     | Intent/source digest/draft/escalation decision                                           | gpt-4o-mini,temp.2;10000 chars;escalate if requires-human,confidence<.6,unknown/missing labels,or draft-escalate |
+
+## Infrastructure changes
+
+One serialized CPU distilbart instance replaces four independent caches. Speech outputs use isolated temporary paths. Source HTTP requests now have bounded timeouts/response sizes, pinned public DNS addresses, and redirect validation. FAISS metadata is JSON rather than pickle. These changes are required API/resource plumbing, not new workflow features. No streaming tokens, autonomous search, accounts, permanent history, cancellation, exports, or publishing were added.
+
+## UI defects corrected
+
+API-key gating no longer hides forms. OCR's summary action no longer disappears on a Streamlit rerun. Tool navigation is direct-linkable; working drafts survive navigation within the open tab. Key storage is memory-only. Existing review fallbacks are labeled as warnings; citation checks validate labels, and compiler checks validate syntax/compilation only.

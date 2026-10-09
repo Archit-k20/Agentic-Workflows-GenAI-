@@ -1,0 +1,36 @@
+{
+  "mode": "free",
+  "expected_cases": 60,
+  "completed_cases": 60,
+  "execution_failures": [],
+  "fact_presence": {
+    "matched": 88.0,
+    "expected": 88,
+    "rate": 1.0,
+    "definition": "Expected-fact-weighted output-only presence; zero-fact cases do not inflate this rate. Errors/missing results score zero."
+  },
+  "absent_answer_refusal": {
+    "passed": 10,
+    "expected": 10
+  },
+  "compiler_checks": {
+    "passed": 6,
+    "expected": 6,
+    "scope": "Syntax/compilation only, not behavior or security."
+  },
+  "required_escalations": {
+    "passed": 4,
+    "expected": 4
+  },
+  "supported_support_answers": {
+    "passed": 2,
+    "expected": 2,
+    "scope": "Correct routing only; answer meaning still needs grounding review."
+  },
+  "invalid_citation_cases": [],
+  "missing_required_citation_cases": [],
+  "missing_research_section_cases": [],
+  "missing_support_draft_citation_cases": [],
+  "hosted_fallback_cases": [],
+  "rubric_gate": "Separate grounding/usefulness review required; these screening metrics cannot certify accuracy."
+}

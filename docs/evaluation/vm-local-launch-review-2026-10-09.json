@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-09",
+  "source_commit": "38a1c8d4d08fe41b95f4f911522d83b39897f6ca",
+  "scope": "Source-based inspection of real VM local content-05/content-03 outputs; two synthetic briefs only. Later 0d37320 changes image transport/stages, not these text guards. The recorded fingerprint remains for the actual tested profile.",
+  "evidence_sha256": "27d05b2fb92bd369af1e52ce4fd93de3eee0ecee3a5c70e9cc202f857613df76",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "41c026345d89bc829972db714894853bb3f2434e595f021392c97d7b461fe112",
+    "pipeline_sha256": "d3fab423d14e534e11fb21e8f0ef76b5d7dd9987c257ce9fc1be95c148c49b4b"
+  },
+  "execution": {
+    "completed": 2,
+    "errors": 0,
+    "seconds": {
+      "content-05": 621.92,
+      "content-03": 552.92
+    }
+  },
+  "quality_acceptance": "not accepted as full local quality; targeted arrival/absence errors improved, but review quality, omitted details, wording and CPU latency remain limitations",
+  "findings": [
+    {
+      "cases": [
+        "content-05",
+        "content-03"
+      ],
+      "outcome": "improved",
+      "detail": "Final scripts/captions now keep shipping scheduled rather than claiming arrival/delivery. Final scripts qualify missing guarantee/forecast evidence as supplied/provided/documented."
+    },
+    {
+      "cases": [
+        "content-05",
+        "content-03"
+      ],
+      "outcome": "partial",
+      "detail": "Project quantity, shipment date and budget retained in the final script. Exact unopened-item/30-day refund condition restored verbatim, duplicating its paraphrase; both reviews correctly remain flagged failed."
+    },
+    {
+      "cases": [
+        "content-05"
+      ],
+      "outcome": "quality issue",
+      "detail": "Model self-review incorrectly questions the explicitly supplied owner role. Its revision drops Noah Lane from final script/captions; original package/plan retain him. Creative contact CTA is unspecific, not a supplied contact route."
+    },
+    {
+      "cases": [
+        "content-03"
+      ],
+      "outcome": "quality issue",
+      "detail": "Final revision omits Omar Reed although original plan/package retain the owner. Calls the budget fixed, a stronger qualifier than the supplied budget amount."
+    },
+    {
+      "cases": [
+        "content-05",
+        "content-03"
+      ],
+      "outcome": "latency limitation",
+      "detail": "621.92 and 552.92 seconds for a short content brief on the actual 2-thread model allocation. Not a fast interview fallback."
+    }
+  ],
+  "limitations": [
+    "Finite source guards do not prove arbitrary semantic entailment or universal accuracy.",
+    "Only two content cases; not all fifteen tools or a full local cohort.",
+    "No maximum-memory/concurrent-heavy-generation certification; resource snapshots are separate.",
+    "Latest hosted source acceptance remains pending after Cloudflare refusal; no paid upgrade, quota reset or automatic replay."
+  ]
+}

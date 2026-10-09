@@ -1,0 +1,111 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+    "pipeline_sha256": "a49eb17a152d7596fcf2ce1adde0261884957fadf698d9f81e1b9568abb8683b"
+  },
+  "fixture_count": 7,
+  "rows": [
+    {
+      "id": "boundary-20",
+      "kind": "support",
+      "score": null,
+      "result": null,
+      "error": "Hosted inference is temporarily unavailable or its free allowance is exhausted.",
+      "seconds": 6.93,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 15,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "failed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}
