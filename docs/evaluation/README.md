@@ -1,3 +1,11 @@
+# Interview launch checks — 9 October 2026
+
+[Full raw hosted run](hosted-launch-final-2026-10-09.json): 60 cases, no execution errors or local fallback. [Source-based review](launch-review-2026-10-09.json) records the remaining quality issues; this is **not** a passing release-quality gate. All sixteen Q&A outputs retained supported answers or refused absent evidence. Support omitted a documented shipment from its excerpt and unnecessarily escalated; missing guarantee evidence was sometimes phrased as actual absence. Follow-up code retains missing numerical support sentences and makes unknown-evidence instructions explicit, without changing original OpenAI workflow functions.
+
+The first hosted follow-up was refused as unavailable/free allowance exhausted; no repeated retry or quota reset. Changed inference profiles need fresh evidence, not renamed earlier passes. Local retest, target-server and public-browser acceptance are separate. The pinned installer passed a real fresh-volume download and inference smoke test. Vercel/Google trial deployment is underway; no public readiness claim yet.
+
+---
+
 # Current launch evidence — 8 October 2026 IST
 
 **Launch acceptance remains incomplete.** Read [verification](../verification.md) and [launch-review-2026-10-08.json](launch-review-2026-10-08.json) for current changes, provenance, source-based findings and remaining gates. Older sections below record earlier profiles and their failures.

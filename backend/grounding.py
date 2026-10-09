@@ -139,6 +139,8 @@ def instructions(context):
         return (
             "\nREPORT INVARIANTS: every report, including revised_report inside JSON reviews, MUST keep these "
             "five Markdown headings: " + "; ".join("## " + s for s in SECTIONS) + ". "
+            "Never infer the pilot's objectives from a shipping plan. Do not call a planning brief a pilot study; "
+            "describe documented facts and leave objectives, methods and measured outcomes unknown. "
             "Keep valid inline [S#] labels in Executive Summary and Findings, not only Source List. "
             "A source's missing experiment data is an evidence gap to describe, not a reason to invent methods or "
             "to presume that a study, experiment or measured outcome exists. Proposed research questions are "
@@ -177,6 +179,8 @@ def instructions(context):
             "who it targets, future expansion, or a new customer experience. A creative plan's proposed "
             "audience and purpose must not become claims in the script or captions. "
             "A caption may be shorter but cannot change facts. Creative image prompts are proposed illustrations, "
+            "Keep unit counts with their original product noun; 64 meters shipped is not a 64m length. "
+            "Do not call shipments key milestones or claim use of technology that the source only says will ship. "
             "not actual photos of named people or evidence of product contents. Use a suggested, generic CTA. "
             "A review must compare its rewrite against the original idea, not merely the generated plan."
         )

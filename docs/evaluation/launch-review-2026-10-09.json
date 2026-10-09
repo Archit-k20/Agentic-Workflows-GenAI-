@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-09",
+  "review_kind": "Source-based inspection of accepted summary, answer, report, document analysis, code and final content fields; machine screens separate",
+  "evidence_sha256": "369dff9c81815adb54beb74802f5c440f28827bd7e0cf3efa421f31bb2a97378",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "1c1f3b80a91d63fc555f3716c9c2547a28d77ae17011a7e594dbb42d5c29f2b0",
+    "pipeline_sha256": "81118f20ddfa0d7e23cef2608c2d632d6067c3067199ebec0e7202a70139c0b3"
+  },
+  "execution": {
+    "completed": 60,
+    "errors": 0,
+    "fallbacks": 0
+  },
+  "quality_acceptance": "failed; deployment work may proceed but final release is not accepted",
+  "findings": [
+    {
+      "cases": [
+        "support-02"
+      ],
+      "severity": "quality",
+      "issue": "40 repair kits are explicitly documented, but the low-risk units question was unnecessarily escalated as insufficient information."
+    },
+    {
+      "cases": [
+        "summary-01",
+        "summary-02",
+        "summary-03",
+        "summary-04",
+        "summary-05",
+        "summary-06",
+        "summary-07",
+        "summary-08",
+        "summary-09",
+        "summary-11"
+      ],
+      "severity": "grounding wording",
+      "issue": "No delivery guarantee is supplied became no guarantee for delivery/no guarantee provided, which can assert actual absence rather than missing documentation."
+    },
+    {
+      "cases": [
+        "documents-01",
+        "documents-02",
+        "documents-03",
+        "documents-04",
+        "documents-05",
+        "documents-06",
+        "documents-07",
+        "documents-08"
+      ],
+      "severity": "grounding wording",
+      "issue": "Risk fields commonly shorten missing guarantee evidence to no delivery guarantee; documents-06/07/08 also shorten forecast evidence. Keep not specified in supplied source."
+    },
+    {
+      "cases": [
+        "research-01",
+        "research-02"
+      ],
+      "severity": "grounding wording",
+      "issue": "Inferred pilot objectives around shipment/management are labeled appear but lack explicit source support; should stay unknown or clearly a proposed interpretation."
+    },
+    {
+      "cases": [
+        "research-04"
+      ],
+      "severity": "grounding wording",
+      "issue": "Main findings from pilot study implies a study occurred; source is only a planning brief."
+    },
+    {
+      "cases": [
+        "content-03"
+      ],
+      "severity": "grounding wording",
+      "issue": "Introduces its use of sensor technology is broader than source statement that sensors will ship."
+    },
+    {
+      "cases": [
+        "content-04"
+      ],
+      "severity": "grounding wording",
+      "issue": "Key milestone is an unsupported judgment; caption 64m abbreviates a shipment count ambiguously as a length."
+    },
+    {
+      "cases": [
+        "content-01",
+        "content-02",
+        "content-03",
+        "content-04",
+        "content-05",
+        "content-06"
+      ],
+      "severity": "polish",
+      "issue": "Verbatim refund sentence restoration duplicates a similar paraphrase. The failed review flag is retained honestly; this is not a passing editorial review."
+    }
+  ],
+  "strong_results": [
+    "All 16 Q&A answers were inspected: supported ownership/count questions answered, absent evidence explicitly refused.",
+    "Required support escalations preserved; inclusive return answer correct.",
+    "Document quantities/dates preserved and inferred action owners removed.",
+    "Six code outputs compile/syntax-check; source inspection found expected operations. No general execution/security certification.",
+    "Research conflict remains unresolved and both sources linked individually.",
+    "Observed marketing review unique pilot experience was rejected rather than accepted."
+  ],
+  "limitations": [
+    "Synthetic fixtures repeat pilot briefs; does not establish universal factual accuracy.",
+    "Public URL extraction, browser Turnstile, media, persistence and VM capacity remain separate launch gates.",
+    "Local final-profile content rerun and any changed profile require new evidence; never mix hashes."
+  ]
+}

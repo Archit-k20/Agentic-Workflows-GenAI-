@@ -273,3 +273,20 @@ def test_source_denial_is_not_mistaken_for_a_promotional_guarantee():
     assert not g.claim_issues("Delivery is not guaranteed.", source)
     assert g.claim_issues("Delivery is guaranteed.", source)
     assert g.claim_issues("Delivery is not guaranteed; performance is guaranteed.", source)
+
+
+def test_support_digest_retains_omitted_shipping_evidence_without_trusting_relevance():
+    from backend.processing import override
+
+    runtime = Runtime("free", "support")
+    excerpt = "The budget is USD 740."
+    digest = {"label": "S1", "title": "Pilot brief", "summary": excerpt,
+              "relevance": "The number of units is unavailable."}
+    source = {"title": "Pilot brief", "url": "https://example.com/pilot", "text": SOURCE}
+    result = override(None, "summarize_support_source", ("How many units?", source, "S1", None), {},
+                      lambda *args, **kwargs: dict(digest), runtime)
+    assert "Project Alder ships 32 kits on November 9, 2026." in result["summary"]
+    assert POLICY in result["summary"]
+    assert result["metadata"]["model_excerpt"] == excerpt
+    assert "unavailable" not in result["summary"]
+    assert runtime.warnings

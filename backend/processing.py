@@ -268,7 +268,14 @@ def override(module, name, args, kwargs, fn, runtime):
                 )
         if name == "summarize_support_source":
             result["metadata"] = {"model_relevance": result.get("relevance", ""),
+                                  "model_excerpt": result["summary"],
                                   "source_provenance": "Verbatim documentation excerpt"}
+            # A valid excerpt may still omit the very quantity being asked
+            # about. Retain material numerical sentences as source evidence;
+            # do not answer from the model's relevance commentary.
+            result["summary"], _ = g.restore_details(
+                result["summary"], source["text"], runtime, "Support documentation"
+            )
             result["relevance"] = "Quoted documentation; assess eligibility at the resolution stage."
         # Keep draft and review prompts within the local context envelope.
         if len(json.dumps(result).encode()) > 5000:

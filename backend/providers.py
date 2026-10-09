@@ -212,6 +212,8 @@ class Runtime:
             "A future-dated shipment is scheduled, never already shipped or live; preserve source tense. "
             "Do not turn a shipment count into a physical dimension or a project owner into a delivery recipient. "
             "Preserve supplied product nouns, quantities, dates, people, limitations and conflicting evidence. "
+            "Missing documentation is unknown, not absence: 'no guarantee is supplied' means the source does not specify a guarantee, "
+            "not that no guarantee exists. Keep this distinction in summaries, risk lists and reviews. "
             "Do not invent dates, amounts, deadlines, citations, product contents/features, endorsements, relative urgency or launch status. "
             "Marketing tone changes wording only, never facts; proposed recommendations must be labeled as suggestions. /no_think"
         )
