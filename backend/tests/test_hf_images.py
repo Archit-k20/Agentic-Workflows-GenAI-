@@ -129,6 +129,7 @@ def test_private_rest_transport_has_one_submission_and_no_artifact_fetch(image_r
     assert result["revision"] == cfg.HF_IMAGE_REVISION
     assert len(calls) == 4 and sum(r.method == "POST" for r in calls) == 1
     assert all(r.headers["Authorization"] == "Bearer private-read-token" for r in calls)
+    assert calls[-1].extensions["timeout"]["read"] == 30
     assert {r.url.host for r in calls} == {"huggingface.co", "owner-worker.hf.space"}
 
 

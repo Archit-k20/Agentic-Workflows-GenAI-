@@ -89,12 +89,12 @@ def generate(prompt, deadline, check):
         raise Capacity("The private image fallback is not configured.")
     stop = min(deadline, time.monotonic() + MAX_WAIT)
 
-    def bounded():
+    def bounded(network_limit=15):
         check()
         remaining = stop - time.monotonic()
         if remaining <= 0:
             raise TimeoutError("Image fallback wait limit reached. Generation may have started; no request was replayed. Retry explicitly.")
-        return min(15, remaining)
+        return min(network_limit, remaining)
 
     token = os.environ["TRACE_HF_API_TOKEN"]
     space = os.environ["TRACE_HF_SPACE_ID"]
@@ -117,7 +117,9 @@ def generate(prompt, deadline, check):
             if not isinstance(event_id, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,128}", event_id):
                 raise ValueError("The image worker returned an invalid request identifier.")
             event, data = "", []
-            with client.stream("GET", endpoint + "/" + event_id, timeout=bounded()) as stream:
+            # Gradio's queue can heartbeat every 15 seconds. Leave headroom for
+            # that heartbeat while retaining the overall bounded wait.
+            with client.stream("GET", endpoint + "/" + event_id, timeout=bounded(30)) as stream:
                 _status(stream)
                 for line in _lines(stream, bounded):
                     if line.startswith("event:"):

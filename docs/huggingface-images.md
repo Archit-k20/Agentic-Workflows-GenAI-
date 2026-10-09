@@ -20,7 +20,8 @@ hosting replacement. Text, code, retrieval, OCR and speech retain their provider
    the four-step profile and actual 1024×1024 PNG before saving the existing
    session-owned artifact. Other visitors cannot fetch the result.
 5. HF waits are bounded to approximately three minutes, including its queue;
-   network read timeout can add at most 15 seconds. The backend submits once and
+   network read timeout can add at most 30 seconds. The stream read window exceeds
+   Gradio's 15-second queue heartbeat interval. The backend submits once and
    never automatically replays a connection failure. HF may continue an already
    submitted generation after a disconnect; no cancellation feature is claimed.
 6. Observable fallback stages, a warning and execution provider metadata identify

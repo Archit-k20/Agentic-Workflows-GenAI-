@@ -1,7 +1,9 @@
-gradio==6.30.0
+# HF's Gradio builder installs these extras automatically; include them in the lock.
+gradio[mcp,oauth]==6.30.0
 spaces==0.51.3
 torch==2.13.0
 diffusers==0.41.0
 transformers==5.19.0
 accelerate==1.15.0
 sentencepiece==0.2.1
+websockets==17.2
