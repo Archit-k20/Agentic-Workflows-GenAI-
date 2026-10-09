@@ -358,7 +358,7 @@ class Runtime:
         try:
             result = self.hosted(
                 cfg.IMAGE_MODEL,
-                {"prompt": prompt, "steps": 4, "width": 1024, "height": 1024},
+                {"prompt": prompt, "steps": 4},
             )
             raw = base64.b64decode(result["image"], validate=True)
             from PIL import Image
@@ -372,6 +372,9 @@ class Runtime:
                 str(exc)
                 + " Your prompt is retained. Retry explicitly; image generation has no CPU fallback."
             ) from None
+        except Exception:
+            emit("stage", name="Generate image", status="failed")
+            raise
         emit("stage", name="Generate image", status="completed")
         return image
 

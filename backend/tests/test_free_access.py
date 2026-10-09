@@ -714,3 +714,34 @@ def test_support_resolution_does_not_read_model_relevance_as_evidence(free, monk
         [{"label": "S1", "summary": "40 kits.", "relevance": "Quoted documentation.",
           "metadata": {"model_relevance": "invented policy interpretation"}}], runtime.client)
     assert "invented policy interpretation" not in json.dumps(received)
+
+
+def test_flux_uses_documented_fields_and_returned_dimensions(free, monkeypatch):
+    runtime = free[2]
+    payloads = []
+    def hosted(model, payload, output_limit=0):
+        from backend.free_config import IMAGE_MODEL
+        import base64
+        assert model == IMAGE_MODEL
+        payloads.append(payload)
+        # The provider chooses dimensions; do not assume requested 1024 pixels.
+        buf = io.BytesIO()
+        Image.new('RGB', (320, 512), 'white').save(buf, format='JPEG')
+        return {'image': base64.b64encode(buf.getvalue()).decode()}
+    monkeypatch.setattr(runtime, 'hosted', hosted)
+    result = runtime.image('A ceramic lamp')
+    assert payloads == [{'prompt': 'A ceramic lamp', 'steps': 4}]
+    assert result.size == (320, 512)
+    assert free[3][-1] == ('stage', {'name': 'Generate image', 'status': 'completed'})
+
+
+def test_image_input_failure_finishes_stage_without_retry(free, monkeypatch):
+    calls = []
+    def rejected(*args, **kwargs):
+        calls.append(args)
+        raise ValueError('Hosted provider rejected this input (400)')
+    monkeypatch.setattr(free[2], 'hosted', rejected)
+    with pytest.raises(ValueError, match='400'):
+        free[2].image('A ceramic lamp')
+    assert len(calls) == 1
+    assert free[3][-1] == ('stage', {'name': 'Generate image', 'status': 'failed'})
