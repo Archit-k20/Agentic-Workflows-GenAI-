@@ -144,7 +144,7 @@ class Policy:
                 (day,),
             ).fetchone()[0]
             if total + amount > 8000 or (category == "text" and text + amount > 7000):
-                raise Capacity(
+                raise ConfirmedCapacity(
                     "The shared hosted allowance is unavailable until 00:00 UTC."
                 )
             db.execute(
@@ -163,3 +163,7 @@ class Policy:
 
 class Capacity(RuntimeError):
     pass
+
+
+class ConfirmedCapacity(Capacity):
+    """Provider rejected capacity, or a local budget stopped submission entirely."""

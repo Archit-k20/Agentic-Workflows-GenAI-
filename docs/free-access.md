@@ -1,6 +1,6 @@
 # Free visitor access
 
-Visitors start in **Free access** and enter no API key. All fifteen tool surfaces remain available. Relevant text/image prompts go to Cloudflare Workers AI. OCR, file extraction, embeddings, retrieval and speech run on the backend. If an unfinished text stage cannot use hosted inference, it continues with the smaller local model; later text stages in that run stay local. A warning and execution details identify the change. Image capacity errors preserve the prompt and require an explicit retry.
+Visitors start in **Free access** and enter no API key. All fifteen tool surfaces remain available. Relevant text/image prompts go to Cloudflare Workers AI. OCR, file extraction, embeddings, retrieval and speech run on the backend. If an unfinished text stage cannot use hosted inference, it continues with the smaller local model; later text stages in that run stay local. A warning and execution details identify the change. An optional private Hugging Face ZeroGPU image worker handles explicit Cloudflare capacity rejections when configured; ambiguous failures retain the prompt and require explicit retry. See [HF worker setup and verification status](huggingface-images.md).
 
 **Local inference** runs text on the backend's CPU. It still fetches submitted source URLs; it is not an offline browser mode. Image generation requires hosted mode. **Advanced — my OpenAI key** is an explicit option. Typing a key does not select that mode. Visitor keys and mode choices stay in browser memory; only theme preferences persist. Legacy API callers that omit the mode and supply a key retain the original OpenAI routing.
 
@@ -54,7 +54,7 @@ One active workflow per session/network, five starts per minute, and two workflo
 
 The application reserves conservative compute before hosted calls: 8,000 Neurons/day total with a 7,000 text ceiling, leaving 1,000 for images. Hosted text now uses Llama 3.3 70B after the owner prioritized stronger outputs over more daily runs. Reservations use its published 26,668 input / 204,805 output Neurons per million tokens, rather than the cheaper Qwen profile. This reduces the number of hosted workflows possible per day; the per-visitor allowance does not guarantee account-wide capacity. A 1024-pixel, four-step image reserves 200 Neurons. Known provider usage reconciles reservations; failed/unknown calls keep their conservative reservation. This is an application budget, not a Cloudflare billing cap. The Workers Free plan's enforced allowance is the no-paid boundary. Account-wide usage elsewhere can reduce available capacity.
 
-No generation automatically replays after disconnect, capacity failure or error. Inputs and completed stages remain visible. Explicit retry starts a new request and may consume allowance. Samples are never substituted for a failed live result.
+No generation automatically replays after disconnect or ambiguous error. An explicit Cloudflare image capacity rejection can submit once to the separately configured HF worker; it has its own shared GPU allowance. Inputs and completed stages remain visible. Explicit retry starts a new request and may consume allowance. Samples are never substituted for a failed live result.
 
 ## Public configuration and remaining acceptance
 

@@ -114,6 +114,8 @@ def redact(value, secret):
         secret,
         os.environ.get("TRACE_CLOUDFLARE_API_TOKEN", ""),
         os.environ.get("TRACE_TURNSTILE_SECRET", ""),
+        os.environ.get("TRACE_HF_API_TOKEN", ""),
+        os.environ.get("TRACE_HF_DEPLOY_TOKEN", ""),
     ):
         if item:
             value = value.replace(item, "[redacted]")
@@ -318,6 +320,7 @@ def capabilities():
     return {
         "default_mode": "free",
         "hosted_configured": cfg.configured(),
+        "image_fallback_configured": cfg.image_fallback_configured(),
         "modes": ["free", "local", "openai"],
         "voices": [
             {**v, "preview_url": "/audio/voices/" + v["id"] + ".mp3"}
@@ -359,6 +362,7 @@ def health():
     return {
         "ready": True,
         "hosted_configured": cfg.configured(),
+        "image_fallback_configured": cfg.image_fallback_configured(),
         "local_text_ready": local_ready,
         "local_text_model": cfg.LOCAL_MODEL,
         "speech_installed": importlib.util.find_spec("kokoro") is not None

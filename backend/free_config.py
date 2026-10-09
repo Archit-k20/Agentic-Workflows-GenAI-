@@ -6,6 +6,8 @@ from threading import RLock
 CHAT_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
 CODE_MODEL = "@cf/qwen/qwen2.5-coder-32b-instruct"
 IMAGE_MODEL = "@cf/black-forest-labs/flux-1-schnell"
+HF_IMAGE_MODEL = "black-forest-labs/FLUX.1-schnell"
+HF_IMAGE_REVISION = "741f7c3ce8b383c54771c7003378a50191e9efe9"
 HOSTED_RATES = {CHAT_MODEL: (26668, 204805), CODE_MODEL: (60000, 90909)}
 LOCAL_DIGEST = "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd"
 LOCAL_MODEL = "qwen3.5:4b"
@@ -28,4 +30,13 @@ def configured():
     return bool(
         os.environ.get("TRACE_CLOUDFLARE_ACCOUNT_ID")
         and os.environ.get("TRACE_CLOUDFLARE_API_TOKEN")
+    )
+
+
+def image_fallback_configured():
+    import re
+
+    return bool(
+        re.fullmatch(r"[A-Za-z0-9_-]+/[A-Za-z0-9_.-]+", os.environ.get("TRACE_HF_SPACE_ID", ""))
+        and os.environ.get("TRACE_HF_API_TOKEN")
     )

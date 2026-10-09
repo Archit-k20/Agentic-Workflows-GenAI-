@@ -1165,7 +1165,9 @@ export function Workspace({ tool }: { tool: Tool }) {
             </select>
             <p className="helper">
               Free hosted requests send relevant text and image prompts to
-              Cloudflare. Local mode keeps AI inference on our server; fetching
+              Cloudflare. When Cloudflare rejects image capacity, image prompts
+              may go to our private Hugging Face worker; its quota also applies.
+              Local mode keeps AI inference on our server; fetching
               your source URLs still contacts their websites. Switching modes
               requires Q&amp;A context reprocessing. English-first.
             </p>

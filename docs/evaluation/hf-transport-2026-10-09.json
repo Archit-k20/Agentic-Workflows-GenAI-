@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "gradio_version": "6.30.0",
+  "scope": "Actual local Gradio queue/REST protocol with a synthetic PNG. No GPU, model inference, provider credentials or live quality claim.",
+  "calls": [
+    {
+      "method": "GET",
+      "path": "/api/spaces/test/worker"
+    },
+    {
+      "method": "GET",
+      "path": "/config"
+    },
+    {
+      "method": "POST",
+      "path": "/gradio_api/call/generate"
+    },
+    {
+      "method": "GET",
+      "path": "/gradio_api/call/generate/f5f28ad09a414bcba3e8c78647ab47f2"
+    }
+  ],
+  "image_bytes": 5334
+}

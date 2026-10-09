@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 import httpx
 from . import free_config as cfg
 from .events import emit
-from .policy import Capacity
+from .policy import Capacity, ConfirmedCapacity
 from .structured import validate, shape_hint, schema_for
 
 
@@ -25,6 +25,7 @@ class Runtime:
         self.platforms = []
         self.allow_fallback = True
         self.grounding_context = None
+        self.image_fallback = False
         self.client = NS(chat=NS(completions=NS(create=self.create)))
 
     def check(self):
@@ -46,7 +47,7 @@ class Runtime:
         return {
             "mode": self.mode,
             "engines": self.engines,
-            "fallback": self.mode == "free" and self.local,
+            "fallback": self.mode == "free" and (self.local or self.image_fallback),
             "coverage": self.coverage,
             "warnings": self.warnings,
         }
@@ -84,7 +85,11 @@ class Runtime:
                 raise Capacity(
                     "Hosted service configuration was rejected. The operator must check its scoped credential."
                 ) from None
-            if status == 429 or status >= 500:
+            if status == 429:
+                raise ConfirmedCapacity(
+                    "Hosted inference rejected this request because its capacity or free allowance is exhausted."
+                ) from None
+            if status >= 500:
                 raise Capacity(
                     "Hosted inference is temporarily unavailable or its free allowance is exhausted."
                 ) from None
@@ -356,10 +361,30 @@ class Runtime:
             )
         emit("stage", name="Generate image", status="running")
         try:
-            result = self.hosted(
-                cfg.IMAGE_MODEL,
-                {"prompt": prompt, "steps": 4},
-            )
+            try:
+                result = self.hosted(
+                    cfg.IMAGE_MODEL,
+                    {"prompt": prompt, "steps": 4},
+                )
+            except ConfirmedCapacity:
+                if not cfg.image_fallback_configured() or not self.allow_fallback:
+                    raise
+                from .hf_images import generate
+
+                self.image_fallback = True
+                self.warning(
+                    "Cloudflare image capacity is exhausted. Continuing with our private Hugging Face ZeroGPU worker; its shared GPU quota and queue also apply."
+                )
+                emit("stage", name="Hugging Face image fallback", status="running")
+                try:
+                    self.check()
+                    self.expensive = True
+                    result = generate(prompt, self.deadline, self.check)
+                    self.record("huggingface-zerogpu", cfg.HF_IMAGE_MODEL + "@" + cfg.HF_IMAGE_REVISION)
+                except BaseException:
+                    emit("stage", name="Hugging Face image fallback", status="failed")
+                    raise
+                emit("stage", name="Hugging Face image fallback", status="completed")
             raw = base64.b64decode(result["image"], validate=True)
             from PIL import Image
             from io import BytesIO
@@ -370,7 +395,7 @@ class Runtime:
             emit("stage", name="Generate image", status="failed")
             raise Capacity(
                 str(exc)
-                + " Your prompt is retained. Retry explicitly; image generation has no CPU fallback."
+                + " Your prompt is retained. Retry explicitly; no request was automatically replayed."
             ) from None
         except Exception:
             emit("stage", name="Generate image", status="failed")
