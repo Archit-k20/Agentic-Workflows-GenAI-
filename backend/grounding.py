@@ -94,6 +94,15 @@ def claim_issues(output, source):
 
 def content_claim_issues(output, source):
     issues = claim_issues(output, source)
+    for noun in unknown_absence_claims(output, source):
+        issues.append("Unspecified " + noun + " evidence cannot establish its absence.")
+    if re.search(r"\bships?\b", source, re.I) and re.search(
+        r"\b(?:arrives?|arriving|delivered|delivering)\b", output, re.I
+    ) and not re.search(r"\b(?:arrives?|arriving|delivered|delivering)\b", source, re.I):
+        issues.append("A scheduled shipment cannot establish an arrival or delivery date.")
+    for count in re.findall(r"\bships?\s+(\d+)\s+meters\b", source, re.I):
+        if re.search(r"\b" + re.escape(count) + r"m\b", output):
+            issues.append("A count of meters shipped cannot be abbreviated as a length.")
     # Additional finite content checks target observed purpose/audience
     # inventions. They are conservative phrase checks, not an entailment model.
     for pattern in (
@@ -113,6 +122,21 @@ def content_claim_issues(output, source):
                 ):
                     issues.append("Unspecified " + noun + " evidence cannot establish its absence or non-applicability.")
     return issues
+
+
+def unknown_absence_claims(output, source):
+    """Finite guarantee/forecast checks; no claim of general entailment."""
+    nouns = []
+    for quote in sentences(source):
+        if not re.search(r"\b(?:not|no)\b[^.!?]{0,100}\b(?:supplied|specified|documented|provided)\b", quote, re.I):
+            continue
+        for noun in ("guarantee", "forecast"):
+            if not re.search(r"\b" + noun + r"s?\b", quote, re.I):
+                continue
+            for match in re.finditer(r"\bno\b[^.!?\n]{0,40}\b" + noun + r"s?\b[^.!?\n]*", output, re.I):
+                if not re.search(r"\b(?:documented|documentation|supplied|specified|provided|reported)\b", match.group(), re.I):
+                    nouns.append(noun)
+    return list(dict.fromkeys(nouns))
 
 
 @contextmanager
@@ -424,6 +448,21 @@ def document_analysis(value, source, runtime):
         raise ValueError("Document summary contains unsupported details: " + "; ".join(issues))
     value["summary"], restored = restore_details(value["summary"], source, runtime, "Document summary")
     repairs = ["Missing material source details restored verbatim."] if restored else []
+    risks = []
+    proposed = []
+    for risk in value.get("risks", []):
+        unknown = unknown_absence_claims(risk, source)
+        if unknown:
+            proposed.append(risk)
+            risks.extend("The supplied source does not specify a " +
+                         ("delivery guarantee." if noun == "guarantee" else "revenue forecast.")
+                         for noun in unknown)
+            repairs.append("Missing guarantee/forecast evidence retained as unknown, not asserted absence.")
+        else:
+            risks.append(risk)
+    value["risks"] = list(dict.fromkeys(risks))
+    if proposed:
+        value["proposed_risks"] = proposed
     for item in value["action_items"]:
         owner = item["owner"]
         if owner.casefold() not in {"unknown", "not specified", ""} and not explicit_assignee(item.get("evidence", ""), owner, item["task"]):
@@ -443,5 +482,5 @@ def document_analysis(value, source, runtime):
             repairs.append("An unsupported action date was removed.")
     if repairs:
         runtime.warning("Document source checks corrected inferred or missing details. Inspect Details.")
-    value["source_checks"] = {"scope": "Source numbers, verbatim task evidence and explicit assignment grammar; not general semantic verification.", "repairs": list(dict.fromkeys(repairs))}
+    value["source_checks"] = {"scope": "Source numbers, verbatim task evidence, explicit assignment grammar and guarantee/forecast evidence wording; not general semantic verification.", "repairs": list(dict.fromkeys(repairs))}
     return value

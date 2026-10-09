@@ -290,3 +290,34 @@ def test_support_digest_retains_omitted_shipping_evidence_without_trusting_relev
     assert result["metadata"]["model_excerpt"] == excerpt
     assert "unavailable" not in result["summary"]
     assert runtime.warnings
+
+
+@pytest.mark.parametrize('output', ['No guarantees.', 'No delivery guarantee', 'No revenue forecast'])
+def test_bare_absence_is_not_accepted_from_undocumented_evidence(output):
+    source = SOURCE + ' No delivery guarantee or revenue forecast is supplied.'
+    assert g.unknown_absence_claims(output, source)
+    assert not g.unknown_absence_claims(output, SOURCE + ' No delivery guarantee or revenue forecast exists.')
+    assert not g.unknown_absence_claims('No documented delivery guarantee or revenue forecast is supplied.', source)
+
+
+@pytest.mark.parametrize('output', ['25 lamps arriving on February 6, 2027.', '25 lamps delivered on February 6, 2027.'])
+def test_shipping_date_does_not_become_arrival_date(output):
+    source = 'Project Elm ships 25 lamps on February 6, 2027.'
+    assert any('arrival or delivery date' in i for i in g.content_claim_issues(output, source))
+    assert not g.content_claim_issues(output, source + ' ' + output)
+
+
+def test_meter_shipment_count_cannot_be_written_as_a_length():
+    source = 'Project Delta ships 64 meters on January 12, 2027.'
+    assert g.content_claim_issues('Delta ships 64m on January 12, 2027.', source)
+    assert not g.content_claim_issues('Delta ships 64 meters on January 12, 2027.', source)
+
+
+def test_document_risk_preserves_missing_evidence_and_retains_rejected_wording():
+    source = SOURCE + ' No delivery guarantee or revenue forecast is supplied.'
+    value = {'summary':SOURCE,'action_items':[], 'risks':['No delivery guarantee','No revenue forecast']}
+    result = g.document_analysis(value,source,Runtime('free','documents'))
+    assert result['risks']==['The supplied source does not specify a delivery guarantee.',
+                             'The supplied source does not specify a revenue forecast.']
+    assert result['proposed_risks']==value['risks']
+    assert result['source_checks']['repairs']

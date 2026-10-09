@@ -107,5 +107,22 @@
     "Synthetic fixtures repeat pilot briefs; does not establish universal factual accuracy.",
     "Public URL extraction, browser Turnstile, media, persistence and VM capacity remain separate launch gates.",
     "Local final-profile content rerun and any changed profile require new evidence; never mix hashes."
-  ]
+  ],
+  "local_followup": {
+    "file": "local-launch-targets-2026-10-09.json",
+    "cases": 2,
+    "execution_errors": 0,
+    "seconds": {
+      "content-05": 430.78,
+      "content-03": 385.2
+    },
+    "quality_acceptance": "failed",
+    "findings": [
+      "Final captions change a shipment date into an arrival/delivery claim.",
+      "Cedar caption still shortens undocumented guarantees to No guarantees.",
+      "Material refund restoration is redundant.",
+      "Self-reported review pass is not source-based quality acceptance."
+    ],
+    "scope": "Local Mac targeted fixtures, not measured VM peak/concurrency or equal hosted quality."
+  }
 }
