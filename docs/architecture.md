@@ -10,6 +10,14 @@
 - `backend/openapi.json` and `frontend/src/lib/api-types.ts`: committed API schema and generated types. Regenerate when contracts change.
 - `docs/feature-parity.md`: the fifteen contracts and infrastructure changes.
 
+## Quiet studio frontend
+
+`ToolPresentation` maps the existing fifteen `ToolId` values to a presentation family, preview, purpose, implemented design choice and limitation. It does not change the API contract. The workspace is separated into navigation, settings, input controls, result surfaces and `useToolController`; the controller retains the original request construction and event handling.
+
+Live drafts, files, contexts and results remain in the root in-memory provider. A sample is a derived read-only view from a separate fixture, never an update to that provider. `?sample=1` controls the view; returning to the tool restores its live draft. Pending requests keep their original tool ID. Home examples do not mount the live controller or visitor-verification component. Research loads with the homepage; other sample modules load when selected or their collection previews approach the viewport. Workspace result surfaces load on demand. Live image/audio fetches retain session authentication and revoke object URLs when disposed.
+
+A single pearl/ink token system replaces the accumulated theme overrides. Production dependencies and generated API types remain unchanged. See [redesign verification](quiet-studio.md).
+
 ## Data flow
 
 Browser drafts, results, API key, and anonymous token remain in memory. Only the light/dark preference uses localStorage. Samples are bundled synthetic results and bypass all networking. Live execution creates a lazy anonymous session, uploads files directly to the Python service, and consumes request-bound SSE events with fetch. Browser interruption never replays a request. The service has two execution slots and one serialized local-model instance.

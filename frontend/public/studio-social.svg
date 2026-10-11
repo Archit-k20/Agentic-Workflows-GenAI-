@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#f5f6f8"/>
+<g font-family="Arial, sans-serif" fill="#20252d">
+<path d="M54 49h24m-12 0v22m-15-11h9m12 0h9" stroke="#3559a8" stroke-width="2" fill="none"/><circle cx="66" cy="49" r="3" fill="#f5f6f8" stroke="#3559a8" stroke-width="2"/>
+<text x="92" y="67" font-weight="700" font-size="27">TRACE.</text><text x="226" y="65" font-size="16" fill="#5c6573">An AI project by Archit Kumar</text>
+<text x="52" y="146" font-size="43" font-weight="600">A collection of AI tools I built.</text>
+<text x="52" y="184" font-size="19" fill="#5c6573">Try an example. Bring your own question. Follow the evidence.</text>
+<rect x="44" y="223" width="1112" height="332" rx="16" fill="#fff" stroke="#d6dce5"/>
+<rect x="62" y="239" width="115" height="38" rx="8" fill="#e9edf3"/>
+<g font-size="16"><text x="81" y="264" fill="#3559a8">Research</text><text x="199" y="264">Documents</text><text x="334" y="264">Code</text><text x="414" y="264">Content</text><text x="515" y="264">Support</text></g>
+<text x="769" y="263" fill="#5c6573" font-size="13">Sample result — no live AI request</text>
+<path d="M44 295h1112M313 295v260M867 295v260" stroke="#d6dce5"/>
+<text x="71" y="336" fill="#5c6573" font-size="14">The starting point</text><text x="71" y="373" font-size="22">A campus repair pilot.</text>
+<g fill="#5c6573" font-size="16"><text x="71" y="409">How could a campus repair</text><text x="71" y="435">service improve access</text><text x="71" y="461">and trust?</text></g>
+<text x="344" y="342" font-size="14" fill="#5c6573">Research report</text><text x="344" y="385" font-family="Georgia, serif" font-size="31">Small service. Clear boundaries.</text>
+<g font-size="17"><text x="344" y="425">A fictional pilot uses scheduled appointments</text><text x="344" y="453">to make repair support more predictable.</text><text x="344" y="481">Specialist work needs a clear referral.</text></g>
+<rect x="344" y="498" width="49" height="27" rx="5" fill="#e9edf3"/><text x="357" y="517" fill="#3559a8" font-size="14">S1 ↗</text>
+<text x="895" y="338" font-size="15" fill="#3559a8">Source S1</text><text x="895" y="376" font-size="21">Follow the source.</text><g font-size="16" fill="#5c6573"><text x="895" y="413">Inspect the source digest,</text><text x="895" y="439">key points and limits</text><text x="895" y="465">behind the result.</text></g>
+<text x="52" y="596" font-size="16" fill="#5c6573">15 tools · Research, documents, code, images, speech and more</text><text x="921" y="596" font-size="16" fill="#3559a8">Built to be explored ↗</text>
+</g></svg>

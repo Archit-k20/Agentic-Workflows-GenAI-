@@ -142,3 +142,4 @@ node_modules/
 
 !backend/.env.example
 !frontend/public/audio/voices/*.mp3
+!frontend/public/studio-social.png

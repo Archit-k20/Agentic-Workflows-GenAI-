@@ -1,0 +1,34 @@
+{
+  "baseline": {
+    "index": {
+      "initial_gzip_bytes": {
+        ".js": 219747,
+        ".css": 11582
+      },
+      "html_gzip_bytes": 5165
+    },
+    "workspace/research": {
+      "initial_gzip_bytes": {
+        ".js": 321192,
+        ".css": 11582
+      },
+      "html_gzip_bytes": 5775
+    }
+  },
+  "studio": {
+    "index": {
+      "initial_gzip_bytes": {
+        ".js": 316760,
+        ".css": 10029
+      },
+      "html_gzip_bytes": 8890
+    },
+    "workspace/research": {
+      "initial_gzip_bytes": {
+        ".js": 279226,
+        ".css": 10029
+      },
+      "html_gzip_bytes": 2908
+    }
+  }
+}
