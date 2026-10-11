@@ -1,4 +1,4 @@
-"""Shared workflow logic; prompts and inference settings preserved from the Streamlit application."""
+"""Workflow logic with preserved OpenAI prompts and inference settings."""
 
 from urllib.parse import urlparse
 

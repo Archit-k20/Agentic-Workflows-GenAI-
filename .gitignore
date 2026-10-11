@@ -124,10 +124,6 @@ dist/
 *.jpg
 *.png
 *.jpeg
-!static/
-!static/*.jpg
-!static/*.png
-!static/*.jpeg
 faiss_store_*
 __pycache__/
 venv/
@@ -138,7 +134,6 @@ node_modules/
 *.tsbuildinfo
 
 # Reviewable TRACE interface screenshots.
-!docs/screenshots/*.jpg
 !docs/screenshots/readme/*.jpg
 
 !backend/.env.example

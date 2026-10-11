@@ -4,7 +4,7 @@
 
 Turn a document, question or rough idea into something you can work with. TRACE brings **15 tools** into one workspace for research, reading, code, images, speech and content—with sources, processing stages and available checks kept close to the result.
 
-[Live application](https://trace-agentic-workspace.vercel.app/) · [New interface preview](https://trace-agentic-workspace-okqhzes07.vercel.app/) · [Documentation](#documentation) · [My portfolio](https://portfolio-updated-ak.vercel.app/)
+[Open TRACE](https://trace-agentic-workspace.vercel.app/) · [Documentation](#documentation) · [My portfolio](https://portfolio-updated-ak.vercel.app/)
 
 ![TRACE's dark introduction, with its glass navigation bar and Explore TRACE button](docs/screenshots/readme/intro-dark.jpg)
 
@@ -18,17 +18,11 @@ The project combines a React interface, a Python API, hosted and local inference
 
 ## Explore TRACE
 
-| Destination | What to expect |
-| --- | --- |
-| [Live application](https://trace-agentic-workspace.vercel.app/) | The deployed application with live tools. Free access requires no visitor API key and uses shared capacity. |
-| [Latest interface preview](https://trace-agentic-workspace-okqhzes07.vercel.app/) | The redesigned introduction, glass navigation and quiet studio shown in this README. It is on `codex/trace-quiet-studio`, under [PR #2](https://github.com/Archit-k20/Agentic-Workflows-GenAI-/pull/2), and has not been promoted to production. |
-| [Interactive collection](https://trace-agentic-workspace-okqhzes07.vercel.app/explore) | Five read-only examples, plus search and filters for all fifteen tools. |
+Open TRACE using the link above, then select **Explore TRACE** to enter the collection. Free access requires no visitor API key and uses shared capacity.
 
-**A quick walkthrough:** open the collection, select a Research citation, then open the full example to inspect its source. Try the Code example to see individual checks, or the Content example to switch between its artifacts.
+**A quick walkthrough:** select a Research citation, then open the full example to inspect its source. Try the Code example to see individual checks, or the Content example to switch between its artifacts. Documents and Support have examples too.
 
-[Research example](https://trace-agentic-workspace-okqhzes07.vercel.app/workspace/research?sample=1) · [Documents example](https://trace-agentic-workspace-okqhzes07.vercel.app/workspace/documents?sample=1) · [Code example](https://trace-agentic-workspace-okqhzes07.vercel.app/workspace/code?sample=1) · [Content example](https://trace-agentic-workspace-okqhzes07.vercel.app/workspace/content?sample=1) · [Support example](https://trace-agentic-workspace-okqhzes07.vercel.app/workspace/support?sample=1)
-
-Every example says **“Sample result — no live AI request.”** Examples work without a backend, consume no generation quota, and leave live drafts untouched. Live execution on the preview requires that exact preview origin/hostname to be added to the existing backend and Turnstile allowlists; use the production link for live tools.
+Every example says **“Sample result — no live AI request.”** Examples work without a backend, consume no generation quota, and leave live drafts untouched. Choose **Use this tool** when you want to enter your own input and start a live request.
 
 ## Fifteen tools, three workspaces
 
@@ -62,11 +56,11 @@ Every example says **“Sample result — no live AI request.”** Examples work
 | **Article Q&A** | Prepares selected URLs for questions and exposes the retrieved text. | Query a small collection of product documentation. |
 | **Support / Triage** | Classifies a request, consults supplied support sources, and proposes an answer or escalation with evidence and a next step. | Identify when a refund question needs human review. |
 
-Research and article tools use the sources you provide. They do not autonomously search the web. Full input contracts and the original OpenAI behavior are documented in [feature parity](docs/feature-parity.md); free/local behavior is documented in [free access](docs/free-access.md).
+Research and article tools use the sources you provide. They do not autonomously search the web. Full input contracts and the original OpenAI behavior are documented in [tool contracts](docs/tools.md); free/local behavior is documented in [free access](docs/free-access.md).
 
 ## A closer look
 
-These are real screenshots of the redesigned interface in **dark mode**. The result screens below show bundled synthetic examples, not live generation or a model-quality benchmark.
+These are real screenshots of the current interface in **dark mode**. The result screens below show bundled synthetic examples, not live generation or a model-quality benchmark.
 
 ### Learn through a working example
 
@@ -137,7 +131,7 @@ flowchart LR
 Use Node.js 24, matching the repository's frontend CI. No provider credential or Docker setup is needed to explore the five samples.
 
 ```sh
-git clone --branch codex/trace-quiet-studio https://github.com/Archit-k20/Agentic-Workflows-GenAI-.git
+git clone https://github.com/Archit-k20/Agentic-Workflows-GenAI-.git
 cd Agentic-Workflows-GenAI-
 npm ci --prefix frontend
 npm --prefix frontend run dev
@@ -173,7 +167,7 @@ Public hosting also requires HTTPS, the real Turnstile configuration and exact o
 
 ## Verification and known limits
 
-The redesign record includes **28 passing frontend tests**, type checks and production builds. Its broader layout check covered all fifteen forms at five widths in both themes. The backend has separate native AMD64/ARM64 CI and documented live checks for selected tools, session isolation, retrieval, speech and images. These are recorded results with specific scopes, not a guarantee for every possible input.
+The interface verification record includes **28 passing frontend tests**, type checks and production builds. The broader layout check covered all fifteen forms at five widths in both themes. The backend has separate native AMD64/ARM64 CI and documented live checks for selected tools, session isolation, retrieval, speech and images. These are recorded results with specific scopes, not a guarantee for every possible input.
 
 To run the frontend checks:
 
@@ -183,7 +177,7 @@ npm --prefix frontend test
 npm --prefix frontend run build
 ```
 
-[CI configuration](.github/workflows/trace-checks.yml) · [Interface verification](docs/quiet-studio.md) · [Live verification](docs/launch-2026-10-11.md) · [Model evaluation evidence](docs/evaluation/README.md)
+[CI configuration](.github/workflows/trace-checks.yml) · [Interface verification](docs/interface.md) · [Live verification](docs/verification.md) · [Model evaluation evidence](docs/evaluation/README.md)
 
 Current limitations are part of the project:
 
@@ -192,7 +186,7 @@ Current limitations are part of the project:
 - **Sources can be unavailable.** Websites can block extraction, and YouTube transcripts may be missing or inaccessible. The YouTube tools retain a pasted-transcript alternative.
 - **Images have precision limits.** A detailed live test produced a convincing scene but missed exact counts, clock time and hand details. Images are creative interpretations.
 - **Checks have boundaries.** Syntax/compilation success does not prove behavior or security. Model confidence is not calibrated certainty. English is the evaluated language.
-- **Some release checks remain open.** Independent-device upload/playback checks and full OS-level accessibility/performance validation are tracked separately. The redesign preview does not resolve model-quality or backend acceptance work.
+- **Some release checks remain open.** Independent-device upload/playback checks and full OS-level accessibility/performance validation are tracked separately. Interface improvements do not resolve model-quality or backend acceptance work.
 
 The application deliberately has no accounts, permanent history, autonomous web search, token streaming or cancellation. Browser drafts are temporary; retain important outputs yourself.
 
@@ -206,10 +200,7 @@ huggingface/image-fallback/   Private Gradio image worker
 compose.yaml                 API, private Ollama and model setup
 .github/workflows/           Frontend and native backend CI
 docs/                        Setup, design, verification and screenshots
-main.py                      Original Streamlit entry point for comparison
 ```
-
-The project began in Streamlit. Its original screens remain in the repository as a reference; this README describes the React application.
 
 ## Documentation
 
@@ -217,11 +208,11 @@ The project began in Streamlit. Its original screens remain in the repository as
 | --- | --- |
 | [Free access](docs/free-access.md) | Provider modes, pinned models, processing limits and owner setup. |
 | [Image fallback](docs/huggingface-images.md) | Cloudflare-to-Hugging-Face routing, private worker setup and safeguards. |
-| [Quiet studio](docs/quiet-studio.md) | Redesign decisions, sample isolation, screenshots and release verification. |
-| [Architecture](docs/architecture.md) | Frontend boundaries, event transport, session storage and the original migration design. |
-| [Feature parity](docs/feature-parity.md) | The fifteen original contracts and preserved OpenAI behavior. |
+| [Interface](docs/interface.md) | Current design, sample isolation, screenshots and presentation behavior. |
+| [Architecture](docs/architecture.md) | Frontend boundaries, provider routing, event transport and session storage. |
+| [Tool contracts](docs/tools.md) | All fifteen tool contracts and mode-specific behavior. |
 | [Deployment](docs/deployment.md) | Vercel/backend configuration, HTTPS, recovery and hosting constraints. |
-| [Live verification](docs/launch-2026-10-11.md) | What was exercised on the deployed application and what remains open. |
+| [Verification](docs/verification.md) | Current release checks, live evidence and remaining work. |
 | [Evaluation evidence](docs/evaluation/README.md) | Model runs, source-based findings and the limits of automatic scores. |
 
 ## What I want to improve next

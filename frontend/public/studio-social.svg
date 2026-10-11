@@ -1,28 +1,28 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="soft"><feGaussianBlur stdDeviation="25"/></filter>
-    <radialGradient id="ground"><stop stop-color="#f7f8fa"/><stop offset="1" stop-color="#e0e6ee"/></radialGradient>
+    <radialGradient id="ground"><stop stop-color="#253245"/><stop offset="1" stop-color="#151b24"/></radialGradient>
     <clipPath id="frame"><rect width="1200" height="630"/></clipPath>
   </defs>
-  <rect width="1200" height="630" fill="#f5f6f8"/>
+  <rect width="1200" height="630" fill="#182331"/>
   <g clip-path="url(#frame)">
     <rect width="1200" height="630" fill="url(#ground)"/>
-    <g fill="none" stroke="#9aaac0" opacity=".5" filter="url(#soft)">
+    <g fill="none" stroke="#9cafc8" opacity=".5" filter="url(#soft)">
       <path d="M-160 570C240 470 30 20 490 40S900 500 1310 220" stroke-width="90"/>
       <path d="M-130 690C310 860 640 460 920 540S1350 830 1320 390" stroke-width="75"/>
     </g>
   </g>
-  <rect x="32" y="32" width="1136" height="66" rx="33" fill="#f5f6f8" fill-opacity=".9" stroke="#7b8798"/>
-  <g font-family="Arial, sans-serif" fill="#20252d">
+  <rect x="32" y="32" width="1136" height="66" rx="33" fill="#182331" fill-opacity=".42" stroke="#8e9baa"/>
+  <g font-family="Arial, sans-serif" fill="#eef1f6">
     <text x="62" y="75" font-size="25" font-weight="700" letter-spacing="-1">TRACE.</text>
     <text x="920" y="72" font-size="14">Built by Archit Kumar</text>
-    <text x="600" y="190" text-anchor="middle" font-size="15" fill="#5c6573">A personal exploration of AI</text>
+    <text x="600" y="190" text-anchor="middle" font-size="15" fill="#c6d0de">A personal exploration of AI</text>
     <text x="600" y="283" text-anchor="middle" font-size="66" letter-spacing="-3">Start with something</text>
     <text x="600" y="358" text-anchor="middle" font-size="66" letter-spacing="-3">on your mind.</text>
-    <text x="600" y="412" text-anchor="middle" font-size="18" fill="#5c6573">A question. A document. An idea taking shape.</text>
-    <rect x="485" y="452" width="230" height="56" rx="28" fill="#202d43"/>
-    <text x="580" y="487" text-anchor="middle" font-size="17" fill="#f6f8fc">Explore TRACE</text>
-    <path d="M668 488l12-12m-10 0h10v10" fill="none" stroke="#f6f8fc" stroke-width="1.5"/>
-    <text x="600" y="580" text-anchor="middle" font-size="13" fill="#5c6573">Fifteen AI tools. A project to explore.</text>
+    <text x="600" y="412" text-anchor="middle" font-size="18" fill="#c6d0de">A question. A document. An idea taking shape.</text>
+    <rect x="485" y="452" width="230" height="56" rx="28" fill="#e8eef8"/>
+    <text x="580" y="487" text-anchor="middle" font-size="17" fill="#172238">Explore TRACE</text>
+    <path d="M668 488l12-12m-10 0h10v10" fill="none" stroke="#172238" stroke-width="1.5"/>
+    <text x="600" y="580" text-anchor="middle" font-size="13" fill="#c6d0de">Fifteen AI tools. A project to explore.</text>
   </g>
 </svg>

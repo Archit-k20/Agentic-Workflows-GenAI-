@@ -99,7 +99,7 @@ uv pip compile huggingface/image-fallback/requirements.in \
   --output-file huggingface/image-fallback/requirements.txt
 ```
 
-Free authenticated accounts currently receive five GPU minutes. Backend calls use
+At setup, the documented free authenticated allowance was five GPU minutes; consult the linked provider documentation for current terms. Backend calls use
 the owner's personal shared quota, not a fresh allowance for each TRACE visitor.
 HF resets 24 hours after first GPU usage; Cloudflare's UTC reset is different.
 Do not promise an image count until actual GPU usage is measured. Free hardware
@@ -111,44 +111,12 @@ Sources: [ZeroGPU hardware/setup/quotas](https://huggingface.co/docs/hub/spaces-
 [Space secrets and management](https://huggingface.co/docs/huggingface_hub/guides/manage-spaces),
 [official FLUX model](https://huggingface.co/black-forest-labs/FLUX.1-schnell).
 
-## Verification status — 9 October 2026
+## Recorded live verification
 
-The private free ZeroGPU Space is **Running**, published at
-`ed46b1e39b0b8c90c4e6c25084ed37eb644f8168`. The live VM API runs backend source
-`3529b105ffee12b5b90858f8d625f2cde19e8b05`, with only the runtime read token.
-The protected local recovery environment contains the same two runtime settings;
-the scoped deployment token stays local. The Vercel provider-disclosure release
-is `dpl_F5FMTnrKFjsTapNzd2UroSWL6stA`. Health reports the fallback configured.
+The worker was published at `ed46b1e39b0b8c90c4e6c25084ed37eb644f8168`. Its private runtime credential stays on the backend; the scoped write token remains local. Configuration readiness alone does not prove available GPU capacity.
 
-The first Space build failed because the platform adds Gradio OAuth/MCP extras
-and limits Pydantic to 2.12.5. The corrected Linux/Python 3.12 lock includes those
-extras and builds successfully. Its 30-second stream read window exceeds the
-15-second Gradio heartbeat. No paid hardware or visibility change was made.
+- [Transport check](evaluation/hf-transport-2026-10-09.json): actual Gradio REST/queue behavior with a synthetic PNG.
+- [Direct adapter generation](evaluation/hf-live-2026-10-09.json): 1024×1024 pinned FLUX PNG, 11.913 seconds total. A malformed handle was visible; perfect geometry is not claimed.
+- [VM operator integration](evaluation/hf-production-2026-10-09.json): real inference in 9.656 seconds, workflow events/provider metadata, owner access and rejection of other sessions. The check used a separate process and synthetic exhausted Cloudflare ledger, leaving production counters unchanged.
 
-**245 backend tests pass locally and on the deployed AMD64 VM**, including 28 new
-HF checks. [Current-source frontend/AMD64/ARM64 CI](https://github.com/Archit-k20/Agentic-Workflows-GenAI-/actions/runs/37924817983)
-is green; frontend typecheck/build and the 18 public HTTP wiring checks pass.
-The actual local Gradio REST/queue contract also passes with a synthetic PNG,
-recorded in [transport evidence](evaluation/hf-transport-2026-10-09.json).
-
-Two actual private HF generations succeeded:
-
-- [Direct TRACE adapter check](evaluation/hf-live-2026-10-09.json): 1024×1024 pinned
-  FLUX PNG, 11.913 seconds total and 4.086 seconds inside the GPU function. Visual
-  inspection found a malformed teapot handle. Function time is not billed-quota
-  measurement; perfect object geometry is not claimed.
-- [VM operator integration](evaluation/hf-production-2026-10-09.json): actual
-  `/runs` SSE, fallback warning/stages/provider metadata and artifact handlers,
-  live HF inference in 9.656 seconds. One blue cube and one orange sphere matched
-  the prompt. Owner access passed; another session received 404, anonymous access
-  401, and the cleared session 401. The diagnostic used a separate process,
-  temporary data directory and synthetic exhausted Cloudflare reservation ledger.
-  The production ledger, running API protection and visitor limits were unchanged.
-
-The **public browser image run remains pending**: automatic visitor verification
-passed, but its shared-network two-images-per-day allowance was exhausted before
-inference. The UI retained the prompt and showed explicit retry/reset guidance.
-No quota reset, network impersonation or duplicate retry was performed. Recheck
-once after the next UTC allowance reset (05:30 IST). This blocker is distinct from
-provider quota. The remaining broad application quality/mobile/performance gates
-in [the launch record](launch-2026-10-09.md) remain open.
+The later [public complex-image run](evaluation/public-complex-image-2026-10-11.json) used Cloudflare. It verifies the primary route, not browser generation through this fallback. That fallback-specific public check remains open. Current automated checks and broader quality/device limits are summarized in [verification](verification.md).

@@ -1,4 +1,4 @@
-"""Request-scoped provider injection; legacy Streamlit calls keep their SDK client."""
+"""Request-scoped provider injection; OpenAI mode uses its SDK client."""
 from contextvars import ContextVar
 
 current = ContextVar("trace_runtime", default=None)

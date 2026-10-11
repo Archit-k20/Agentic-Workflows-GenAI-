@@ -2,7 +2,7 @@ name: TRACE checks
 on:
   pull_request:
   push:
-    branches: [codex/trace-react-workspace]
+    branches: [main, codex/trace-react-workspace]
 permissions:
   contents: read
 jobs:
