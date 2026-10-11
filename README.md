@@ -2,14 +2,16 @@
 
 A collection of fifteen AI tools for reading, research, documents, code, images, speech and content. An atmospheric introduction explains the project before inviting visitors into the quiet studio: inspect an example, switch between artifacts, or open a tool with your own input.
 
-**Live application:** [trace-agentic-workspace.vercel.app](https://trace-agentic-workspace.vercel.app). The redesign on `codex/trace-quiet-studio` is a review candidate; production promotion follows preview review. Existing model-quality and independent-device limitations remain tracked separately.
+**Live application:** [trace-agentic-workspace.vercel.app](https://trace-agentic-workspace.vercel.app).
+
+**Latest UI preview:** [Explore the redesigned TRACE](https://trace-agentic-workspace-okqhzes07.vercel.app/) · [Review PR #2](https://github.com/Archit-k20/Agentic-Workflows-GenAI-/pull/2). The redesign is pushed to `codex/trace-quiet-studio` in this repository. It has not been promoted to production. Offline examples work in the preview; live requests from its hostname require the existing backend and Turnstile allowlists to include that exact origin/hostname. See the [release checks](docs/quiet-studio.md) for verification results and remaining checks.
 
 ![TRACE introduction](docs/screenshots/studio-intro-pearl.jpg)
 
 ## The interface
 
 - `/` introduces the project with continuously moving pearl/ink atmosphere and a scroll-down synopsis on one seamless surface. A pause control and reduced-motion support keep reading comfortable. **Explore TRACE** opens the existing interactive collection at `/explore`. Returning visitors can enter the studio immediately.
-
+- The introduction's navigation bar uses a glass finish with a translucent background, blur and reflective edges in both themes. It uses a more opaque fallback when backdrop filtering is unavailable or reduced transparency is requested. The glass treatment is limited to this bar. [See the glass navigation](docs/screenshots/studio-glass-header-ink.jpg).
 - Five clearly labelled synthetic examples work without a backend, account or AI request. Opening one never overwrites a live draft or stops a running request.
 - All fifteen original tools keep their routes, input options and result fields. The collection supports search, group filters and grid/list views.
 - Pearl and ink themes, responsive work areas, command navigation, focus-on-result mode and tool-specific builder notes.
@@ -17,6 +19,8 @@ A collection of fifteen AI tools for reading, research, documents, code, images,
 - Complete structured results remain in **Details**. Partial failures, interruptions and provider limits stay visible. Retries require an explicit action.
 
 Visitors need no provider key in free mode. Hosted inference uses shared capacity, with the existing fallback rules. Local mode means inference on the project's server; optional advanced OpenAI mode uses a visitor's key held in memory. Only the theme persists across browser sessions.
+
+The frontend uses Next.js, React and TypeScript, with Tailwind, Radix, Motion and Lucide. The introduction's moving background and glass bar use CSS and original SVG artwork; they add no new animation dependency. The existing Python API, model choices, provider fallbacks and quota controls are unchanged by this redesign.
 
 ## Start locally
 
@@ -40,6 +44,8 @@ Visit **http://localhost:3000**. You can explore samples with just the frontend 
 - [Existing live evaluation and limitations](docs/launch-2026-10-11.md)
 
 ## Original Streamlit documentation
+
+The following section documents the original interface, retained as a comparison reference. Use the guides above for the current React application and deployment. Existing model-quality and independent-device limitations are tracked in the [live evaluation record](docs/launch-2026-10-11.md).
 
 # Agentic Workflows GenAI App
 
