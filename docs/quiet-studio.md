@@ -24,6 +24,8 @@ All five public preview sample routes were checked, with the sample label and re
 
 All original URLs, group names, inputs, limits, generated API types, providers, mode semantics, quotas, fallback rules, request transport, ownership checks and hosting remain unchanged. No backend files or production dependencies changed. The three added dependencies are test-only: Testing Library React/DOM and jsdom.
 
+The homepage Research excerpt is intentionally shorter than the full workspace report. At 360×800 px, its first citation is fully visible at approximately y=766–794, allowing immediate source inspection.
+
 ## Reference use
 
 [Atmos Gallery](https://atmos.gallery/) informed spacing and restrained surfaces; [Creative Reference Library](https://crl-2026.webflow.io/library) informed the curated collection; [PinReply](https://pinreply.com/welcome/#practice) informed teaching through an immediately usable example. TRACE's CSS/SVG details, social artwork and implementation are original. No reference artwork was copied.
@@ -53,16 +55,16 @@ All original URLs, group names, inputs, limits, generated API types, providers, 
 | Media | Synthetic image opened at fit and actual size without page overflow; focus returned to trigger. Local audio fixture played only after clicking Play |
 | Navigation | Tool search, collection list view, mobile sheet including selecting current tool, sample return links and keyboard artifact tabs exercised. `/workspace` redirects to Research; an invalid tool renders the existing 404 |
 | Focus | Desktop citation and mobile evidence-sheet close/Escape restored the originating citation |
-| Contrast | Actual homepage text computed against rendered surfaces: 143 text elements per theme, no failures; minimum 5.45:1 light / 7.18:1 dark. This is a focused contrast audit, not full accessibility certification; [record](evaluation/studio-contrast.json) |
+| Contrast | Actual homepage text computed against rendered surfaces: 149 text elements per theme, no failures; minimum 5.45:1 light / 7.18:1 dark. This is a focused contrast audit, not full accessibility certification; [record](evaluation/studio-contrast.json) |
 | Dependency/contract scope | Production dependency versions, request builder, generated types, provider state, API transport and backend code unchanged |
 
 Tests use mocks and the optional local fixture server. No paid or shared-quota inference was used to verify this redesign. Sample data remains synthetic; mock execution does not establish model quality.
 
 ### Performance
 
-Local production builds were compared in the Codex WebKit browser at 1440 and 360 px, without CPU/network throttling. Three runs per width/version, each observed for 1.5 seconds. The new homepage measured LCP **0.284–0.512 seconds** and CLS **0–0.0526**. These pass the stated local targets under these conditions; they are not field measurements or evidence for slow mobile connections. INP requires additional real usage data. [Raw measurements](evaluation/studio-local-performance.json).
+Local production builds were compared in the Codex WebKit browser at 1440 and 360 px, without CPU/network throttling. Three runs per width/version, each observed for 1.5 seconds. The new homepage measured LCP **0.268–0.508 seconds** and CLS **0.0039–0.0526**. These pass the stated local targets under these conditions; they are not field measurements or evidence for slow mobile connections. INP requires additional real usage data. [Raw measurements](evaluation/studio-local-performance.json).
 
-The interactive homepage loads the existing Markdown/report rendering code. Its initial compressed JavaScript grew from **219,747 to 316,760 bytes**. The workspace entry shrank from **321,192 to 279,226 bytes** because results are loaded when needed. Shared compressed CSS shrank from **11,582 to 10,029 bytes**. These counts are unique assets referenced by generated route HTML, excluding later-loaded chunks and fonts; gzip sizes are calculated consistently, not network waterfall totals. [Build comparison](evaluation/studio-build-comparison.json).
+The interactive homepage loads the existing Markdown/report rendering code. Its initial compressed JavaScript grew from **219,747 to 316,780 bytes**. The workspace entry shrank from **321,192 to 279,226 bytes** because results are loaded when needed. Shared compressed CSS shrank from **11,582 to 10,029 bytes**. These counts are unique assets referenced by generated route HTML, excluding later-loaded chunks and fonts; gzip sizes are calculated consistently, not network waterfall totals. [Build comparison](evaluation/studio-build-comparison.json).
 
 ### Manual checks still needed before production promotion
 

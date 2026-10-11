@@ -18,17 +18,17 @@
   "studio": {
     "index": {
       "initial_gzip_bytes": {
-        ".js": 316760,
+        ".js": 316780,
         ".css": 10029
       },
-      "html_gzip_bytes": 8890
+      "html_gzip_bytes": 8719
     },
     "workspace/research": {
       "initial_gzip_bytes": {
-        ".js": 279226,
+        ".js": 279228,
         ".css": 10029
       },
-      "html_gzip_bytes": 2908
+      "html_gzip_bytes": 2905
     }
   }
 }

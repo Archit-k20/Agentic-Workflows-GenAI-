@@ -335,7 +335,9 @@ export function Results({
           <Markdown
             value={
               compact
-                ? result.final_report.split("## Risks and Gaps")[0]
+                ? result.final_report
+                    .split("## Findings")[0]
+                    .replace(/^## Executive Summary\s*$/m, "")
                 : result.final_report
             }
             sources={result.sources}
