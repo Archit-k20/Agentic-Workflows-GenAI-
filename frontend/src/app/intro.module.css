@@ -2,7 +2,7 @@
   position: relative;
   isolation: isolate;
   background: var(--atmosphere-ground);
-  --muted: #414c5c;
+  --muted: #354153;
   --atmosphere-ink: #7c8fa9;
   --atmosphere-ground: #e8ecf2;
   --atmosphere-glow: #f7f8fa;
@@ -13,7 +13,7 @@
 }
 :global([data-theme="dark"]) .introduction {
   --atmosphere-ink: #70829a;
-  --muted: #c1cad7;
+  --muted: #e2e8f0;
   --atmosphere-ground: #1a222e;
   --atmosphere-glow: #141c28;
   --header: #171f2edb;
