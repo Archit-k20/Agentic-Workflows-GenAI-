@@ -17,11 +17,12 @@ ABSENCE_REPORT_ISSUES = {
     noun: "Unspecified " + noun + " evidence cannot establish its actual absence."
     for noun in ("guarantee", "forecast")
 }
+STUDY_REPORT_ISSUE = "A shipment brief does not establish that a pilot study or its findings exist. Describe documented shipment facts instead."
 
 
 def repairable_report_wording(issues):
     """Let the existing review/revision fix wording, never invalid structure."""
-    return bool(issues) and all(issue in ABSENCE_REPORT_ISSUES.values() for issue in issues)
+    return bool(issues) and all(issue in {*ABSENCE_REPORT_ISSUES.values(), STUDY_REPORT_ISSUE} for issue in issues)
 
 
 def normalized(value):
@@ -182,6 +183,12 @@ def instructions(context):
             "with complete relevant sentences. Do not summarize the customer's question or allegation as source content. "
             "Keep source labels. relevance may explain whether the quoted documentation answers the question."
         )
+    if stage == "research-source":
+        return (
+            "\nSOURCE DIGEST: use only the supplied text. Keep names, quantities, dates, budget and every refund condition. "
+            "Copy missing-guarantee/forecast statements verbatim; unspecified evidence is not proof of actual absence. "
+            "Do not invent delivery policies or turn a shipment brief into a study."
+        )
     if stage == "research-report":
         return (
             "\nREPORT INVARIANTS: every report, including revised_report inside JSON reviews, MUST keep these "
@@ -195,6 +202,10 @@ def instructions(context):
             "make a faithful report defective. Do not label sources untrusted, unreliable or lacking credibility "
             "unless source evidence actually establishes that assessment. 'No guarantee is supplied' is a gap in documentation, "
             "not an actual lack/absence of a guarantee. Preserve a good report unchanged when no report defect exists."
+            " The generated plan is a proposed question template, NEVER evidence that studies or data collection occurred. "
+            "Replace 'lack of a delivery guarantee' with 'the supplied source does not specify a delivery guarantee', "
+            "and qualify missing forecasts the same way. In Findings describe documented shipment facts; "
+            "never call them findings from a pilot study unless the source documents a study."
         )
     if stage == "support-draft":
         return (
@@ -309,6 +320,14 @@ def report_issues(report, sources):
     evidence = " ".join(s.get("summary", "") + " " + " ".join(s.get("key_points", [])) for s in sources)
     for noun in unknown_absence_claims(report, evidence):
         issues.append(ABSENCE_REPORT_ISSUES[noun])
+    if not re.search(r"\bpilot study\b", evidence, re.I):
+        claims = "\n".join(section_map.get(s.casefold(), "") for s in ("Executive Summary", "Findings", "Risks and Gaps"))
+        for quote in sentences(claims):
+            if re.search(r"\bpilot study\b", quote, re.I) and not re.search(
+                r"\b(?:not|no|unknown|unspecified|undocumented)\b|\b(?:does not|not enough|insufficient)\b", quote, re.I
+            ):
+                issues.append(STUDY_REPORT_ISSUE)
+                break
     return issues
 
 
@@ -336,7 +355,7 @@ def research_review(value, previous, sources, runtime):
         runtime.research_rejections = history
     if history:
         value["rejected_revision_history"] = list(history)
-    value["source_checks"] = {"scope": "Headings, citation labels, credibility wording and missing guarantee/forecast evidence; not factual certification.", "issues": issues}
+    value["source_checks"] = {"scope": "Headings, citation labels, credibility wording, study wording and missing guarantee/forecast evidence; not factual certification.", "issues": issues}
     return value
 
 

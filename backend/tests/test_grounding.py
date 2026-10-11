@@ -261,6 +261,19 @@ def test_plain_summary_does_not_return_failed_source_claim(monkeypatch):
         processing.summarize(SOURCE, Model())
 
 
+def test_report_cannot_present_shipping_brief_as_study_findings():
+    bad = REPORT.replace("## Findings", "## Findings\nThe main findings from the pilot study are shipment details [S1].")
+    assert g.STUDY_REPORT_ISSUE in g.report_issues(bad, SOURCES)
+    assert g.repairable_report_wording([g.STUDY_REPORT_ISSUE])
+    qualified = bad.replace("The main findings from the pilot study are shipment details", "No pilot study is documented in the source; these are shipment details")
+    assert g.STUDY_REPORT_ISSUE not in g.report_issues(qualified, SOURCES)
+
+
+def test_actual_pilot_study_source_does_not_trigger_shipping_guard():
+    report = REPORT.replace("## Findings", "## Findings\nThe pilot study measured outcomes [S1].")
+    assert g.STUDY_REPORT_ISSUE not in g.report_issues(report, [{"label":"S1", "summary":"The pilot study measured outcomes."}])
+
+
 def test_bad_absence_wording_reaches_existing_review_without_being_accepted():
     from backend.processing import override
     sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]

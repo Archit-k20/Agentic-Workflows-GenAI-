@@ -316,7 +316,7 @@ def override(module, name, args, kwargs, fn, runtime):
                 runtime.research_rejections = history
                 return args[3]
             if g.repairable_report_wording(issues):
-                runtime.warning("Research absence wording requires review; the existing review/revision sequence will run before final acceptance.")
+                runtime.warning("Research source wording requires review; the existing review/revision sequence will run before final acceptance.")
                 history = getattr(runtime, "research_rejections", [])
                 history.append({"stage": name, "revision": result, "issues": issues})
                 runtime.research_rejections = history
