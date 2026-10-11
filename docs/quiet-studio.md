@@ -2,6 +2,12 @@
 
 Implementation branch: `codex/trace-quiet-studio`. Review base: `codex/trace-react-workspace` at `335c031`. This is a frontend release candidate. Production promotion is intentionally a separate step after the owner reviews the preview.
 
+## Review preview
+
+[Open the Vercel preview](https://trace-agentic-workspace-o2991gwms.vercel.app/). Deployment `dpl_3BAoZpP56hnaMJKTqjRXUMxZbrvL` built successfully from frontend commit `e0e608a`. Production has not been promoted.
+
+All five public preview sample routes were checked, with the sample label and result visible and no Turnstile frame mounted. [Preview sample record](evaluation/studio-preview-samples.json). Live execution from this new origin is intentionally not claimed: a non-generating CORS preflight returned **400, Disallowed CORS origin**. [Preflight record](evaluation/studio-preview-cors.json). For live preview testing, add this exact hostname to the existing Turnstile widget and this exact HTTPS origin to `TRACE_ALLOWED_ORIGINS`; preserve the production origin and all verification controls. This is unnecessary for offline sample review. Promotion to the existing production hostname uses its existing allowlisting.
+
 ## What changed
 
 | Before | Now |

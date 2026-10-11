@@ -1,0 +1,32 @@
+[
+  {
+    "label": true,
+    "path": "/workspace/research",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "path": "/workspace/documents",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "path": "/workspace/code",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "path": "/workspace/content",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "path": "/workspace/support",
+    "result": "sample",
+    "verificationFrames": 0
+  }
+]
