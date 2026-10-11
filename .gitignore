@@ -139,6 +139,7 @@ node_modules/
 
 # Reviewable TRACE interface screenshots.
 !docs/screenshots/*.jpg
+!docs/screenshots/readme/*.jpg
 
 !backend/.env.example
 !frontend/public/audio/voices/*.mp3
