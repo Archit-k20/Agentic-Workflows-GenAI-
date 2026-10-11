@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-11",
+  "source_commit": "69e8f706e3da3efb3d3b224b97e7122567103104",
+  "frontend_deployment": "dpl_96nEWCpzmxcGvpriNws9Cmdi8Pep",
+  "previous_production_for_rollback": "dpl_F5FMTnrKFjsTapNzd2UroSWL6stA",
+  "canonical_destination": "The single Open TRACE link in the root README",
+  "backend_change": "No backend behavior or production configuration changed in this cleanup. Workflow edits only change module documentation.",
+  "checks": {
+    "backend_pytest_passed": 266,
+    "frontend_vitest_passed": 28,
+    "typescript": "passed",
+    "production_build": "passed locally and on Vercel",
+    "clean_linux_node24_npm_ci": "passed; missing optional native bindings added without changing existing dependency versions",
+    "local_markdown_targets": "all exist",
+    "retired_framework_text_references": 0,
+    "readme_application_links": 1
+  },
+  "public_api": {
+    "passed": true,
+    "checks": [
+      {
+        "check": "API readiness",
+        "passed": true
+      },
+      {
+        "check": "Exact frontend CORS origin",
+        "passed": true
+      },
+      {
+        "check": "Public visitor protection enabled",
+        "passed": true
+      },
+      {
+        "check": "Hosted provider configured (availability not tested)",
+        "passed": true
+      },
+      {
+        "check": "Pinned local model available (inference not tested)",
+        "passed": true
+      },
+      {
+        "check": "Speech dependencies installed (generation not tested)",
+        "passed": true
+      },
+      {
+        "check": "ocr installed",
+        "passed": true
+      },
+      {
+        "check": "javascript installed",
+        "passed": true
+      },
+      {
+        "check": "java installed",
+        "passed": true
+      },
+      {
+        "check": "c installed",
+        "passed": true
+      },
+      {
+        "check": "c++ installed",
+        "passed": true
+      },
+      {
+        "check": "Two workflow slots",
+        "passed": true
+      },
+      {
+        "check": "Temporary retention at most 24 hours",
+        "passed": true
+      },
+      {
+        "check": "Free visitor mode is the default",
+        "passed": true
+      },
+      {
+        "check": "Browser must supply Turnstile proof",
+        "passed": true
+      },
+      {
+        "check": "Workflow CORS preflight",
+        "passed": true
+      },
+      {
+        "check": "Unrelated browser origin not allowed",
+        "passed": true
+      },
+      {
+        "check": "Missing visitor proof rejected",
+        "passed": true
+      }
+    ],
+    "scope": "Public HTTP wiring only. No inference, paid requests or credentials. Successful Turnstile, media, persistence, source quality, latency and memory still require launch verification."
+  },
+  "browser": {
+    "date": "2026-10-11",
+    "viewport": {
+      "width": 1440,
+      "height": 940
+    },
+    "theme": "dark",
+    "deployment": "dpl_96nEWCpzmxcGvpriNws9Cmdi8Pep",
+    "examples": [
+      {
+        "label": true,
+        "panel": "The starting pointA campus repair pilot.How could a campus repair service improve access and trust?Read selected sources and build a grounded report.RESEARCH / FINAL REPORT CopySmall service. Clear boundaries.\nA fictional campus repair pilot uses scheduled appointments to make repair support more predictable. Its most important design choice is a clear boundary between routine fixes and specialist work. S1Citation labels: present \u00b7 Unknown labels: noneEVIDENCE / 01S1Synthetic field notes: a campus repair serviceResearch plan{\n  \"goal\": \"Evaluate a fictional campus repair pilot\",\n  \"sub_questions\": [\n    \"How is demand managed?\",\n    \"What needs specialist oversight?\"\n  ],\n  \"report_sections\"",
+        "selected": "Research"
+      },
+      {
+        "label": true,
+        "panel": "The starting pointA brief becomes a set of next steps.A fictional planning brief, with people, tasks and a few unanswered questions.Find useful structure in everyday documents.DOCUMENT / INTELLIGENCE1 FILESDocumentcampus-pilot-brief.txtSummaryAction itemsEntitiesRisksExtracted textcampus-pilot-brief.txtProject briefSummary CopyA fictional repair pilot needs an inventory, a booking form, and a safety review before launch.A closer lookS1Look inside the result.Switch between the sections to see what this workflow produces.Fictional example. No AI request or checks were executed.",
+        "selected": "Documents"
+      },
+      {
+        "label": true,
+        "panel": "The starting pointA function, with its checks in view.Write a Python function that returns unique repair categories in their original order.Turn a described task into code you can inspect.CODE / PYTHON Copydef unique_categories(categories):\n    return list(dict.fromkeys(categories))\nFINAL VERIFICATIONChecks passedast_parsePassedSynthetic example of an AST parse result.py_compilePassedSynthetic example of a bytecode compilation result.Syntax and compilation checks. They do not establish functional correctness or security.A closer lookS1Look inside the result.Each check describes exactly what it inspected. The example checks are illustrative.Fictional example. No AI request or checks were exec",
+        "selected": "Code"
+      },
+      {
+        "label": true,
+        "panel": "The starting pointOne brief. Several ways to tell it.Introduce a fictional campus repair pilotDevelop a script and related content from a brief.CONTENT / ARTIFACT WORKBENCHA second life for everyday thingsScriptCaptionsImage promptsPlanReviewNarrationFinal script CopyBefore you replace it, see if you can repair it. Our fictional campus pilot pairs everyday problems with practical skills. Bring a loose handle or a worn backpack. Specialist repairs get a clear referral. Book a pilot appointment and help us learn.A closer lookS1Look inside the result.Switch between the sections to see what this workflow produces.Fictional example. No AI request or checks were executed.",
+        "selected": "Content"
+      },
+      {
+        "label": true,
+        "panel": "The starting pointKnow when to ask a specialist.Can I bring a damaged power adapter to the repair pilot?Draft a sourced response or a clear escalation.SUPPORT / DECISIONEscalateCLASSIFICATIONSafety / specialist repairMODEL CONFIDENCE82 / 100A model score, not a calibrated probability.Recommended response CopyPlease ask a qualified specialist to assess the adapter. The pilot\u2019s routine repair scope excludes electrical faults. S1Electrical work falls outside the pilot scope.NEXT STEPContact the specialist repair desk.EVIDENCE / 01S1Synthetic field notes: a campus repair serviceA closer lookS1Follow the source.Select a citation to inspect its source.Fictional example. No AI request or checks wer",
+        "selected": "Support"
+      }
+    ],
+    "toolRoutes": [
+      {
+        "heading": "Research Agent",
+        "overflow": false,
+        "path": "/workspace/research"
+      },
+      {
+        "heading": "Document Intelligence",
+        "overflow": false,
+        "path": "/workspace/documents"
+      },
+      {
+        "heading": "Document Q&A",
+        "overflow": false,
+        "path": "/workspace/document-qa"
+      },
+      {
+        "heading": "Article Q&A",
+        "overflow": false,
+        "path": "/workspace/url-qa"
+      },
+      {
+        "heading": "Support / Triage",
+        "overflow": false,
+        "path": "/workspace/support"
+      },
+      {
+        "heading": "Text Summary",
+        "overflow": false,
+        "path": "/workspace/text-summary"
+      },
+      {
+        "heading": "YouTube Summary",
+        "overflow": false,
+        "path": "/workspace/youtube-summary"
+      },
+      {
+        "heading": "Article Summary",
+        "overflow": false,
+        "path": "/workspace/article-summary"
+      },
+      {
+        "heading": "File Summary",
+        "overflow": false,
+        "path": "/workspace/file-summary"
+      },
+      {
+        "heading": "Image to Text",
+        "overflow": false,
+        "path": "/workspace/ocr"
+      },
+      {
+        "heading": "Image Studio",
+        "overflow": false,
+        "path": "/workspace/image"
+      },
+      {
+        "heading": "Speech Studio",
+        "overflow": false,
+        "path": "/workspace/speech"
+      },
+      {
+        "heading": "YouTube Captions",
+        "overflow": false,
+        "path": "/workspace/captions"
+      },
+      {
+        "heading": "Code Copilot",
+        "overflow": false,
+        "path": "/workspace/code"
+      },
+      {
+        "heading": "Content Pipeline",
+        "overflow": false,
+        "path": "/workspace/content"
+      }
+    ],
+    "settings": "Free/local/advanced options and provider disclosure rendered",
+    "voicePreview": "Heart playback entered Stop state; dialog closed afterward",
+    "scope": "Production browser smoke without AI generation; does not establish model quality or independent-device acceptance"
+  },
+  "scope": "Repository and interface release; no live AI requests, no quota reset and no new model-quality acceptance."
+}

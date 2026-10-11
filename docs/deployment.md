@@ -72,7 +72,7 @@ The proxy overwrites untrusted forwarded addresses. The current Docker network p
 5. Promote the reviewed interface to the existing production alias. The README continues to use that one stable destination. Keep the preceding deployment available for rollback.
 6. Check the public introduction, collection, direct tool routes, settings and examples after promotion. Production must remain accessible without a Vercel login.
 
-Production releases have been made with the official Vercel CLI. A Git push alone should not be treated as evidence that production changed: check the deployment and alias after every release. [Turnstile setup](https://developers.cloudflare.com/turnstile/get-started/), [server validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
+The current frontend release and rollback deployment identifiers are in [verification](verification.md#current-production-release). Production releases have been made with the official Vercel CLI. A Git push alone should not be treated as evidence that production changed: check the deployment and alias after every release. [Turnstile setup](https://developers.cloudflare.com/turnstile/get-started/), [server validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/).
 
 ## Checks and recovery
 

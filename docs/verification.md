@@ -13,6 +13,12 @@ This is the current verification summary for TRACE. The [interface guide](interf
 
 The cleanup also passed a clean Node.js 24 Linux dependency install, 28 frontend tests, TypeScript checks and a production build. The lockfile now contains missing optional native bindings, with no changes to the versions of existing dependencies. No model requests were made for this documentation/interface release.
 
+## Current production release
+
+Frontend source `69e8f70` was built and released as `dpl_96nEWCpzmxcGvpriNws9Cmdi8Pep`. The permanent visitor address now opens the current introduction and studio. The previous Vercel production deployment, `dpl_F5FMTnrKFjsTapNzd2UroSWL6stA`, remains available for rollback. This cleanup does not change the running backend's behavior or configuration.
+
+Post-release inspection at 1440×940 in dark mode confirmed the introduction, collection, all fifteen direct tool routes, five fully loaded examples, settings/provider descriptions and explicit bundled voice-preview playback. No tool form overflowed horizontally at that viewport. All 18 public API wiring checks passed. This is a scoped release smoke check, not a new model benchmark or repetition of the earlier full responsive matrix. [Release evidence](evaluation/studio-production-release.json).
+
 ## Interface verification
 
 The studio implementation has 28 frontend regression tests covering typed requests, event handling, routing/presentation, sample isolation and live draft protection. The recorded browser matrix covers all 15 entry forms at 360, 768, 1024, 1440 and 1920 px in both themes. It found no page-level horizontal overflow. Five sample workflows remained visibly labeled and operated without a backend; examples did not make session, upload or generation requests.

@@ -38,6 +38,8 @@ All benchmark fixtures use synthetic English source text. Inference is real, but
 
 These records describe frontend checks and consume no shared AI quota:
 
+- [Current production release](studio-production-release.json): deployed source, rollback identifier, clean-install checks, public API wiring and browser smoke.
+
 - [All-tool width/theme matrix](studio-layout-matrix.json).
 - [Intro widths/themes](studio-intro-layout.json) and [motion checks](studio-intro-motion.json).
 - [Offline samples](studio-preview-samples.json) and [preview CORS](studio-preview-cors.json).
