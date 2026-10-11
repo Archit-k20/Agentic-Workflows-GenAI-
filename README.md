@@ -1,6 +1,6 @@
 # TRACE
 
-### A personal collection of AI tools, built by Archit Kumar.
+**A personal collection of AI tools, built by Archit Kumar.**
 
 Turn a document, question or rough idea into something you can work with. TRACE brings **15 tools** into one workspace for research, reading, code, images, speech and content—with sources, processing stages and available checks kept close to the result.
 
@@ -112,14 +112,9 @@ Uploads, generated media and indexes are session-owned and retained for at most 
 ## Architecture and stack
 
 ```mermaid
-flowchart TD
+flowchart LR
     UI[Next.js interface on Vercel] -->|HTTPS and workflow events| API[Python FastAPI on a Linux VM]
-    API --> CF[Cloudflare hosted inference]
-    API --> HF[Hugging Face image capacity fallback]
-    API --> CPU[Ollama CPU text model]
-    API --> TOOLS[Extraction, OCR, retrieval, speech and code checks]
-    API --> DATA[Session-owned SQLite metadata and files]
-    API --> OAI[Optional visitor-key OpenAI mode]
+    API --> ENGINES[Hosted models and server tools]
 ```
 
 | Layer | Technology and purpose |
