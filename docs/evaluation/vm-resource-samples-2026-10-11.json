@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-11",
+  "scope": "Sampled Docker usage, not peak-memory measurement or heavy-workflow stress certification.",
+  "samples": [
+    {
+      "activity": "two concurrent local summaries",
+      "backend_mib": 315.4,
+      "ollama_gib": 3.741,
+      "ollama_cpu_percent": 199.78
+    },
+    {
+      "activity": "local content target",
+      "backend_mib": 306.9,
+      "ollama_gib": 3.968,
+      "ollama_cpu_percent": 200.16,
+      "oom_killed": false,
+      "restart_count": 0
+    }
+  ]
+}

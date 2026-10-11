@@ -1,0 +1,169 @@
+{
+  "mode": "local",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+    "pipeline_sha256": "d323939077d3669fcc9fba8cd5c7358d92efb2daa5cca813f4a62c30c5fd444d"
+  },
+  "fixture_count": 1,
+  "rows": [
+    {
+      "id": "document-assignment",
+      "kind": "documents",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": false,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "local",
+          "engines": [
+            {
+              "provider": "ollama",
+              "model": "qwen3.5:4b"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "brief.pdf",
+              "tokens": 33,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "documents",
+        "documents": [
+          {
+            "name": "brief.pdf",
+            "source_type": "pdf",
+            "text_preview": "The project owner is Priya Shah. Omar Reed must ship 16 kits by November 9, 2026. The total budget is USD 640. No priority is specified.",
+            "analysis": {
+              "document_type": "Project Brief",
+              "summary": "The project owner is Priya Shah. Omar Reed is tasked with shipping 16 kits by November 9, 2026. The total budget for the project is USD 640. No priority level is specified.",
+              "entities": {
+                "people": [
+                  "Priya Shah",
+                  "Omar Reed"
+                ],
+                "organizations": [],
+                "emails": [],
+                "dates": [
+                  "November 9, 2026"
+                ]
+              },
+              "action_items": [
+                {
+                  "task": "Ship 16 kits",
+                  "owner": "Omar Reed",
+                  "due_date": "November 9, 2026",
+                  "priority": "Not specified",
+                  "evidence": "Omar Reed must ship 16 kits by November 9, 2026."
+                }
+              ],
+              "risks": [],
+              "source_checks": {
+                "scope": "Source numbers, verbatim task evidence and explicit assignment grammar; not general semantic verification.",
+                "repairs": []
+              }
+            }
+          }
+        ],
+        "errors": []
+      },
+      "error": null,
+      "seconds": 123.85,
+      "execution": {
+        "mode": "local",
+        "engines": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.5:4b"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "brief.pdf",
+            "tokens": 33,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "completed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

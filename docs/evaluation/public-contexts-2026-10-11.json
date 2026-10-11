@@ -1,0 +1,403 @@
+{
+  "date": "2026-10-11",
+  "backend_commit": "926c6b6",
+  "scope": "Actual production HTTP/SSE routes with owner-issued transient sessions, synthetic DOCX and one real official Python URL. API protection, limits and budgets unchanged. Not browser file-picker, independent-network or all-document accuracy certification. No tokens persisted in this report.",
+  "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The total budget is USD 960. This is a pilot, not a general launch.",
+  "rows": [
+    {
+      "check": "DOCX upload with long filename",
+      "status": 200,
+      "name_retained": true,
+      "bytes": 36671
+    },
+    {
+      "check": "Actual DOCX extraction and BGE/FAISS indexing",
+      "status": 200,
+      "events": [
+        {
+          "event": "started",
+          "data": {
+            "message": "Workflow started"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract and index context",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract and index context",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "result",
+          "data": {
+            "context_id": "0d6098ef649c99dd2105b5c77697bf06",
+            "errors": [],
+            "kind": "document-qa",
+            "profile": {
+              "version": 1,
+              "model": "BAAI/bge-small-en-v1.5",
+              "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+              "dimensions": 384,
+              "normalized": true,
+              "chunk_tokens": 384,
+              "overlap": 64
+            },
+            "execution": {
+              "mode": "free",
+              "engines": [
+                {
+                  "provider": "local",
+                  "model": "BAAI/bge-small-en-v1.5"
+                }
+              ],
+              "fallback": false,
+              "coverage": [
+                {
+                  "source": "Synthetic Cedar pilot \u2014 document upload and retrieval verification \u2014 long filename long filename long filename long filename long filename long filename long filename .docx",
+                  "tokens": 35,
+                  "complete": true
+                }
+              ],
+              "warnings": []
+            }
+          }
+        }
+      ],
+      "seconds": 3.043
+    },
+    {
+      "check": "DOCX cited answer",
+      "status": 200,
+      "events": [
+        {
+          "event": "started",
+          "data": {
+            "message": "Workflow started"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Retrieve four relevant chunks",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Retrieve four relevant chunks",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Answer from context",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The shared hosted allowance is unavailable until 00:00 UTC. Continuing with the smaller local model; CPU workflows may take several minutes and output quality may differ."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Answer from context",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "result",
+          "data": {
+            "execution": {
+              "mode": "free",
+              "engines": [
+                {
+                  "provider": "local",
+                  "model": "BAAI/bge-small-en-v1.5"
+                },
+                {
+                  "provider": "ollama",
+                  "model": "qwen3.5:4b"
+                }
+              ],
+              "fallback": true,
+              "coverage": [
+                {
+                  "source": "Question",
+                  "tokens": 13,
+                  "complete": true
+                }
+              ],
+              "warnings": [
+                "The shared hosted allowance is unavailable until 00:00 UTC. Continuing with the smaller local model; CPU workflows may take several minutes and output quality may differ."
+              ]
+            },
+            "tool": "document-qa",
+            "answer": "The pilot is owned by Omar Reed [S1]. It ships 18 sensors on December 3, 2026 [S1].",
+            "sources": [
+              {
+                "label": "S1",
+                "title": "Synthetic Cedar pilot \u2014 document upload and retrieval verification \u2014 long filename long filename long filename long filename long filename long filename long filename .docx",
+                "url": "",
+                "summary": "",
+                "key_points": [],
+                "relevance": "",
+                "text": "project cedar ships 18 sensors on december 3, 2026. the owner is omar reed. the total budget is usd 960. this is a pilot, not a general launch.",
+                "metadata": {
+                  "source": "Synthetic Cedar pilot \u2014 document upload and retrieval verification \u2014 long filename long filename long filename long filename long filename long filename long filename .docx",
+                  "title": "Synthetic Cedar pilot \u2014 document upload and retrieval verification \u2014 long filename long filename long filename long filename long filename long filename long filename .docx",
+                  "chunk": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "seconds": 28.931,
+      "fact_check": true,
+      "citation_check": true
+    },
+    {
+      "check": "Other session cannot query DOCX context",
+      "status": 200,
+      "events": [
+        {
+          "event": "started",
+          "data": {
+            "message": "Workflow started"
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "message": "File, artifact or context not found in this session. Reprocess expired inputs.",
+            "code": "session_expired"
+          }
+        }
+      ],
+      "seconds": 0.043,
+      "passed": true
+    },
+    {
+      "check": "Actual official Python URL extraction and BGE/FAISS indexing",
+      "status": 200,
+      "events": [
+        {
+          "event": "started",
+          "data": {
+            "message": "Workflow started"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract and index context",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract and index context",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "result",
+          "data": {
+            "context_id": "01de7bd001521ad89abf9f363f4b247c",
+            "errors": [],
+            "kind": "url-qa",
+            "profile": {
+              "version": 1,
+              "model": "BAAI/bge-small-en-v1.5",
+              "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+              "dimensions": 384,
+              "normalized": true,
+              "chunk_tokens": 384,
+              "overlap": 64
+            },
+            "execution": {
+              "mode": "free",
+              "engines": [
+                {
+                  "provider": "local",
+                  "model": "BAAI/bge-small-en-v1.5"
+                }
+              ],
+              "fallback": false,
+              "coverage": [
+                {
+                  "source": "https://www.python.org/about/",
+                  "tokens": 44,
+                  "complete": true
+                }
+              ],
+              "warnings": []
+            }
+          }
+        }
+      ],
+      "seconds": 0.299
+    },
+    {
+      "check": "Actual URL cited answer",
+      "status": 200,
+      "events": [
+        {
+          "event": "started",
+          "data": {
+            "message": "Workflow started"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Retrieve four relevant chunks",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Retrieve four relevant chunks",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Answer from context",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The shared hosted allowance is unavailable until 00:00 UTC. Continuing with the smaller local model; CPU workflows may take several minutes and output quality may differ."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Answer from context",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "result",
+          "data": {
+            "execution": {
+              "mode": "free",
+              "engines": [
+                {
+                  "provider": "local",
+                  "model": "BAAI/bge-small-en-v1.5"
+                },
+                {
+                  "provider": "ollama",
+                  "model": "qwen3.5:4b"
+                }
+              ],
+              "fallback": true,
+              "coverage": [
+                {
+                  "source": "Question",
+                  "tokens": 8,
+                  "complete": true
+                }
+              ],
+              "warnings": [
+                "The shared hosted allowance is unavailable until 00:00 UTC. Continuing with the smaller local model; CPU workflows may take several minutes and output quality may differ."
+              ]
+            },
+            "tool": "url-qa",
+            "answer": "The page describes **Python** [S1].",
+            "sources": [
+              {
+                "label": "S1",
+                "title": "About Python\u2122",
+                "url": "https://www.python.org/about/",
+                "summary": "",
+                "key_points": [],
+                "relevance": "",
+                "metadata": {
+                  "source": "https://www.python.org/about/",
+                  "title": "About Python\u2122",
+                  "chunk": 1
+                },
+                "text_length": 221,
+                "text_sha256": "a43bc0976720f506956e04d8fd35ef0ccda0a18c28247c2068fec663430fc373",
+                "evidence_note": "Actual retrieved text inspected; raw external page text omitted from committed evidence."
+              }
+            ]
+          }
+        }
+      ],
+      "seconds": 22.894,
+      "fact_check": true,
+      "citation_check": true
+    },
+    {
+      "check": "Clear synthetic diagnostic session 1",
+      "status": 204
+    },
+    {
+      "check": "Clear synthetic diagnostic session 2",
+      "status": 204
+    }
+  ]
+}

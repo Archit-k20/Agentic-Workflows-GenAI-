@@ -1,0 +1,1915 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "4140ac5abda07f409cc6b7b79147ca0d83d9669fbdd27a997544fb7ba67377f7",
+    "pipeline_sha256": "2707ab744a73acc59ea9e9c1da650bfa6632f89699a837471577f82b31e91ad7"
+  },
+  "fixture_count": 20,
+  "rows": [
+    {
+      "id": "research-05",
+      "kind": "research",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "topic",
+              "tokens": 8,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 58,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/conflict",
+              "tokens": 16,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Research source wording requires review; the existing review/revision sequence will run before final acceptance."
+          ]
+        },
+        "tool": "research",
+        "plan": {
+          "goal": "Evaluate the pilot scope and evidence gaps",
+          "report_sections": [
+            "Introduction",
+            "Methodology",
+            "Results",
+            "Discussion",
+            "Conclusion"
+          ],
+          "sub_questions": [
+            "What are the key objectives of the pilot scope?",
+            "What methods were used to collect data during the pilot?",
+            "What are the main findings and outcomes of the pilot?",
+            "What evidence gaps were identified during the pilot?",
+            "How can the evidence gaps be addressed in future studies?"
+          ]
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "The pilot project, Project Elm, involves shipping 25 lamps on February 6, 2027, with a budget of USD 875, and is owned by Noah Lane. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is provided.",
+            "key_points": [
+              "Project Elm ships 25 lamps on February 6, 2027",
+              "The owner is Noah Lane",
+              "The budget is USD 875",
+              "Customer refunds are available within 30 days for unopened items",
+              "No delivery guarantee or revenue forecast is supplied"
+            ],
+            "relevance": "",
+            "text": "",
+            "metadata": {}
+          },
+          {
+            "label": "S2",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/conflict",
+            "summary": "A conflicting draft of the pilot brief lists 20 units, but its date and authority are not established.",
+            "key_points": [
+              "Conflicting draft lists 20 units",
+              "Date of draft not established",
+              "Authority of draft not established"
+            ],
+            "relevance": "",
+            "text": "",
+            "metadata": {}
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft_report": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875, as stated in [S1]. However, a conflicting draft lists 20 units, but its date and authority are not established [S2]. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is supplied [S1].\n\n## Findings\nThe documented facts about Project Elm include shipping 25 lamps on February 6, 2027, with a budget of USD 875, and being owned by Noah Lane [S1]. A conflicting draft of the pilot brief lists 20 units, but its authenticity and relevance are unclear due to the lack of established date and authority [S2].\n\n## Risks and Gaps\nThe evidence gaps in the pilot scope include the lack of a delivery guarantee and revenue forecast [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the actual number of units to be shipped [S2]. The supplied source does not specify a delivery guarantee, which may pose a risk to the project's success.\n\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What is the rationale behind the conflicting unit counts? Can a delivery guarantee be established to mitigate potential risks? How can revenue forecasts be developed to inform project planning?\n\n## Source List\n- [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n- [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+        "final_report": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875, as stated in [S1]. However, a conflicting draft lists 20 units, but its date and authority are not established [S2]. The project has a refund policy for unopened items within 30 days, but the supplied source does not specify a delivery guarantee or revenue forecast [S1].\n## Findings\nThe documented facts about Project Elm include shipping 25 lamps on February 6, 2027, with a budget of USD 875, and being owned by Noah Lane [S1]. A conflicting draft of the pilot brief lists 20 units, but its authenticity and relevance are unclear due to the lack of established date and authority [S2].\n## Risks and Gaps\nThe evidence gaps in the pilot scope include the supplied source not specifying a delivery guarantee and revenue forecast [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the actual number of units to be shipped [S2].\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What is the rationale behind the conflicting unit counts? Can a delivery guarantee be established to mitigate potential risks? How can revenue forecasts be developed to inform project planning?\n## Source List\n- [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n- [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+        "critique": {
+          "issues": [],
+          "passes_review": true,
+          "revised_report": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875, as stated in [S1]. However, a conflicting draft lists 20 units, but its date and authority are not established [S2]. The project has a refund policy for unopened items within 30 days, but the supplied source does not specify a delivery guarantee or revenue forecast [S1].\n## Findings\nThe documented facts about Project Elm include shipping 25 lamps on February 6, 2027, with a budget of USD 875, and being owned by Noah Lane [S1]. A conflicting draft of the pilot brief lists 20 units, but its authenticity and relevance are unclear due to the lack of established date and authority [S2].\n## Risks and Gaps\nThe evidence gaps in the pilot scope include the supplied source not specifying a delivery guarantee and revenue forecast [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the actual number of units to be shipped [S2].\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What is the rationale behind the conflicting unit counts? Can a delivery guarantee be established to mitigate potential risks? How can revenue forecasts be developed to inform project planning?\n## Source List\n- [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n- [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+          "rejected_revision_history": [
+            {
+              "stage": "synthesize_report",
+              "revision": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875, as stated in [S1]. However, a conflicting draft lists 20 units, but its date and authority are not established [S2]. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is supplied [S1].\n\n## Findings\nThe documented facts about Project Elm include shipping 25 lamps on February 6, 2027, with a budget of USD 875, and being owned by Noah Lane [S1]. A conflicting draft of the pilot brief lists 20 units, but its authenticity and relevance are unclear due to the lack of established date and authority [S2].\n\n## Risks and Gaps\nThe evidence gaps in the pilot scope include the lack of a delivery guarantee and revenue forecast [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the actual number of units to be shipped [S2]. The supplied source does not specify a delivery guarantee, which may pose a risk to the project's success.\n\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What is the rationale behind the conflicting unit counts? Can a delivery guarantee be established to mitigate potential risks? How can revenue forecasts be developed to inform project planning?\n\n## Source List\n- [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n- [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+              "issues": [
+                "Unspecified guarantee evidence cannot establish its actual absence.",
+                "Unspecified forecast evidence cannot establish its actual absence."
+              ]
+            }
+          ],
+          "source_checks": {
+            "scope": "Headings, citation labels, credibility wording, study wording and missing guarantee/forecast evidence; not factual certification.",
+            "issues": []
+          }
+        },
+        "citation_check": {
+          "has_any_citation": true,
+          "cited_labels": [
+            "S1",
+            "S2"
+          ],
+          "unknown_labels": []
+        }
+      },
+      "error": null,
+      "seconds": 32.53,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "topic",
+            "tokens": 8,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 58,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/conflict",
+            "tokens": 16,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Research source wording requires review; the existing review/revision sequence will run before final acceptance."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research source wording requires review; the existing review/revision sequence will run before final acceptance."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "research-06",
+      "kind": "research",
+      "score": null,
+      "result": null,
+      "error": "Research report failed source/structure checks: Missing report heading: Executive Summary; Missing report heading: Findings; Missing report heading: Risks and Gaps; Missing report heading: Recommended Next Questions; Missing report heading: Source List; Missing or unknown source citation labels.; Missing inline citations in Executive Summary; Missing inline citations in Findings; A supplied source is missing from the report: S1",
+      "seconds": 8.48,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "topic",
+            "tokens": 8,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "failed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The research provider returned no report text. Existing fallback behavior was retained; inspect the result before using it."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "support-03",
+      "kind": "support",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 6.35,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 11,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 58,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Support documentation: material source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Support documentation: material source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "support-04",
+      "kind": "support",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 3.67,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 9,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Support documentation: material source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Support documentation: material source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "support-05",
+      "kind": "support",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.01,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 9,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "support-06",
+      "kind": "support",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.0,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "code-01",
+      "kind": "code",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Code task",
+              "tokens": 12,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "code",
+        "language": "python",
+        "initial_code": "def unique_items(items):\n    seen = set()\n    unique = []\n    for item in items:\n        if item not in seen:\n            unique.append(item)\n            seen.add(item)\n    return unique",
+        "final_code": "def unique_items(items):\n    seen = set()\n    unique = []\n    for item in items:\n        if item not in seen:\n            unique.append(item)\n            seen.add(item)\n    return unique",
+        "repair_attempted": false,
+        "initial_verification": {
+          "language": "python",
+          "passed": true,
+          "checks": [
+            {
+              "name": "ast_parse",
+              "passed": true,
+              "details": "AST parse passed."
+            },
+            {
+              "name": "py_compile",
+              "passed": true,
+              "details": "Bytecode compilation passed."
+            }
+          ]
+        },
+        "final_verification": {
+          "language": "python",
+          "passed": true,
+          "checks": [
+            {
+              "name": "ast_parse",
+              "passed": true,
+              "details": "AST parse passed."
+            },
+            {
+              "name": "py_compile",
+              "passed": true,
+              "details": "Bytecode compilation passed."
+            }
+          ]
+        }
+      },
+      "error": null,
+      "seconds": 1.97,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "Code task",
+            "tokens": 12,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "code-02",
+      "kind": "code",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Code task",
+              "tokens": 12,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "code",
+        "language": "javascript",
+        "initial_code": "function uniqueItems(items) {\n    const seen = new Set();\n    const result = [];\n    for (const item of items) {\n        if (!seen.has(item)) {\n            seen.add(item);\n            result.push(item);\n        }\n    }\n    return result;\n}",
+        "final_code": "function uniqueItems(items) {\n    const seen = new Set();\n    const result = [];\n    for (const item of items) {\n        if (!seen.has(item)) {\n            seen.add(item);\n            result.push(item);\n        }\n    }\n    return result;\n}",
+        "repair_attempted": false,
+        "initial_verification": {
+          "language": "javascript",
+          "passed": true,
+          "checks": [
+            {
+              "name": "node_check",
+              "passed": true,
+              "details": "Node syntax check passed."
+            }
+          ]
+        },
+        "final_verification": {
+          "language": "javascript",
+          "passed": true,
+          "checks": [
+            {
+              "name": "node_check",
+              "passed": true,
+              "details": "Node syntax check passed."
+            }
+          ]
+        }
+      },
+      "error": null,
+      "seconds": 2.82,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "Code task",
+            "tokens": 12,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "code-03",
+      "kind": "code",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Code task",
+              "tokens": 14,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "code",
+        "language": "java",
+        "initial_code": "public class Main {\n    public static int sumArray(int[] numbers) {\n        int sum = 0;\n        for (int number : numbers) {\n            sum += number;\n        }\n        return sum;\n    }\n\n    public static void main(String[] args) {\n        int[] exampleArray = {1, 2, 3, 4, 5};\n        System.out.println(\"The sum of the array is: \" + sumArray(exampleArray));\n    }\n}",
+        "final_code": "public class Main {\n    public static int sumArray(int[] numbers) {\n        int sum = 0;\n        for (int number : numbers) {\n            sum += number;\n        }\n        return sum;\n    }\n\n    public static void main(String[] args) {\n        int[] exampleArray = {1, 2, 3, 4, 5};\n        System.out.println(\"The sum of the array is: \" + sumArray(exampleArray));\n    }\n}",
+        "repair_attempted": false,
+        "initial_verification": {
+          "language": "java",
+          "passed": true,
+          "checks": [
+            {
+              "name": "javac_compile",
+              "passed": true,
+              "details": "Java compilation passed."
+            }
+          ]
+        },
+        "final_verification": {
+          "language": "java",
+          "passed": true,
+          "checks": [
+            {
+              "name": "javac_compile",
+              "passed": true,
+              "details": "Java compilation passed."
+            }
+          ]
+        }
+      },
+      "error": null,
+      "seconds": 4.72,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "Code task",
+            "tokens": 14,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "code-04",
+      "kind": "code",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Code task",
+              "tokens": 16,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "code",
+        "language": "c",
+        "initial_code": "#include <stdio.h>\n\nint sum(const int *values, int n) {\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        total += values[i];\n    }\n    return total;\n}\n\nint main() {\n    int numbers[] = {1, 2, 3, 4, 5};\n    int size = sizeof(numbers) / sizeof(numbers[0]);\n    printf(\"Sum: %d\\n\", sum(numbers, size));\n    return 0;\n}",
+        "final_code": "#include <stdio.h>\n\nint sum(const int *values, int n) {\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        total += values[i];\n    }\n    return total;\n}\n\nint main() {\n    int numbers[] = {1, 2, 3, 4, 5};\n    int size = sizeof(numbers) / sizeof(numbers[0]);\n    printf(\"Sum: %d\\n\", sum(numbers, size));\n    return 0;\n}",
+        "repair_attempted": false,
+        "initial_verification": {
+          "language": "c",
+          "passed": true,
+          "checks": [
+            {
+              "name": "gcc_syntax",
+              "passed": true,
+              "details": "C syntax check passed."
+            }
+          ]
+        },
+        "final_verification": {
+          "language": "c",
+          "passed": true,
+          "checks": [
+            {
+              "name": "gcc_syntax",
+              "passed": true,
+              "details": "C syntax check passed."
+            }
+          ]
+        }
+      },
+      "error": null,
+      "seconds": 4.08,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "Code task",
+            "tokens": 16,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "code-05",
+      "kind": "code",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Code task",
+              "tokens": 20,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "code",
+        "language": "c++",
+        "initial_code": "#include <vector>\n\nint sum(const std::vector<int>& values) {\n    int total = 0;\n    for (int value : values) {\n        total += value;\n    }\n    return total;\n}",
+        "final_code": "#include <vector>\n\nint sum(const std::vector<int>& values) {\n    int total = 0;\n    for (int value : values) {\n        total += value;\n    }\n    return total;\n}",
+        "repair_attempted": false,
+        "initial_verification": {
+          "language": "c++",
+          "passed": true,
+          "checks": [
+            {
+              "name": "g++_syntax",
+              "passed": true,
+              "details": "C++ syntax check passed."
+            }
+          ]
+        },
+        "final_verification": {
+          "language": "c++",
+          "passed": true,
+          "checks": [
+            {
+              "name": "g++_syntax",
+              "passed": true,
+              "details": "C++ syntax check passed."
+            }
+          ]
+        }
+      },
+      "error": null,
+      "seconds": 2.36,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "Code task",
+            "tokens": 20,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "code-06",
+      "kind": "code",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Code task",
+              "tokens": 22,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "code",
+        "language": "python",
+        "initial_code": "def normalize_email(email):\n    return email.strip().lower()",
+        "final_code": "def normalize_email(email):\n    return email.strip().lower()",
+        "repair_attempted": false,
+        "initial_verification": {
+          "language": "python",
+          "passed": true,
+          "checks": [
+            {
+              "name": "ast_parse",
+              "passed": true,
+              "details": "AST parse passed."
+            },
+            {
+              "name": "py_compile",
+              "passed": true,
+              "details": "Bytecode compilation passed."
+            }
+          ]
+        },
+        "final_verification": {
+          "language": "python",
+          "passed": true,
+          "checks": [
+            {
+              "name": "ast_parse",
+              "passed": true,
+              "details": "AST parse passed."
+            },
+            {
+              "name": "py_compile",
+              "passed": true,
+              "details": "Bytecode compilation passed."
+            }
+          ]
+        }
+      },
+      "error": null,
+      "seconds": 0.89,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "Code task",
+            "tokens": 22,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate code",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Verify syntax / compilation",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-01",
+      "kind": "content",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.01,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 71,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-02",
+      "kind": "content",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.01,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 71,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-04",
+      "kind": "content",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.01,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 70,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-06",
+      "kind": "content",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.01,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 70,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "failed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-06",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 59,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 59,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Fir, owned by Leah Moss, is scheduled to ship 12 routers on March 21, 2027, with a budget of USD 330 as part of a pilot project. The shipment allows customers to request refunds within 30 days for unopened items. The supplied source does not specify a delivery guarantee or a revenue forecast for Project Fir."
+      },
+      "error": null,
+      "seconds": 4.02,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 59,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-10",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 1103,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 1103,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "A limited pilot is confirmed by routine inspection records. The pilot's scope, duration, and participants are not specified. For Project Birch, the final decision is to ship 40 repair kits on October 14, 2026. Mira Chen is the project owner, with a budget of USD 1250. Customer refunds are available for unopened items within 30 days. The source does not specify a delivery guarantee or revenue forecast for the pilot."
+      },
+      "error": null,
+      "seconds": 6.54,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 1103,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 1103,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 2/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 2/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 3/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 3/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "documents-06",
+      "kind": "documents",
+      "score": null,
+      "result": null,
+      "error": "Document Intelligence could not process any uploaded files.",
+      "seconds": 0.03,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "brief.pdf",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Analyze document failed: The shared hosted allowance is unavailable until 00:00 UTC."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "failed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Analyze document failed: The shared hosted allowance is unavailable until 00:00 UTC."
+          }
+        }
+      ]
+    },
+    {
+      "id": "documents-08",
+      "kind": "documents",
+      "score": null,
+      "result": null,
+      "error": "Document Intelligence could not process any uploaded files.",
+      "seconds": 0.1,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "brief.docx",
+            "tokens": 1102,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Analyze document failed: The shared hosted allowance is unavailable until 00:00 UTC."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "failed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Analyze document failed: The shared hosted allowance is unavailable until 00:00 UTC."
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

@@ -1,0 +1,2003 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TRACE workflow adapter",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/capabilities": {
+      "get": {
+        "summary": "Capabilities",
+        "operationId": "capabilities_api_v1_capabilities_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/current/usage": {
+      "get": {
+        "summary": "Visitor Usage",
+        "operationId": "visitor_usage_api_v1_sessions_current_usage_get",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions": {
+      "post": {
+        "summary": "Create Session",
+        "operationId": "create_session_api_v1_sessions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "additionalProperties": true,
+                    "type": "object"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Proof"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sessions/current": {
+      "delete": {
+        "summary": "Clear Session",
+        "operationId": "clear_session_api_v1_sessions_current_delete",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/uploads": {
+      "post": {
+        "summary": "Upload",
+        "operationId": "upload_api_v1_uploads_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_api_v1_uploads_post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/runs": {
+      "post": {
+        "summary": "Run",
+        "operationId": "run_api_v1_runs_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "x-openai-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/TextSummary"
+                  },
+                  {
+                    "$ref": "#/components/schemas/YoutubeSummary"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ArticleSummary"
+                  },
+                  {
+                    "$ref": "#/components/schemas/FileSummary"
+                  },
+                  {
+                    "$ref": "#/components/schemas/OCR"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ImageGeneration"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Speech"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Captions"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Code"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Content"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Research"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Intelligence"
+                  },
+                  {
+                    "$ref": "#/components/schemas/DocumentQA"
+                  },
+                  {
+                    "$ref": "#/components/schemas/URLQA"
+                  },
+                  {
+                    "$ref": "#/components/schemas/Support"
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "tool",
+                  "mapping": {
+                    "text-summary": "#/components/schemas/TextSummary",
+                    "youtube-summary": "#/components/schemas/YoutubeSummary",
+                    "article-summary": "#/components/schemas/ArticleSummary",
+                    "file-summary": "#/components/schemas/FileSummary",
+                    "ocr": "#/components/schemas/OCR",
+                    "image": "#/components/schemas/ImageGeneration",
+                    "speech": "#/components/schemas/Speech",
+                    "captions": "#/components/schemas/Captions",
+                    "code": "#/components/schemas/Code",
+                    "content": "#/components/schemas/Content",
+                    "research": "#/components/schemas/Research",
+                    "documents": "#/components/schemas/Intelligence",
+                    "document-qa": "#/components/schemas/DocumentQA",
+                    "url-qa": "#/components/schemas/URLQA",
+                    "support": "#/components/schemas/Support"
+                  }
+                },
+                "title": "Inputs"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens.",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowEvent"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contexts/documents": {
+      "post": {
+        "summary": "Documents",
+        "operationId": "documents_api_v1_contexts_documents_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "x-openai-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentsContext"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens.",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowEvent"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contexts/urls": {
+      "post": {
+        "summary": "Urls",
+        "operationId": "urls_api_v1_contexts_urls_post",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "x-openai-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/URLsContext"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens.",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowEvent"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/contexts/{context_id}/query": {
+      "post": {
+        "summary": "Query",
+        "operationId": "query_api_v1_contexts__context_id__query_post",
+        "parameters": [
+          {
+            "name": "context_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Context Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          },
+          {
+            "name": "x-openai-key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "X-Openai-Key"
+            }
+          },
+          {
+            "name": "x-trace-mode",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Trace-Mode"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Query"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Request-bound events: started, stage, warning, result, error. These are workflow observations, not model tokens.",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowEvent"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/artifacts/{artifact_id}": {
+      "get": {
+        "summary": "Artifact",
+        "operationId": "artifact_api_v1_artifacts__artifact_id__get",
+        "parameters": [
+          {
+            "name": "artifact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Artifact Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ArticleSummary": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "article-summary",
+            "title": "Tool"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "url"
+        ],
+        "title": "ArticleSummary"
+      },
+      "ArtifactResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "width": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Width"
+          },
+          "height": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Height"
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "image",
+              "speech"
+            ],
+            "title": "Tool"
+          },
+          "artifact_id": {
+            "type": "string",
+            "title": "Artifact Id"
+          },
+          "media_type": {
+            "type": "string",
+            "title": "Media Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "artifact_id",
+          "media_type"
+        ],
+        "title": "ArtifactResult"
+      },
+      "Body_upload_api_v1_uploads_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_api_v1_uploads_post"
+      },
+      "Captions": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "captions",
+            "title": "Tool"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "transcript_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transcript Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool"
+        ],
+        "title": "Captions"
+      },
+      "Check": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "details": {
+            "type": "string",
+            "title": "Details"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "passed",
+          "details"
+        ],
+        "title": "Check"
+      },
+      "CitationCheck": {
+        "properties": {
+          "has_any_citation": {
+            "type": "boolean",
+            "title": "Has Any Citation"
+          },
+          "cited_labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Cited Labels"
+          },
+          "unknown_labels": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unknown Labels"
+          }
+        },
+        "type": "object",
+        "required": [
+          "has_any_citation",
+          "cited_labels",
+          "unknown_labels"
+        ],
+        "title": "CitationCheck"
+      },
+      "Code": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "code",
+            "title": "Tool"
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Prompt"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "python",
+              "javascript",
+              "java",
+              "c",
+              "c++"
+            ],
+            "title": "Language",
+            "default": "python"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "prompt"
+        ],
+        "title": "Code"
+      },
+      "CodeResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "const": "code",
+            "title": "Tool"
+          },
+          "language": {
+            "type": "string",
+            "title": "Language"
+          },
+          "initial_code": {
+            "type": "string",
+            "title": "Initial Code"
+          },
+          "final_code": {
+            "type": "string",
+            "title": "Final Code"
+          },
+          "repair_attempted": {
+            "type": "boolean",
+            "title": "Repair Attempted"
+          },
+          "initial_verification": {
+            "$ref": "#/components/schemas/Verification"
+          },
+          "final_verification": {
+            "$ref": "#/components/schemas/Verification"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "language",
+          "initial_code",
+          "final_code",
+          "repair_attempted",
+          "initial_verification",
+          "final_verification"
+        ],
+        "title": "CodeResult"
+      },
+      "Content": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "content",
+            "title": "Tool"
+          },
+          "idea": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Idea"
+          },
+          "tone": {
+            "type": "string",
+            "enum": [
+              "professional",
+              "playful",
+              "educational",
+              "launch-ready",
+              "social-first"
+            ],
+            "title": "Tone",
+            "default": "professional"
+          },
+          "platforms": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "linkedin",
+                "x",
+                "instagram",
+                "youtube",
+                "blog"
+              ]
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Platforms",
+            "default": [
+              "linkedin",
+              "x"
+            ]
+          },
+          "include_audio": {
+            "type": "boolean",
+            "title": "Include Audio",
+            "default": false
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "alloy",
+                  "echo",
+                  "fable",
+                  "onyx",
+                  "nova",
+                  "shimmer",
+                  "af_heart",
+                  "af_bella",
+                  "af_nicole",
+                  "am_michael",
+                  "am_fenrir",
+                  "bf_emma"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "idea"
+        ],
+        "title": "Content"
+      },
+      "ContentResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "const": "content",
+            "title": "Tool"
+          },
+          "plan": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Plan"
+          },
+          "package": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Package"
+          },
+          "critique": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Critique"
+          },
+          "final_script": {
+            "type": "string",
+            "title": "Final Script"
+          },
+          "final_captions": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Final Captions"
+          },
+          "audio_path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Audio Path"
+          },
+          "audio_error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Audio Error"
+          },
+          "artifact_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artifact Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "plan",
+          "package",
+          "critique",
+          "final_script",
+          "final_captions",
+          "audio_path",
+          "audio_error"
+        ],
+        "title": "ContentResult"
+      },
+      "ContextResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile"
+          },
+          "context_id": {
+            "type": "string",
+            "title": "Context Id"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Errors"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "document-qa",
+              "url-qa"
+            ],
+            "title": "Kind"
+          }
+        },
+        "type": "object",
+        "required": [
+          "context_id",
+          "errors",
+          "kind"
+        ],
+        "title": "ContextResult"
+      },
+      "DocumentQA": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "document-qa",
+            "title": "Tool"
+          },
+          "context_id": {
+            "type": "string",
+            "title": "Context Id"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Question"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "context_id",
+          "question"
+        ],
+        "title": "DocumentQA"
+      },
+      "DocumentResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "const": "documents",
+            "title": "Tool"
+          },
+          "documents": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Documents"
+          },
+          "errors": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Errors"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "documents",
+          "errors"
+        ],
+        "title": "DocumentResult"
+      },
+      "DocumentsContext": {
+        "properties": {
+          "file_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "File Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file_ids"
+        ],
+        "title": "DocumentsContext"
+      },
+      "Execution": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "free",
+              "local",
+              "openai"
+            ],
+            "title": "Mode"
+          },
+          "engines": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Engines",
+            "default": []
+          },
+          "fallback": {
+            "type": "boolean",
+            "title": "Fallback",
+            "default": false
+          },
+          "coverage": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Coverage",
+            "default": []
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "mode"
+        ],
+        "title": "Execution"
+      },
+      "FileSummary": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "file-summary",
+            "title": "Tool"
+          },
+          "file_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 1,
+            "minItems": 1,
+            "title": "File Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "file_ids"
+        ],
+        "title": "FileSummary"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ImageGeneration": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "image",
+            "title": "Tool"
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Prompt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "prompt"
+        ],
+        "title": "ImageGeneration"
+      },
+      "Intelligence": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "documents",
+            "title": "Tool"
+          },
+          "file_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "File Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "file_ids"
+        ],
+        "title": "Intelligence"
+      },
+      "OCR": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "ocr",
+            "title": "Tool"
+          },
+          "file_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 1,
+            "minItems": 1,
+            "title": "File Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "file_ids"
+        ],
+        "title": "OCR"
+      },
+      "QAResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "document-qa",
+              "url-qa"
+            ],
+            "title": "Tool"
+          },
+          "answer": {
+            "type": "string",
+            "title": "Answer"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/Source"
+            },
+            "type": "array",
+            "title": "Sources"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "answer",
+          "sources"
+        ],
+        "title": "QAResult"
+      },
+      "Query": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Question"
+          }
+        },
+        "type": "object",
+        "required": [
+          "question"
+        ],
+        "title": "Query"
+      },
+      "Research": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "research",
+            "title": "Tool"
+          },
+          "topic": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Topic"
+          },
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Urls"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "topic",
+          "urls"
+        ],
+        "title": "Research"
+      },
+      "ResearchResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "const": "research",
+            "title": "Tool"
+          },
+          "plan": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Plan"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/Source"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "source_errors": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Source Errors"
+          },
+          "invalid_urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Invalid Urls"
+          },
+          "draft_report": {
+            "type": "string",
+            "title": "Draft Report"
+          },
+          "final_report": {
+            "type": "string",
+            "title": "Final Report"
+          },
+          "critique": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Critique"
+          },
+          "citation_check": {
+            "$ref": "#/components/schemas/CitationCheck"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "plan",
+          "sources",
+          "source_errors",
+          "invalid_urls",
+          "draft_report",
+          "final_report",
+          "critique",
+          "citation_check"
+        ],
+        "title": "ResearchResult"
+      },
+      "Source": {
+        "properties": {
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "default": ""
+          },
+          "url": {
+            "type": "string",
+            "title": "Url",
+            "default": ""
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary",
+            "default": ""
+          },
+          "key_points": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Key Points",
+            "default": []
+          },
+          "relevance": {
+            "type": "string",
+            "title": "Relevance",
+            "default": ""
+          },
+          "text": {
+            "type": "string",
+            "title": "Text",
+            "default": ""
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Metadata",
+            "default": {}
+          }
+        },
+        "type": "object",
+        "required": [
+          "label"
+        ],
+        "title": "Source"
+      },
+      "Speech": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "speech",
+            "title": "Tool"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text"
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "alloy",
+                  "echo",
+                  "fable",
+                  "onyx",
+                  "nova",
+                  "shimmer",
+                  "af_heart",
+                  "af_bella",
+                  "af_nicole",
+                  "am_michael",
+                  "am_fenrir",
+                  "bf_emma"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "text"
+        ],
+        "title": "Speech"
+      },
+      "Support": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "support",
+            "title": "Tool"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Question"
+          },
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Urls"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "question",
+          "urls"
+        ],
+        "title": "Support"
+      },
+      "SupportResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "const": "support",
+            "title": "Tool"
+          },
+          "intent": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Intent"
+          },
+          "sources": {
+            "items": {
+              "$ref": "#/components/schemas/Source"
+            },
+            "type": "array",
+            "title": "Sources"
+          },
+          "source_errors": {
+            "items": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Source Errors"
+          },
+          "invalid_urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Invalid Urls"
+          },
+          "draft": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Draft"
+          },
+          "final": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Final"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "intent",
+          "sources",
+          "source_errors",
+          "invalid_urls",
+          "draft",
+          "final"
+        ],
+        "title": "SupportResult"
+      },
+      "TextResult": {
+        "properties": {
+          "execution": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Execution"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "text-summary",
+              "youtube-summary",
+              "article-summary",
+              "file-summary",
+              "ocr",
+              "captions"
+            ],
+            "title": "Tool"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "text"
+        ],
+        "title": "TextResult"
+      },
+      "TextSummary": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "text-summary",
+            "title": "Tool"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "text"
+        ],
+        "title": "TextSummary"
+      },
+      "URLQA": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "url-qa",
+            "title": "Tool"
+          },
+          "context_id": {
+            "type": "string",
+            "title": "Context Id"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Question"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool",
+          "context_id",
+          "question"
+        ],
+        "title": "URLQA"
+      },
+      "URLsContext": {
+        "properties": {
+          "urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 3,
+            "minItems": 1,
+            "title": "Urls"
+          }
+        },
+        "type": "object",
+        "required": [
+          "urls"
+        ],
+        "title": "URLsContext"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Verification": {
+        "properties": {
+          "language": {
+            "type": "string",
+            "title": "Language"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/Check"
+            },
+            "type": "array",
+            "title": "Checks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "language",
+          "passed",
+          "checks"
+        ],
+        "title": "Verification"
+      },
+      "WorkflowEvent": {
+        "properties": {
+          "event": {
+            "type": "string",
+            "enum": [
+              "started",
+              "stage",
+              "warning",
+              "result",
+              "error"
+            ],
+            "title": "Event"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/TextResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ArtifactResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CodeResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ResearchResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ContentResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/DocumentResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/QAResult"
+                  },
+                  {
+                    "$ref": "#/components/schemas/SupportResult"
+                  }
+                ],
+                "discriminator": {
+                  "propertyName": "tool",
+                  "mapping": {
+                    "article-summary": "#/components/schemas/TextResult",
+                    "captions": "#/components/schemas/TextResult",
+                    "code": "#/components/schemas/CodeResult",
+                    "content": "#/components/schemas/ContentResult",
+                    "document-qa": "#/components/schemas/QAResult",
+                    "documents": "#/components/schemas/DocumentResult",
+                    "file-summary": "#/components/schemas/TextResult",
+                    "image": "#/components/schemas/ArtifactResult",
+                    "ocr": "#/components/schemas/TextResult",
+                    "research": "#/components/schemas/ResearchResult",
+                    "speech": "#/components/schemas/ArtifactResult",
+                    "support": "#/components/schemas/SupportResult",
+                    "text-summary": "#/components/schemas/TextResult",
+                    "url-qa": "#/components/schemas/QAResult",
+                    "youtube-summary": "#/components/schemas/TextResult"
+                  }
+                }
+              },
+              {
+                "$ref": "#/components/schemas/ContextResult"
+              },
+              {
+                "additionalProperties": true,
+                "type": "object"
+              }
+            ],
+            "title": "Data"
+          }
+        },
+        "type": "object",
+        "required": [
+          "event",
+          "data"
+        ],
+        "title": "WorkflowEvent"
+      },
+      "YoutubeSummary": {
+        "properties": {
+          "tool": {
+            "type": "string",
+            "const": "youtube-summary",
+            "title": "Tool"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "transcript_text": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transcript Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool"
+        ],
+        "title": "YoutubeSummary"
+      }
+    }
+  }
+}

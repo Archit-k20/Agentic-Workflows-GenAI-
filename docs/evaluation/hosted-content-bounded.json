@@ -1,0 +1,1020 @@
+{
+  "mode": "free",
+  "fixture_count": 6,
+  "rows": [
+    {
+      "id": "content-01",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 71,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "Industry professionals and potential investors",
+          "content_angle": "Launch of Project Alder Pilot",
+          "cta": "Stay tuned for updates on Project Alder's progress.",
+          "hooks": [
+            "Introducing the Pilot Launch of Project Alder",
+            "Key Details About the Project Alder Initiative"
+          ],
+          "sections": [
+            "Project Alder is set to ship 32 kits on November 9, 2026. The initiative is led by Priya Shah and operates within a USD 740 budget.",
+            "This is a pilot project, not a full-scale launch. Customers may request refunds within 30 days for unopened items.",
+            "No delivery guarantee or revenue forecast is provided for this pilot initiative."
+          ]
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Introducing the Pilot Launch of Project Alder",
+            "x": "Key Details About the Project Alder Initiative"
+          },
+          "cta": "Stay tuned for updates on Project Alder's progress.",
+          "hashtags": [
+            "#ProjectAlder",
+            "#PilotLaunch",
+            "#Innovation"
+          ],
+          "image_prompts": [
+            "A modern desk with 32 neatly arranged kits labeled 'Project Alder' and a calendar highlighting November 9, 2026",
+            "A professional workspace with a laptop displaying a budget spreadsheet and a note reading 'Priya Shah - Project Alder'",
+            "A group of diverse professionals reviewing documents and discussing a project timeline"
+          ],
+          "script": "Project Alder is set to ship 32 kits on November 9, 2026. The initiative is led by Priya Shah and operates within a USD 740 budget. This is a pilot project, not a full-scale launch. Customers may request refunds within 30 days for unopened items. No delivery guarantee or revenue forecast is provided for this pilot initiative.",
+          "title": "Launch of Project Alder Pilot"
+        },
+        "critique": {
+          "issues": [
+            "The script contains redundant information about the pilot status",
+            "The captions could be more platform-specific",
+            "The script could be more concise"
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "linkedin": "Discover the Pilot Launch of Project Alder",
+            "x": "Key Insights About Project Alder's Initiative"
+          },
+          "revised_script": "Project Alder will ship 32 kits on November 9, 2026, under a USD 740 budget. Led by Priya Shah, this pilot initiative allows refunds for unopened items within 30 days. No delivery guarantee or revenue forecast is provided."
+        },
+        "final_script": "Project Alder will ship 32 kits on November 9, 2026, under a USD 740 budget. Led by Priya Shah, this pilot initiative allows refunds for unopened items within 30 days. No delivery guarantee or revenue forecast is provided.",
+        "final_captions": {
+          "linkedin": "Discover the Pilot Launch of Project Alder",
+          "x": "Key Insights About Project Alder's Initiative"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 11.76,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 71,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-02",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 71,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "industry professionals and tech enthusiasts",
+          "content_angle": "Launch of Project Birch",
+          "cta": "Sign up for updates and be part of the pilot!",
+          "hooks": [
+            "Exciting news!",
+            "Get ready to repair!",
+            "Join the pilot"
+          ],
+          "sections": [
+            "Introducing Project Birch",
+            "What's in the Box?",
+            "Why It Matters"
+          ]
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Exciting news! Project Birch is launching on October 14, 2026, with 40 repair kits. Join the pilot and be part of the future of repairs!",
+            "x": "Get ready to repair! Project Birch is launching on October 14, 2026. Join the pilot and be part of the future of repairs!"
+          },
+          "cta": "Sign up for updates and be part of the pilot!",
+          "hashtags": [
+            "#ProjectBirch",
+            "#RepairKits",
+            "#TechInnovation",
+            "#PilotLaunch"
+          ],
+          "image_prompts": [
+            "A colorful box labeled 'Project Birch' with tools and materials spilling out",
+            "A group of professionals examining a repair kit in a modern workspace",
+            "A close-up of a repair tool with a futuristic design"
+          ],
+          "script": "Get ready to repair! Project Birch is launching on October 14, 2026, with 40 innovative repair kits. Designed for industry professionals and tech enthusiasts, this pilot aims to revolutionize how we approach repairs. Each kit includes essential tools and materials to tackle a variety of fixes. With a budget of USD 1250, we're excited to share this first look. Join the pilot and be part of something new!",
+          "title": "Project Birch Launch: Repair Kits for the Future"
+        },
+        "critique": {
+          "issues": [
+            "The script mentions 'USD 1250' without clarifying it's the budget",
+            "The captions don't mention the 30-day refund policy",
+            "The script doesn't mention the pilot nature of the launch",
+            "The script doesn't include the owner's name",
+            "The captions could be more platform-specific"
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "linkedin": "Exciting news! Project Birch, led by Mira Chen, is launching on October 14, 2026, with 40 repair kits. Join the pilot and be part of the future of repairs!",
+            "x": "Get ready to repair! Project Birch, led by Mira Chen, is launching on October 14, 2026. Join the pilot and be part of the future of repairs!"
+          },
+          "revised_script": "Get ready to repair! Project Birch is launching on October 14, 2026, with 40 innovative repair kits. As a pilot program led by Mira Chen, this initiative aims to revolutionize how we approach repairs. Each kit includes essential tools and materials to tackle a variety of fixes. With a budget of USD 1250, we're excited to share this first look. Join the pilot and be part of something new!"
+        },
+        "final_script": "Get ready to repair! Project Birch is launching on October 14, 2026, with 40 innovative repair kits. As a pilot program led by Mira Chen, this initiative aims to revolutionize how we approach repairs. Each kit includes essential tools and materials to tackle a variety of fixes. With a budget of USD 1250, we're excited to share this first look. Join the pilot and be part of something new!",
+        "final_captions": {
+          "linkedin": "Exciting news! Project Birch, led by Mira Chen, is launching on October 14, 2026, with 40 repair kits. Join the pilot and be part of the future of repairs!",
+          "x": "Get ready to repair! Project Birch, led by Mira Chen, is launching on October 14, 2026. Join the pilot and be part of the future of repairs!"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 5.72,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 71,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-03",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "Industry professionals and tech enthusiasts",
+          "content_angle": "Educational overview of Project Cedar's pilot launch",
+          "cta": "Stay tuned for more updates on Project Cedar's pilot progress.",
+          "hooks": [
+            "Learn how Project Cedar is approaching its pilot launch with a focus on quality and customer satisfaction.",
+            "Discover the key details about the upcoming shipment of 18 sensors on December 3, 2026."
+          ],
+          "sections": [
+            "Project Cedar is set to ship 18 sensors on December 3, 2026. The project is led by Omar Reed and is currently in a pilot phase, not a full-scale launch.",
+            "The pilot has a budget of USD 960 and is focused on testing the market response before a potential wider release.",
+            "Customers can request refunds within 30 days for unopened items, ensuring a level of confidence in the product offering."
+          ]
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Discover the details of Project Cedar's pilot launch and the shipment of 18 sensors on December 3, 2026.",
+            "x": "Project Cedar's pilot launch includes 18 sensors set to ship on December 3, 2026. Learn more about this educational overview."
+          },
+          "cta": "Stay tuned for more updates on Project Cedar's pilot progress.",
+          "hashtags": [
+            "#ProjectCedar",
+            "#PilotLaunch",
+            "#SensorTechnology",
+            "#TechInnovation"
+          ],
+          "image_prompts": [
+            "A group of 18 sensors neatly arranged on a white background with a calendar showing December 3, 2026",
+            "A professional setting with a person holding a sensor and a tablet displaying a budget breakdown",
+            "A close-up of a sensor with a label indicating 'Pilot Launch - December 3, 2026'"
+          ],
+          "script": "Project Cedar is set to ship 18 sensors on December 3, 2026. Led by Omar Reed, this is a pilot project with a budget of USD 960, focused on testing market response before a potential wider release. Customers can request refunds within 30 days for unopened items, ensuring a level of confidence in the product offering.",
+          "title": "Project Cedar Pilot Launch Overview"
+        },
+        "critique": {
+          "issues": [
+            "The script and captions contain the phrase 'full-scale launch' which contradicts the supplied fact that this is a 'pilot, not a general launch'.",
+            "The captions and script refer to 'customers' but the supplied information only mentions 'refunds for unopened items' without specifying customer scope.",
+            "The script and captions imply a product offering without confirming if the sensors are available for purchase.",
+            "The term 'market response' is used but the supplied facts don't mention market testing objectives.",
+            "The captions and script don't mention the 30-day refund policy in the same context as the shipment date."
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "linkedin": "Project Cedar's pilot launch includes 18 sensors set to ship on December 3, 2026. Learn about the testing process and 30-day refund policy.",
+            "x": "Project Cedar's pilot launch features 18 sensors shipping December 3, 2026 with a 30-day refund policy for unopened items."
+          },
+          "revised_script": "Project Cedar is set to ship 18 sensors on December 3, 2026. Led by Omar Reed, this is a pilot project with a budget of USD 960, focused on testing the shipping and refund process before a potential wider release. Refunds for unopened items are available within 30 days, ensuring a level of confidence in the process."
+        },
+        "final_script": "Project Cedar is set to ship 18 sensors on December 3, 2026. Led by Omar Reed, this is a pilot project with a budget of USD 960, focused on testing the shipping and refund process before a potential wider release. Refunds for unopened items are available within 30 days, ensuring a level of confidence in the process.",
+        "final_captions": {
+          "linkedin": "Project Cedar's pilot launch includes 18 sensors set to ship on December 3, 2026. Learn about the testing process and 30-day refund policy.",
+          "x": "Project Cedar's pilot launch features 18 sensors shipping December 3, 2026 with a 30-day refund policy for unopened items."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 6.97,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-04",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 70,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "Industry professionals and early adopters",
+          "content_angle": "Pilot Launch of Project Delta",
+          "cta": "Stay tuned for the upcoming pilot launch of Project Delta!",
+          "hooks": [
+            "Exciting news for industry professionals!",
+            "Get ready for the pilot launch of Project Delta."
+          ],
+          "sections": [
+            "Project Delta is set to ship 64 meters on January 12, 2027, under the ownership of Sara Bell.",
+            "The pilot launch comes with a budget of USD 2100, offering a unique opportunity for early adopters.",
+            "Customer refunds are available within 30 days for unopened items, ensuring a risk-free experience.",
+            "Please note that no delivery guarantee or revenue forecast is provided for this pilot launch."
+          ]
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Exciting news for industry professionals! Stay tuned for the pilot launch of Project Delta.",
+            "x": "Get ready for the pilot launch of Project Delta. More details coming soon!"
+          },
+          "cta": "Stay tuned for the upcoming pilot launch of Project Delta!",
+          "hashtags": [
+            "#ProjectDelta",
+            "#PilotLaunch",
+            "#IndustryInnovation"
+          ],
+          "image_prompts": [
+            "A futuristic blueprint of a 64-meter structure with a 'Pilot Launch' banner",
+            "A professional team reviewing project details with a timeline showing January 12, 2027",
+            "A close-up of a product box with a '30-Day Refund' label"
+          ],
+          "script": "Project Delta is set to ship 64 meters on January 12, 2027, under the ownership of Sara Bell. This pilot launch comes with a budget of USD 2100, offering a unique opportunity for early adopters. Customer refunds are available within 30 days for unopened items, ensuring a risk-free experience. Please note that no delivery guarantee or revenue forecast is provided for this pilot launch.",
+          "title": "Pilot Launch of Project Delta"
+        },
+        "critique": {
+          "issues": [
+            "The script mentions '64 meters' without clarifying what is being shipped.",
+            "The term 'pilot launch' is used without explaining its significance.",
+            "The script contains technical jargon that may not be clear to all industry professionals.",
+            "The captions could be more engaging and include the hashtag list.",
+            "The script should emphasize that this is a pilot, not a full launch."
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "linkedin": "Exciting news for industry professionals! Stay tuned for the pilot launch of Project Delta. #ProjectDelta #PilotLaunch #IndustryInnovation",
+            "x": "Get ready for the pilot launch of Project Delta. More details coming soon! #ProjectDelta #PilotLaunch #IndustryInnovation"
+          },
+          "revised_script": "Project Delta, owned by Sara Bell, will pilot-launch a 64-meter system on January 12, 2027. With a USD 2100 budget, this pilot offers early adopters a unique opportunity. Customers may return unopened items within 30 days. Note: No delivery guarantee or revenue forecast is provided for this pilot initiative."
+        },
+        "final_script": "Project Delta, owned by Sara Bell, will pilot-launch a 64-meter system on January 12, 2027. With a USD 2100 budget, this pilot offers early adopters a unique opportunity. Customers may return unopened items within 30 days. Note: No delivery guarantee or revenue forecast is provided for this pilot initiative.",
+        "final_captions": {
+          "linkedin": "Exciting news for industry professionals! Stay tuned for the pilot launch of Project Delta. #ProjectDelta #PilotLaunch #IndustryInnovation",
+          "x": "Get ready for the pilot launch of Project Delta. More details coming soon! #ProjectDelta #PilotLaunch #IndustryInnovation"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 5.63,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 70,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-05",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "Industry professionals and early adopters",
+          "content_angle": "Pilot Launch of Project Elm",
+          "cta": "Follow us for the latest on Project Elm and the upcoming shipment.",
+          "hooks": [
+            "Exciting news for innovators!",
+            "Join the pilot program for cutting-edge products."
+          ],
+          "sections": [
+            "Introducing Project Elm, a pilot initiative set to ship 25 lamps on February 6, 2027. Owned by Noah Lane, this launch is a test run with a budget of USD 875.",
+            "Customers can enjoy refunds within 30 days for unopened items. Please note, no delivery guarantee or revenue forecast is provided.",
+            "Stay tuned for more updates as we bring this pilot to life."
+          ]
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Exciting news for innovators! Join the pilot program for cutting-edge products.",
+            "x": "Join the pilot program for cutting-edge products."
+          },
+          "cta": "Follow us for the latest on Project Elm and the upcoming shipment.",
+          "hashtags": [
+            "#ProjectElm",
+            "#PilotLaunch",
+            "#Innovation"
+          ],
+          "image_prompts": [
+            "A minimalist living room with 25 modern lamps arranged neatly on a table, surrounded by white space to emphasize the quantity",
+            "A close-up shot of a single lamp with a label showing 'Project Elm - Pilot Shipment - Feb 6, 2027'",
+            "A digital dashboard displaying the project budget of USD 875 with a progress bar indicating the pilot status"
+          ],
+          "script": "Introducing Project Elm, a pilot initiative set to ship 25 lamps on February 6, 2027. Owned by Noah Lane, this launch is a test run with a budget of USD 875. Customers can enjoy refunds within 30 days for unopened items. Please note, no delivery guarantee or revenue forecast is provided. Stay tuned for more updates as we bring this pilot to life.",
+          "title": "Project Elm Pilot Launch"
+        },
+        "critique": {
+          "issues": [
+            "The script contains a future-dated shipment statement that needs to maintain the original tense as per instructions.",
+            "The captions for LinkedIn and X platforms have overlapping content which could be differentiated.",
+            "The term 'test run' might imply a lack of seriousness that could be rephrased to better match the social-first tone."
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "linkedin": "Exciting news for innovators! Join the pilot program for cutting-edge products.",
+            "x": "Join the pilot program for cutting-edge products."
+          },
+          "revised_script": "Introducing Project Elm, a pilot initiative set to ship 25 lamps on February 6, 2027. Owned by Noah Lane, this launch is a test run with a budget of USD 875. Customers can enjoy refunds within 30 days for unopened items. Please note, no delivery guarantee or revenue forecast is provided. Stay tuned for more updates as we bring this pilot to life."
+        },
+        "final_script": "Introducing Project Elm, a pilot initiative set to ship 25 lamps on February 6, 2027. Owned by Noah Lane, this launch is a test run with a budget of USD 875. Customers can enjoy refunds within 30 days for unopened items. Please note, no delivery guarantee or revenue forecast is provided. Stay tuned for more updates as we bring this pilot to life.",
+        "final_captions": {
+          "linkedin": "Exciting news for innovators! Join the pilot program for cutting-edge products.",
+          "x": "Join the pilot program for cutting-edge products."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 5.53,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-06",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 70,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "Business professionals, tech enthusiasts, and potential investors",
+          "content_angle": "Pilot Launch of Project Fir Routers",
+          "cta": "Follow us for updates on our pilot launch and future product releases.",
+          "hooks": [
+            "Introducing our pilot launch of 12 routers",
+            "Join us as we test the market with Project Fir",
+            "Stay tuned for our upcoming product release"
+          ],
+          "sections": [
+            "Introduction to Project Fir",
+            "Details of the Pilot Launch",
+            "Customer Refund Policy",
+            "Looking Ahead"
+          ]
+        },
+        "package": {
+          "captions": {
+            "blog": "Pilot Launch of Project Fir Routers - 12 units shipping March 21, 2027",
+            "instagram": "Project Fir pilot launch - 12 routers shipping on March 21, 2027.",
+            "linkedin": "Introducing the pilot launch of Project Fir routers - 12 units set to ship on March 21, 2027.",
+            "x": "Project Fir's pilot launch: 12 routers shipping March 21, 2027. Stay tuned for updates.",
+            "youtube": "Watch the pilot launch of Project Fir routers - 12 units set to ship on March 21, 2027."
+          },
+          "cta": "Follow us for updates on our pilot launch and future product releases.",
+          "hashtags": [
+            "#ProjectFir",
+            "#RouterLaunch",
+            "#TechPilot",
+            "#Innovation"
+          ],
+          "image_prompts": [
+            "A sleek, modern router device with a clean design, placed on a minimalist desk with a laptop and some tech accessories",
+            "A group of 12 routers neatly arranged in a box, with a label indicating 'Project Fir Pilot Launch'",
+            "A close-up of a router's control panel with glowing indicators, showing a professional and tech-savvy setup"
+          ],
+          "script": "We're excited to announce the pilot launch of Project Fir routers, set to ship on March 21, 2027. This limited release includes 12 routers, with Leah Moss as the project owner. The pilot aims to test market response while maintaining a budget of USD 330. Customers may request refunds within 30 days for unopened items. This is a controlled test, not a full-scale launch. Stay tuned for future updates and product releases.",
+          "title": "Pilot Launch of Project Fir Routers"
+        },
+        "critique": {
+          "issues": [
+            "The script mentions 'controlled test' which could imply limitations not stated in the facts.",
+            "The caption for YouTube includes 'Watch the pilot launch' which implies it's already happening, but the shipment is scheduled for March 21, 2027.",
+            "The term 'full-scale launch' is used without being mentioned in the original facts."
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "blog": "Pilot Launch of Project Fir Routers - 12 units shipping March 21, 2027",
+            "instagram": "Project Fir pilot launch - 12 routers shipping on March 21, 2027.",
+            "linkedin": "Introducing the pilot launch of Project Fir routers - 12 units set to ship on March 21, 2027.",
+            "x": "Project Fir's pilot launch: 12 routers shipping March 21, 2027. Stay tuned for updates.",
+            "youtube": "Project Fir pilot launch - 12 routers set to ship on March 21, 2027."
+          },
+          "revised_script": "We're excited to announce the pilot launch of Project Fir routers, set to ship on March 21, 2027. This limited release includes 12 routers, with Leah Moss as the project owner. The pilot is conducted within a budget of USD 330. Customers may request refunds within 30 days for unopened items. This is a test phase, not a general launch. Stay tuned for future updates and product releases."
+        },
+        "final_script": "We're excited to announce the pilot launch of Project Fir routers, set to ship on March 21, 2027. This limited release includes 12 routers, with Leah Moss as the project owner. The pilot is conducted within a budget of USD 330. Customers may request refunds within 30 days for unopened items. This is a test phase, not a general launch. Stay tuned for future updates and product releases.",
+        "final_captions": {
+          "blog": "Pilot Launch of Project Fir Routers - 12 units shipping March 21, 2027",
+          "instagram": "Project Fir pilot launch - 12 routers shipping on March 21, 2027.",
+          "linkedin": "Introducing the pilot launch of Project Fir routers - 12 units set to ship on March 21, 2027.",
+          "x": "Project Fir's pilot launch: 12 routers shipping March 21, 2027. Stay tuned for updates.",
+          "youtube": "Project Fir pilot launch - 12 routers set to ship on March 21, 2027."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 6.54,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/qwen/qwen3-30b-a3b-fp8"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 70,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review",
+  "provenance": {
+    "date": "2026-10-03",
+    "language": "English",
+    "sources": "Synthetic fixture extraction; real inference provider",
+    "status": "Screening results, not an accuracy guarantee",
+    "candidate_only": false
+  }
+}

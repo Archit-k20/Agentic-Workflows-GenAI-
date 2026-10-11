@@ -1,0 +1,51 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "c35492c3da71182e87b912b15fa66e6db736093e263814a83e424d82683149af",
+    "pipeline_sha256": "d0f3e2bf124bc7c29cc32774cdf5f408ad3725f71f225193c7035c3be8a29bdf"
+  },
+  "fixture_count": 7,
+  "rows": [
+    {
+      "id": "support-02",
+      "kind": "support",
+      "score": null,
+      "result": null,
+      "error": "Hosted inference is temporarily unavailable or its free allowance is exhausted.",
+      "seconds": 2.96,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 7,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "failed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

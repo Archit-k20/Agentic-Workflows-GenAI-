@@ -1,0 +1,558 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "9c7cf4b21e7e66e64071ff432eff28faaf017f8a806fabd8a956a86d4de1e09b",
+    "pipeline_sha256": "5205ed7529aec948c6c051c2493853be092aa4680647aeb01efe079e0150eb69"
+  },
+  "fixture_count": 16,
+  "rows": [
+    {
+      "id": "research-05",
+      "kind": "research",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "topic",
+              "tokens": 8,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 58,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/conflict",
+              "tokens": 16,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Research absence wording requires review; the existing review/revision sequence will run before final acceptance.",
+            "Research wording still needs the existing revision step; this is not an accepted final report."
+          ]
+        },
+        "tool": "research",
+        "plan": {
+          "goal": "Evaluate the pilot scope and evidence gaps",
+          "report_sections": [
+            "Introduction",
+            "Methodology",
+            "Results",
+            "Discussion",
+            "Conclusion"
+          ],
+          "sub_questions": [
+            "What are the key objectives of the pilot scope?",
+            "What methods were used to collect data during the pilot?",
+            "What are the main findings from the pilot study?",
+            "What are the identified evidence gaps in the pilot study?",
+            "How can the evidence gaps be addressed in future studies?"
+          ]
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "The source describes a pilot project, Project Elm, which involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is provided.",
+            "key_points": [
+              "Project Elm is a pilot project",
+              "25 lamps will be shipped on February 6, 2027",
+              "The budget is USD 875",
+              "The owner is Noah Lane",
+              "Refunds are available for unopened items within 30 days"
+            ],
+            "relevance": "",
+            "text": "",
+            "metadata": {}
+          },
+          {
+            "label": "S2",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/conflict",
+            "summary": "A conflicting draft of the pilot brief lists only 20 units, but its date and authority are not established.",
+            "key_points": [
+              "Conflicting draft lists 20 units",
+              "Date of draft not established",
+              "Authority of draft not established"
+            ],
+            "relevance": "",
+            "text": "",
+            "metadata": {}
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft_report": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane [S1]. However, there is a conflicting draft that lists only 20 units [S2]. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is provided [S1].\n\n## Findings\nThe key objectives of the pilot scope are not explicitly stated [S1]. The methods used to collect data during the pilot are also not specified [S1]. The main findings from the pilot study are limited to the shipment details and budget [S1]. A conflicting draft of the pilot brief lists 20 units, which may indicate an evidence gap in the planning process [S2].\n\n## Risks and Gaps\nThe lack of a delivery guarantee and revenue forecast poses a risk to the project's success [S1]. The conflicting draft of the pilot brief also creates uncertainty about the project's scope [S2]. Additionally, the absence of a specified method for data collection and analysis may limit the validity of the pilot study's findings.\n\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What are the key performance indicators for Project Elm? How will data be collected and analyzed during the pilot? What are the potential risks and mitigation strategies for the project? How can the conflicting draft be reconciled with the original pilot brief?\n\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+        "final_report": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane [S1]. However, there is a conflicting draft that lists only 20 units [S2]. The project has a refund policy for unopened items within 30 days, but the source does not specify a delivery guarantee or revenue forecast [S1].\n## Findings\nThe key objectives of the pilot scope are not explicitly stated [S1]. The methods used to collect data during the pilot are also not specified [S1]. The main findings from the pilot study are limited to the shipment details and budget [S1]. A conflicting draft of the pilot brief lists 20 units, which may indicate an evidence gap in the planning process [S2].\n## Risks and Gaps\nThe source does not provide information on a delivery guarantee or revenue forecast, which poses a risk to the project's success [S1]. The conflicting draft of the pilot brief also creates uncertainty about the project's scope [S2]. Additionally, the absence of a specified method for data collection and analysis may limit the validity of the pilot study's findings.\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What are the key performance indicators for Project Elm? How will data be collected and analyzed during the pilot? What are the potential risks and mitigation strategies for the project? How can the conflicting draft be reconciled with the original pilot brief?\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+        "critique": {
+          "passes_review": true,
+          "issues": [],
+          "revised_report": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane [S1]. However, there is a conflicting draft that lists only 20 units [S2]. The project has a refund policy for unopened items within 30 days, but the source does not specify a delivery guarantee or revenue forecast [S1].\n## Findings\nThe key objectives of the pilot scope are not explicitly stated [S1]. The methods used to collect data during the pilot are also not specified [S1]. The main findings from the pilot study are limited to the shipment details and budget [S1]. A conflicting draft of the pilot brief lists 20 units, which may indicate an evidence gap in the planning process [S2].\n## Risks and Gaps\nThe source does not provide information on a delivery guarantee or revenue forecast, which poses a risk to the project's success [S1]. The conflicting draft of the pilot brief also creates uncertainty about the project's scope [S2]. Additionally, the absence of a specified method for data collection and analysis may limit the validity of the pilot study's findings.\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What are the key performance indicators for Project Elm? How will data be collected and analyzed during the pilot? What are the potential risks and mitigation strategies for the project? How can the conflicting draft be reconciled with the original pilot brief?\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+          "rejected_revision_history": [
+            {
+              "stage": "synthesize_report",
+              "revision": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane [S1]. However, there is a conflicting draft that lists only 20 units [S2]. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is provided [S1].\n\n## Findings\nThe key objectives of the pilot scope are not explicitly stated [S1]. The methods used to collect data during the pilot are also not specified [S1]. The main findings from the pilot study are limited to the shipment details and budget [S1]. A conflicting draft of the pilot brief lists 20 units, which may indicate an evidence gap in the planning process [S2].\n\n## Risks and Gaps\nThe lack of a delivery guarantee and revenue forecast poses a risk to the project's success [S1]. The conflicting draft of the pilot brief also creates uncertainty about the project's scope [S2]. Additionally, the absence of a specified method for data collection and analysis may limit the validity of the pilot study's findings.\n\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What are the key performance indicators for Project Elm? How will data be collected and analyzed during the pilot? What are the potential risks and mitigation strategies for the project? How can the conflicting draft be reconciled with the original pilot brief?\n\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+              "issues": [
+                "Unspecified guarantee evidence cannot establish its actual absence.",
+                "Unspecified forecast evidence cannot establish its actual absence."
+              ]
+            },
+            {
+              "stage": "review",
+              "revision": "## Executive Summary\nThe pilot scope of Project Elm involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane [S1]. However, there is a conflicting draft that lists only 20 units [S2]. The project has a refund policy for unopened items within 30 days, but no delivery guarantee or revenue forecast is provided [S1].\n## Findings\nThe key objectives of the pilot scope are not explicitly stated [S1]. The methods used to collect data during the pilot are also not specified [S1]. The main findings from the pilot study are limited to the shipment details and budget [S1]. A conflicting draft of the pilot brief lists 20 units, which may indicate an evidence gap in the planning process [S2].\n## Risks and Gaps\nThe lack of a delivery guarantee and revenue forecast poses a risk to the project's success [S1]. The conflicting draft of the pilot brief also creates uncertainty about the project's scope [S2]. Additionally, the absence of a specified method for data collection and analysis may limit the validity of the pilot study's findings.\n## Recommended Next Questions\nTo address the evidence gaps, the following questions could be explored: What are the key performance indicators for Project Elm? How will data be collected and analyzed during the pilot? What are the potential risks and mitigation strategies for the project? How can the conflicting draft be reconciled with the original pilot brief?\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+              "issues": [
+                "Unspecified guarantee evidence cannot establish its actual absence.",
+                "Unspecified forecast evidence cannot establish its actual absence."
+              ]
+            }
+          ],
+          "source_checks": {
+            "scope": "Headings, citation labels, credibility wording and missing guarantee/forecast evidence; not factual certification.",
+            "issues": []
+          }
+        },
+        "citation_check": {
+          "has_any_citation": true,
+          "cited_labels": [
+            "S1",
+            "S2"
+          ],
+          "unknown_labels": []
+        }
+      },
+      "error": null,
+      "seconds": 51.06,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "topic",
+            "tokens": 8,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 58,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/conflict",
+            "tokens": 16,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Research absence wording requires review; the existing review/revision sequence will run before final acceptance.",
+          "Research wording still needs the existing revision step; this is not an accepted final report."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research absence wording requires review; the existing review/revision sequence will run before final acceptance."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research wording still needs the existing revision step; this is not an accepted final report."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Revise report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Revise report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "research-06",
+      "kind": "research",
+      "score": null,
+      "result": null,
+      "error": "Research final report failed source checks after review: Unspecified guarantee evidence cannot establish its actual absence.; Unspecified forecast evidence cannot establish its actual absence.",
+      "seconds": 54.22,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "topic",
+            "tokens": 8,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Research absence wording requires review; the existing review/revision sequence will run before final acceptance.",
+          "Research wording still needs the existing revision step; this is not an accepted final report.",
+          "Research absence wording requires review; the existing review/revision sequence will run before final acceptance.",
+          "Research wording still needs the existing revision step; this is not an accepted final report."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "failed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research absence wording requires review; the existing review/revision sequence will run before final acceptance."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research wording still needs the existing revision step; this is not an accepted final report."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Revise report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research absence wording requires review; the existing review/revision sequence will run before final acceptance."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Revise report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Research wording still needs the existing revision step; this is not an accepted final report."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "completed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

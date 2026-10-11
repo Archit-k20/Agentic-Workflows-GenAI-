@@ -1,0 +1,77 @@
+{
+  "description": "Local production build, Codex WebKit, 2026-10-11. New introduction only. No generation requests.",
+  "checks": [
+    {
+      "ctaVisible": true,
+      "heroHeight": 784,
+      "overflow": false,
+      "theme": "light",
+      "width": 360
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 784,
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "light",
+      "width": 768
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "light",
+      "width": 1024
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "light",
+      "width": 1440
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "light",
+      "width": 1920
+    },
+    {
+      "ctaVisible": true,
+      "heroHeight": 976,
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    }
+  ],
+  "draftRoundTrip": "Research input retained through intro, collection and browser Back.",
+  "keyboard": "Enter on synopsis link moves focus; Enter on lower Explore opens /explore."
+}

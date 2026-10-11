@@ -1,0 +1,148 @@
+{
+  "scope": "2026-10-11 local production build. CSS/SVG motion and seamless introduction surfaces; no generation requests.",
+  "moving": true,
+  "pausedStable": true,
+  "keyboardResume": "Both layers returned to running after Enter on Resume background animation.",
+  "responsive": [
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "light",
+      "width": 360
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "light",
+      "width": 768
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "light",
+      "width": 1024
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "light",
+      "width": 1440
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "light",
+      "width": 1920
+    },
+    {
+      "headerOverflow": false,
+      "heroBackground": "rgba(0, 0, 0, 0)",
+      "heroBorder": "0px",
+      "heroRadius": "0px",
+      "motionStates": [
+        "running",
+        "running"
+      ],
+      "pageOverflow": false,
+      "storyBackground": "rgba(0, 0, 0, 0)",
+      "theme": "dark",
+      "width": 1920
+    }
+  ]
+}

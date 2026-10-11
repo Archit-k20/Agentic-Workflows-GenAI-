@@ -1,0 +1,587 @@
+{
+  "review_date_ist": "2026-10-04",
+  "quality_gate": "failed",
+  "raw_result_sha256": "b8e5cc3ca5f3aac5c7c3c59e5b37c7651da3f39b0ed1a089746c3a2218d922a2",
+  "fixture_sha256": "1c1f3b80a91d63fc555f3716c9c2547a28d77ae17011a7e594dbb42d5c29f2b0",
+  "inference_profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "pipeline_sha256": "c5ca26b346906fcadf12f07f5eb9e91fc317becc6991ef7585c0e7990ab74c49"
+  },
+  "scope": "One real hosted-only run of 60 fixed synthetic English cases: 54 Llama text cases and 6 Qwen Coder cases. Source URLs are fixture text, not live-web extraction. Separate source-based review; raw score.rubric_review fields remain null and must not be read as passed.",
+  "overall_findings": [
+    "60/60 completed; all transport schemas validated; no local text fallback.",
+    "87/88 screened facts; 10/10 absent-answer refusals; 6/6 syntax/compiler checks; 4/4 required escalations. Fact presence is not accuracy.",
+    "All 6 Research final revisions lack inline citations and required Markdown sections.",
+    "Both answerable Support cases escalated unnecessarily for missing citations; one retained a wrong refund answer.",
+    "Some source digests and creative copy still contain unsupported claims; model self-review missed creative issues.",
+    "The prior budget-as-unit-price and clipped-word summary defects were not seen in these final-profile fixtures."
+  ],
+  "latency_seconds": {
+    "content": {
+      "count": 6,
+      "median": 13.29,
+      "max": 14.51
+    },
+    "research": {
+      "count": 6,
+      "median": 38.87,
+      "max": 40.06
+    },
+    "summary": {
+      "count": 12,
+      "median": 3.96,
+      "max": 7.45
+    },
+    "qa": {
+      "count": 16,
+      "median": 0.96,
+      "max": 4.75
+    },
+    "documents": {
+      "count": 8,
+      "median": 2.88,
+      "max": 11.48
+    },
+    "support": {
+      "count": 6,
+      "median": 4.56,
+      "max": 6.19
+    },
+    "code": {
+      "count": 6,
+      "median": 2.46,
+      "max": 4.02
+    }
+  },
+  "resources": {
+    "scope": "Local Docker observations only, not continuous peak measurement or Oracle VM capacity.",
+    "observed_api_gib": [1.564, 1.889],
+    "observed_ollama_mib": 57.19,
+    "shared_text_ledger_neurons_after_benchmark_and_two_live_smokes": 4862.17904327269,
+    "text_daily_ceiling": 7000
+  },
+  "rows": [
+    {
+      "id": "content-01",
+      "kind": "content",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final copy tells readers to contact Priya Shah, although the source does not establish a contact role or channel; not labeled a proposed call to action."
+      ]
+    },
+    {
+      "id": "research-05",
+      "kind": "research",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final revision loses citations and headings; the 25-versus-20 conflict itself is retained without falsely resolving authority."
+      ]
+    },
+    {
+      "id": "summary-11",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-01",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-07",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-04",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "support-03",
+      "kind": "support",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Source digest presents the customer double-charge allegation as source documentation; source only describes the pilot/refund policy. Required escalation is correct."
+      ]
+    },
+    {
+      "id": "code-01",
+      "kind": "code",
+      "reviewer": "Codex source-based inspection",
+      "grounding": null,
+      "acceptance": "not established beyond syntax/compilation",
+      "issues": [],
+      "scope": "Code inspected and actual syntax/compiler results passed; programs not behaviorally executed or security-audited."
+    },
+    {
+      "id": "content-06",
+      "kind": "content",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "research-06",
+      "kind": "research",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final revision loses citations and headings; the unavailable second source remains visible in source_errors."
+      ]
+    },
+    {
+      "id": "summary-01",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-02",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-03",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-04",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-05",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-06",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-07",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-08",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-09",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-10",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "summary-12",
+      "kind": "summary",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-02",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-03",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-04",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-05",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-06",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-08",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-09",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-10",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-11",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-12",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-13",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-14",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-15",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "qa-16",
+      "kind": "qa",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-01",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "needs correction",
+      "issues": [
+        "Analysis summary omits the 32-kit quantity and USD 740 budget; this is the one missing screened fact."
+      ]
+    },
+    {
+      "id": "documents-02",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-03",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-05",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-06",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-07",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "documents-08",
+      "kind": "documents",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "An action assigns shipment to Emma Hart, although the source identifies her as project owner rather than the person assigned to ship."
+      ]
+    },
+    {
+      "id": "research-01",
+      "kind": "research",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final revision loses every inline citation and all five required report headings."
+      ]
+    },
+    {
+      "id": "research-02",
+      "kind": "research",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final revision loses citations and headings. The critique declares the source incomplete/inaccurate or untrusted without evidence establishing its factual credibility."
+      ]
+    },
+    {
+      "id": "research-03",
+      "kind": "research",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final revision loses citations and headings. The critique says the source is untrusted and lacks credibility without a supporting source assessment; the final asks for more reliable sources on that basis."
+      ]
+    },
+    {
+      "id": "research-04",
+      "kind": "research",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final revision loses citations and headings. The critique conflates untrusted source input with a factually unreliable source."
+      ]
+    },
+    {
+      "id": "support-01",
+      "kind": "support",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Incorrectly answers No to returning within 20 days under a 30-day unopened-item policy. Draft omits citation; deterministic rules escalate while retaining the incorrect draft answer."
+      ]
+    },
+    {
+      "id": "support-02",
+      "kind": "support",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "needs correction",
+      "issues": [
+        "Correct count of 40, but draft omits citation, causing unnecessary escalation of an answerable low-risk request."
+      ]
+    },
+    {
+      "id": "support-04",
+      "kind": "support",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Source digest repeats account-hack/credential-reset allegation instead of the unrelated pilot brief. Required escalation is correct."
+      ]
+    },
+    {
+      "id": "support-05",
+      "kind": "support",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "support-06",
+      "kind": "support",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Source digest starts with a product-fire assertion from the user question, although the actual source contains no incident. Required escalation is correct."
+      ]
+    },
+    {
+      "id": "code-02",
+      "kind": "code",
+      "reviewer": "Codex source-based inspection",
+      "grounding": null,
+      "acceptance": "not established beyond syntax/compilation",
+      "issues": [],
+      "scope": "Code inspected and actual syntax/compiler results passed; programs not behaviorally executed or security-audited."
+    },
+    {
+      "id": "code-03",
+      "kind": "code",
+      "reviewer": "Codex source-based inspection",
+      "grounding": null,
+      "acceptance": "not established beyond syntax/compilation",
+      "issues": [],
+      "scope": "Code inspected and actual syntax/compiler results passed; programs not behaviorally executed or security-audited."
+    },
+    {
+      "id": "code-04",
+      "kind": "code",
+      "reviewer": "Codex source-based inspection",
+      "grounding": null,
+      "acceptance": "not established beyond syntax/compilation",
+      "issues": [],
+      "scope": "Code inspected and actual syntax/compiler results passed; programs not behaviorally executed or security-audited."
+    },
+    {
+      "id": "code-05",
+      "kind": "code",
+      "reviewer": "Codex source-based inspection",
+      "grounding": null,
+      "acceptance": "not established beyond syntax/compilation",
+      "issues": [],
+      "scope": "Code inspected and actual syntax/compiler results passed; programs not behaviorally executed or security-audited."
+    },
+    {
+      "id": "code-06",
+      "kind": "code",
+      "reviewer": "Codex source-based inspection",
+      "grounding": null,
+      "acceptance": "not established beyond syntax/compilation",
+      "issues": [],
+      "scope": "Code inspected and actual syntax/compiler results passed; programs not behaviorally executed or security-audited."
+    },
+    {
+      "id": "content-02",
+      "kind": "content",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final script omits the supplied USD 1250 budget and unopened-item/30-day refund conditions. Proposed images are visual concepts, not evidence of actual kit contents."
+      ]
+    },
+    {
+      "id": "content-03",
+      "kind": "content",
+      "reviewer": "Codex source-based inspection",
+      "grounding": true,
+      "acceptance": "no issue found in this fixture",
+      "issues": []
+    },
+    {
+      "id": "content-04",
+      "kind": "content",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final script calls this Sara Bell's latest initiative without evidence of her project history."
+      ]
+    },
+    {
+      "id": "content-05",
+      "kind": "content",
+      "reviewer": "Codex source-based inspection",
+      "grounding": false,
+      "acceptance": "needs correction",
+      "issues": [
+        "Final copy asserts the pilot is designed for early adopters and exclusive; neither is supplied as a product fact. Revision also drops USD 875 and refund conditions. Model critique nonetheless passes."
+      ]
+    }
+  ]
+}

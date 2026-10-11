@@ -1,0 +1,175 @@
+{
+  "upload": {
+    "name": "synthetic-quality-brief.pdf",
+    "size": 932
+  },
+  "context_events": [
+    {
+      "event": "started",
+      "data": {
+        "message": "Workflow started"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Extract and index context",
+        "status": "running"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Extract complete bounded document",
+        "status": "running"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Extract complete bounded document",
+        "status": "completed"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Extract and index context",
+        "status": "completed"
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "errors": [],
+        "kind": "document-qa",
+        "profile": {
+          "version": 1,
+          "model": "BAAI/bge-small-en-v1.5",
+          "revision": "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a",
+          "dimensions": 384,
+          "normalized": true,
+          "chunk_tokens": 384,
+          "overlap": 64
+        },
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "local",
+              "model": "BAAI/bge-small-en-v1.5"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "synthetic-quality-brief.pdf",
+              "tokens": 37,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        }
+      }
+    }
+  ],
+  "context_seconds": 0.96,
+  "query_events": [
+    {
+      "event": "started",
+      "data": {
+        "message": "Workflow started"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Retrieve four relevant chunks",
+        "status": "running"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Retrieve four relevant chunks",
+        "status": "completed"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Answer from context",
+        "status": "running"
+      }
+    },
+    {
+      "event": "stage",
+      "data": {
+        "name": "Answer from context",
+        "status": "completed"
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "local",
+              "model": "BAAI/bge-small-en-v1.5"
+            },
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "Question",
+              "tokens": 11,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "document-qa",
+        "answer": "The project owner is Isha Rao, and the total pilot budget is USD 600 [S1].",
+        "sources": [
+          {
+            "label": "S1",
+            "title": "synthetic-quality-brief.pdf",
+            "url": "",
+            "summary": "",
+            "key_points": [],
+            "relevance": "",
+            "text": "synthetic project juniper plans 15 kits for december 10, 2026. owner : isha rao. total pilot budget : usd 600, not a unit price. no sales forecast is supplied.",
+            "metadata": {
+              "source": "synthetic-quality-brief.pdf",
+              "title": "synthetic-quality-brief.pdf",
+              "chunk": 1
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "query_seconds": 0.93,
+  "cross_session_events": [
+    {
+      "event": "started",
+      "data": {
+        "message": "Workflow started"
+      }
+    },
+    {
+      "event": "error",
+      "data": {
+        "message": "File, artifact or context not found in this session. Reprocess expired inputs.",
+        "code": "session_expired"
+      }
+    }
+  ],
+  "cross_session_blocked": true
+}

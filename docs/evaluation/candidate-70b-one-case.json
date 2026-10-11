@@ -1,0 +1,169 @@
+{
+  "mode": "free",
+  "fixture_count": 1,
+  "rows": [
+    {
+      "id": "content-02",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 71,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "potential customers",
+          "content_angle": "exciting pilot launch",
+          "cta": "Stay tuned for the October 14 shipment of 40 repair kits!",
+          "hooks": [
+            "Get ready for a fix!",
+            "Mira Chen's Project Birch is coming!"
+          ],
+          "sections": [
+            "Introduction to Project Birch",
+            "What's in the repair kit?",
+            "Refund and shipping details"
+          ]
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Project Birch pilot launch",
+            "x": "Fixes ahead!"
+          },
+          "cta": "Stay tuned for the October 14 shipment of 40 repair kits!",
+          "hashtags": [
+            "ProjectBirch",
+            "PilotLaunch",
+            "RepairKits"
+          ],
+          "image_prompts": [
+            "A colorful box with a repair kit and a calendar marking October 14",
+            "Mira Chen holding a repair kit with a playful background",
+            "A close-up of a repair kit with tools and parts",
+            "A simple refund policy graphic with a 30-day clock"
+          ],
+          "script": "Get ready for a fix! Mira Chen's Project Birch is coming! We're excited to announce our pilot launch, shipping 40 repair kits on October 14, 2026. With a budget of USD 1250, we're keeping things fresh and fun. Stay tuned for more updates!",
+          "title": "Project Birch Pilot Launch"
+        },
+        "critique": {
+          "issues": [],
+          "passes_review": true,
+          "revised_captions": {
+            "linkedin": "Project Birch pilot launch",
+            "x": "Fixes ahead!"
+          },
+          "revised_script": "Get ready for a fix! Mira Chen's Project Birch is coming! We're excited to announce our pilot launch, shipping 40 repair kits on October 14, 2026. Stay tuned for the October 14 shipment!"
+        },
+        "final_script": "Get ready for a fix! Mira Chen's Project Birch is coming! We're excited to announce our pilot launch, shipping 40 repair kits on October 14, 2026. Stay tuned for the October 14 shipment!",
+        "final_captions": {
+          "linkedin": "Project Birch pilot launch",
+          "x": "Fixes ahead!"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 14.12,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 71,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review",
+  "provenance": {
+    "date": "2026-10-03",
+    "language": "English",
+    "sources": "Synthetic fixture extraction; real inference provider",
+    "status": "Screening results, not an accuracy guarantee",
+    "candidate_only": true
+  }
+}

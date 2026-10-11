@@ -1,0 +1,37 @@
+[
+  {
+    "label": true,
+    "origin": "https://trace-agentic-workspace-38qyyey35.vercel.app",
+    "path": "/workspace/research",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "origin": "https://trace-agentic-workspace-38qyyey35.vercel.app",
+    "path": "/workspace/documents",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "origin": "https://trace-agentic-workspace-38qyyey35.vercel.app",
+    "path": "/workspace/code",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "origin": "https://trace-agentic-workspace-38qyyey35.vercel.app",
+    "path": "/workspace/content",
+    "result": "sample",
+    "verificationFrames": 0
+  },
+  {
+    "label": true,
+    "origin": "https://trace-agentic-workspace-38qyyey35.vercel.app",
+    "path": "/workspace/support",
+    "result": "sample",
+    "verificationFrames": 0
+  }
+]

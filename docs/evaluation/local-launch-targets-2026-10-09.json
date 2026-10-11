@@ -1,0 +1,468 @@
+{
+  "mode": "local",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "41c026345d89bc829972db714894853bb3f2434e595f021392c97d7b461fe112",
+    "pipeline_sha256": "d0f3e2bf124bc7c29cc32774cdf5f408ad3725f71f225193c7035c3be8a29bdf"
+  },
+  "fixture_count": 2,
+  "rows": [
+    {
+      "id": "content-05",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": false,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "local",
+          "engines": [
+            {
+              "provider": "ollama",
+              "model": "qwen3.5:4b"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Content script: missing numerical source details were restored verbatim."
+          ]
+        },
+        "tool": "content",
+        "plan": {
+          "content_angle": "Announcing the pilot shipment of Project Elm lamps with specific logistical details.",
+          "audience": "",
+          "hooks": [
+            "Project Elm is shipping exactly 25 lamps on February 6, 2027.",
+            "Noah Lane manages this pilot with a budget of USD 875.",
+            "Refunds are available for unopened items within 30 days."
+          ],
+          "sections": [
+            "Project Elm is initiating a pilot program scheduled to ship 25 lamps on February 6, 2027.",
+            "The project is led by Noah Lane with an allocated budget of USD 875.",
+            "Customer refunds are available within 30 days, but only for unopened items.",
+            "This initiative is a pilot program; no delivery guarantees or revenue forecasts are currently supplied."
+          ],
+          "cta": "Follow for updates on the February 6, 2027 shipment.",
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "title": "Project Elm Pilot Shipment Announcement",
+          "script": "Project Elm is initiating a pilot program scheduled to ship exactly 25 lamps on February 6, 2027. The project is led by Noah Lane with an allocated budget of USD 875. Customer refunds are available within 30 days, but only for unopened items. This initiative is a pilot program; no delivery guarantees or revenue forecasts are currently supplied.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "image_prompts": [
+            "A flat lay photography shot featuring exactly 25 modern lamps arranged neatly on a neutral surface, soft studio lighting to highlight the product details without revealing specific brand logos.",
+            "An interior design render of a single lamp placed in a minimalist living room corner, showcasing the aesthetic appeal while maintaining a clean, uncluttered background.",
+            "A close-up macro shot of the lamp's texture and material finish, emphasizing quality craftsmanship with shallow depth of field.",
+            "A stylized graphic illustration showing a calendar date of February 6, 2027, alongside an icon representing 25 units, set against a professional grey background."
+          ],
+          "captions": {
+            "linkedin": "Project Elm is initiating a pilot program scheduled to ship exactly 25 lamps on February 6, 2027. Led by Noah Lane with a USD 875 budget, customer refunds are available within 30 days for unopened items only.",
+            "x": "Pilot shipment: 25 Project Elm lamps arriving Feb 6, 2027. Budget: $875. Refunds available 30 days (unopened only). No guarantees yet."
+          },
+          "hashtags": [
+            "ProjectElm",
+            "ProductLaunch",
+            "PilotProgram",
+            "DesignCommunity"
+          ],
+          "cta": "Follow for updates on the February 6, 2027 shipment."
+        },
+        "critique": {
+          "passes_review": true,
+          "issues": [],
+          "revised_script": "Project Elm is initiating a pilot program scheduled to ship exactly 25 lamps on February 6, 2027. The project is led by Noah Lane with an allocated budget of USD 875. Customer refunds are available within 30 days, but only for unopened items. This initiative is a pilot program; no delivery guarantees or revenue forecasts are currently supplied.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "revised_captions": {
+            "linkedin": "Project Elm is launching a pilot program: exactly 25 lamps shipping Feb 6, 2027. Led by Noah Lane with a USD 875 budget. Refunds available within 30 days for unopened items only.",
+            "x": "Pilot shipment: 25 Project Elm lamps arriving Feb 6, 2027. Budget $875. Refunds 30 days (unopened only)."
+          },
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.",
+            "issues": []
+          }
+        },
+        "final_script": "Project Elm is initiating a pilot program scheduled to ship exactly 25 lamps on February 6, 2027. The project is led by Noah Lane with an allocated budget of USD 875. Customer refunds are available within 30 days, but only for unopened items. This initiative is a pilot program; no delivery guarantees or revenue forecasts are currently supplied.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+        "final_captions": {
+          "linkedin": "Project Elm is launching a pilot program: exactly 25 lamps shipping Feb 6, 2027. Led by Noah Lane with a USD 875 budget. Refunds available within 30 days for unopened items only.",
+          "x": "Pilot shipment: 25 Project Elm lamps arriving Feb 6, 2027. Budget $875. Refunds 30 days (unopened only)."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 430.78,
+      "execution": {
+        "mode": "local",
+        "engines": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.5:4b"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Content script: missing numerical source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-03",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": false,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "local",
+          "engines": [
+            {
+              "provider": "ollama",
+              "model": "qwen3.5:4b"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Content script: missing numerical source details were restored verbatim.",
+            "Content script: missing numerical source details were restored verbatim."
+          ]
+        },
+        "tool": "content",
+        "plan": {
+          "content_angle": "Educational overview of Project Cedar's specific pilot parameters, focusing on the scheduled shipment details and refund policy.",
+          "audience": "",
+          "hooks": [
+            "Project Cedar is moving forward with a specific pilot shipment.",
+            "Understanding the exact scope: 18 sensors scheduled for December 3, 2026.",
+            "Key operational detail: Refunds available within 30 days only for unopened items."
+          ],
+          "sections": [
+            "Project Cedar is initiating a pilot phase with a defined shipment schedule. The project involves the delivery of 18 sensors.",
+            "The scheduled departure date is December 3, 2026. Omar Reed is identified as the owner of this initiative.",
+            "The total budget allocated for this pilot effort is USD 960.",
+            "Regarding customer protection, refunds are available within a 30-day window, strictly limited to unopened items.",
+            "Please note that no delivery guarantee or revenue forecast is supplied for this project."
+          ],
+          "cta": "Follow Project Cedar for future updates on the pilot phase.",
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "title": "Project Cedar Pilot: Shipment Parameters and Terms",
+          "script": "Project Cedar is initiating a pilot phase with a defined shipment schedule. The project involves the delivery of 18 sensors. The scheduled departure date is December 3, 2026. Omar Reed is identified as the owner of this initiative. The total budget allocated for this pilot effort is USD 960. Regarding customer protection, refunds are available within a 30-day window, strictly limited to unopened items. Please note that no delivery guarantee or revenue forecast is supplied for this project.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "image_prompts": [
+            "A minimalist digital illustration showing a stylized package labeled '18 sensors' with a calendar icon marking December 3, 2026, set against a neutral background.",
+            "A simple graphic representing a budget of USD 960 as a flat icon or text label, accompanied by a small figure labeled Omar Reed.",
+            "An abstract visual depicting a 30-day timeline with a lock icon indicating 'unopened items only' for refunds, avoiding any depiction of opened products.",
+            "A clean layout displaying the text 'Project Cedar Pilot' alongside placeholders for the sensor count and date, emphasizing the educational nature of the announcement."
+          ],
+          "captions": {
+            "linkedin": "Project Cedar is moving forward with a specific pilot shipment. Understanding the exact scope: 18 sensors scheduled for December 3, 2026. Key operational detail: Refunds available within 30 days only for unopened items.",
+            "x": "Project Cedar ships 18 sensors on Dec 3, 2026. Budget: $960. Owner: Omar Reed. Refunds: 30 days, unopened only. No delivery guarantee or forecast."
+          },
+          "hashtags": [
+            "ProjectCedar",
+            "PilotPhase",
+            "TechShipment",
+            "SupplyChain"
+          ],
+          "cta": "Follow Project Cedar for future updates on the pilot phase."
+        },
+        "critique": {
+          "passes_review": false,
+          "issues": [
+            "The script repeats 'Project Cedar' and 'pilot phase' redundantly in the first sentence.",
+            "The phrase 'Omar Reed is identified as the owner' uses passive voice which weakens the educational tone; direct attribution is stronger.",
+            "The statement 'Please note that no delivery guarantee or revenue forecast is supplied' sounds like a disclaimer rather than an educational fact; it should be framed neutrally as 'no guarantees or forecasts are provided'.",
+            "Image prompt #2 describes Omar Reed as a 'small figure', which may imply a person is present in the image, contradicting the instruction that creative plans should not depict named people unless explicitly shown in evidence.",
+            "The script includes a source details line at the end which breaks the flow of the marketing copy.",
+            "Review omitted material source details; restored from original input."
+          ],
+          "revised_script": "Project Cedar launches a pilot phase with a defined shipment schedule. The project involves delivering 18 sensors on December 3, 2026. Omar Reed is the owner of this initiative. The total budget allocated for this effort is USD 960. Customer refunds are available within 30 days, strictly limited to unopened items. Please note that no delivery guarantee or revenue forecast is provided for this project.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "revised_captions": {
+            "linkedin": "Project Cedar begins a pilot phase: 18 sensors scheduled for December 3, 2026. Owner Omar Reed. Budget USD 960. Refunds available within 30 days for unopened items only. No delivery guarantee or forecast provided.",
+            "x": "Project Cedar pilot: 18 sensors on Dec 3, 2026. $960 budget. Omar Reed. 30-day refunds (unopened only). No guarantees."
+          },
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.",
+            "issues": [
+              "Review omitted material source details; restored from original input."
+            ]
+          }
+        },
+        "final_script": "Project Cedar launches a pilot phase with a defined shipment schedule. The project involves delivering 18 sensors on December 3, 2026. Omar Reed is the owner of this initiative. The total budget allocated for this effort is USD 960. Customer refunds are available within 30 days, strictly limited to unopened items. Please note that no delivery guarantee or revenue forecast is provided for this project.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+        "final_captions": {
+          "linkedin": "Project Cedar begins a pilot phase: 18 sensors scheduled for December 3, 2026. Owner Omar Reed. Budget USD 960. Refunds available within 30 days for unopened items only. No delivery guarantee or forecast provided.",
+          "x": "Project Cedar pilot: 18 sensors on Dec 3, 2026. $960 budget. Omar Reed. 30-day refunds (unopened only). No guarantees."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 385.2,
+      "execution": {
+        "mode": "local",
+        "engines": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.5:4b"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Content script: missing numerical source details were restored verbatim.",
+          "Content script: missing numerical source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

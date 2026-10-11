@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-08",
+  "review_kind": "Source-based manual inspection; automated screens are separate",
+  "launch_acceptance": "not yet passed",
+  "evidence": {
+    "availability-2026-10-08.json": {
+      "sha256": "803787452e3bc972a70c42dbcb3b91f2c4cc11f026b6fd0109c3e338488f660c"
+    },
+    "hosted-boundaries-2026-10-08.json": {
+      "sha256": "1f382203c1ad3ff27ce0a46998c77b3bb6ecb478f23e69822cd6fb30e04d39a4",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "ed7c49f7cc4544dfb9938be7796855925ea7bc533f0d18a259553f921c191019",
+        "pipeline_sha256": "d323939077d3669fcc9fba8cd5c7358d92efb2daa5cca813f4a62c30c5fd444d"
+      }
+    },
+    "hosted-final-2026-10-08.json": {
+      "sha256": "0c23460336cdbb12c3e14bca4a6bbe4762fe317cad013016f36ed5afdb186577",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "1c1f3b80a91d63fc555f3716c9c2547a28d77ae17011a7e594dbb42d5c29f2b0",
+        "pipeline_sha256": "d323939077d3669fcc9fba8cd5c7358d92efb2daa5cca813f4a62c30c5fd444d"
+      }
+    },
+    "hosted-launch-corrected-2026-10-08.json": {
+      "sha256": "c993145f0bde741fafe1399ad399841d31e03238e3350f9e0418eff3caa05d32",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "1c1f3b80a91d63fc555f3716c9c2547a28d77ae17011a7e594dbb42d5c29f2b0",
+        "pipeline_sha256": "5eb0e66d001c409e4fbc4ae93d2f9d7cdb11c982849c831e7fa6ff94cb1c7e15"
+      }
+    },
+    "local-launch-targets-final-2026-10-08.json": {
+      "sha256": "c086076c2e2ac63c9ad3a8b9606238cbb50ff8492296d57be2058d5a54eab111",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "41c026345d89bc829972db714894853bb3f2434e595f021392c97d7b461fe112",
+        "pipeline_sha256": "89d091961d89f9637d828451ed9e5fb2b546519efe3347c4c2066851544e0320"
+      }
+    },
+    "local-launch-target-fixtures-2026-10-08.json": {
+      "sha256": "41c026345d89bc829972db714894853bb3f2434e595f021392c97d7b461fe112"
+    },
+    "real-url-extraction-check-2026-10-08.json": {
+      "sha256": "1d1ec4030f9b0391a7f213251ea1e5de3e2450c7d7c7c39d44dee04f867b3b31"
+    }
+  },
+  "completed_hosted_profile": {
+    "file": "hosted-final-2026-10-08.json",
+    "cases": 60,
+    "execution_errors": 0,
+    "local_fallbacks": 0,
+    "models": {
+      "llama": 54,
+      "qwen_coder": 6
+    },
+    "screens": {
+      "facts_present": "88/88",
+      "missing_answer_refusals": "10/10",
+      "syntax_checks": "6/6",
+      "required_escalations": "4/4",
+      "supported_support_answers": "2/2"
+    },
+    "scope": "Earlier d323 profile, not current code acceptance. Expected fact presence is not factual accuracy.",
+    "quality_findings": [
+      {
+        "case": "content-05",
+        "issue": "Owner Noah Lane was assigned an unsupported presenter role and routine lighting was called innovation."
+      },
+      {
+        "case": "content-03",
+        "issue": "A pilot purpose (test and refine) was not supplied."
+      },
+      {
+        "case": "research-05",
+        "issue": "Grouped [S1, S2] citations did not produce individual interactive evidence links."
+      }
+    ]
+  },
+  "intermediate_hosted_profile": {
+    "file": "hosted-launch-corrected-2026-10-08.json",
+    "completed": 6,
+    "errors": 1,
+    "stop": "TRACE conservative 7000 text reservation ceiling; not a new provider HTTP 429",
+    "quality_findings": [
+      "content-05 invented a new lighting experience/future positioning.",
+      "content-03 invented potential customers/stakeholders as an audience."
+    ],
+    "scope": "5eb0 intermediate profile. Later purpose/audience changes invalidate resuming this file as current evidence."
+  },
+  "latest_changes": [
+    "Finite free-mode phrase checks for observed presenter, promotional, purpose and audience inventions.",
+    "Normalize valid grouped citations into individual [S#] links; reject groups containing unknown labels.",
+    "Bound compressed wire and decoded HTML to 8 MB, including concatenated gzip members.",
+    "No-inference public deployment wiring checker."
+  ],
+  "latest_local_targeted_profile": {
+    "file": "local-launch-targets-final-2026-10-08.json",
+    "model": "qwen3.5:4b",
+    "cases": 2,
+    "execution_errors": 0,
+    "seconds": {
+      "content-05": 353.15,
+      "content-03": 234.19
+    },
+    "screens": "4/4 expected facts present; both outputs validate transport schemas.",
+    "quality_acceptance": "failed",
+    "findings": [
+      "content-05 converts no delivery guarantee or revenue forecast is supplied into no guarantees or forecasts apply; unknown evidence does not establish their absence.",
+      "content-03 caption says the owner oversees a shipment without an explicit assignment.",
+      "Both reviews remain failed, and a verbatim refund condition was redundantly restored. Local fallback has substantial latency."
+    ],
+    "scope": "Final 89d0 profile on just two fixtures. Does not certify all local tools or hosted outputs."
+  },
+  "tests": {
+    "backend_built_native_arm64": 192,
+    "frontend": 8,
+    "frontend_types_and_production_build": "passed",
+    "current_commit_native_amd64_ci": "pending push/checks"
+  },
+  "real_url": "Official Python essay extracted nonempty text after compression fix; no AI requested. See sanitized metadata, not a full copyrighted text copy.",
+  "resources": "After local targeted generation, /api/ps was empty; restarted API reported ready and all native capabilities. Local public protection is false intentionally; public server needs Turnstile.",
+  "remaining": [
+    "Fresh final-profile hosted affected cases and complete benchmark after deliberate availability check/reset, using a new filename.",
+    "Further source-quality work for local fallback; do not promise equal hosted/local quality.",
+    "Choose/provision host, configure HTTPS/Turnstile/exact origins, connect Vercel and verify all public flows.",
+    "Actual target-server peak memory, concurrency, latency, persistence and frontend field performance.",
+    "Subjective image/speech review and varied real/adversarial sources."
+  ],
+  "constraints": "No paid OpenAI calls, quota bypass/reset, production publication, cloud purchase or PR merge."
+}

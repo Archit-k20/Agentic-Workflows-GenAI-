@@ -1,0 +1,9 @@
+{
+  "scope": "Actual official URL extraction on the deployed VM, without AI or copyrighted source body. Earlier ad-hoc harness used the wrong tuple assertion; corrected tuple contract here.",
+  "url": "https://docs.python.org/3/tutorial/",
+  "title": "The Python Tutorial \u00b6",
+  "characters": 2307,
+  "text_sha256": "7f757f745017084de8bd1da163ed47a61f6853a7df3fe7eb2ce4001ed3f5f2c5",
+  "seconds": 0.36,
+  "passed": true
+}

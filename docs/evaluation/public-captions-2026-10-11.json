@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-11",
+  "backend_commit": "1d5cca5",
+  "scope": "Actual anonymous public browser runs; no AI inference for captions.",
+  "youtube": {
+    "url": "https://www.youtube.com/watch?v=aircAruvnKk",
+    "passed": false,
+    "seconds": 4,
+    "error": "Error fetching transcript: no element found: line 1, column 0",
+    "cause": "Unusable upstream transcript response. Not proof of a specific blocking cause.",
+    "inputs_preserved": true,
+    "automatic_retry": false
+  },
+  "pasted_transcript": {
+    "passed": true,
+    "seconds": 1,
+    "result": {
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "transcript text",
+            "tokens": 40,
+            "complete": true
+          },
+          {
+            "source": "Extracted text",
+            "tokens": 40,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "tool": "captions",
+      "text": "Synthetic rehearsal transcript. Project Cedar ships 18 sensors on December 3, 2026. Omar Reed owns the project. The total pilot budget is USD 960. This is a pilot, not a general launch."
+    }
+  }
+}

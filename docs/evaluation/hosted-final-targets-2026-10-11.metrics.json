@@ -1,0 +1,81 @@
+{
+  "mode": "free",
+  "expected_cases": 20,
+  "completed_cases": 20,
+  "execution_failures": [
+    {
+      "id": "research-06",
+      "error": "Research report failed source/structure checks: Missing report heading: Executive Summary; Missing report heading: Findings; Missing report heading: Risks and Gaps; Missing report heading: Recommended Next Questions; Missing report heading: Source List; Missing or unknown source citation labels.; Missing inline citations in Executive Summary; Missing inline citations in Findings; A supplied source is missing from the report: S1"
+    },
+    {
+      "id": "support-03",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "support-04",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "support-05",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "support-06",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "content-01",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "content-02",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "content-04",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "content-06",
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+    },
+    {
+      "id": "documents-06",
+      "error": "Document Intelligence could not process any uploaded files."
+    },
+    {
+      "id": "documents-08",
+      "error": "Document Intelligence could not process any uploaded files."
+    }
+  ],
+  "fact_presence": {
+    "matched": 8.0,
+    "expected": 22,
+    "rate": 0.36363636363636365,
+    "definition": "Expected-fact-weighted output-only presence; zero-fact cases do not inflate this rate. Errors/missing results score zero."
+  },
+  "absent_answer_refusal": {
+    "passed": 0,
+    "expected": 0
+  },
+  "compiler_checks": {
+    "passed": 6,
+    "expected": 6,
+    "scope": "Syntax/compilation only, not behavior or security."
+  },
+  "required_escalations": {
+    "passed": 0,
+    "expected": 4
+  },
+  "supported_support_answers": {
+    "passed": 0,
+    "expected": 0,
+    "scope": "Correct routing only; answer meaning still needs grounding review."
+  },
+  "invalid_citation_cases": [],
+  "missing_required_citation_cases": [],
+  "missing_research_section_cases": [],
+  "missing_support_draft_citation_cases": [],
+  "hosted_fallback_cases": [],
+  "rubric_gate": "Separate grounding/usefulness review required; these screening metrics cannot certify accuracy."
+}

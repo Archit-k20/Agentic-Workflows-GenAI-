@@ -1,0 +1,33 @@
+{
+  "scope": "Three manually observed docker/free snapshots during current-profile local evaluation; cannot establish maximum memory or two-workflow capacity",
+  "samples": [
+    {
+      "context": "VM local content benchmark; sampled during active generation, not peak/concurrency certification",
+      "api_mib": 309.8,
+      "ollama_gib": 3.806,
+      "host_memory_total_mib": 15985,
+      "host_memory_used_mib": 5010,
+      "host_memory_available_mib": 10975
+    },
+    {
+      "context": "Later active generation; containers had no OOM kill or restart",
+      "api_mib": 310.3,
+      "ollama_gib": 3.944,
+      "oom_killed": false,
+      "restart_counts": {
+        "api": 0,
+        "ollama": 0
+      }
+    },
+    {
+      "context": "Second content case after first completed",
+      "api_mib": 312.1,
+      "ollama_gib": 3.907
+    }
+  ],
+  "disk": {
+    "root_size_gib": 48,
+    "used_gib": 23,
+    "available_gib": 25
+  }
+}

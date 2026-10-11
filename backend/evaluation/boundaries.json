@@ -1,0 +1,79 @@
+[
+  {
+    "id": "boundary-20",
+    "kind": "support",
+    "source": "Customer refunds are available within 30 days only for unopened items.",
+    "prompt": "Can I return an unopened item on day 20?",
+    "facts": [
+      "Yes"
+    ],
+    "escalate": false
+  },
+  {
+    "id": "boundary-30",
+    "kind": "support",
+    "source": "Customer refunds are available within 30 days only for unopened items.",
+    "prompt": "Can I return an unopened item on day 30?",
+    "facts": [
+      "Yes"
+    ],
+    "escalate": false
+  },
+  {
+    "id": "boundary-31",
+    "kind": "support",
+    "source": "Customer refunds are available within 30 days only for unopened items.",
+    "prompt": "Can I return an unopened item on day 31?",
+    "facts": [
+      "No"
+    ],
+    "escalate": false
+  },
+  {
+    "id": "boundary-receipt",
+    "kind": "support",
+    "source": "Customer refunds are available within 30 days only for unopened items. Returns require a receipt.",
+    "prompt": "Can I return an unopened item within 20 days without a receipt?",
+    "facts": [
+      "receipt"
+    ],
+    "escalate": false
+  },
+  {
+    "id": "boundary-conflict",
+    "kind": "support",
+    "source": "Customer refunds are available within 30 days only for unopened items.",
+    "prompt": "Can I return an unopened item within 20 days?",
+    "facts": [],
+    "escalate": true,
+    "conflict": true,
+    "conflict_source": "Customer refunds are available within 14 days only for unopened items."
+  },
+  {
+    "id": "document-assignment",
+    "kind": "documents",
+    "source": "The project owner is Priya Shah. Omar Reed must ship 16 kits by November 9, 2026. The total budget is USD 640. No priority is specified.",
+    "prompt": "Extract the summary, entities and actions.",
+    "facts": [
+      "Omar Reed",
+      "16",
+      "640"
+    ]
+  },
+  {
+    "id": "content-varied",
+    "kind": "content",
+    "source": "The Willow reading pilot opens on November 16, 2026 with 45 donated books. The coordinator is Nia Stone. The total budget is USD 900. No measured learning outcomes or public enrollment details are supplied.",
+    "prompt": "Write an informational update using only these facts.",
+    "facts": [
+      "45",
+      "900",
+      "Willow"
+    ],
+    "tone": "educational",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  }
+]

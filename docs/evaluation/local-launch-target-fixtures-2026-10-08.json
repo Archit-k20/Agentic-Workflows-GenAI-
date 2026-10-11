@@ -1,0 +1,32 @@
+[
+  {
+    "id": "content-05",
+    "kind": "content",
+    "source": "Project Elm ships 25 lamps on February 6, 2027. The owner is Noah Lane. The budget is USD 875. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Elm",
+      "25"
+    ],
+    "tone": "social-first",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  },
+  {
+    "id": "content-03",
+    "kind": "content",
+    "source": "Project Cedar ships 18 sensors on December 3, 2026. The owner is Omar Reed. The budget is USD 960. This is a pilot, not a general launch. Customer refunds are available within 30 days only for unopened items. No delivery guarantee or revenue forecast is supplied.",
+    "prompt": "Create a launch package using only these supplied pilot facts.",
+    "facts": [
+      "Cedar",
+      "18"
+    ],
+    "tone": "educational",
+    "platforms": [
+      "linkedin",
+      "x"
+    ]
+  }
+]

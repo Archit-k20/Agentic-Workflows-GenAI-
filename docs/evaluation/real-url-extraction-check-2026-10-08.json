@@ -1,0 +1,13 @@
+{
+  "source": "https://www.python.org/doc/essays/blurb/",
+  "mode": "real source extraction, no AI request",
+  "seconds": 2.42,
+  "title": "What is Python? Executive Summary",
+  "characters": 1731,
+  "error": null,
+  "checks": {
+    "mentions_dynamic_typing": true,
+    "mentions_interpreted": true,
+    "nonempty": true
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "seconds": 9.656,
+  "prompt": "Minimal editorial illustration of a cobalt-blue cube on warm cream paper, with exactly one orange sphere beside it. Soft directional shadows, clean composition, no letters or logos.",
+  "scope": "Separate operator process on the deployed AMD64 VM, actual /runs SSE and session-owned artifact HTTP handlers with live private HF inference. Synthetic isolated Cloudflare budget rejects before submission; production ledger/protection unchanged. This does not substitute for a successful public browser image run.",
+  "stages": [
+    {
+      "name": "Generate image",
+      "status": "running"
+    },
+    {
+      "name": "Hugging Face image fallback",
+      "status": "running"
+    },
+    {
+      "name": "Hugging Face image fallback",
+      "status": "completed"
+    },
+    {
+      "name": "Generate image",
+      "status": "completed"
+    }
+  ],
+  "execution": {
+    "mode": "free",
+    "engines": [
+      {
+        "provider": "huggingface-zerogpu",
+        "model": "black-forest-labs/FLUX.1-schnell@741f7c3ce8b383c54771c7003378a50191e9efe9"
+      }
+    ],
+    "fallback": true,
+    "coverage": [],
+    "warnings": [
+      "Cloudflare image capacity is exhausted. Continuing with our private Hugging Face ZeroGPU worker; its shared GPU quota and queue also apply."
+    ]
+  },
+  "image": {
+    "width": 1024,
+    "height": 1024,
+    "bytes": 234438
+  },
+  "ownership": {
+    "owner_status": 200,
+    "other_session_status": 404,
+    "anonymous_status": 401,
+    "cleared_session_status": 401
+  },
+  "public_browser": {
+    "generation_passed": false,
+    "visitor_verification_passed": true,
+    "reason": "Daily shared-network image allowance exhausted; inputs retained, explicit retry shown. No quota reset or bypass."
+  },
+  "deployment": {
+    "backend_commit": "3529b105ffee12b5b90858f8d625f2cde19e8b05",
+    "space_commit": "ed46b1e39b0b8c90c4e6c25084ed37eb644f8168",
+    "space": "Lamstersickness/trace-image-fallback",
+    "private": true,
+    "hardware": "zero-a10g",
+    "space_stage": "RUNNING",
+    "frontend_deployment": "dpl_F5FMTnrKFjsTapNzd2UroSWL6stA",
+    "frontend": "https://trace-agentic-workspace.vercel.app",
+    "backend": "https://trace-api.34.93.169.35.sslip.io",
+    "production_read_token_only": true,
+    "recovery_copy_updated": true
+  },
+  "verification": {
+    "backend_tests_local": 245,
+    "backend_tests_deployed_amd64": 245,
+    "public_wiring_passed": 18,
+    "ci": "https://github.com/Archit-k20/Agentic-Workflows-GenAI-/actions/runs/37924817983",
+    "ci_frontend": "success",
+    "ci_backend_amd64": "success",
+    "ci_backend_arm64": "success"
+  },
+  "visual_review": {
+    "blue_cube": true,
+    "one_orange_sphere": true,
+    "cream_background_and_shadows": true,
+    "no_visible_letters_or_logos": true,
+    "scope": "One illustration visually matched the requested composition. This is not general image-quality acceptance; the separate teapot generation had a malformed handle."
+  }
+}

@@ -1,0 +1,530 @@
+{
+  "mode": "local",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "41c026345d89bc829972db714894853bb3f2434e595f021392c97d7b461fe112",
+    "pipeline_sha256": "d3fab423d14e534e11fb21e8f0ef76b5d7dd9987c257ce9fc1be95c148c49b4b"
+  },
+  "fixture_count": 2,
+  "rows": [
+    {
+      "id": "content-05",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": false,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "local",
+          "engines": [
+            {
+              "provider": "ollama",
+              "model": "qwen3.5:4b"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Structured output needed one format/source repair: Content source checks: Unspecified guarantee evidence cannot establish its absence.; Unspecified forecast evidence cannot establish its absence.",
+            "Content script: missing numerical source details were restored verbatim.",
+            "Content script: missing numerical source details were restored verbatim."
+          ]
+        },
+        "tool": "content",
+        "plan": {
+          "content_angle": "Introducing Project Elm's limited pilot shipment of 25 lamps, with specific logistics and financial details for interested parties.",
+          "audience": "",
+          "hooks": [
+            "Project Elm is shipping exactly 25 lamps on February 6, 2027.",
+            "The pilot budget allocated for this initiative is USD 875.",
+            "Refunds are available within 30 days, but only for unopened items."
+          ],
+          "sections": [
+            "Project Elm has confirmed a shipment of 25 lamps scheduled for February 6, 2027. This project is currently operating as a pilot program.",
+            "The budget associated with this pilot initiative is USD 875. Noah Lane is the owner of Project Elm.",
+            "Customer refunds are available within a 30-day window. These conditions apply specifically to unopened items only.",
+            "Please note that no delivery guarantee or revenue forecast has been supplied for this project."
+          ],
+          "cta": "Contact us for more information regarding the pilot details.",
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "title": "Project Elm Pilot: 25 Lamps, Specific Logistics",
+          "script": "Project Elm has confirmed a shipment of exactly 25 lamps scheduled for February 6, 2027. This project is currently operating as a pilot program. The budget associated with this initiative is USD 875. Noah Lane is the owner of Project Elm. Customer refunds are available within a 30-day window, but only for unopened items. Please note that no delivery guarantee or revenue forecast has been supplied.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "image_prompts": [
+            "A minimalist flat lay showing a stack of 25 identical modern lamps arranged neatly on a neutral surface, with a subtle date stamp graphic reading 'February 6, 2027' in the corner.",
+            "An abstract architectural sketch style illustration featuring a single lamp silhouette against a soft gradient background, representing the pilot nature of Project Elm.",
+            "A clean, high-contrast image of a single lamp casting a warm glow on a textured wall, symbolizing the specific lighting product being shipped.",
+            "A simple infographic mockup displaying the text '25 Lamps' and '$875 Budget' alongside a small icon of Noah Lane's name, set against a neutral background."
+          ],
+          "captions": {
+            "linkedin": "Project Elm is shipping exactly 25 lamps on February 6, 2027. This pilot initiative has a budget of USD 875, owned by Noah Lane. Refunds are available within 30 days for unopened items only.",
+            "x": "Project Elm ships 25 lamps on Feb 6, 2027. Pilot program. Budget: $875 (Noah Lane). Refunds: 30 days, unopened only."
+          },
+          "hashtags": [
+            "ProjectElm",
+            "ProductPilot",
+            "LimitedShipment",
+            "DesignLighting"
+          ],
+          "cta": "Contact us for more information regarding the pilot details."
+        },
+        "critique": {
+          "passes_review": false,
+          "issues": [
+            "The script and captions claim Noah Lane is 'the owner' of Project Elm, but the source text only states he is 'the owner' without explicitly defining his role as the project's sole proprietor or author. While 'owner' is supplied, framing it as a definitive title in the copy risks over-claiming his specific relationship to the project beyond what was stated.",
+            "The script includes a sentence stating 'Please note that no delivery guarantee or revenue forecast has been supplied.' This phrasing turns a missing fact into a negative claim within the marketing copy. The instruction requires preserving missing information as unknown rather than creating a statement of absence in the narrative flow, which can sound like an admission of failure.",
+            "The image prompts describe specific visual elements (like 'Noah Lane's name') that imply evidence of product contents or specific personal branding not confirmed by the source text. Prompts should remain generic suggestions for proposed illustrations.",
+            "The captions on X are overly abbreviated and lack the necessary context about the pilot nature, making them less clear than the script while still adhering to the platform's brevity.",
+            "Review omitted material source details; restored from original input."
+          ],
+          "revised_script": "Project Elm is launching a limited pilot program with a shipment of exactly 25 lamps scheduled for February 6, 2027. The initiative has an allocated budget of USD 875. For this pilot, customer refunds are available within 30 days, but strictly for unopened items only. Please note that no delivery guarantee or revenue forecast is currently provided for this project.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "revised_captions": {
+            "linkedin": "Project Elm launches a pilot shipment of 25 lamps on Feb 6, 2027. Budget: $875. Refunds available within 30 days for unopened items only. No delivery guarantee or forecast supplied.",
+            "x": "Project Elm pilot: 25 lamps, Feb 6, 2027. $875 budget. Refunds 30 days (unopened only). Details via contact."
+          },
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.",
+            "issues": [
+              "Review omitted material source details; restored from original input."
+            ]
+          }
+        },
+        "final_script": "Project Elm is launching a limited pilot program with a shipment of exactly 25 lamps scheduled for February 6, 2027. The initiative has an allocated budget of USD 875. For this pilot, customer refunds are available within 30 days, but strictly for unopened items only. Please note that no delivery guarantee or revenue forecast is currently provided for this project.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+        "final_captions": {
+          "linkedin": "Project Elm launches a pilot shipment of 25 lamps on Feb 6, 2027. Budget: $875. Refunds available within 30 days for unopened items only. No delivery guarantee or forecast supplied.",
+          "x": "Project Elm pilot: 25 lamps, Feb 6, 2027. $875 budget. Refunds 30 days (unopened only). Details via contact."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 621.92,
+      "execution": {
+        "mode": "local",
+        "engines": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.5:4b"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Structured output needed one format/source repair: Content source checks: Unspecified guarantee evidence cannot establish its absence.; Unspecified forecast evidence cannot establish its absence.",
+          "Content script: missing numerical source details were restored verbatim.",
+          "Content script: missing numerical source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: Content source checks: Unspecified guarantee evidence cannot establish its absence.; Unspecified forecast evidence cannot establish its absence."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-03",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": false,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "local",
+          "engines": [
+            {
+              "provider": "ollama",
+              "model": "qwen3.5:4b"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Structured output needed one format/source repair: Content source checks: Unspecified guarantee evidence cannot establish its absence.; Unspecified forecast evidence cannot establish its absence.",
+            "Content script: missing numerical source details were restored verbatim.",
+            "Content script: missing numerical source details were restored verbatim."
+          ]
+        },
+        "tool": "content",
+        "plan": {
+          "content_angle": "Educational overview of Project Cedar's specific pilot shipment details and financial scope.",
+          "audience": "",
+          "hooks": [
+            "Project Cedar is a limited pilot, not a general launch.",
+            "Only 18 sensors are scheduled for shipment on December 3, 2026.",
+            "The project operates within a fixed budget of USD 960."
+          ],
+          "sections": [
+            "Project Cedar is currently operating as a pilot program rather than a general launch.",
+            "A shipment of 18 sensors is scheduled for December 3, 2026.",
+            "The project has a defined budget of USD 960.",
+            "Customer refunds are available within 30 days, but only for unopened items.",
+            "No delivery guarantee or revenue forecast is supplied for this initiative."
+          ],
+          "cta": "Learn more about the pilot parameters.",
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "title": "Project Cedar Pilot Overview",
+          "script": "Project Cedar is currently operating as a limited pilot program, not a general launch. A shipment of 18 sensors is scheduled for December 3, 2026. The project operates within a fixed budget of USD 960. Customer refunds are available within 30 days, but only for unopened items. The provided documentation does not specify a delivery guarantee or revenue forecast.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "image_prompts": [
+            "A minimalist infographic showing a calendar icon with the date December 3, 2026 highlighted in blue, representing a future scheduled shipment.",
+            "An illustration of 18 small sensor devices arranged neatly on a neutral surface, labeled as part of a pilot program.",
+            "A simple graphic displaying the amount USD 960 next to a budget tag icon, emphasizing the project's financial scope.",
+            "A visual representation of an open and closed package, with text indicating 'Refunds available within 30 days for unopened items only'.",
+            "A clean diagram showing a 'Pilot Program' label above a ship icon, with a note stating 'No delivery guarantee or revenue forecast specified in documentation'."
+          ],
+          "captions": {
+            "linkedin": "Project Cedar is running as a limited pilot, not a general launch. 18 sensors are scheduled for shipment on Dec 3, 2026, within a USD 960 budget. Refunds apply only to unopened items within 30 days. Documentation does not specify delivery guarantees or revenue forecasts.",
+            "x": "Project Cedar pilot: 18 sensors ship Dec 3, 2026. Budget: $960. Refunds for unopened items only (30 days). No specified delivery guarantee or revenue forecast."
+          },
+          "hashtags": [
+            "ProjectCedar",
+            "PilotProgram",
+            "TechLaunch",
+            "SensorTechnology"
+          ],
+          "cta": "Learn more about the pilot parameters."
+        },
+        "critique": {
+          "passes_review": false,
+          "issues": [
+            "Review omitted material source details; restored from original input."
+          ],
+          "revised_script": "Project Cedar is currently operating as a limited pilot program, not a general launch. A shipment of 18 sensors is scheduled for December 3, 2026. The project operates within a fixed budget of USD 960. Customer refunds are available within 30 days, but only for unopened items. Documentation does not specify a delivery guarantee or revenue forecast.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "revised_captions": {
+            "linkedin": "Project Cedar is running as a limited pilot. 18 sensors ship Dec 3, 2026, on a USD 960 budget. Refunds apply to unopened items only (30 days).",
+            "x": "Project Cedar pilot: 18 sensors ship Dec 3, 2026. Budget: $960. Refunds for unopened items only."
+          },
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.",
+            "issues": [
+              "Review omitted material source details; restored from original input."
+            ]
+          }
+        },
+        "final_script": "Project Cedar is currently operating as a limited pilot program, not a general launch. A shipment of 18 sensors is scheduled for December 3, 2026. The project operates within a fixed budget of USD 960. Customer refunds are available within 30 days, but only for unopened items. Documentation does not specify a delivery guarantee or revenue forecast.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+        "final_captions": {
+          "linkedin": "Project Cedar is running as a limited pilot. 18 sensors ship Dec 3, 2026, on a USD 960 budget. Refunds apply to unopened items only (30 days).",
+          "x": "Project Cedar pilot: 18 sensors ship Dec 3, 2026. Budget: $960. Refunds for unopened items only."
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 552.92,
+      "execution": {
+        "mode": "local",
+        "engines": [
+          {
+            "provider": "ollama",
+            "model": "qwen3.5:4b"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Structured output needed one format/source repair: Content source checks: Unspecified guarantee evidence cannot establish its absence.; Unspecified forecast evidence cannot establish its absence.",
+          "Content script: missing numerical source details were restored verbatim.",
+          "Content script: missing numerical source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: Content source checks: Unspecified guarantee evidence cannot establish its absence.; Unspecified forecast evidence cannot establish its absence."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Generate with local text model",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

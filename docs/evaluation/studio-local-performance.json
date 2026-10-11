@@ -1,0 +1,113 @@
+{
+  "conditions": "Local production builds in Codex WebKit browser, no throttling, 1.5-second observation window. Final compact Research excerpt. Local lab measurements, not field certification.",
+  "runs": [
+    {
+      "version": "baseline",
+      "width": 1440,
+      "run": 1,
+      "cls": "0.007006967060523431",
+      "complete": "true",
+      "fcp": "108",
+      "lcp": "108"
+    },
+    {
+      "version": "baseline",
+      "width": 1440,
+      "run": 2,
+      "cls": "0.007001361025377228",
+      "complete": "true",
+      "fcp": "88",
+      "lcp": "88"
+    },
+    {
+      "version": "baseline",
+      "width": 1440,
+      "run": 3,
+      "cls": "0.007006967060523431",
+      "complete": "true",
+      "fcp": "92",
+      "lcp": "92"
+    },
+    {
+      "version": "baseline",
+      "width": 360,
+      "run": 1,
+      "cls": "0.012471095129779662",
+      "complete": "true",
+      "fcp": "76",
+      "lcp": "76"
+    },
+    {
+      "version": "baseline",
+      "width": 360,
+      "run": 2,
+      "cls": "0.01852182355967078",
+      "complete": "true",
+      "fcp": "68",
+      "lcp": "68"
+    },
+    {
+      "version": "baseline",
+      "width": 360,
+      "run": 3,
+      "cls": "0.017830630144032925",
+      "complete": "true",
+      "fcp": "72",
+      "lcp": "72"
+    },
+    {
+      "version": "studio",
+      "width": 1440,
+      "run": 1,
+      "cls": "0.003929734837829004",
+      "complete": "true",
+      "fcp": "124",
+      "lcp": "356"
+    },
+    {
+      "version": "studio",
+      "width": 1440,
+      "run": 2,
+      "cls": "0.0039018024711451904",
+      "complete": "true",
+      "fcp": "80",
+      "lcp": "272"
+    },
+    {
+      "version": "studio",
+      "width": 1440,
+      "run": 3,
+      "cls": "0.0039018024711451904",
+      "complete": "true",
+      "fcp": "76",
+      "lcp": "272"
+    },
+    {
+      "version": "studio",
+      "width": 360,
+      "run": 1,
+      "cls": "0.05255473251028807",
+      "complete": "true",
+      "fcp": "88",
+      "lcp": "288"
+    },
+    {
+      "version": "studio",
+      "width": 360,
+      "run": 2,
+      "cls": "0.05255473251028807",
+      "complete": "true",
+      "fcp": "80",
+      "lcp": "268"
+    },
+    {
+      "version": "studio",
+      "width": 360,
+      "run": 3,
+      "cls": "0.05255473251028807",
+      "complete": "true",
+      "fcp": "68",
+      "lcp": "508"
+    }
+  ]
+}

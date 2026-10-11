@@ -1,0 +1,19 @@
+{
+  "checked_at_utc": "2026-10-08T14:38:02.341957+00:00",
+  "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "output_limit": 8,
+  "http_status": 200,
+  "cf_ray": "a475e3117edd549c-DEL",
+  "success": true,
+  "errors": [],
+  "reply": "READY",
+  "usage": {
+    "prompt_tokens": 39,
+    "completion_tokens": 2,
+    "total_tokens": 41,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "neurons": 1.449649691581726
+  }
+}

@@ -1,0 +1,1114 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd"
+  },
+  "fixture_count": 60,
+  "rows": [
+    {
+      "id": "summary-01",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 60,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 60,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Alder, owned by Priya Shah, is scheduled to ship 32 kits on November 9, 2026, as part of a pilot. The project has a budget of USD 740. It is noted that this is not a general launch. Customers can request refunds within 30 days, but only for unopened items. There is no guarantee for delivery, and no revenue forecast is available for the project."
+      },
+      "error": null,
+      "seconds": 5.29,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 60,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 60,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-02",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 60,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 60,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Birch, owned by Mira Chen, is scheduled to ship 40 repair kits on October 14, 2026, as part of a pilot. The project has a budget of USD 1250. It is noted that this is not a general launch. Customers can receive refunds within 30 days, but only for unopened items. There is no guarantee for delivery, and no revenue forecast is available for this project."
+      },
+      "error": null,
+      "seconds": 3.85,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 60,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 60,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-03",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 58,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 58,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Cedar, owned by Omar Reed, is scheduled to ship 18 sensors on December 3, 2026, as part of a pilot. The project has a budget of USD 960. It is noted that this is not a general launch. Customers may be eligible for refunds within 30 days, but only if items are unopened. There is no guarantee for delivery, and no revenue forecast is available for the project."
+      },
+      "error": null,
+      "seconds": 3.62,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 58,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 58,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-04",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 59,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 59,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Delta, owned by Sara Bell, is scheduled to ship 64 meters on January 12, 2027, as part of a pilot. The project has a budget of USD 2100. It is noted that this is not a general launch. Customers may be eligible for refunds within 30 days, but this is limited to unopened items. No guarantees are provided regarding delivery or revenue forecasts."
+      },
+      "error": null,
+      "seconds": 3.04,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 59,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-05",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 58,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 58,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Elm, owned by Noah Lane, is scheduled to ship 25 lamps on February 6, 2027, as part of a pilot. The project has a budget of USD 875. It is noted that this is not a general launch. Customers can request refunds within 30 days, but only for unopened items. There is no guarantee for delivery, and no revenue forecast is available for the project."
+      },
+      "error": null,
+      "seconds": 3.35,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 58,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 58,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-06",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 59,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 59,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Fir, owned by Leah Moss, is scheduled to ship 12 routers on March 21, 2027, as part of a pilot. The project has a budget of USD 330. It is noted that this is not a general launch. Customers may be eligible for refunds within 30 days, but only if the items are unopened. There is no guarantee for delivery, and no revenue forecast is available for the project."
+      },
+      "error": null,
+      "seconds": 3.96,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 59,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-07",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 59,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 59,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Grove, owned by Arun Das, is scheduled to ship 48 filters on April 8, 2027, as part of a pilot. The project has a budget of USD 1440. It is noted that this is not a general launch. Customers can request refunds within 30 days, but only for unopened items. There is no guarantee for delivery and no revenue forecast is available for the project."
+      },
+      "error": null,
+      "seconds": 5.35,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 59,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-08",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 59,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 59,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Hazel, owned by Emma Hart, is scheduled to ship 30 batteries on May 16, 2027, as part of a pilot. The project has a budget of USD 990. It is noted that this is not a general launch. Customers may be eligible for refunds within 30 days, but only if the items are unopened. There is no guarantee for delivery, and no revenue forecast is available for the project."
+      },
+      "error": null,
+      "seconds": 3.68,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 59,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 59,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-09",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 1103,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 1103,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Alder, owned by Priya Shah, is confirmed to be a limited pilot through multiple confirmations, including routine inspection records and ion records. The project is scheduled to ship 32 kits on November 9, 2026, with a budget of USD 740. It is explicitly stated that this is a pilot, not a general launch. Customers can refund unopened items within 30 days, but no delivery guarantee or revenue forecast is provided."
+      },
+      "error": null,
+      "seconds": 5.41,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 1103,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 1103,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 2/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 2/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 3/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 3/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-10",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 1103,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 1103,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "This is a limited pilot, as confirmed by routine inspection records and ion records, with confirmation repeated in the appendix. For Project Birch, the final decision is to ship 40 repair kits on October 14, 2026, with Mira Chen as the project owner and a budget of USD 1250. It is emphasized that this is a pilot, not a general launch. Customer refunds are available for unopened items within 30 days, but no delivery guarantee or revenue forecast is provided."
+      },
+      "error": null,
+      "seconds": 6.03,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 1103,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 1103,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 2/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 2/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 3/3",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 3/3",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-11",
+      "kind": "summary",
+      "score": null,
+      "result": null,
+      "error": "The shared hosted allowance is unavailable until 00:00 UTC.",
+      "seconds": 0.01,
+      "execution": {
+        "mode": "free",
+        "engines": [],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 1101,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 1101,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/3",
+            "status": "running"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review",
+  "provenance": "Ten successful summaries and then application daily hosted quota stopped case11; no local fallback. Generated before word-boundary section fix. Full new-profile acceptance pending."
+}
