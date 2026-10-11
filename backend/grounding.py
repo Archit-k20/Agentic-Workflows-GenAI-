@@ -32,21 +32,25 @@ def sentences(source):
 
 
 def material_details(source):
-    """Keep quoted numerical conditions/amounts/planned quantities, not invented facts."""
+    """Retain numerical conditions and explicit owner statements as source quotes."""
     return list(dict.fromkeys(
         sentence for sentence in sentences(source)
-        if numbers(sentence) and re.search(
+        if (numbers(sentence) and re.search(
             r"\b(?:budget|cost|price|total|refunds?|returns?|ship\w*|deliver\w*|deadline|due|quantity|units?|planned|schedule\w*)\b|[$€£₹]",
             sentence, re.I,
-        )
+        )) or re.search(r"\b(?:owner|coordinator)\s+(?:is\s+|:\s*)[A-Z]", sentence)
     ))
 
 
 def missing_details(output, source):
     present = numbers(output)
+    def missing_owner(quote):
+        match = re.search(r"\b(?:owner|coordinator)\s+(?:is\s+|:\s*)([A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3})", quote)
+        return bool(match and not re.search(r"\b" + re.escape(match.group(1)) + r"\b", output, re.I))
     return [quote for quote in material_details(source) if not numbers(quote) <= present
             or (re.search(r"\b(?:refunds?|returns?)\b", quote, re.I)
-                and normalized(quote) not in normalized(output))]
+                and normalized(quote) not in normalized(output))
+            or missing_owner(quote)]
 
 
 def claim_issues(output, source):
@@ -133,7 +137,7 @@ def unknown_absence_claims(output, source):
         for noun in ("guarantee", "forecast"):
             if not re.search(r"\b" + noun + r"s?\b", quote, re.I):
                 continue
-            for match in re.finditer(r"\bno\b[^.!?\n]{0,40}\b" + noun + r"s?\b[^.!?\n]*", output, re.I):
+            for match in re.finditer(r"\b(?:no|lack(?:s|ing)?(?:\s+of)?|absence\s+of)\b[^.!?\n]{0,40}\b" + noun + r"s?\b[^.!?\n]*", output, re.I):
                 if not re.search(r"\b(?:documented|documentation|supplied|specified|provided|reported)\b", match.group(), re.I):
                     nouns.append(noun)
     return list(dict.fromkeys(nouns))
@@ -170,7 +174,8 @@ def instructions(context):
             "to presume that a study, experiment or measured outcome exists. Proposed research questions are "
             "suggestions, not claims that such activities happened. Missing study evidence alone does not "
             "make a faithful report defective. Do not label sources untrusted, unreliable or lacking credibility "
-            "unless source evidence actually establishes that assessment. Preserve a good report unchanged when no report defect exists."
+            "unless source evidence actually establishes that assessment. 'No guarantee is supplied' is a gap in documentation, "
+            "not an actual lack/absence of a guarantee. Preserve a good report unchanged when no report defect exists."
         )
     if stage == "support-draft":
         return (
@@ -198,7 +203,8 @@ def instructions(context):
             "Do not claim innovation or "
             "breakthroughs from a routine pilot. Do not add latest, exclusive, "
             "early-adopter positioning, guarantees, contact roles or prices unless explicitly supplied. "
-            "Keep all material quantities, dates, budget amounts and refund conditions in the complete script. "
+            "Keep all material quantities, dates, budget amounts, explicit project owners and refund conditions in the complete script. "
+            "Retain an owner's supplied role without inventing contact or delivery responsibilities. "
             "Publish only supplied facts with stylistic transitions. Do not invent why the pilot exists, "
             "who it targets, future expansion, or a new customer experience. A creative plan's proposed "
             "audience and purpose must not become claims in the script or captions. "
@@ -277,6 +283,9 @@ def report_issues(report, sources):
         evidence = " ".join(s.get("summary", "") for s in sources)
         if not re.search(r"untrusted|credibility", evidence, re.I):
             issues.append("Source credibility was not established by the supplied evidence.")
+    evidence = " ".join(s.get("summary", "") + " " + " ".join(s.get("key_points", [])) for s in sources)
+    for noun in unknown_absence_claims(report, evidence):
+        issues.append("Unspecified " + noun + " evidence cannot establish its actual absence.")
     return issues
 
 
@@ -300,7 +309,7 @@ def research_review(value, previous, sources, runtime):
         runtime.research_rejections = history
     if history:
         value["rejected_revision_history"] = list(history)
-    value["source_checks"] = {"scope": "Headings, citation labels and unsupported credibility wording; not factual certification.", "issues": issues}
+    value["source_checks"] = {"scope": "Headings, citation labels, credibility wording and missing guarantee/forecast evidence; not factual certification.", "issues": issues}
     return value
 
 
@@ -395,8 +404,23 @@ def support_final(value, draft, sources, runtime):
 def restore_details(value, source, runtime, label):
     missing = missing_details(value, source)
     if missing:
-        runtime.warning(label + ": missing numerical source details were restored verbatim.")
-        value += "\n\nSource details: " + " ".join(missing)
+        runtime.warning(label + ": material source details were restored verbatim.")
+        append = []
+        for quote in missing:
+            # Repair the observed dropped 'only' condition without duplicating
+            # the same sentence. Other paraphrases remain conservatively quoted;
+            # this is not an arbitrary semantic rewrite or entailment claim.
+            replaced = False
+            if re.search(r"\b(?:refunds?|returns?)\b", quote, re.I):
+                for sentence in sentences(value):
+                    if normalized(re.sub(r"\bonly\s+", "", quote, flags=re.I)) == normalized(sentence):
+                        value = value.replace(sentence, quote, 1)
+                        replaced = True
+                        break
+            if not replaced:
+                append.append(quote)
+        if append:
+            value += "\n\nSource details: " + " ".join(append)
     return value, missing
 
 

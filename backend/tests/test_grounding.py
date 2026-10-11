@@ -193,6 +193,43 @@ def test_material_budget_and_conditions_are_restored_from_source():
     assert repaired and not g.missing_details(output, SOURCE)
 
 
+def test_content_review_retains_an_explicit_owner_omitted_by_rewrite():
+    original = {"script": SOURCE, "captions": {"x": "Alder plans 32 kits."}}
+    rewrite = SOURCE.replace("The owner is Priya Shah. ", "")
+    value = g.content_review({"passes_review": True, "issues": [], "revised_script": rewrite}, SOURCE, original, Runtime("free", "content"))
+    assert "The owner is Priya Shah." in value["revised_script"]
+    assert value["passes_review"] is False
+    assert "Contact Priya Shah" not in value["revised_script"]
+
+
+def test_equivalent_owner_wording_does_not_duplicate_owner_quote():
+    text = SOURCE.replace("The owner is Priya Shah.", "The project is owned by Priya Shah.")
+    value, repaired = g.restore_details(text, SOURCE, Runtime("free", "content"), "Script")
+    assert value == text and not repaired
+
+
+def test_dropped_only_condition_is_replaced_without_duplicate_refund_sentence():
+    text = SOURCE.replace("only for unopened", "for unopened")
+    value, repaired = g.restore_details(text, SOURCE, Runtime("free", "content"), "Script")
+    assert value == SOURCE and repaired
+    assert value.count("Customer refunds") == 1
+
+
+def test_qualifying_a_different_refund_paraphrase_does_not_remove_other_facts():
+    text = "Alder ships 32 kits; refunds are available for unopened items for 30 days."
+    value, _ = g.restore_details(text, SOURCE, Runtime("free", "content"), "Script")
+    assert text in value and POLICY in value
+
+
+def test_research_cannot_turn_missing_documentation_into_absence():
+    sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]
+    bad = REPORT.replace("No performance outcomes are supplied", "The lack of a delivery guarantee poses a risk")
+    assert any("actual absence" in issue for issue in g.report_issues(bad, sources))
+    assert not g.report_issues(REPORT, sources)
+    qualified = bad.replace("lack of a delivery guarantee", "lack of a documented delivery guarantee")
+    assert not g.report_issues(qualified, sources)
+
+
 def test_unsupported_contact_and_latest_claims_are_detected():
     issues = g.claim_issues("Contact Priya Shah about her latest initiative.", SOURCE)
     assert any("contact role" in issue for issue in issues)
