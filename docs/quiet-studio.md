@@ -4,9 +4,9 @@ Implementation branch: `codex/trace-quiet-studio`. Review base: `codex/trace-rea
 
 ## Review preview
 
-[Open the Vercel preview](https://trace-agentic-workspace-38qyyey35.vercel.app/). Deployment `dpl_5taeqJ9mnwSRvoewbs4sLs6Bfotw` built successfully from frontend commit `20ef258`. Production has not been promoted.
+[Open the Vercel preview](https://trace-agentic-workspace-a03p1rjqk.vercel.app/). Deployment `dpl_H9ZeZq1giMm8qBf8c3gmtqNwVcH2` built successfully from frontend commit `cd8910a`. Production has not been promoted.
 
-All five public preview sample routes were checked, with the sample label and result visible and no Turnstile frame mounted. [Preview sample record](evaluation/studio-preview-samples.json). Live execution from this new origin is intentionally not claimed: a non-generating CORS preflight returned **400, Disallowed CORS origin**. [Preflight record](evaluation/studio-preview-cors.json). For live preview testing, add this exact hostname to the existing Turnstile widget and this exact HTTPS origin to `TRACE_ALLOWED_ORIGINS`; preserve the production origin and all verification controls. This is unnecessary for offline sample review. Promotion to the existing production hostname uses its existing allowlisting.
+All five sample routes on the prior preview were checked, with the sample label and result visible and no Turnstile frame mounted. [Preview sample record](evaluation/studio-preview-samples.json). Live execution from preview origins is intentionally not claimed: the prior preview’s non-generating CORS preflight returned **400, Disallowed CORS origin**. [Preflight record](evaluation/studio-preview-cors.json). For live preview testing, add this exact hostname to the existing Turnstile widget and this exact HTTPS origin to `TRACE_ALLOWED_ORIGINS`; preserve the production origin and all verification controls. This is unnecessary for offline sample review. Promotion to the existing production hostname uses its existing allowlisting.
 
 ## Introductory entrance
 
