@@ -146,7 +146,14 @@ def article(url, runtime):
 
 
 def summarize(text, runtime, source="Input"):
+    from . import grounding as g
+
     check_text(text, runtime, source)
+    caveats = (
+        " Missing documentation is unknown, not proof that a guarantee or forecast does not exist. "
+        "Keep missing-evidence statements qualified as 'the supplied source does not specify'. "
+        "Do not count repeated statements or invent mention frequencies."
+    )
     parts = chunks(text)
     summaries = []
     for i, part in enumerate(parts):
@@ -156,7 +163,7 @@ def summarize(text, runtime, source="Input"):
                 [
                     {
                         "role": "system",
-                        "content": "Summarize this source section faithfully. Retain names, dates, numbers, decisions and caveats. Do not add facts.",
+                        "content": "Summarize this source section faithfully. Retain names, dates, numbers, decisions and caveats. Do not add facts." + caveats,
                     },
                     {"role": "user", "content": part},
                 ],
@@ -177,7 +184,7 @@ def summarize(text, runtime, source="Input"):
                 [
                     {
                         "role": "system",
-                        "content": "Combine section summaries faithfully. Preserve names, dates, amounts, actions and caveats.",
+                        "content": "Combine section summaries faithfully. Preserve names, dates, amounts, actions and caveats." + caveats,
                     },
                     {"role": "user", "content": part},
                 ],
@@ -191,12 +198,15 @@ def summarize(text, runtime, source="Input"):
         [
             {
                 "role": "system",
-                "content": "Write one clear summary of all supplied sections. Preserve significant dates, names, quantities and caveats; do not invent details.",
+                "content": "Write one clear summary of all supplied sections. Preserve significant dates, names, quantities and caveats; do not invent details." + caveats,
             },
             {"role": "user", "content": "\n".join(summaries)},
         ],
         limit=600,
     )
+    issues = g.summary_issues(result, text)
+    if issues:
+        raise ValueError("Summary failed source checks: " + "; ".join(issues))
     emit("stage", name="Combine complete summary", status="completed")
     return result
 

@@ -237,6 +237,30 @@ def test_does_not_provide_source_digest_is_still_missing_evidence():
     assert not g.unknown_absence_claims("The brief does not provide a delivery guarantee.", source)
 
 
+@pytest.mark.parametrize("stage", ["document", "research-source"])
+def test_summary_source_scope_cannot_assert_unknown_guarantee_absence(stage):
+    source = SOURCE + " No delivery guarantee or revenue forecast is supplied."
+    with pytest.raises(ValueError, match="actual absence"):
+        g.validate_response({"summary": "The project has no delivery guarantee."},
+                            {"stage": stage, "source": source})
+    assert not g.summary_issues("The supplied source does not specify a delivery guarantee.", source)
+
+
+def test_summary_rejects_invented_mention_frequency():
+    assert g.summary_issues("The pilot is mentioned 31 times.", SOURCE)
+    assert not g.summary_issues(SOURCE, SOURCE)
+
+
+def test_plain_summary_does_not_return_failed_source_claim(monkeypatch):
+    from backend import processing
+    monkeypatch.setattr(processing, "check_text", lambda *args: None)
+    class Model:
+        def text(self, *args, **kwargs):
+            return "The pilot is mentioned 31 times."
+    with pytest.raises(ValueError, match="Summary failed source checks"):
+        processing.summarize(SOURCE, Model())
+
+
 def test_bad_absence_wording_reaches_existing_review_without_being_accepted():
     from backend.processing import override
     sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]

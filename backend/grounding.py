@@ -152,6 +152,16 @@ def unknown_absence_claims(output, source):
     return list(dict.fromkeys(nouns))
 
 
+def summary_issues(output, source):
+    """Finite checks for observed invented numbers and missing-evidence claims."""
+    issues = []
+    extra = numbers(output) - numbers(source)
+    if extra:
+        issues.append("Numbers not present in the supplied source: " + ", ".join(sorted(extra)))
+    issues.extend(ABSENCE_REPORT_ISSUES[noun] for noun in unknown_absence_claims(output, source))
+    return issues
+
+
 @contextmanager
 def scope(runtime, stage, source="", labels=()):
     previous = runtime.grounding_context
@@ -230,6 +240,10 @@ def validate_response(value, context):
     if not context:
         return
     stage, source = context["stage"], context["source"]
+    if stage in {"document", "research-source"}:
+        issues = summary_issues(value.get("summary", ""), source)
+        if issues:
+            raise ValueError("Source summary checks: " + "; ".join(issues))
     if stage == "support-source":
         summary = value["summary"].strip().strip('"')
         complete = [normalized(s) for s in sentences(source)]
@@ -480,7 +494,7 @@ def explicit_assignee(source, owner, task):
 
 def document_analysis(value, source, runtime):
     value = json.loads(json.dumps(value))
-    issues = claim_issues(value["summary"], source)
+    issues = list(dict.fromkeys(claim_issues(value["summary"], source) + summary_issues(value["summary"], source)))
     if issues:
         raise ValueError("Document summary contains unsupported details: " + "; ".join(issues))
     value["summary"], restored = restore_details(value["summary"], source, runtime, "Document summary")
