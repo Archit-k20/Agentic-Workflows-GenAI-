@@ -1,15 +1,19 @@
 .introduction {
   position: relative;
+  isolation: isolate;
+  background: var(--atmosphere-ground);
+  --muted: #414c5c;
   --atmosphere-ink: #7c8fa9;
   --atmosphere-ground: #e8ecf2;
   --atmosphere-glow: #f7f8fa;
   --header: #f5f6f8d9;
   --button-bg: #202d43;
   --button-fg: #f6f8fc;
-  padding: 12px 12px 0;
+  padding: 0;
 }
 :global([data-theme="dark"]) .introduction {
-  --atmosphere-ink: #8497b5;
+  --atmosphere-ink: #70829a;
+  --muted: #c1cad7;
   --atmosphere-ground: #1a222e;
   --atmosphere-glow: #141c28;
   --header: #171f2edb;
@@ -22,14 +26,10 @@
   padding-top: 112px;
   display: flex;
   flex-direction: column;
-  min-height: min(1080px, calc(100svh - 24px));
-  overflow: clip;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: var(--atmosphere-ground);
+  min-height: 100svh;
 }
 .atmosphere {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
@@ -41,12 +41,61 @@
     transparent 65%
   );
 }
-.atmosphere > svg {
+.atmosphereField {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-  mask-image: radial-gradient(ellipse at 50% 49%, transparent 18%, #000 68%);
+  inset: 0;
+  mask-image: radial-gradient(ellipse at 50% 49%, transparent 18%, #000 72%);
+}
+.atmosphereField > svg {
+  position: absolute;
+  overflow: visible;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  will-change: transform;
+}
+.foldPrimary {
+  opacity: 0.65;
+  animation: atmosphere-drift 18s ease-in-out -9s infinite alternate;
+}
+.foldSecondary {
+  opacity: 0.22;
+  animation: atmosphere-counterflow 27s ease-in-out -12s infinite alternate;
+}
+@keyframes atmosphere-drift {
+  from {
+    transform: translate3d(-5%, 2%, 0) rotate(-7deg) scale(1.08);
+  }
+  to {
+    transform: translate3d(5%, -4%, 0) rotate(6deg) scale(1.03);
+  }
+}
+@keyframes atmosphere-counterflow {
+  from {
+    transform: translate3d(7%, -5%, 0) rotate(8deg) scale(1.12);
+  }
+  to {
+    transform: translate3d(-6%, 6%, 0) rotate(-9deg) scale(1.04);
+  }
+}
+.introduction:has(.motionToggle[data-paused="true"]) .atmosphereField > svg {
+  animation-play-state: paused;
+}
+.motionToggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border-radius: 10px;
+  color: var(--muted);
+}
+.motionToggle:hover {
+  background: var(--raised);
+  color: var(--text);
+}
+.motionToggle:disabled {
+  opacity: 0.7;
 }
 .grain {
   position: absolute;
@@ -188,7 +237,7 @@
 .story {
   max-width: 1180px;
   margin: auto;
-  padding: 132px 40px 0;
+  padding: 64px 40px 0;
   scroll-margin-top: 24px;
 }
 .storyHeading {
@@ -316,13 +365,9 @@
   }
 }
 @media (max-width: 767px) {
-  .introduction {
-    padding: 8px 8px 0;
-  }
   .arrival {
     padding-top: 84px;
-    min-height: calc(100svh - 16px);
-    border-radius: 20px;
+    min-height: 100svh;
   }
   .masthead {
     top: 8px;
@@ -341,7 +386,13 @@
     height: 24px;
   }
   .masthead nav {
-    gap: 8px;
+    gap: 4px;
+  }
+  .motionToggle,
+  .masthead :global(.icon-button) {
+    width: 36px;
+    height: 44px;
+    flex: 0 0 36px;
   }
   .byline,
   .marginNote {
@@ -377,7 +428,7 @@
     font-size: 12px;
   }
   .story {
-    padding: 80px 20px 0;
+    padding: 48px 24px 0;
   }
   .storyHeading h2 {
     font-size: 32px;
@@ -421,6 +472,10 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .atmosphereField > svg {
+    animation: none;
+    will-change: auto;
+  }
   .explore,
   .exploreArrow,
   .exploreArrow svg,

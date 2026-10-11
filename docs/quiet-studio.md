@@ -10,13 +10,15 @@ All five sample routes on the prior preview were checked, with the sample label 
 
 ## Introductory entrance
 
-The owner requested a calmer entrance before the tool collection. `/` now provides original atmospheric CSS/SVG folds, a short introduction, native scroll-to-synopsis navigation and an **Explore TRACE** button. `/explore` retains the complete interactive collection. A header shortcut lets returning visitors enter directly. Light and dark themes share the existing preference, and the root provider keeps live drafts intact across both routes. The button changes its arrow and outline on hover/focus; reduced motion removes the transformation. No artwork from Atmos was reused.
+The owner requested a calmer entrance before the tool collection. `/` now provides original atmospheric CSS/SVG folds, a short introduction, native scroll-to-synopsis navigation and an **Explore TRACE** button. `/explore` retains the complete interactive collection. A header shortcut lets returning visitors enter directly. Light and dark themes share the existing preference, and the root provider keeps live drafts intact across both routes. The background spans the full introduction without a framed hero boundary. Two SVG layers drift continuously on 18/27-second alternate CSS transform loops; text and controls remain still. The header can pause/resume motion, and device reduced-motion preferences disable the background animation and button transformations. A later preference change is observed and the listener is cleaned up on navigation. No artwork from Atmos was reused.
 
 The new entrance has no sample renderer, execution controller, session creation or verification component. The existing studio, tool routes, models and generation behavior remain intact. Collection anchors now live at `/explore#tools` and `/explore#about`; the workspace breadcrumb points to the collection, while the TRACE wordmark returns to the introduction.
 
 The entrance was checked at 360, 768, 1024, 1440 and 1920 px in both themes: no horizontal overflow and the primary invitation remained visible. Keyboard activation reaches the synopsis, and both Explore links open the collection. A Research draft survived a round trip through the introduction and collection, including browser Back. The existing 28 frontend tests and production build passed. These checks used no generation requests. [Responsive record](evaluation/studio-intro-layout.json).
 
-Screenshots: [Pearl entrance](screenshots/studio-intro-pearl.jpg), [Ink entrance](screenshots/studio-intro-ink.jpg), [Phone entrance](screenshots/studio-intro-mobile.jpg), [Synopsis](screenshots/studio-intro-story.jpg).
+The continuous-background revision passed another ten width/theme checks, including header overflow. Browser-computed transforms changed over time, remained identical while paused, and both loops resumed through the keyboard. The hero and synopsis both have transparent backgrounds; the hero has no border or corner radius. [Motion and layout record](evaluation/studio-intro-motion.json). The 28 existing frontend tests and production build pass.
+
+Screenshots: [Seamless transition](screenshots/studio-intro-flow-ink.jpg), [Pearl entrance](screenshots/studio-intro-pearl.jpg), [Ink entrance](screenshots/studio-intro-ink.jpg), [Phone entrance](screenshots/studio-intro-mobile.jpg), [Synopsis](screenshots/studio-intro-story.jpg).
 
 ## What changed
 

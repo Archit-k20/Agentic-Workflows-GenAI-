@@ -2,11 +2,11 @@
   <defs>
     <filter id="soft"><feGaussianBlur stdDeviation="25"/></filter>
     <radialGradient id="ground"><stop stop-color="#f7f8fa"/><stop offset="1" stop-color="#e0e6ee"/></radialGradient>
-    <clipPath id="frame"><rect x="12" y="12" width="1176" height="606" rx="24"/></clipPath>
+    <clipPath id="frame"><rect width="1200" height="630"/></clipPath>
   </defs>
   <rect width="1200" height="630" fill="#f5f6f8"/>
   <g clip-path="url(#frame)">
-    <rect x="12" y="12" width="1176" height="606" fill="url(#ground)"/>
+    <rect width="1200" height="630" fill="url(#ground)"/>
     <g fill="none" stroke="#9aaac0" opacity=".5" filter="url(#soft)">
       <path d="M-160 570C240 470 30 20 490 40S900 500 1310 220" stroke-width="90"/>
       <path d="M-130 690C310 860 640 460 920 540S1350 830 1320 390" stroke-width="75"/>

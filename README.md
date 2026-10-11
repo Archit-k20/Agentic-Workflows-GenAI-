@@ -8,7 +8,7 @@ A collection of fifteen AI tools for reading, research, documents, code, images,
 
 ## The interface
 
-- `/` introduces the project with original pearl/ink atmospheric artwork and a scroll-down synopsis. **Explore TRACE** opens the existing interactive collection at `/explore`. Returning visitors can enter the studio immediately.
+- `/` introduces the project with continuously moving pearl/ink atmosphere and a scroll-down synopsis on one seamless surface. A pause control and reduced-motion support keep reading comfortable. **Explore TRACE** opens the existing interactive collection at `/explore`. Returning visitors can enter the studio immediately.
 
 - Five clearly labelled synthetic examples work without a backend, account or AI request. Opening one never overwrites a live draft or stops a running request.
 - All fifteen original tools keep their routes, input options and result fields. The collection supports search, group filters and grid/list views.
