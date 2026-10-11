@@ -89,12 +89,13 @@ def claim_issues(output, source):
         source,
     ):
         person = match.group(1)
+        prefix = re.escape(person) + r"(?:,\s*|\s+)(?:(?:has|have|will)\s+)?"
         for action in re.finditer(
-            re.escape(person) + r"\s+(introduces?|presents?|launches?|unveils?|announces?|oversees?|manages?)\b",
+            prefix + r"(introduces?|presents?|launches?|unveils?|announces?|oversees?|manages?|confirms?|confirmed)\b",
             output, re.I,
         ):
-            if not re.search(re.escape(person) + r"\s+" + re.escape(action.group(1)) + r"\b", source, re.I):
-                issues.append("A presentation or launch role, or operational assignment, was not supplied for " + person)
+            if not re.search(prefix + re.escape(action.group(1)) + r"\b", source, re.I):
+                issues.append("A presentation or launch role, confirmation or operational assignment was not supplied for " + person)
     for contact in re.finditer(r"\b[Cc]ontact\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)", output):
         person = contact.group(1)
         if not any(person in s and re.search(r"\b(?:contact|enquiries|inquiries)\b", s, re.I) for s in sentences(source)):
@@ -226,7 +227,7 @@ def instructions(context):
         return (
             "\nCLAIM BOUNDARY: the supplied idea is the ONLY factual evidence. Plans are creative proposals, "
             "never facts about product audience, purpose, availability or features. An owner/coordinator is not "
-            "automatically a presenter or launcher: do not say a named person introduces, presents, launches or "
+            "automatically a presenter or launcher: do not say a named person confirms, introduces, presents, launches or "
             "announces the project, oversees shipments or manages operations unless the input explicitly states "
             "that action. Missing information is unknown: 'no forecast is supplied' cannot become 'no forecasts "
             "apply' or 'no forecasts exist'. Say what evidence was supplied, not what exists in the world. "

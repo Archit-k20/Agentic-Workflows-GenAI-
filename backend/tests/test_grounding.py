@@ -309,6 +309,12 @@ def test_free_youtube_unreadable_upstream_has_actionable_error(monkeypatch):
     assert runtime.warnings[0].startswith("Error fetching transcript:")
 
 
+@pytest.mark.parametrize("claim", ["Priya Shah confirmed the shipment.", "The owner, Priya Shah, has confirmed the shipment."])
+def test_named_owner_does_not_authorize_confirmation(claim):
+    assert any("confirmation" in issue for issue in g.claim_issues(claim, SOURCE))
+    assert not g.claim_issues(claim, SOURCE + " " + claim)
+
+
 def test_bad_absence_wording_reaches_existing_review_without_being_accepted():
     from backend.processing import override
     sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]
