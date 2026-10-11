@@ -296,6 +296,19 @@ def test_research_empty_text_exposes_capacity_only_in_free_mode(mode):
         current.reset(token)
 
 
+def test_free_youtube_unreadable_upstream_has_actionable_error(monkeypatch):
+    from backend import engine
+    from backend.contracts import Captions
+    from workflows import yt_caption_generator
+    from contextlib import ExitStack
+    runtime = Runtime("free", "captions")
+    monkeypatch.setattr(yt_caption_generator, "caption_from_youtube_url",
+                        lambda url: "Error fetching transcript: no element found: line 1, column 0")
+    with ExitStack() as stack, pytest.raises(ValueError, match="Choose Paste transcript"):
+        engine.free_simple(None, None, Captions(tool="captions", url="https://www.youtube.com/watch?v=aircAruvnKk"), runtime, stack)
+    assert runtime.warnings[0].startswith("Error fetching transcript:")
+
+
 def test_bad_absence_wording_reaches_existing_review_without_being_accepted():
     from backend.processing import override
     sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]

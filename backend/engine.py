@@ -488,7 +488,18 @@ def free_simple(storage, session, inputs, runtime, stack):
 
             runtime.expensive = True
             emit("stage", name="Extract YouTube transcript", status="running")
-            text = ensure_text(caption_from_youtube_url(inputs.url))
+            try:
+                response = caption_from_youtube_url(inputs.url)
+                if isinstance(response, str) and response.startswith("Error fetching transcript:"):
+                    runtime.warning(response)
+                    raise ValueError(
+                        "YouTube did not return a readable transcript. Captions may be unavailable or extraction restricted. "
+                        "Choose Paste transcript to continue with text you can access."
+                    )
+                text = ensure_text(response)
+            except Exception:
+                emit("stage", name="Extract YouTube transcript", status="failed")
+                raise
             emit("stage", name="Extract YouTube transcript", status="completed")
     else:
         text = inputs.text
