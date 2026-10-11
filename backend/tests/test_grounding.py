@@ -274,6 +274,28 @@ def test_actual_pilot_study_source_does_not_trigger_shipping_guard():
     assert g.STUDY_REPORT_ISSUE not in g.report_issues(report, [{"label":"S1", "summary":"The pilot study measured outcomes."}])
 
 
+@pytest.mark.parametrize("mode", ["free", "openai"])
+def test_research_empty_text_exposes_capacity_only_in_free_mode(mode):
+    from backend import app  # installs the adapter observations
+    from backend.policy import ConfirmedCapacity
+    from workflows import research_agent
+    from workflows.runtime import current
+    from types import SimpleNamespace as NS
+    def unavailable(**kwargs):
+        raise ConfirmedCapacity("Shared hosted allowance exhausted.")
+    client = NS(chat=NS(completions=NS(create=unavailable)))
+    runtime = Runtime(mode, "research")
+    token = current.set(runtime)
+    try:
+        if mode == "free":
+            with pytest.raises(ConfirmedCapacity, match="allowance exhausted"):
+                research_agent._chat_text(client, "System", "Input")
+        else:
+            assert research_agent._chat_text(client, "System", "Input") == ""
+    finally:
+        current.reset(token)
+
+
 def test_bad_absence_wording_reaches_existing_review_without_being_accepted():
     from backend.processing import override
     sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]

@@ -15,9 +15,16 @@ def observed_client(client):
     """Surface authentication failures even when the original workflow falls back."""
 
     def create(*args, **kwargs):
+        from workflows.runtime import current
+
+        runtime = current.get()
+        if runtime and runtime.mode != "openai":
+            runtime.last_generation_error = None
         try:
             return client.chat.completions.create(*args, **kwargs)
         except Exception as exc:
+            if runtime and runtime.mode != "openai":
+                runtime.last_generation_error = exc
             if getattr(exc, "status_code", None) == 401:
                 emit(
                     "warning",
@@ -154,6 +161,14 @@ def install():
     def text_fallback(client, *args, **kwargs):
         result = original_text(observed_client(client), *args, **kwargs)
         if not result:
+            from workflows.runtime import current
+
+            runtime = current.get()
+            failure = getattr(runtime, "last_generation_error", None)
+            if runtime and runtime.mode != "openai" and failure is not None:
+                # Legacy catches empty text; free transport should expose the
+                # actual capacity/runtime failure, not a missing-heading error.
+                raise failure
             emit(
                 "warning",
                 message="The research provider returned no report text. Existing fallback behavior was retained; inspect the result before using it.",
