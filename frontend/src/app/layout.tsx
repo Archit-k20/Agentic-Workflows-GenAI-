@@ -18,7 +18,7 @@ export const metadata: Metadata = {
         url: "/studio-social.png",
         width: 1200,
         height: 630,
-        alt: "TRACE: Archit’s AI project, showing an interactive research example and its evidence.",
+        alt: "TRACE: An AI project by Archit Kumar. Start with something on your mind.",
       },
     ],
   },
@@ -30,7 +30,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="light"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{

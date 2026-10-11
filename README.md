@@ -1,12 +1,14 @@
 # TRACE — An AI project by Archit Kumar
 
-A collection of fifteen AI tools for reading, research, documents, code, images, speech and content. The quiet studio interface starts with a working example: inspect a citation, switch between artifacts, or open a tool with your own input.
+A collection of fifteen AI tools for reading, research, documents, code, images, speech and content. An atmospheric introduction explains the project before inviting visitors into the quiet studio: inspect an example, switch between artifacts, or open a tool with your own input.
 
 **Live application:** [trace-agentic-workspace.vercel.app](https://trace-agentic-workspace.vercel.app). The redesign on `codex/trace-quiet-studio` is a review candidate; production promotion follows preview review. Existing model-quality and independent-device limitations remain tracked separately.
 
-![TRACE quiet studio homepage](docs/screenshots/studio-home-pearl.jpg)
+![TRACE introduction](docs/screenshots/studio-intro-pearl.jpg)
 
 ## The interface
+
+- `/` introduces the project with original pearl/ink atmospheric artwork and a scroll-down synopsis. **Explore TRACE** opens the existing interactive collection at `/explore`. Returning visitors can enter the studio immediately.
 
 - Five clearly labelled synthetic examples work without a backend, account or AI request. Opening one never overwrites a live draft or stops a running request.
 - All fifteen original tools keep their routes, input options and result fields. The collection supports search, group filters and grid/list views.

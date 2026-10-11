@@ -8,12 +8,22 @@ Implementation branch: `codex/trace-quiet-studio`. Review base: `codex/trace-rea
 
 All five public preview sample routes were checked, with the sample label and result visible and no Turnstile frame mounted. [Preview sample record](evaluation/studio-preview-samples.json). Live execution from this new origin is intentionally not claimed: a non-generating CORS preflight returned **400, Disallowed CORS origin**. [Preflight record](evaluation/studio-preview-cors.json). For live preview testing, add this exact hostname to the existing Turnstile widget and this exact HTTPS origin to `TRACE_ALLOWED_ORIGINS`; preserve the production origin and all verification controls. This is unnecessary for offline sample review. Promotion to the existing production hostname uses its existing allowlisting.
 
+## Introductory entrance
+
+The owner requested a calmer entrance before the tool collection. `/` now provides original atmospheric CSS/SVG folds, a short introduction, native scroll-to-synopsis navigation and an **Explore TRACE** button. `/explore` retains the complete interactive collection. A header shortcut lets returning visitors enter directly. Light and dark themes share the existing preference, and the root provider keeps live drafts intact across both routes. The button changes its arrow and outline on hover/focus; reduced motion removes the transformation. No artwork from Atmos was reused.
+
+The new entrance has no sample renderer, execution controller, session creation or verification component. The existing studio, tool routes, models and generation behavior remain intact. Collection anchors now live at `/explore#tools` and `/explore#about`; the workspace breadcrumb points to the collection, while the TRACE wordmark returns to the introduction.
+
+The entrance was checked at 360, 768, 1024, 1440 and 1920 px in both themes: no horizontal overflow and the primary invitation remained visible. Keyboard activation reaches the synopsis, and both Explore links open the collection. A Research draft survived a round trip through the introduction and collection, including browser Back. The existing 28 frontend tests and production build passed. These checks used no generation requests. [Responsive record](evaluation/studio-intro-layout.json).
+
+Screenshots: [Pearl entrance](screenshots/studio-intro-pearl.jpg), [Ink entrance](screenshots/studio-intro-ink.jpg), [Phone entrance](screenshots/studio-intro-mobile.jpg), [Synopsis](screenshots/studio-intro-story.jpg).
+
 ## What changed
 
 | Before | Now |
 | --- | --- |
-| Large editorial headline and illustrative hero | Compact introduction and a usable Research example in the first screen |
-| Five samples opened from the workspace and replaced the live draft | Five homepage examples plus isolated read-only workspace samples; live work survives navigation |
+| Large editorial headline and illustrative hero | Atmospheric entrance followed by a collection with a usable Research example |
+| Five samples opened from the workspace and replaced the live draft | Five collection examples plus isolated read-only workspace samples; live work survives navigation |
 | Warm paper/vermilion styling with accumulated overrides | One pearl/ink token system, restrained ink blue, smaller interface headings and solid reading surfaces |
 | Tool discovery mainly through navigation | Searchable/filterable collection with grid/list views and direct links to all fifteen tools |
 | One large workspace component | Shared execution controller plus separate navigation, inputs, settings and result surfaces |
@@ -22,9 +32,9 @@ All five public preview sample routes were checked, with the sample label and re
 | Tool workflow descriptions | Purpose, an implemented choice and a limitation in Behind this tool |
 | Inputs always occupy space | Focus on result collapses inputs without discarding them |
 
-All original URLs, group names, inputs, limits, generated API types, providers, mode semantics, quotas, fallback rules, request transport, ownership checks and hosting remain unchanged. No backend files or production dependencies changed. The three added dependencies are test-only: Testing Library React/DOM and jsdom.
+All original workspace URLs, group names, inputs, limits, generated API types, providers, mode semantics, quotas, fallback rules, request transport, ownership checks and hosting remain unchanged. No backend files or production dependencies changed. The three added dependencies are test-only: Testing Library React/DOM and jsdom.
 
-The homepage Research excerpt is intentionally shorter than the full workspace report. At 360×800 px, its first citation is fully visible at approximately y=766–794, allowing immediate source inspection.
+The collection Research excerpt is intentionally shorter than the full workspace report. At 360×800 px, its first citation is fully visible at approximately y=766–794, allowing immediate source inspection.
 
 ## Reference use
 
@@ -48,23 +58,25 @@ The homepage Research excerpt is intentionally shorter than the full workspace r
 | TypeScript | `npm run typecheck` passes |
 | Production build | `npm run build` passes; all fifteen tool paths generated |
 | Responsive forms | 150 production-browser cases: 15 tools × 5 widths (360/768/1024/1440/1920) × both themes; no horizontal page overflow; [record](evaluation/studio-layout-matrix.json) |
-| Homepage samples | All five exercised through their real controls; source inspection, document risks/actions, content captions/prompts and support escalation displayed. The local API request log stayed empty during this pass |
+| Collection samples | All five exercised through their real controls; source inspection, document risks/actions, content captions/prompts and support escalation displayed. The local API request log stayed empty during this pass |
 | Live controller in browser | Synthetic research partial success completed after sample navigation; inputs preserved; mode changes disabled during processing; focus mode reversible |
 | Q&A | Synthetic URL preparation, question and source-backed answer; changing mode disables answering until reprocessed |
 | Failure states | Interrupted request retained input and explicit retry; expired image produced a readable error. Unit fixtures cover document partial failures. Browser fixtures show passed, unavailable and failed compilation checks, initial/final repair comparison and horizontally scrolling wide code without page overflow |
 | Media | Synthetic image opened at fit and actual size without page overflow; focus returned to trigger. Local audio fixture played only after clicking Play |
 | Navigation | Tool search, collection list view, mobile sheet including selecting current tool, sample return links and keyboard artifact tabs exercised. `/workspace` redirects to Research; an invalid tool renders the existing 404 |
 | Focus | Desktop citation and mobile evidence-sheet close/Escape restored the originating citation |
-| Contrast | Actual homepage text computed against rendered surfaces: 149 text elements per theme, no failures; minimum 5.45:1 light / 7.18:1 dark. This is a focused contrast audit, not full accessibility certification; [record](evaluation/studio-contrast.json) |
+| Contrast | Actual collection text computed against rendered surfaces: 149 text elements per theme, no failures; minimum 5.45:1 light / 7.18:1 dark. This is a focused contrast audit, not full accessibility certification; [record](evaluation/studio-contrast.json) |
 | Dependency/contract scope | Production dependency versions, request builder, generated types, provider state, API transport and backend code unchanged |
 
 Tests use mocks and the optional local fixture server. No paid or shared-quota inference was used to verify this redesign. Sample data remains synthetic; mock execution does not establish model quality.
 
 ### Performance
 
-Local production builds were compared in the Codex WebKit browser at 1440 and 360 px, without CPU/network throttling. Three runs per width/version, each observed for 1.5 seconds. The new homepage measured LCP **0.268–0.508 seconds** and CLS **0.0039–0.0526**. These pass the stated local targets under these conditions; they are not field measurements or evidence for slow mobile connections. INP requires additional real usage data. [Raw measurements](evaluation/studio-local-performance.json).
+The measurements below describe the initial studio collection, now at `/explore`. They are not measurements of the new introductory route.
 
-The interactive homepage loads the existing Markdown/report rendering code. Its initial compressed JavaScript grew from **219,747 to 316,780 bytes**. The workspace entry shrank from **321,192 to 279,226 bytes** because results are loaded when needed. Shared compressed CSS shrank from **11,582 to 10,029 bytes**. These counts are unique assets referenced by generated route HTML, excluding later-loaded chunks and fonts; gzip sizes are calculated consistently, not network waterfall totals. [Build comparison](evaluation/studio-build-comparison.json).
+Local production builds were compared in the Codex WebKit browser at 1440 and 360 px, without CPU/network throttling. Three runs per width/version, each observed for 1.5 seconds. The collection (then at `/`) measured LCP **0.268–0.508 seconds** and CLS **0.0039–0.0526**. These pass the stated local targets under these conditions; they are not field measurements or evidence for slow mobile connections. INP requires additional real usage data. [Raw measurements](evaluation/studio-local-performance.json).
+
+The interactive collection loads the existing Markdown/report rendering code. Its initial compressed JavaScript grew from **219,747 to 316,780 bytes**. The workspace entry shrank from **321,192 to 279,226 bytes** because results are loaded when needed. Shared compressed CSS shrank from **11,582 to 10,029 bytes**. These counts are unique assets referenced by generated route HTML, excluding later-loaded chunks and fonts; gzip sizes are calculated consistently, not network waterfall totals. [Build comparison](evaluation/studio-build-comparison.json).
 
 ### Manual checks still needed before production promotion
 
@@ -96,9 +108,9 @@ Only use that public-key override for the **local synthetic backend**. It never 
 
 ## Screenshots and sharing
 
-- [Pearl homepage](screenshots/studio-home-pearl.jpg)
-- [Ink homepage](screenshots/studio-home-ink.jpg)
-- [Phone homepage](screenshots/studio-home-mobile.jpg)
+- [Pearl collection](screenshots/studio-home-pearl.jpg)
+- [Ink collection](screenshots/studio-home-ink.jpg)
+- [Phone collection](screenshots/studio-home-mobile.jpg)
 - [Research workspace](screenshots/studio-research-desktop.jpg)
 - [Mobile evidence sheet](screenshots/studio-evidence-mobile.jpg)
 

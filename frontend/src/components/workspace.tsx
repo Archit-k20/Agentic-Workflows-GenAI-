@@ -196,8 +196,8 @@ function WorkspaceView({ tool }: { tool: Tool }) {
           >
             <Menu size={20} />
           </button>
-          <Link href="/" className="breadcrumb">
-            Workspace
+          <Link href="/explore" className="breadcrumb">
+            Collection
           </Link>
           <ChevronRight size={13} />
           <span className="breadcrumb current">{tool.group}</span>
