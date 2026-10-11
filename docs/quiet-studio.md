@@ -18,6 +18,8 @@ The entrance was checked at 360, 768, 1024, 1440 and 1920 px in both themes: no 
 
 The continuous-background revision passed another ten width/theme checks, including header overflow. Browser-computed transforms changed over time, remained identical while paused, and both loops resumed through the keyboard. The hero and synopsis both have transparent backgrounds; the hero has no border or corner radius. [Motion and layout record](evaluation/studio-intro-motion.json). The 28 existing frontend tests and production build pass.
 
+The entrance masthead now has a translucent glass finish: a 24 px backdrop blur, restrained saturation, reflective edges and a soft shadow. The animated background remains visible through the bar. This treatment is limited to the entrance navigation. Browsers without backdrop filtering and devices requesting reduced transparency receive the more opaque fallback. A focused production-build check at 1440 and 360 px in both themes found no header or page overflow; theme switching, keyboard pause/resume, visible focus and the Enter studio link worked. The production build, including TypeScript, passed. The device-level reduced-transparency preference was not manually emulated.
+
 Screenshots: [Seamless transition](screenshots/studio-intro-flow-ink.jpg), [Pearl entrance](screenshots/studio-intro-pearl.jpg), [Ink entrance](screenshots/studio-intro-ink.jpg), [Phone entrance](screenshots/studio-intro-mobile.jpg), [Synopsis](screenshots/studio-intro-story.jpg).
 
 ## What changed
