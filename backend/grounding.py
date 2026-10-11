@@ -13,6 +13,15 @@ SECTIONS = (
     "Executive Summary", "Findings", "Risks and Gaps",
     "Recommended Next Questions", "Source List",
 )
+ABSENCE_REPORT_ISSUES = {
+    noun: "Unspecified " + noun + " evidence cannot establish its actual absence."
+    for noun in ("guarantee", "forecast")
+}
+
+
+def repairable_report_wording(issues):
+    """Let the existing review/revision fix wording, never invalid structure."""
+    return bool(issues) and all(issue in ABSENCE_REPORT_ISSUES.values() for issue in issues)
 
 
 def normalized(value):
@@ -132,7 +141,7 @@ def unknown_absence_claims(output, source):
     """Finite guarantee/forecast checks; no claim of general entailment."""
     nouns = []
     for quote in sentences(source):
-        if not re.search(r"\b(?:not|no)\b[^.!?]{0,100}\b(?:supplied|specified|documented|provided)\b", quote, re.I):
+        if not re.search(r"\b(?:not|no)\b[^.!?]{0,100}\b(?:suppl(?:y|ied)|specif(?:y|ied)|document(?:ed)?|provid(?:e|ed))\b", quote, re.I):
             continue
         for noun in ("guarantee", "forecast"):
             if not re.search(r"\b" + noun + r"s?\b", quote, re.I):
@@ -285,7 +294,7 @@ def report_issues(report, sources):
             issues.append("Source credibility was not established by the supplied evidence.")
     evidence = " ".join(s.get("summary", "") + " " + " ".join(s.get("key_points", [])) for s in sources)
     for noun in unknown_absence_claims(report, evidence):
-        issues.append("Unspecified " + noun + " evidence cannot establish its actual absence.")
+        issues.append(ABSENCE_REPORT_ISSUES[noun])
     return issues
 
 
@@ -299,10 +308,14 @@ def research_review(value, previous, sources, runtime):
         value["rejected_revision"] = candidate
         value["passes_review"] = False
         value["issues"] = list(dict.fromkeys(value.get("issues", []) + issues))
-        if previous_issues:
+        if previous_issues and not (repairable_report_wording(previous_issues) and repairable_report_wording(issues)):
             raise ValueError("No structurally valid Research report was produced. " + "; ".join(previous_issues))
         value["revised_report"] = previous
-        runtime.warning("Review rewrite failed source/structure checks; the last valid report was retained. Inspect Details.")
+        runtime.warning(
+            "Research wording still needs the existing revision step; this is not an accepted final report."
+            if previous_issues else
+            "Review rewrite failed source/structure checks; the last valid report was retained. Inspect Details."
+        )
     history = getattr(runtime, "research_rejections", [])
     if issues:
         history.append({"stage": "review", "revision": candidate, "issues": issues})

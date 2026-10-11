@@ -287,6 +287,11 @@ def execute(storage, session, inputs, key):
             result = free_simple(storage, session, inputs, runtime, stack)
         elif tool == "research":
             result = research_agent.run_research_agent(inputs.topic, inputs.urls, key)
+            if free:
+                from .grounding import report_issues
+                issues = report_issues(result["final_report"], result["sources"])
+                if issues:
+                    raise ValueError("Research final report failed source checks after review: " + "; ".join(issues))
         elif tool == "support":
             from workflows.support_triage import run_support_triage
 

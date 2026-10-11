@@ -230,6 +230,47 @@ def test_research_cannot_turn_missing_documentation_into_absence():
     assert not g.report_issues(qualified, sources)
 
 
+def test_does_not_provide_source_digest_is_still_missing_evidence():
+    source = "The brief does not provide a delivery guarantee or revenue forecast."
+    assert g.unknown_absence_claims("The lack of a delivery guarantee poses risks.", source)
+    assert g.unknown_absence_claims("The lack of a delivery guarantee and revenue forecast poses risks.", source) == ["guarantee", "forecast"]
+    assert not g.unknown_absence_claims("The brief does not provide a delivery guarantee.", source)
+
+
+def test_bad_absence_wording_reaches_existing_review_without_being_accepted():
+    from backend.processing import override
+    sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]
+    bad = REPORT.replace("No performance outcomes are supplied", "The lack of a delivery guarantee poses a risk")
+    runtime = Runtime("free", "research")
+    result = override(None, "synthesize_report", ("Topic", {}, sources, None), {}, lambda *a: bad, runtime)
+    assert result == bad and runtime.warnings
+    critique = g.research_review({"passes_review": True, "issues": [], "revised_report": bad}, bad, sources, runtime)
+    assert critique["passes_review"] is False
+    assert critique["source_checks"]["issues"]
+    assert critique["rejected_revision_history"]
+
+
+def test_final_research_cannot_publish_unfixed_absence_wording(monkeypatch, tmp_path):
+    from backend import engine
+    from backend.storage import LocalStorage
+    from backend.contracts import Research
+    from workflows.runtime import current
+    from workflows import research_agent
+    from backend import processing
+    sources = [{"label": "S1", "summary": SOURCE + " No delivery guarantee or revenue forecast is supplied."}]
+    bad = REPORT.replace("No performance outcomes are supplied", "The lack of a delivery guarantee poses a risk")
+    monkeypatch.setattr(processing, "check_text", lambda text, *args: text)
+    monkeypatch.setattr(research_agent, "run_research_agent", lambda *args: {"final_report": bad, "sources": sources})
+    storage = LocalStorage(tmp_path)
+    sid = storage.session(storage.create_session()["token"])
+    token = current.set(Runtime("free", "research"))
+    try:
+        with pytest.raises(ValueError, match="after review"):
+            engine.execute(storage, sid, Research(tool="research", topic="Pilot", urls=["https://example.com"]), "")
+    finally:
+        current.reset(token)
+
+
 def test_unsupported_contact_and_latest_claims_are_detected():
     issues = g.claim_issues("Contact Priya Shah about her latest initiative.", SOURCE)
     assert any("contact role" in issue for issue in issues)

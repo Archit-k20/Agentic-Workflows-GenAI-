@@ -8,14 +8,18 @@ from . import free_config as cfg
 from .events import emit
 
 
-@lru_cache(maxsize=1)
 def tokenizer():
+    with cfg.CPU_GATE:
+        return _tokenizer()
+
+
+@lru_cache(maxsize=1)
+def _tokenizer():
+    # The caller holds the gate before Transformers' lazy import as well as
+    # initialization. lru_cache alone permits concurrent cold cache misses.
     from transformers import AutoTokenizer
 
-    with cfg.CPU_GATE:
-        return AutoTokenizer.from_pretrained(
-            cfg.EMBED_MODEL, revision=cfg.EMBED_REVISION
-        )
+    return AutoTokenizer.from_pretrained(cfg.EMBED_MODEL, revision=cfg.EMBED_REVISION)
 
 
 def check_text(text, runtime, source):
@@ -301,6 +305,12 @@ def override(module, name, args, kwargs, fn, runtime):
                 history.append({"stage": "revision", "revision": result, "issues": issues})
                 runtime.research_rejections = history
                 return args[3]
+            if g.repairable_report_wording(issues):
+                runtime.warning("Research absence wording requires review; the existing review/revision sequence will run before final acceptance.")
+                history = getattr(runtime, "research_rejections", [])
+                history.append({"stage": name, "revision": result, "issues": issues})
+                runtime.research_rejections = history
+                return result
             raise ValueError("Research report failed source/structure checks: " + "; ".join(issues))
         return result
     if name == "draft_support_resolution":

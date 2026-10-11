@@ -21,14 +21,16 @@ PROFILE = {
 }
 
 
-@lru_cache(maxsize=1)
 def model():
+    with cfg.CPU_GATE:
+        return _model()
+
+
+@lru_cache(maxsize=1)
+def _model():
     from transformers import AutoModel
 
-    with cfg.CPU_GATE:
-        return AutoModel.from_pretrained(
-            cfg.EMBED_MODEL, revision=cfg.EMBED_REVISION
-        ).eval()
+    return AutoModel.from_pretrained(cfg.EMBED_MODEL, revision=cfg.EMBED_REVISION).eval()
 
 
 class LocalEmbeddings(Embeddings):
