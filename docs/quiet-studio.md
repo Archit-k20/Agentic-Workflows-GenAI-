@@ -4,7 +4,7 @@ Implementation branch: `codex/trace-quiet-studio`. Review base: `codex/trace-rea
 
 ## Review preview
 
-[Open the Vercel preview](https://trace-agentic-workspace-ht8v1b9w0.vercel.app/). Deployment `dpl_HqWkhg12HFCVQLsNDTZG8EfEcRM4` built successfully from frontend commit `cd175f3`. Production has not been promoted.
+[Open the Vercel preview](https://trace-agentic-workspace-okqhzes07.vercel.app/). Deployment `dpl_7jAWcLaRzGFzR2AcqD68BrK8xZ3L` built successfully from frontend commit `ac778e5`. Production has not been promoted.
 
 All five sample routes on the prior preview were checked, with the sample label and result visible and no Turnstile frame mounted. [Preview sample record](evaluation/studio-preview-samples.json). Live execution from preview origins is intentionally not claimed: the prior preview’s non-generating CORS preflight returned **400, Disallowed CORS origin**. [Preflight record](evaluation/studio-preview-cors.json). For live preview testing, add this exact hostname to the existing Turnstile widget and this exact HTTPS origin to `TRACE_ALLOWED_ORIGINS`; preserve the production origin and all verification controls. This is unnecessary for offline sample review. Promotion to the existing production hostname uses its existing allowlisting.
 
@@ -20,7 +20,7 @@ The continuous-background revision passed another ten width/theme checks, includ
 
 The entrance masthead now has a translucent glass finish: a 24 px backdrop blur, restrained saturation, reflective edges and a soft shadow. The animated background remains visible through the bar. This treatment is limited to the entrance navigation. Browsers without backdrop filtering and devices requesting reduced transparency receive the more opaque fallback. A focused production-build check at 1440 and 360 px in both themes found no header or page overflow; theme switching, keyboard pause/resume, visible focus and the Enter studio link worked. The production build, including TypeScript, passed. The device-level reduced-transparency preference was not manually emulated.
 
-Screenshots: [Seamless transition](screenshots/studio-intro-flow-ink.jpg), [Pearl entrance](screenshots/studio-intro-pearl.jpg), [Ink entrance](screenshots/studio-intro-ink.jpg), [Phone entrance](screenshots/studio-intro-mobile.jpg), [Synopsis](screenshots/studio-intro-story.jpg).
+Screenshots: [Glass navigation](screenshots/studio-glass-header-ink.jpg), [Seamless transition](screenshots/studio-intro-flow-ink.jpg), [Pearl entrance](screenshots/studio-intro-pearl.jpg), [Ink entrance](screenshots/studio-intro-ink.jpg), [Phone entrance](screenshots/studio-intro-mobile.jpg), [Synopsis](screenshots/studio-intro-story.jpg).
 
 ## What changed
 
