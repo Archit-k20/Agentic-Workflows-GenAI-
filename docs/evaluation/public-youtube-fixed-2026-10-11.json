@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-11",
+  "backend_commit": "926c6b6",
+  "scope": "Deliberate actual public browser transcript error retest; no AI inference.",
+  "passed": true,
+  "live_transcript_success": false,
+  "error": "YouTube did not return a readable transcript. Captions may be unavailable or extraction restricted. Choose Paste transcript to continue with text you can access.",
+  "provider_diagnostic": "The transcript library reported disabled subtitles for the requested video. This is a provider/library report, not independent proof of its cause.",
+  "inputs_preserved": true,
+  "automatic_retry": false,
+  "seconds": 1
+}

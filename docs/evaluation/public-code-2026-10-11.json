@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-11",
+  "backend_commit": "87987ca",
+  "url": "https://trace-agentic-workspace.vercel.app/workspace/code",
+  "scope": "Actual browser anonymous public workflow after automatic Turnstile; about 6 seconds. Separate four local behavior assertions for this toy function only, not general correctness/security.",
+  "result": {
+    "execution": {
+      "mode": "free",
+      "engines": [
+        {
+          "provider": "cloudflare",
+          "model": "@cf/qwen/qwen2.5-coder-32b-instruct"
+        }
+      ],
+      "fallback": false,
+      "coverage": [
+        {
+          "source": "Code task",
+          "tokens": 61,
+          "complete": true
+        }
+      ],
+      "warnings": []
+    },
+    "tool": "code",
+    "language": "python",
+    "initial_code": "def unique_in_order(values):\n    seen = set()\n    result = []\n    for value in values:\n        if value not in seen:\n            seen.add(value)\n            result.append(value)\n    return result\n\nassert unique_in_order([]) == []\nassert unique_in_order([1, 2, 2, 3, 3, 3, 4]) == [1, 2, 3, 4]\nassert unique_in_order('aabbccddeeff') == ['a', 'b', 'c', 'd', 'e', 'f']",
+    "final_code": "def unique_in_order(values):\n    seen = set()\n    result = []\n    for value in values:\n        if value not in seen:\n            seen.add(value)\n            result.append(value)\n    return result\n\nassert unique_in_order([]) == []\nassert unique_in_order([1, 2, 2, 3, 3, 3, 4]) == [1, 2, 3, 4]\nassert unique_in_order('aabbccddeeff') == ['a', 'b', 'c', 'd', 'e', 'f']",
+    "repair_attempted": false,
+    "initial_verification": {
+      "language": "python",
+      "passed": true,
+      "checks": [
+        {
+          "name": "ast_parse",
+          "passed": true,
+          "details": "AST parse passed."
+        },
+        {
+          "name": "py_compile",
+          "passed": true,
+          "details": "Bytecode compilation passed."
+        }
+      ]
+    },
+    "final_verification": {
+      "language": "python",
+      "passed": true,
+      "checks": [
+        {
+          "name": "ast_parse",
+          "passed": true,
+          "details": "AST parse passed."
+        },
+        {
+          "name": "py_compile",
+          "passed": true,
+          "details": "Bytecode compilation passed."
+        }
+      ]
+    }
+  },
+  "keyboard": "Command menu opened by Cmd+K, searched Code, Tab/Enter navigated; Escape closed when reopened."
+}

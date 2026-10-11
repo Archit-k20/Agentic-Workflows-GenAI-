@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-11",
+  "scope": "One real public-browser free-mode generation; subjectively assessed against explicit prompt constraints. Not general image-accuracy certification.",
+  "prompt": "Photorealistic editorial photograph of an intricate clockmaker\u2019s workshop at blue hour, square frame, eye-level 35mm view. Foreground: an elderly woman wearing a mustard apron carefully holds an open silver pocket watch in her left hand and fine brass tweezers in her right; both hands have five natural fingers. On the walnut bench are exactly three tiny brass gears in a straight row, one red-handled screwdriver, and two porcelain cups: a blue cup on the left, a white cup on the right. A transparent glass dome encloses a miniature copper mechanical bird; reflections reveal the glass without hiding its feather-shaped gears. Behind her, a round wall clock reads 6:15 and a small cream sign clearly reads TRACE. Left background: one tall arched rainy window showing a violet twilight street. Right background: a warm desk lamp illuminates a folded blueprint with fine cyan linework. Distinct realistic brass, scratched silver, wood grain, woven fabric and glass. Warm light from the right and cool window light from the left, coherent shadows, restrained depth of field, readable main objects, no extra people, no duplicated tools, no watermark.",
+  "provider": "cloudflare",
+  "model": "@cf/black-forest-labs/flux-1-schnell",
+  "fallback": false,
+  "width": 1024,
+  "height": 1024,
+  "displayed_workflow_seconds": 21,
+  "visitor_protection": "Automatic verification passed; a stale expired session first failed without inference, then explicit retry after refresh succeeded.",
+  "visual_review": {
+    "overall_scene": "Pass: one elderly clockmaker, wooden workshop, violet arched window, warm desk lamp.",
+    "materials_lighting": "Strong: convincing wood, skin, metallic watches and glass reflections; warm/cool separation.",
+    "text_TRACE": "Pass: sign visibly reads TRACE.",
+    "exactly_two_cups": "Fail: three visible cups, including one cut off at left edge.",
+    "three_gears_in_straight_row": "Fail: requested gear row not visible; extra watch/tool objects on bench.",
+    "watch_and_tweezers_in_separate_hands": "Fail: right side hand lacks visible tweezers; two watch faces hang at left side.",
+    "clock_time_6_15": "Fail: wall clock is partially hidden and does not clearly show 6:15.",
+    "mechanical_bird_under_glass": "Partial: bird in clear dome, mechanical detail concentrated below it, not clearly feather-shaped gears.",
+    "five_fingers_per_hand": "Not verified: overlapping curled fingers do not expose all digits; no claim of correct anatomy.",
+    "blueprint": "Partial: detailed linework on flat paper, without clear cyan colour or folds.",
+    "mustard_apron": "Partial: mustard garment is visible, but an apron is not clearly distinct.",
+    "no_watermark_or_extra_people": "Pass: no obvious watermark or extra person."
+  },
+  "assessment": "Strong aesthetics and broad scene composition; exact counting, hand-object relationships and time-setting limitations. Do not market this as precise technical illustration.",
+  "browser_success": true,
+  "hf_public_browser_fallback_proof": false
+}

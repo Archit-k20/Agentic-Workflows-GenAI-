@@ -1,0 +1,1413 @@
+{
+  "mode": "free",
+  "profile": {
+    "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+    "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+    "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+    "fixtures_sha256": "7f550a27648fede5f00df876c286377d05a904e190c75bb80fd4155ee462a452",
+    "pipeline_sha256": "b1cada0f5aa18efa1f28a63f5aa06f2738e442baa12d61f1e89a48a909665da2"
+  },
+  "fixture_count": 7,
+  "rows": [
+    {
+      "id": "content-05",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Content script: missing numerical source details were restored verbatim.",
+            "Content script: missing numerical source details were restored verbatim."
+          ]
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "",
+          "content_angle": "introducing a new lighting option",
+          "cta": "Learn more about Project Elm",
+          "hooks": [
+            "Get ready to brighten up your space",
+            "New lighting pilot coming soon"
+          ],
+          "sections": [
+            "Project Overview",
+            "Pilot Details"
+          ],
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "title": "Project Elm Pilot Launch",
+          "script": "Get ready to brighten up your space with Project Elm, a new lighting option. This pilot ships 25 lamps on February 6, 2027, with a budget of USD 875. Customer refunds are available within 30 days for unopened items. Learn more about this exciting new project.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "image_prompts": [
+            "A modern living room with a lamp from Project Elm",
+            "A close-up of a lamp from Project Elm",
+            "A person holding a lamp from Project Elm"
+          ],
+          "captions": {
+            "linkedin": "Introducing Project Elm, a new lighting pilot",
+            "x": "Brighten up your space with Project Elm"
+          },
+          "hashtags": [
+            "#ProjectElm",
+            "#NewLightingOption",
+            "#PilotLaunch"
+          ],
+          "cta": "Learn more about Project Elm"
+        },
+        "critique": {
+          "issues": [
+            "Review omitted material source details; restored from original input."
+          ],
+          "passes_review": false,
+          "revised_captions": {
+            "linkedin": "Introducing Project Elm, a new lighting pilot",
+            "x": "Brighten up your space with Project Elm"
+          },
+          "revised_script": "Get ready to brighten up your space with Project Elm, a new lighting option. This pilot ships 25 lamps on February 6, 2027, with a budget of USD 875. Customer refunds are available within 30 days for unopened items. Learn more about Project Elm.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.",
+            "issues": [
+              "Review omitted material source details; restored from original input."
+            ]
+          }
+        },
+        "final_script": "Get ready to brighten up your space with Project Elm, a new lighting option. This pilot ships 25 lamps on February 6, 2027, with a budget of USD 875. Customer refunds are available within 30 days for unopened items. Learn more about Project Elm.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+        "final_captions": {
+          "linkedin": "Introducing Project Elm, a new lighting pilot",
+          "x": "Brighten up your space with Project Elm"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 14.59,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Content script: missing numerical source details were restored verbatim.",
+          "Content script: missing numerical source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "content-03",
+      "kind": "content",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "idea",
+              "tokens": 69,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Content script: missing numerical source details were restored verbatim.",
+            "Content script: missing numerical source details were restored verbatim."
+          ]
+        },
+        "tool": "content",
+        "plan": {
+          "audience": "",
+          "content_angle": "introduction to Project Cedar pilot",
+          "cta": "Stay informed about Project Cedar updates",
+          "hooks": [
+            "Learn about Project Cedar",
+            "Upcoming pilot shipment"
+          ],
+          "sections": [
+            "Project Overview",
+            "Pilot Details",
+            "Refund Policy"
+          ],
+          "proposal_scope": "Creative proposals only; the original idea is the factual source."
+        },
+        "package": {
+          "captions": {
+            "linkedin": "Learn about Project Cedar pilot",
+            "x": "Project Cedar pilot shipment on Dec 3, 2026"
+          },
+          "cta": "Stay informed about Project Cedar updates",
+          "hashtags": [
+            "ProjectCedar",
+            "PilotShipment"
+          ],
+          "image_prompts": [
+            "A photo of a sensor with a calendar marking December 3, 2026",
+            "An illustration of a package with 18 sensors and a label with the project name",
+            "A simple diagram showing the pilot shipment process"
+          ],
+          "script": "Project Cedar, owned by Omar Reed, is a pilot shipping 18 sensors on December 3, 2026, with a budget of USD 960. This pilot is a preliminary launch, and customer refunds are available within 30 days for unopened items. Learn about Project Cedar and its upcoming pilot shipment.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "title": "Introduction to Project Cedar Pilot"
+        },
+        "critique": {
+          "passes_review": false,
+          "issues": [
+            "Review omitted material source details; restored from original input."
+          ],
+          "revised_script": "Project Cedar, owned by Omar Reed, ships 18 sensors on December 3, 2026, with a budget of USD 960. This is a pilot. Customer refunds are available within 30 days for unopened items. Learn about Project Cedar and its upcoming pilot shipment.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+          "revised_captions": {
+            "linkedin": "Learn about Project Cedar pilot",
+            "x": "Project Cedar pilot shipment on Dec 3, 2026"
+          },
+          "source_checks": {
+            "scope": "Source numbers, numerical material details, listed promotional, role, purpose and audience phrases; not general factual certification.",
+            "issues": [
+              "Review omitted material source details; restored from original input."
+            ]
+          }
+        },
+        "final_script": "Project Cedar, owned by Omar Reed, ships 18 sensors on December 3, 2026, with a budget of USD 960. This is a pilot. Customer refunds are available within 30 days for unopened items. Learn about Project Cedar and its upcoming pilot shipment.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+        "final_captions": {
+          "linkedin": "Learn about Project Cedar pilot",
+          "x": "Project Cedar pilot shipment on Dec 3, 2026"
+        },
+        "audio_path": null,
+        "audio_error": null,
+        "artifact_id": null
+      },
+      "error": null,
+      "seconds": 11.93,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "idea",
+            "tokens": 69,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Content script: missing numerical source details were restored verbatim.",
+          "Content script: missing numerical source details were restored verbatim."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Create artifacts",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Content script: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review content",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "The model review still flags issues. Inspect the review details."
+          }
+        }
+      ]
+    },
+    {
+      "id": "research-05",
+      "kind": "research",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "topic",
+              "tokens": 8,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 58,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/conflict",
+              "tokens": 16,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "research",
+        "plan": {
+          "goal": "Evaluate the pilot scope and evidence gaps",
+          "sub_questions": [
+            "What are the key objectives of the pilot?",
+            "What data has been collected so far?",
+            "What are the main limitations of the current pilot design?",
+            "What evidence gaps have been identified?",
+            "How can the pilot be expanded or modified to address these gaps?"
+          ],
+          "report_sections": [
+            "Introduction",
+            "Pilot Scope Review",
+            "Evidence Gap Analysis",
+            "Recommendations",
+            "Conclusion"
+          ]
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "The source describes a pilot project, Project Elm, which involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 and owned by Noah Lane. It outlines a refund policy but does not provide a delivery guarantee or revenue forecast.",
+            "key_points": [
+              "Project Elm is a pilot project",
+              "25 lamps are to be shipped on February 6, 2027",
+              "The budget is USD 875",
+              "Customer refunds are available within 30 days for unopened items",
+              "No delivery guarantee or revenue forecast is supplied"
+            ],
+            "relevance": "",
+            "text": "",
+            "metadata": {}
+          },
+          {
+            "label": "S2",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/conflict",
+            "summary": "A conflicting draft of the pilot brief lists 20 units, but its date and authority are unknown.",
+            "key_points": [
+              "Conflicting draft lists 20 units",
+              "Date of draft is not established",
+              "Authority of draft is not established"
+            ],
+            "relevance": "",
+            "text": "",
+            "metadata": {}
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft_report": "## Executive Summary\nThe pilot project, Project Elm, aims to ship 25 lamps on February 6, 2027, with a budget of USD 875 [S1]. However, a conflicting draft lists 20 units, but its date and authority are unknown [S2]. The project's objectives and outcomes are not clearly defined.\n\n## Findings\nProject Elm involves shipping 25 lamps on a specified date with a defined budget [S1]. A refund policy is outlined, allowing customer refunds within 30 days for unopened items [S1]. However, no delivery guarantee or revenue forecast is supplied [S1]. A conflicting draft of the pilot brief lists a different quantity of units, which may indicate inconsistencies in planning [S2].\n\n## Risks and Gaps\nThe lack of a delivery guarantee and revenue forecast poses risks to the project's success [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the project's scope [S2]. Limited information is available on the project's objectives, outcomes, and design, which may hinder its evaluation and expansion.\n\n## Recommended Next Questions\nTo address the evidence gaps, the following questions should be investigated: What are the key objectives of Project Elm? What data will be collected to measure its success? How will the conflicting draft be reconciled with the original plan? What strategies can be implemented to ensure timely delivery and revenue generation?\n\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+        "final_report": "## Executive Summary\nThe pilot project, Project Elm, involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 [S1]. However, a conflicting draft lists 20 units, but its date and authority are unknown [S2]. The project's objectives and outcomes are not clearly defined.\n## Findings\nProject Elm involves shipping 25 lamps on a specified date with a defined budget [S1]. A refund policy is outlined, allowing customer refunds within 30 days for unopened items [S1]. However, no delivery guarantee or revenue forecast is supplied [S1]. A conflicting draft of the pilot brief lists a different quantity of units, which may indicate inconsistencies in planning [S2].\n## Risks and Gaps\nThe lack of a delivery guarantee and revenue forecast poses risks to the project's success [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the project's scope [S2]. Limited information is available on the project's objectives, outcomes, and design, which may hinder its evaluation and expansion.\n## Recommended Next Questions\nTo address the evidence gaps, the following questions should be investigated: What are the key objectives of Project Elm? What data will be collected to measure its success? How will the conflicting draft be reconciled with the original plan? What strategies can be implemented to ensure timely delivery and revenue generation?\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+        "critique": {
+          "issues": [],
+          "passes_review": true,
+          "revised_report": "## Executive Summary\nThe pilot project, Project Elm, involves shipping 25 lamps on February 6, 2027, with a budget of USD 875 [S1]. However, a conflicting draft lists 20 units, but its date and authority are unknown [S2]. The project's objectives and outcomes are not clearly defined.\n## Findings\nProject Elm involves shipping 25 lamps on a specified date with a defined budget [S1]. A refund policy is outlined, allowing customer refunds within 30 days for unopened items [S1]. However, no delivery guarantee or revenue forecast is supplied [S1]. A conflicting draft of the pilot brief lists a different quantity of units, which may indicate inconsistencies in planning [S2].\n## Risks and Gaps\nThe lack of a delivery guarantee and revenue forecast poses risks to the project's success [S1]. Additionally, the conflicting draft of the pilot brief creates uncertainty about the project's scope [S2]. Limited information is available on the project's objectives, outcomes, and design, which may hinder its evaluation and expansion.\n## Recommended Next Questions\nTo address the evidence gaps, the following questions should be investigated: What are the key objectives of Project Elm? What data will be collected to measure its success? How will the conflicting draft be reconciled with the original plan? What strategies can be implemented to ensure timely delivery and revenue generation?\n## Source List\n* [S1]: Synthetic pilot brief, https://trace-evaluation.invalid/source\n* [S2]: Synthetic pilot brief, https://trace-evaluation.invalid/conflict",
+          "source_checks": {
+            "scope": "Headings, citation labels and unsupported credibility wording; not factual certification.",
+            "issues": []
+          }
+        },
+        "citation_check": {
+          "has_any_citation": true,
+          "cited_labels": [
+            "S1",
+            "S2"
+          ],
+          "unknown_labels": []
+        }
+      },
+      "error": null,
+      "seconds": 24.74,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "topic",
+            "tokens": 8,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 58,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/conflict",
+            "tokens": 16,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Plan research",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Review report",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Check citation labels",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "support-01",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 12,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 60,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Support documentation: missing numerical source details were restored verbatim.",
+            "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          ]
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "return policy inquiry",
+          "reason": "customer seeking information on return window",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Customer refunds are available within 30 days only for unopened items.\n\nSource details: Project Alder ships 32 kits on November 9, 2026. The budget is USD 740.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation answers the question partially, it specifies a 30-day return window for unopened items, but the customer's question asks about a 20-day return window.",
+              "model_excerpt": "Customer refunds are available within 30 days only for unopened items.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "Yes. 20 days is within the 30-day return/refund window for unopened items [S1].",
+          "confidence": 0.9,
+          "escalation_reason": "",
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "resolution_type": "answer",
+          "model_draft": {
+            "answer": "Yes, you can return an unopened item within 20 days, as 20 days is within the 30-day return window for unopened items [S1].",
+            "confidence": 1,
+            "escalation_reason": "",
+            "recommended_next_step": "Review the return policy for any additional requirements or procedures.",
+            "resolution_type": "answer"
+          },
+          "policy_check": {
+            "answer": "Yes. 20 days is within the 30-day return/refund window for unopened items [S1].",
+            "evidence": "Customer refunds are available within 30 days only for unopened items.",
+            "requested_days": 20,
+            "limit_days": 30,
+            "scope": "Explicit inclusive calendar-day limit and unopened-item condition only; not a general policy interpreter."
+          }
+        },
+        "final": {
+          "question": "Can I return an unopened item within 20 days?",
+          "intent": {
+            "intent": "return policy inquiry",
+            "reason": "customer seeking information on return window",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "answer",
+          "answer": "Yes. 20 days is within the 30-day return/refund window for unopened items [S1].",
+          "confidence": 0.9,
+          "recommended_next_step": "Follow the cited policy for unopened items; confirm any case-specific conditions with support.",
+          "escalation_reason": "",
+          "citation_check": {
+            "cited_labels": [
+              "S1"
+            ],
+            "unknown_labels": []
+          },
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 11.32,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 12,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 60,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Support documentation: missing numerical source details were restored verbatim.",
+          "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Support documentation: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "support-02",
+      "kind": "support",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "question",
+              "tokens": 7,
+              "complete": true
+            },
+            {
+              "source": "https://trace-evaluation.invalid/source",
+              "tokens": 60,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Support documentation: missing numerical source details were restored verbatim.",
+            "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          ]
+        },
+        "tool": "support",
+        "intent": {
+          "intent": "information request",
+          "reason": "question about pilot unit quantity",
+          "requires_human": false,
+          "severity": "low"
+        },
+        "sources": [
+          {
+            "label": "S1",
+            "title": "Synthetic pilot brief",
+            "url": "https://trace-evaluation.invalid/source",
+            "summary": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+            "key_points": [],
+            "relevance": "Quoted documentation; assess eligibility at the resolution stage.",
+            "text": "",
+            "metadata": {
+              "model_relevance": "The quoted documentation implies that 40 repair kits are part of the pilot, but does not explicitly state the number of pilot units planned.",
+              "model_excerpt": "Project Birch ships 40 repair kits on October 14, 2026. The owner is Mira Chen. The budget is USD 1250. This is a pilot, not a general launch.",
+              "source_provenance": "Verbatim documentation excerpt"
+            }
+          }
+        ],
+        "source_errors": [],
+        "invalid_urls": [],
+        "draft": {
+          "answer": "40 repair kits are planned for the pilot [S1]",
+          "confidence": 0.9,
+          "escalation_reason": "",
+          "recommended_next_step": "Review the project brief for additional details on the pilot units",
+          "resolution_type": "answer"
+        },
+        "final": {
+          "question": "How many pilot units are planned?",
+          "intent": {
+            "intent": "information request",
+            "reason": "question about pilot unit quantity",
+            "requires_human": false,
+            "severity": "low"
+          },
+          "resolution_type": "answer",
+          "answer": "40 repair kits are planned for the pilot [S1]",
+          "confidence": 0.9,
+          "recommended_next_step": "Review the project brief for additional details on the pilot units",
+          "escalation_reason": "",
+          "citation_check": {
+            "cited_labels": [
+              "S1"
+            ],
+            "unknown_labels": []
+          },
+          "source_checks": {
+            "scope": "Citation labels and source/request numbers; not general semantic verification.",
+            "issues": []
+          }
+        }
+      },
+      "error": null,
+      "seconds": 13.72,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "question",
+            "tokens": 7,
+            "complete": true
+          },
+          {
+            "source": "https://trace-evaluation.invalid/source",
+            "tokens": 60,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Support documentation: missing numerical source details were restored verbatim.",
+          "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Classify intent",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Read support source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Support documentation: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Digest source",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Structured output needed one format/source repair: An accepted support answer needs valid inline source citations."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Draft resolution",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Apply escalation rules",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "documents-08",
+      "kind": "documents",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "brief.docx",
+              "tokens": 1102,
+              "complete": true
+            },
+            {
+              "source": "Document section summaries",
+              "tokens": 87,
+              "complete": true
+            }
+          ],
+          "warnings": [
+            "Document summary: missing numerical source details were restored verbatim.",
+            "Document source checks corrected inferred or missing details. Inspect Details.",
+            "Document summary: missing numerical source details were restored verbatim.",
+            "Document source checks corrected inferred or missing details. Inspect Details."
+          ]
+        },
+        "tool": "documents",
+        "documents": [
+          {
+            "name": "brief.docx",
+            "source_type": "docx",
+            "text_preview": "Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that this is a limited pilot. Appendix: routine inspection records confirm that ",
+            "analysis": {
+              "document_type": "brief",
+              "summary": "Project Hazel is a limited pilot scheduled to ship 30 batteries on May 16, 2027, with a budget of USD 990. Refunds for customers will be available within 30 days, but refunds are limited to unopened items.\n\nSource details: Customer refunds are available within 30 days only for unopened items.",
+              "entities": {
+                "people": [
+                  "Emma Hart"
+                ],
+                "organizations": [],
+                "emails": [],
+                "dates": [
+                  "May 16, 2027"
+                ]
+              },
+              "action_items": [
+                {
+                  "due_date": "May 16, 2027",
+                  "evidence": "Project Hazel ships 30 batteries on May 16, 2027.",
+                  "owner": "Not specified",
+                  "priority": "Not specified",
+                  "task": "Ship 30 batteries",
+                  "proposed_owner": "Emma Hart"
+                }
+              ],
+              "risks": [
+                "The supplied source does not specify a delivery guarantee.",
+                "The supplied source does not specify a revenue forecast."
+              ],
+              "source_checks": {
+                "scope": "Source numbers, verbatim task evidence, explicit assignment grammar and guarantee/forecast evidence wording; not general semantic verification.",
+                "repairs": [
+                  "Missing material source details restored verbatim."
+                ]
+              }
+            }
+          }
+        ],
+        "errors": []
+      },
+      "error": null,
+      "seconds": 17.5,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "brief.docx",
+            "tokens": 1102,
+            "complete": true
+          },
+          {
+            "source": "Document section summaries",
+            "tokens": 87,
+            "complete": true
+          }
+        ],
+        "warnings": [
+          "Document summary: missing numerical source details were restored verbatim.",
+          "Document source checks corrected inferred or missing details. Inspect Details.",
+          "Document summary: missing numerical source details were restored verbatim.",
+          "Document source checks corrected inferred or missing details. Inspect Details."
+        ]
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract complete bounded document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Extract document",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "running"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Document summary: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Document source checks corrected inferred or missing details. Inspect Details."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Document summary: missing numerical source details were restored verbatim."
+          }
+        },
+        {
+          "event": "warning",
+          "data": {
+            "message": "Document source checks corrected inferred or missing details. Inspect Details."
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Analyze document",
+            "status": "completed"
+          }
+        }
+      ]
+    },
+    {
+      "id": "summary-01",
+      "kind": "summary",
+      "score": {
+        "fact_coverage": 1.0,
+        "citation_labels_valid": true,
+        "abstained": null,
+        "verification_passed": true,
+        "escalated": null,
+        "nonempty": true,
+        "hosted_only": true,
+        "rubric_review": {
+          "reviewer": null,
+          "grounding": null,
+          "usefulness": null,
+          "unsupported_claims": null
+        }
+      },
+      "result": {
+        "execution": {
+          "mode": "free",
+          "engines": [
+            {
+              "provider": "cloudflare",
+              "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            }
+          ],
+          "fallback": false,
+          "coverage": [
+            {
+              "source": "text",
+              "tokens": 60,
+              "complete": true
+            },
+            {
+              "source": "Input",
+              "tokens": 60,
+              "complete": true
+            }
+          ],
+          "warnings": []
+        },
+        "tool": "text-summary",
+        "text": "Project Alder, owned by Priya Shah, is scheduled to ship 32 kits on November 9, 2026, as part of a pilot. The project has a budget of USD 740. Customers can request refunds within 30 days, but only for unopened items. No guarantee is provided regarding delivery, and there is no revenue forecast supplied for the project."
+      },
+      "error": null,
+      "seconds": 3.34,
+      "execution": {
+        "mode": "free",
+        "engines": [
+          {
+            "provider": "cloudflare",
+            "model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+          }
+        ],
+        "fallback": false,
+        "coverage": [
+          {
+            "source": "text",
+            "tokens": 60,
+            "complete": true
+          },
+          {
+            "source": "Input",
+            "tokens": 60,
+            "complete": true
+          }
+        ],
+        "warnings": []
+      },
+      "events": [
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Summarize section 1/1",
+            "status": "completed"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "running"
+          }
+        },
+        {
+          "event": "stage",
+          "data": {
+            "name": "Combine complete summary",
+            "status": "completed"
+          }
+        }
+      ]
+    }
+  ],
+  "quality_gate": "pending rubric review"
+}

@@ -1,0 +1,1169 @@
+{
+  "scope": "Production entry forms only: all 15 routes at five widths in both themes. No inference; not all success/error output states, accessibility certification or field performance.",
+  "light": [
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "width": 1920
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "width": 360
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "width": 768
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "width": 1024
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "width": 1440
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "width": 1920
+    }
+  ],
+  "dark": [
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "research",
+      "hasControls": true,
+      "heading": "Research Agent.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "documents",
+      "hasControls": true,
+      "heading": "Document Intelligence.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "document-qa",
+      "hasControls": true,
+      "heading": "Document Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "url-qa",
+      "hasControls": true,
+      "heading": "Article Q&A.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "support",
+      "hasControls": true,
+      "heading": "Support / Triage.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "text-summary",
+      "hasControls": true,
+      "heading": "Text Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "youtube-summary",
+      "hasControls": true,
+      "heading": "YouTube Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "article-summary",
+      "hasControls": true,
+      "heading": "Article Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "file-summary",
+      "hasControls": true,
+      "heading": "File Summary.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "ocr",
+      "hasControls": true,
+      "heading": "Image to Text.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "image",
+      "hasControls": true,
+      "heading": "Image Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "speech",
+      "hasControls": true,
+      "heading": "Speech Studio.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "captions",
+      "hasControls": true,
+      "heading": "YouTube Captions.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "code",
+      "hasControls": true,
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 360
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 768
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1024
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1440
+    },
+    {
+      "tool": "content",
+      "hasControls": true,
+      "heading": "Content Pipeline.",
+      "overflow": false,
+      "theme": "dark",
+      "width": 1920
+    }
+  ],
+  "codeSample": [
+    {
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "sampleLabel": true,
+      "scrollWidth": 360,
+      "width": 360
+    },
+    {
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "sampleLabel": true,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "sampleLabel": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "sampleLabel": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    {
+      "heading": "Code Copilot.",
+      "overflow": false,
+      "sampleLabel": true,
+      "scrollWidth": 1920,
+      "width": 1920
+    }
+  ]
+}

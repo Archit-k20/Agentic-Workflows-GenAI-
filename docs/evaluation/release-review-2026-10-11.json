@@ -1,0 +1,191 @@
+{
+  "date": "2026-10-11",
+  "deployed_backend": "926c6b688167f3d058685e808500e03e6fa0908a",
+  "reviewer": "Codex source-based inspection; subjective image assessment",
+  "quality_accepted": false,
+  "reports": [
+    {
+      "file": "hosted-final-targets-2026-10-11.json",
+      "sha256": "d25eba8f7a30e176b6e94673c74d2441368390dbc5f4b18dd4b8021deeac1be1",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "4140ac5abda07f409cc6b7b79147ca0d83d9669fbdd27a997544fb7ba67377f7",
+        "pipeline_sha256": "2707ab744a73acc59ea9e9c1da650bfa6632f89699a837471577f82b31e91ad7"
+      },
+      "attempted": 20,
+      "successful_execution": 9,
+      "failures": [
+        {
+          "id": "research-06",
+          "error": "Research report failed source/structure checks: Missing report heading: Executive Summary; Missing report heading: Findings; Missing report heading: Risks and Gaps; Missing report heading: Recommended Next Questions; Missing report heading: Source List; Missing or unknown source citation labels.; Missing inline citations in Executive Summary; Missing inline citations in Findings; A supplied source is missing from the report: S1"
+        },
+        {
+          "id": "support-03",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "support-04",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "support-05",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "support-06",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "content-01",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "content-02",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "content-04",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "content-06",
+          "error": "The shared hosted allowance is unavailable until 00:00 UTC."
+        },
+        {
+          "id": "documents-06",
+          "error": "Document Intelligence could not process any uploaded files."
+        },
+        {
+          "id": "documents-08",
+          "error": "Document Intelligence could not process any uploaded files."
+        }
+      ]
+    },
+    {
+      "file": "hosted-followup-2026-10-11.json",
+      "sha256": "7c6ed46d5953109aea1ffb0e8141264a87f6a43d1e400155919398372d84ad6d",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "9c7cf4b21e7e66e64071ff432eff28faaf017f8a806fabd8a956a86d4de1e09b",
+        "pipeline_sha256": "5205ed7529aec948c6c051c2493853be092aa4680647aeb01efe079e0150eb69"
+      },
+      "attempted": 2,
+      "successful_execution": 1,
+      "failures": [
+        {
+          "id": "research-06",
+          "error": "Research final report failed source checks after review: Unspecified guarantee evidence cannot establish its actual absence.; Unspecified forecast evidence cannot establish its actual absence."
+        }
+      ]
+    },
+    {
+      "file": "hosted-release-2026-10-11.json",
+      "sha256": "0af4e8ef63eff4416ab1bd3cc2a62ef8799eefc726f3c7f451bfdd9efe1f8c6a",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "1c1f3b80a91d63fc555f3716c9c2547a28d77ae17011a7e594dbb42d5c29f2b0",
+        "pipeline_sha256": "be0e8e87ff62f0b81e50e2129fb97d766971c5c8f19ea8f9cb3790ea8c796117"
+      },
+      "attempted": 46,
+      "successful_execution": 45,
+      "failures": [
+        {
+          "id": "research-06",
+          "error": "Research report failed source/structure checks: Unspecified guarantee evidence cannot establish its actual absence.; Unspecified forecast evidence cannot establish its actual absence."
+        }
+      ]
+    },
+    {
+      "file": "hosted-targets-2026-10-11.json",
+      "sha256": "2da618eabda07b591afbc8f02c2ead6e3014841a79b54ef807fa9d5595c64b4b",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "7f550a27648fede5f00df876c286377d05a904e190c75bb80fd4155ee462a452",
+        "pipeline_sha256": "b1cada0f5aa18efa1f28a63f5aa06f2738e442baa12d61f1e89a48a909665da2"
+      },
+      "attempted": 7,
+      "successful_execution": 7,
+      "failures": []
+    },
+    {
+      "file": "local-final-targets-2026-10-11.json",
+      "sha256": "b693091d8dcd1ac74a92446bec714e49dcdb8bcd6b5172258097febd3ba6fd43",
+      "profile": {
+        "hosted_text": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "hosted_code": "@cf/qwen/qwen2.5-coder-32b-instruct",
+        "local_digest": "2a654d98e6fba55d452b7043684e9b57a947e393bbffa62485a7aac05ee4eefd",
+        "fixtures_sha256": "6cb400fbb594174548338085a817540b08c51d7b98d55f5f664a854bf6eb145e",
+        "pipeline_sha256": "2707ab744a73acc59ea9e9c1da650bfa6632f89699a837471577f82b31e91ad7"
+      },
+      "attempted": 1,
+      "successful_execution": 1,
+      "failures": []
+    }
+  ],
+  "findings": [
+    {
+      "area": "Image",
+      "status": "aesthetics strong; exact constraints failed",
+      "evidence": "public-complex-image-2026-10-11.json",
+      "details": "Three cups rather than two, missing aligned gears/tweezers, extra watch face and unclear clock time. Hands cannot be fully verified."
+    },
+    {
+      "area": "Hosted summaries",
+      "status": "two targeted corrected outputs reviewed; broad current-profile gate open",
+      "evidence": "hosted-final-targets-2026-10-11.json",
+      "details": "summary-06 qualified unspecified guarantee/forecast; summary-10 stopped inventing repetition counts. Earlier twelve outputs were not a complete source-quality pass."
+    },
+    {
+      "area": "Research",
+      "status": "conflict target improved; partial-source target still unaccepted",
+      "evidence": "hosted-final-targets-2026-10-11.json",
+      "details": "research-05 retains source labels, owner/date/count/budget and documented uncertainty. research-06 returned empty draft during shared-capacity failure; transport later propagates actual failure. New-profile live retest required."
+    },
+    {
+      "area": "Q&A",
+      "status": "narrow synthetic and real-route checks passed",
+      "evidence": "public-contexts-2026-10-11.json",
+      "details": "Both answers cite actual retrieved chunks and preserve supported facts. Local fallback explicitly disclosed. One small DOCX and one short real URL excerpt do not establish general retrieval accuracy."
+    },
+    {
+      "area": "Documents",
+      "status": "not fully accepted",
+      "evidence": "hosted-release-2026-10-11.json",
+      "details": "Assignees/priority remain unspecified when the source does not task the owner. Earlier summaries still had absence wording, duplicated conditions and a guarantee inference concerning opened/used items. Latest targeted live retests were capacity-blocked."
+    },
+    {
+      "area": "Content",
+      "status": "partial improvement; latest confirmation guard needs real retest",
+      "evidence": "local-final-targets-2026-10-11.json",
+      "details": "Real local output retained material facts but invented owner confirmation, duplicated a refund condition and took 592.64 seconds. Failed review is visible. Later finite guard rejects that confirmation wording, tested with source-positive and source-negative cases."
+    },
+    {
+      "area": "Code",
+      "status": "six syntax/compiler checks passed",
+      "evidence": "hosted-final-targets-2026-10-11.json",
+      "details": "All five languages covered. Public toy Python output separately passed four behavior assertions. No general security or behavioral certification."
+    },
+    {
+      "area": "YouTube",
+      "status": "live URL unavailable; pasted recovery passed",
+      "evidence": "public-youtube-fixed-2026-10-11.json",
+      "details": "Clarified error retested on deployed source. Original URL remains. No retries or successful transcript extraction claimed."
+    }
+  ],
+  "remaining": [
+    "Fresh full sixty-case hosted profile and separate source review after reset/provider availability",
+    "Fresh local content guard verification and latency improvement",
+    "Independent phone/mobile-data PDF and speech check",
+    "Remaining varied public tool paths, long-output states, real reduced-motion/accessibility and representative performance",
+    "Actual public-browser HF fallback run after genuine Cloudflare capacity rejection",
+    "Advanced OpenAI live verification only with explicit test key"
+  ]
+}

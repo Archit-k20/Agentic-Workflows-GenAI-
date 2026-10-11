@@ -1,3 +1,9 @@
+# Current public verification — 11 October 2026
+
+See [the current verification, seven-task status and rehearsal record](launch-2026-10-11.md). Backend `926c6b6` is deployed; 266 backend tests, frontend/native AMD64/ARM64 CI and 18 public wiring checks pass. The complex public image, real Code Copilot, transcript recovery, 150 entry-form width/theme checks and actual DOCX/URL cited answers are recorded. Cold concurrent initialization was fixed and retested. Full model quality, independent phone checks and broader performance/state acceptance remain open; the newer reports do not relabel earlier profiles as passed.
+
+Historical launch records follow.
+
 # Public launch verification — 9 October 2026
 
 **TRACE is live at [trace-agentic-workspace.vercel.app](https://trace-agentic-workspace.vercel.app)**, with the full Python/Ollama backend on a Google Free Trial Compute Engine VM. Visitors need no provider key or Vercel login. Real browser Turnstile entry, speech playback and an explicitly identified CPU summary fallback work. This is live integration evidence, not full release-quality acceptance.

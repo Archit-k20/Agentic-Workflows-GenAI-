@@ -1,3 +1,13 @@
+# Current verification — 11 October 2026
+
+Read [the newer verification and rehearsal record](../launch-2026-10-11.md). The public complex-image run succeeds, with an explicit visual rubric showing exact-count/hand/time limitations. A cold simultaneous-summary failure was reproduced and fixed; both admitted requests then returned results, with the third rejected as busy. 266 backend tests, native AMD64/ARM64/frontend source CI and 18 public wiring checks pass.
+
+The new hosted reports have different fingerprints and remain separate: 45 successes/one rejection in the stopped 46-attempt run; one successful/one failed research follow-up; and nine completed/twenty attempted final targets, with larger stages capacity-blocked. Six real code cases passed native syntax/compilation checks. Two corrected summary targets and a conflicting-source report completed. This is not a fresh sixty-case quality pass. A real CPU content target completed in 592.64 seconds but invented an owner's confirmation and duplicated a differently worded refund condition. The subsequent confirmation guard is unit-tested and deployed; its model retest remains pending.
+
+Real browser code/transcript recovery, 150 entry-form breakpoint/theme checks, and actual DOCX/official-URL indexing and cited answers are recorded separately. Independent phone/mobile-data file picking/playback, broad output-state/accessibility/performance and final source-quality gates remain open. Historical evidence below retains its original attribution.
+
+---
+
 # Interview launch checks — 9 October 2026
 
 [Full raw hosted run](hosted-launch-final-2026-10-09.json): 60 cases, no execution errors or local fallback. [Source-based review](launch-review-2026-10-09.json) records the remaining quality issues; this is **not** a passing release-quality gate. All sixteen Q&A outputs retained supported answers or refused absent evidence. Support omitted a documented shipment from its excerpt and unnecessarily escalated; missing guarantee evidence was sometimes phrased as actual absence. Follow-up code retains missing numerical support sentences and makes unknown-evidence instructions explicit, without changing original OpenAI workflow functions.
